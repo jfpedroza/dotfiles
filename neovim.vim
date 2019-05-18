@@ -1,3 +1,24 @@
+" Specify a directory for plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Valloric/MatchTagAlways'
+Plug 'pangloss/vim-javascript'
+Plug 'w0rp/ale'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
+Plug 'parsonsmatt/intero-neovim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
+
+" Initialize plugin system
+call plug#end()
+
 set clipboard=unnamedplus
 colorscheme elflord 
 
@@ -26,6 +47,7 @@ let mapleader = ","
 " Open Vim RC and load automatically
 autocmd BufWritePost init.vim source $MYVIMRC
 autocmd BufWritePost nvim.vim source $MYVIMRC
+autocmd BufWritePost neovim.vim source $MYVIMRC
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
 
 " Window navigation mappings
