@@ -14,6 +14,8 @@ Plug 'mhinz/vim-mix-format'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -119,6 +121,7 @@ set wildignore+=*/vendor/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
+set wildignore+=*/_build/**
 
 "set nofoldenable    " disable folding
 
