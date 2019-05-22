@@ -15,6 +15,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Initialize plugin system
 call plug#end()
@@ -56,10 +57,28 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Tab navigation
+nnoremap <silent> <leader>1 :tabnext 1<CR>
+nnoremap <silent> <leader>2 :tabnext 2<CR>
+nnoremap <silent> <leader>3 :tabnext 3<CR>
+nnoremap <silent> <leader>4 :tabnext 4<CR>
+nnoremap <silent> <leader>5 :tabnext 5<CR>
+nnoremap <silent> <leader>9 :tablast<CR>
+
+" Use 'H' and 'L' keys to move to start/end of the line
+noremap H g^
+noremap L g$
+
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Drop into insert mode on Backspace
+nnoremap <BS> a<BS>
+
+" Normalize Y behavior to yank till the end of line
+nnoremap Y y$
 
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
@@ -79,6 +98,11 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+
+" Copy file basename only, file path, dirname
+command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
 
 " Replace selected text and keep clipboard
 " it's a capital 'p' on the end
