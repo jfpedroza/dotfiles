@@ -92,6 +92,8 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 " " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+" " Show all open buffers with FZF
+nmap <leader>bb :Buffers<CR>
 
 " Edit files in the current file's directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -99,6 +101,9 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
+
+" Open FZF file finder
+map <leader>f :Files<CR>
 
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
@@ -188,3 +193,4 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 " let g:ale_linters.haskell = ['hie', 'hlint']
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
+au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
