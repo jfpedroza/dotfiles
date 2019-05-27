@@ -14,6 +14,7 @@ Plug 'mhinz/vim-mix-format'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
+Plug 'sjl/gundo.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -159,6 +160,9 @@ nmap <Leader>cp <Plug>GitGutterPreviewHunk
 highlight GitGutterAdd    guifg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#ff2222 ctermfg=200
+
+" Gundo
+nnoremap <F6> :GundoToggle<CR>
 
 " Elixir
 let g:mix_format_on_save = 1

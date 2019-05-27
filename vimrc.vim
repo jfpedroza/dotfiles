@@ -13,6 +13,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
+Plug 'sjl/gundo.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -85,6 +86,9 @@ nmap <Leader>cp <Plug>GitGutterPreviewHunk
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" Gundo
+nnoremap <F6> :GundoToggle<CR>
 
 "Shortcuts Buffer
 nmap <leader>T :enew<CR>
