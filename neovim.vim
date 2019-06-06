@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -169,6 +170,9 @@ nnoremap <F6> :GundoToggle<CR>
 let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/Programming/Elixir/elixir-ls/rel'
 
+" Rust
+let g:rustfmt_autosave = 1
+
 " MatchTagAlways
 nnoremap <leader>% :MtaJumpToOtherTag<CR>
 
@@ -196,7 +200,20 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-" let g:ale_linters.haskell = ['hie', 'hlint']
+" Ale
+"let g:ale_linters = {
+            "\'rust': ['rls'],
+            "\'haskell': ['hie', 'hlint']
+            "\}
+
+let g:ale_linters = {
+            \'rust': ['rls'],
+            \}
+
+let g:ale_completion_enabled = 1
+let g:ale_set_ballons = 1
+set omnifunc=ale#completion#OmniFunc
+let g:airline#extensions#ale#enabled = 1
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
