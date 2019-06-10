@@ -108,6 +108,9 @@ map <leader>et :tabe %%
 " Open FZF file finder
 map <leader>f :Files<CR>
 
+" Map <Esc> to exit terminal-mode
+:tnoremap <Esc> <C-\><C-n>
+
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
 command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
