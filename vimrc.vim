@@ -15,6 +15,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -121,6 +122,14 @@ map <c-space> ?
 " Use 'H' and 'L' keys to move to start/end of the line
 noremap H g^
 noremap L g$
+
+" Remap [] to {} for latam keyboards
+nmap { [
+nmap } ]
+omap { [
+omap } ]
+xmap { [
+xmap } ]
 
 "autoremove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e

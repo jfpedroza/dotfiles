@@ -16,6 +16,7 @@ Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -125,6 +126,14 @@ nnoremap p p=`]
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
+
+" Remap [] to {} for latam keyboards
+nmap { [
+nmap } ]
+omap { [
+omap } ]
+xmap { [
+xmap } ]
 
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
