@@ -7,18 +7,24 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Valloric/MatchTagAlways'
-Plug 'pangloss/vim-javascript'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+
+" Languages
 Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'posva/vim-vue'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
-Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'parsonsmatt/intero-neovim'
 Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
@@ -92,6 +98,9 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " Gundo
 nnoremap <F6> :GundoToggle<CR>
+
+" Ack - Ag
+let g:ackprg = 'ag --vimgrep'
 
 "Shortcuts Buffer
 nmap <leader>T :enew<CR>
