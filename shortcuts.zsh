@@ -1,0 +1,11 @@
+dotfiles=~/dotfiles
+work=~/Work
+programming=~/Programming
+projects=~/Programming/Projects
+parques=$projects/Parques
+bmarks=$projects/BMarks
+peiky=$work/Peiky
+peiky_and=$peiky/peiky-android
+peiky_core=$peiky/peiky-core
+peiky_copy=$peiky/peiky-core-copy
+onyx=$projects/onyx
