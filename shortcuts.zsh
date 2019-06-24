@@ -1,4 +1,6 @@
 dotfiles=~/dotfiles
+cloud=~/Cloud
+pcloud=~/pCloudDrive
 work=~/Work
 programming=~/Programming
 projects=~/Programming/Projects

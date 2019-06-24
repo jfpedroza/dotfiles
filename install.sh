@@ -192,6 +192,10 @@ installNpmPackages() {
 }
 
 installLanguages() {
+    echo "==================================="
+    echo "Installing rust and haskell..."
+    echo "==================================="
+
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
     rustup toolchain install nightly
     rustup install nightly-2016-08-01
@@ -216,7 +220,6 @@ installFonts() {
 }
 
 cloneDotfiles() {
-
     echo "==================================="
     echo "Cloning dotfiles"
     echo "==================================="
@@ -262,7 +265,6 @@ setupTmux() {
 }
 
 useZsh() {
-
     echo "==================================="
     echo "Setting ZSH as default shell"
     echo "==================================="
@@ -289,8 +291,27 @@ useZsh() {
 }
 
 setupSsh() {
+    echo "==================================="
+    echo "Setting SSH key"
+    echo "==================================="
+
     ssh-keygen -t rsa -b 4096
     ssh-add ~/.ssh/id_rsa
+}
+
+createSymlinks() {
+    echo "==================================="
+    echo "Creating PCloud Symlinks"
+    echo "==================================="
+
+    # pCloud Symlinks
+    ln -s /media/jhon/Data/Cloud ~/Cloud
+    ln -s ~/Cloud/Documents ~/Documents/Cloud
+    ln -s ~/Cloud/Pictures ~/Pictures/Cloud
+    ln -s ~/Cloud/Programming ~/Programming/Cloud
+    ln -s ~/Cloud/Work/MMLabs ~/Work/MMLabs/Cloud
+    ln -s ~/Cloud/Work/Peiky ~/Work/Peiky/Cloud
+    ln -s ~/Cloud/Work/Docs ~/Work/Docs
 }
 
 install() {
@@ -325,7 +346,7 @@ install() {
     setupTmux
     useZsh
     setupSsh
-
+    createSymlinks
 }
 
 install
