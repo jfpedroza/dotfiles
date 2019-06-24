@@ -65,7 +65,6 @@ installManjaroPackages() {
     # Install with pacman
     packages='
     base-devel
-    yaourt
     xclip
     cmake
     zsh
@@ -88,6 +87,12 @@ installManjaroPackages() {
 
     # Installing packages
     $pmi $packages
+    
+    mkdir -p ~/builds
+    git clone https://aur.archlinux.org/yay.git 
+    cd yay
+    makepkg -si
+    cd ..
 
     # Install with Yay
     aur_packages='
@@ -105,8 +110,6 @@ installManjaroPackages() {
 
     # Installing packages
     $yai $aur_packages
-
-    mkdir ~/builds
 }
 
 installSnapPackages() {
