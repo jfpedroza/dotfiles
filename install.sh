@@ -98,6 +98,7 @@ installManjaroPackages() {
     slack-desktop
     sublime-text-dev
     gitkraken
+    pcloud-drive
     franz'
 
     echo "Installing the following AUR packages: $packages"
