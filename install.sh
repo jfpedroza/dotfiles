@@ -32,6 +32,8 @@ installUbuntuPackages() {
     mysql-workbench
     dconf-editor
     net-tools
+    ttf-ancient-fonts
+    tmux
     shellcheck'
 
     echo "Installing the following packages: $packages"
@@ -81,6 +83,7 @@ installManjaroPackages() {
     docker
     gimp
     fd
+    tmux
     opera'
 
     echo "Installing the following packages: $packages"
@@ -89,10 +92,11 @@ installManjaroPackages() {
     $pmi $packages
     
     mkdir -p ~/builds
+    cd ~/builds
     git clone https://aur.archlinux.org/yay.git 
     cd yay
     makepkg -si
-    cd ..
+    cd ~
 
     # Install with Yay
     aur_packages='
@@ -104,6 +108,7 @@ installManjaroPackages() {
     sublime-text-dev
     gitkraken
     pcloud-drive
+    ttf-ancient-fonts
     franz'
 
     echo "Installing the following AUR packages: $packages"
@@ -196,13 +201,25 @@ installNpmPackages() {
 
 installLanguages() {
     echo "==================================="
-    echo "Installing rust and haskell..."
+    echo "Installing python, rust and haskell..."
     echo "==================================="
 
+    # Python & PIP
+    sudo pip install --upgrade pip
+    sudo pip install virtualenv
+    pip install --user --upgrade awscli
+    pip install --user --upgrade pynvim
+
+    # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
+    # shellcheck source=/dev/null
+    source ~/.cargo/env
     rustup toolchain install nightly
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+    cargo install exa
+
+    # Haskell & Stack
     curl -sSL https://get.haskellstack.org/ | sh
 }
 
@@ -218,8 +235,7 @@ installFonts() {
     cd fonts && 
     ./install.sh && 
     cd .. && 
-    rm -rf fonts &&
-    apti ttf-ancient-fonts
+    rm -rf fonts
 }
 
 cloneDotfiles() {
@@ -230,6 +246,7 @@ cloneDotfiles() {
     cd ~/ || return
 
     git clone https://github.com/johnf9896/dotfiles.git
+    cd dotfiles
     git remote set-url origin git@github.com:johnf9896/dotfiles.git
 }
 
@@ -242,6 +259,7 @@ setupVim() {
 
     # Link rc files
     ln -sf ~/dotfiles/vimrc.vim ~/.vimrc
+    mkdir -p ~/.config/nvim
     ln -sf ~/dotfiles/neovim.vim ~/.config/nvim/init.vim
 
     # Vim-plug for Vim
@@ -306,6 +324,12 @@ createSymlinks() {
     echo "==================================="
     echo "Creating PCloud Symlinks"
     echo "==================================="
+
+    cd ~/ || return
+
+    mkdir -p Programming/Projects/languages
+    mkdir -p Work/Peiky
+    mkdir -p Work/MMLabs
 
     # pCloud Symlinks
     ln -s /media/jhon/Data/Cloud ~/Cloud
