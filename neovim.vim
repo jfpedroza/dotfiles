@@ -230,7 +230,7 @@ let g:ale_linters = {
             \'rust': ['rls'],
             \}
 
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 let g:ale_set_ballons = 1
 set omnifunc=ale#completion#OmniFunc
 let g:airline#extensions#ale#enabled = 1

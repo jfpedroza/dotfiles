@@ -33,7 +33,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+export DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -99,6 +99,8 @@ BULLETTRAIN_VIRTUALENV_PREFIX=env:
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
+[ -f ~/.local/bin/tmuxinator.zsh ] && source ~/.local/bin/tmuxinator.zsh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -e "$HOME/.fzf-extras/fzf-extras.zsh" ]] \
@@ -111,4 +113,4 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) =~ binary ]] &&
                  (bat --style=numbers --color=always {} ||
                   cat {}) 2> /dev/null | head -500'"
 
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH
