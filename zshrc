@@ -89,19 +89,13 @@ export EDITOR='nvim'
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 export TERM="xterm-256color"
 BULLETTRAIN_PROMPT_CHAR=\λ
 BULLETTRAIN_PROMPT_ROOT=TRUE
 BULLETTRAIN_VIRTUALENV_PREFIX=env:
-source /etc/zsh_command_not_found
+
+[ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
+
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
@@ -117,3 +111,4 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) =~ binary ]] &&
                  (bat --style=numbers --color=always {} ||
                   cat {}) 2> /dev/null | head -500'"
 
+export PATH=$HOME/.cargo/bin:$PATH
