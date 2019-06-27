@@ -34,6 +34,8 @@ installUbuntuPackages() {
     net-tools
     ttf-ancient-fonts
     tmux
+    the_silver_searcher
+    postgresql
     shellcheck'
 
     echo "Installing the following packages: $packages"
