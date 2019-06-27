@@ -156,6 +156,10 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
+"autoremove trailing spaces
+autocmd BufWritePre *.php :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
+
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
