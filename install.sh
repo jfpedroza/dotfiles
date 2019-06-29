@@ -86,7 +86,9 @@ installManjaroPackages() {
     gimp
     fd
     tmux
-    opera'
+    opera
+    gitflow-avh
+    gitflow-zshcompletion-avh'
 
     echo "Installing the following packages: $packages"
 
@@ -294,7 +296,7 @@ useZsh() {
 
     cd ~/ || return
 
-    chsh -s "$(which zsh)" &&
+    chsh -s "$(which zsh)"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom

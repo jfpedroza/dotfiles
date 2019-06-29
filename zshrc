@@ -103,6 +103,9 @@ autoload -Uz compinit && compinit -i
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+[ -f /usr/share/zsh/site-functions/git-flow-completion.zsh ] \
+	&& source /usr/share/zsh/site-functions/git-flow-completion.zsh
+
 [[ -e "$HOME/.fzf-extras/fzf-extras.zsh" ]] \
   && source "$HOME/.fzf-extras/fzf-extras.zsh"
 
