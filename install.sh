@@ -86,9 +86,8 @@ installManjaroPackages() {
     gimp
     fd
     tmux
-    opera
-    gitflow-avh
-    gitflow-zshcompletion-avh'
+    gdb
+    opera'
 
     echo "Installing the following packages: $packages"
 
@@ -113,6 +112,8 @@ installManjaroPackages() {
     gitkraken
     pcloud-drive
     ttf-ancient-fonts
+    gitflow-avh
+    gitflow-zshcompletion-avh
     franz'
 
     echo "Installing the following AUR packages: $packages"
@@ -331,12 +332,14 @@ createSymlinks() {
 
     cd ~/ || return
 
+    sudo mkdir /media
+    sudo chown "$USER" /media
     mkdir -p Programming/Projects/languages
     mkdir -p Work/Peiky
     mkdir -p Work/MMLabs
 
     # pCloud Symlinks
-    ln -s /media/jhon/Data/Cloud ~/Cloud
+    ln -sf /media/data/Cloud ~/Cloud
     ln -s ~/Cloud/Documents ~/Documents/Cloud
     ln -s ~/Cloud/Pictures ~/Pictures/Cloud
     ln -s ~/Cloud/Programming ~/Programming/Cloud
