@@ -159,6 +159,8 @@ set wildignore+=*/_build/**
 "autoremove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.cpp :%s/\s\+$//e
+autocmd BufWritePre *.h :%s/\s\+$//e
 
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
