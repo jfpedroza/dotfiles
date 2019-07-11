@@ -114,6 +114,7 @@ installManjaroPackages() {
     ttf-ancient-fonts
     gitflow-avh
     gitflow-zshcompletion-avh
+    musixmatch-bin
     franz'
 
     echo "Installing the following AUR packages: $packages"
