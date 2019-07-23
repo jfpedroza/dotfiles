@@ -109,6 +109,12 @@ autoload -Uz compinit && compinit -i
 [[ -e "$HOME/.fzf-extras/fzf-extras.zsh" ]] \
   && source "$HOME/.fzf-extras/fzf-extras.zsh"
 
+[[ -e "$HOME/.asdf/asdf.sh" ]] \
+    && source "$HOME/.asdf/asdf.sh"
+
+[[ -e "$HOME/.asdf/completions/asdf.bash" ]] \
+    && source "$HOME/.asdf/completions/asdf.bash"
+
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) =~ binary ]] &&

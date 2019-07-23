@@ -69,6 +69,7 @@ installManjaroPackages() {
     # Install with pacman
     packages='
     base-devel
+    unzip
     xclip
     cmake
     zsh
