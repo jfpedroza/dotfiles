@@ -93,10 +93,10 @@ installManjaroPackages() {
 
     # Installing packages
     $pmi $packages
-    
+
     mkdir -p ~/builds
     cd ~/builds
-    git clone https://aur.archlinux.org/yay.git 
+    git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
     cd ~
@@ -114,6 +114,7 @@ installManjaroPackages() {
     ttf-ancient-fonts
     gitflow-avh
     gitflow-zshcompletion-avh
+    musixmatch-bin
     franz-bin'
 
     echo "Installing the following AUR packages: $packages"
@@ -143,7 +144,7 @@ installSnapPackages() {
             sudo snap install gnome-easytag
             sudo snap install gitkraken
             sudo snap install gimp
-            sudo snap install android-studio --classic && 
+            sudo snap install android-studio --classic &&
                 $apti libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
             ;;
 
@@ -237,9 +238,9 @@ installFonts() {
 
     # Console fonts
     git clone https://github.com/powerline/fonts.git &&
-    cd fonts && 
-    ./install.sh && 
-    cd .. && 
+    cd fonts &&
+    ./install.sh &&
+    cd .. &&
     rm -rf fonts
 }
 
