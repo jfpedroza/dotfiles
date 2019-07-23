@@ -84,6 +84,8 @@ installManjaroPackages() {
     npm
     shellcheck
     docker
+    postgres
+    postgis
     gimp
     fd
     tmux
@@ -107,6 +109,7 @@ installManjaroPackages() {
     spotify
     insomnia
     postman-bin
+    dbeacer-ce
     discord
     slack-desktop
     sublime-text-dev
@@ -190,6 +193,28 @@ installAndConfigureDocker() {
 
     sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
     sudo chmod +x /usr/local/bin/docker-compose
+}
+
+configurePostgres() {
+    echo "==================================="
+    echo "Installing and configuring Docker..."
+    echo "==================================="
+
+    case $os in
+        Ubuntu*)
+            ;;
+
+        Manjaro*)
+            sudo -u postgres initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'
+            sudo systemctl enable postgresql &&
+            sudo systemctl start postgresql
+            ;;
+
+        *)
+            echo "Unknown OS. Exiting..."
+            exit 1
+            ;;
+   esac
 }
 
 installNpmPackages() {
@@ -374,6 +399,7 @@ install() {
 
     installSnapPackages
     installAndConfigureDocker
+    configurePostgres
     installNpmPackages
     installLanguages
     installFonts
