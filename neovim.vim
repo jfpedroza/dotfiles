@@ -36,6 +36,7 @@ colorscheme elflord
 " Enable hidden buffers
 set hidden
 
+set exrc
 set number
 set mouse=a
 set background=dark
@@ -234,7 +235,10 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 
 let g:ale_linters = {
             \'rust': ['rls'],
+            \'cpp': ['gcc', 'cppcheck'],
             \}
+
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
 
 " let g:ale_completion_enabled = 1
 let g:ale_set_ballons = 1
@@ -243,3 +247,5 @@ let g:airline#extensions#ale#enabled = 1
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
+
+set secure
