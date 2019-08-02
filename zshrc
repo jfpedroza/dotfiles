@@ -65,6 +65,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   kubectl
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,6 +94,12 @@ export TERM="xterm-256color"
 BULLETTRAIN_PROMPT_CHAR=\λ
 BULLETTRAIN_PROMPT_ROOT=TRUE
 BULLETTRAIN_VIRTUALENV_PREFIX=env:
+
+export KEYTIMEOUT=1
+bindkey -v
+
+bindkey "^[OA" history-beginning-search-backward
+bindkey "^[OB" history-beginning-search-forward
 
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
