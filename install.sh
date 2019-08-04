@@ -351,7 +351,6 @@ setupSsh() {
     echo "==================================="
 
     ssh-keygen -t rsa -b 4096
-    ssh-add ~/.ssh/id_rsa
 }
 
 createSymlinks() {
