@@ -62,11 +62,11 @@ installManjaroPackages() {
     echo "==================================="
 
     # Temporary aliases
-    pmi='sudo pacman -S --noconfirm'
-    yai='yay -S --noconfirm'
+    pmi='sudo pacman -S --noconfirm --needed'
+    yai='yay -S --noconfirm --needed'
 
     # Updating the index
-    sudo sudo pacman -Syy
+    sudo pacman -Syy
 
     # Install with pacman
     packages='
@@ -111,7 +111,7 @@ installManjaroPackages() {
     spotify
     insomnia
     postman-bin
-    dbeacer-ce
+    dbeaver-ce
     discord
     slack-desktop
     sublime-text-dev
