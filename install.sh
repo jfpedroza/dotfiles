@@ -123,7 +123,7 @@ installManjaroPackages() {
     musixmatch-bin
     franz-bin'
 
-    echo "Installing the following AUR packages: $packages"
+    echo "Installing the following AUR packages: $aur_packages"
 
     # Installing packages
     $yai $aur_packages
