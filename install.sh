@@ -199,7 +199,7 @@ installAndConfigureDocker() {
 
 configurePostgres() {
     echo "==================================="
-    echo "Installing and configuring Docker..."
+    echo "Installing and configuring Postgresql..."
     echo "==================================="
 
     case $os in
