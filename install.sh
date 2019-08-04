@@ -92,7 +92,7 @@ installManjaroPackages() {
     fd
     tmux
     gdb
-    opera'
+    gparted'
 
     echo "Installing the following packages: $packages"
 
