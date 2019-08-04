@@ -1,3 +1,5 @@
+set -e
+
 installUbuntuPackages() {
     echo "==================================="
     echo "Installing Ubuntu packages..."
