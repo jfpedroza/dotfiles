@@ -103,7 +103,7 @@ installManjaroPackages() {
     cd ~/builds
     git clone https://aur.archlinux.org/yay.git
     cd yay
-    makepkg -si
+    makepkg -si --noconfirm
     cd ~
 
     # Install with Yay
