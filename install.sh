@@ -84,7 +84,7 @@ installManjaroPackages() {
     npm
     shellcheck
     docker
-    postgres
+    postgresql
     postgis
     gimp
     fd
