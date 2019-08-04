@@ -101,7 +101,7 @@ installManjaroPackages() {
 
     mkdir -p ~/builds
     cd ~/builds
-    git clone https://aur.archlinux.org/yay.git
+    [ ! -d yay ] && git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si --noconfirm
     cd ~
