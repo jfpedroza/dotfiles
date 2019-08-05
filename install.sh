@@ -123,7 +123,8 @@ installManjaroPackages() {
     gitflow-avh
     gitflow-zshcompletion-avh
     musixmatch-bin
-    franz-bin'
+    franz-bin
+    visual-studio-code-insiders'
 
     echo "Installing the following AUR packages: $aur_packages"
 
