@@ -1,4 +1,4 @@
-# My personal dofiles
+# My personal dotfiles
 
 ## Instructions
 

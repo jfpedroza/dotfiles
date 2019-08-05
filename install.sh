@@ -298,6 +298,9 @@ setupVim() {
     mkdir -p ~/.config/nvim
     ln -sf ~/dotfiles/neovim.vim ~/.config/nvim/init.vim
 
+    # Let's sneak this in here
+    ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc 
+
     # Vim-plug for Vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
