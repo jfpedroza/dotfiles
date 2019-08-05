@@ -38,6 +38,7 @@ installUbuntuPackages() {
     tmux
     the_silver_searcher
     postgresql
+    xdotool
     shellcheck'
 
     echo "Installing the following packages: $packages"
@@ -92,7 +93,8 @@ installManjaroPackages() {
     fd
     tmux
     gdb
-    gparted'
+    gparted
+    xdotool'
 
     echo "Installing the following packages: $packages"
 
