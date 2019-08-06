@@ -94,7 +94,8 @@ installManjaroPackages() {
     tmux
     gdb
     gparted
-    xdotool'
+    xdotool
+    clang'
 
     echo "Installing the following packages: $packages"
 
