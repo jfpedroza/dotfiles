@@ -46,7 +46,7 @@ set ttimeoutlen=0
 " Always show the statusline
 set laststatus=2 
 set background=dark
-colorscheme elflord 
+colorscheme ron 
 
 " Mouse
 set mouse=a
@@ -85,6 +85,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Gitgutter
 nmap }c <Plug>GitGutterNextHunk

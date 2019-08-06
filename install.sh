@@ -95,7 +95,8 @@ installManjaroPackages() {
     gdb
     gparted
     xdotool
-    clang'
+    clang
+    cppcheck'
 
     echo "Installing the following packages: $packages"
 
@@ -256,6 +257,7 @@ installLanguages() {
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
     cargo install exa
+    cargo install just
 
     # Haskell & Stack
     curl -sSL https://get.haskellstack.org/ | sh
