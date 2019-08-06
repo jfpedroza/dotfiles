@@ -31,7 +31,7 @@ Plug 'rust-lang/rust.vim'
 call plug#end()
 
 set clipboard=unnamedplus
-colorscheme elflord 
+colorscheme ron 
 
 " Enable hidden buffers
 set hidden
@@ -176,6 +176,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Gitgutter
 nmap }c <Plug>GitGutterNextHunk
