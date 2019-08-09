@@ -39,7 +39,8 @@ installUbuntuPackages() {
     the_silver_searcher
     postgresql
     xdotool
-    shellcheck'
+    shellcheck
+    mc'
 
     echo "Installing the following packages: $packages"
 
@@ -96,7 +97,8 @@ installManjaroPackages() {
     gparted
     xdotool
     clang
-    cppcheck'
+    cppcheck
+    mc'
 
     echo "Installing the following packages: $packages"
 
