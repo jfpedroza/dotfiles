@@ -106,6 +106,9 @@ bindkey "^[OB" history-beginning-search-forward
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
+[ -x $(which kubectl) ] && source <(kubectl completion zsh)
+[ -x $(which kubectl) ] && source <(minikube completion zsh)
+
 [ -f ~/.local/bin/tmuxinator.zsh ] && source ~/.local/bin/tmuxinator.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
