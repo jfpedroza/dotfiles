@@ -116,7 +116,7 @@ map <leader>et :tabe %%
 map <leader>f :Files<CR>
 
 " Map <Esc> to exit terminal-mode
-:tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
