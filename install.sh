@@ -330,6 +330,21 @@ setupTmux() {
     ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
 }
 
+installScripts() {
+    echo "==================================="
+    echo "Installing scripts"
+    echo "==================================="
+
+    bin=~/.local/bin
+    mkdir -p $bin
+    cd ~/dotfiles
+
+    while IFS= read -r -d '' script
+    do
+        ln -fs -- "$(pwd)/$script" "$bin"
+    done <  <(find bin -type f -perm -+x -print0)
+}
+
 useZsh() {
     echo "==================================="
     echo "Setting ZSH as default shell"
@@ -337,7 +352,7 @@ useZsh() {
 
     cd ~/ || return
 
-    chsh -s "$(which zsh)"
+    chsh -s "$(command -v zsh)"
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom
@@ -418,6 +433,7 @@ install() {
     cloneDotfiles
     setupVim
     setupTmux
+    installScripts
     useZsh
     setupSsh
     createSymlinks
