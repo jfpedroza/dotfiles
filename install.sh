@@ -250,6 +250,7 @@ installLanguages() {
     sudo pip install virtualenv
     pip install --user --upgrade awscli
     pip install --user --upgrade pynvim
+    pip install --user --upgrade vcspull
 
     # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
@@ -385,6 +386,8 @@ createSymlinks() {
     echo "==================================="
 
     cd ~/ || return
+
+    ln -sf ~/dotfiles/vcspull.yaml ~/.vcspull.yaml
 
     sudo mkdir /media
     sudo chown "$USER" /media
