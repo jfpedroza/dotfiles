@@ -293,6 +293,18 @@ cloneDotfiles() {
     git remote set-url origin git@github.com:johnf9896/dotfiles.git
 }
 
+setupGit() {
+    echo "==================================="
+    echo "Setting up git"
+    echo "==================================="
+
+    ln -sf ~/dotfiles/global.gitignore ~/.gitignore
+    git config --global user.name 'Jhon Pedroza'
+    git config --global user.email 'jhonfpedroza@gmail.com'
+    git config --global core.excludesfile '~/.gitignore'
+    ln -sf ~/dotfiles/vcspull.yaml ~/.vcspull.yaml
+}
+
 setupVim() {
     echo "==================================="
     echo "Setting up vim and neovim"
@@ -387,11 +399,9 @@ createSymlinks() {
 
     cd ~/ || return
 
-    ln -sf ~/dotfiles/vcspull.yaml ~/.vcspull.yaml
-
     sudo mkdir /media
     sudo chown "$USER" /media
-    mkdir -p Programming/Projects/languages
+    mkdir -p Programming
     mkdir -p Work/Peiky
     mkdir -p Work/MMLabs
 
@@ -434,6 +444,7 @@ install() {
     installLanguages
     installFonts
     cloneDotfiles
+    setupGit
     setupVim
     setupTmux
     installScripts

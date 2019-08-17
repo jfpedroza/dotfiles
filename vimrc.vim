@@ -219,7 +219,7 @@ let g:jsx_ext_required=0                     " jsx highlighting in .js files
 
 " Elixir
 let g:mix_format_on_save = 1
-let g:ale_elixir_elixir_ls_release = '/home/jhon/Programming/Elixir/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
 
 " Rust
 let g:rustfmt_autosave = 1

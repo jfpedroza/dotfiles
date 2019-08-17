@@ -3,10 +3,7 @@ export cloud=~/Cloud
 export pcloud=~/pCloudDrive
 export work=~/Work
 export programming=~/Programming
-export projects=~/Programming/Projects
-export parques=$projects/Parques
-export bmarks=$projects/BMarks
-export onyx=$projects/onyx
+export code=~/code
 
 if [ -d $work/Peiky ]; then
     export peiky=$work/Peiky

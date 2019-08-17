@@ -1,12 +1,15 @@
 ~/:
   dotfiles: git+git@github.com:johnf9896/dotfiles.git
-~/Programming/gcc_lib/:
-  linenoise-ng: git+https://github.com/arangodb/linenoise-ng.git
-~/Programming/Projects/:
+~/code/:
   ProjectEuler: git+git@github.com:johnf9896/ProjectEuler.git
   spring_config: git+git@github.com:johnf9896/spring_config.git
-~/Programming/Projects/languages/:
+~/code/languages/:
   lispy: git+git@github.com:johnf9896/lispy.git
-~/Programming/Projects/games/:
+~/code/games/:
   parques: git+git@github.com:johnf9896/parques.git
   uno: git+git@github.com:johnf9896/uno.git
+~/code/erlang:
+  tanodb: git+git@github.com:johnf9896/tanodb.git
+~/code/lib:
+  linenoise-ng: git+https://github.com/arangodb/linenoise-ng.git
+  elixir-ls: git+https://github.com/elixir-lsp/elixir-ls.git
