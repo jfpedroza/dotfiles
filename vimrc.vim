@@ -231,6 +231,18 @@ highlight GitGutterAdd    guifg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#ff2222 ctermfg=200
 
+" Fugitive mapping
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gg :Ggrep
+nmap <leader>gL :Glog<cr>
+nmap <leader>gl :Git pull<cr>
+nmap <leader>gp :Git push<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gw :Gbrowse<cr>
+nmap <leader>g? :map <leader>g<cr>
+
 " Gundo
 nnoremap <F6> :GundoToggle<CR>
 
