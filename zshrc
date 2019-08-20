@@ -57,6 +57,8 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+autoload -Uz compinit && compinit -i
+
 # Tmux plugin settings
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
@@ -110,7 +112,6 @@ bindkey "^[OB" history-beginning-search-forward
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
 
 [ -x "$(which kubectl)" ] && source <(kubectl completion zsh)
 [ -x "$(which minkube)" ] && source <(minikube completion zsh)
