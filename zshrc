@@ -57,6 +57,11 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Tmux plugin settings
+export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOQUIT=false
+export ZSH_TMUX_AUTOCONNECT=false
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -66,6 +71,7 @@ plugins=(
   git
   kubectl
   vi-mode
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
