@@ -31,7 +31,7 @@ Plug 'rust-lang/rust.vim'
 " Initialize plugin system
 call plug#end()
 
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 colorscheme ron 
 
 " Enable hidden buffers
@@ -85,6 +85,16 @@ noremap L g$
 map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Map Ctrl+C to copy in Visual mode
+vmap <C-C> "+y
+
+" Map Ctrl+V to paste (selection) in Insert mode
+imap <C-V> <C-R>*
+
+" Paste from clipboard in normal mode
+nmap <leader>p "+p
+nmap <leader>P "+P
 
 " Drop into insert mode on Backspace
 nnoremap <BS> a<BS>
@@ -144,11 +154,7 @@ xmap } ]
 
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype scss setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype elixir setlocal ts=2 sts=2 sw=2
+autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
 autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
 
 set wildignore=Ui_*,*.git,*.pyc
