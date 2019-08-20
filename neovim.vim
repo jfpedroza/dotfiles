@@ -139,7 +139,7 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 vmap r "_dP
 
 " Must check what this is
-nnoremap p p=`]
+" nnoremap p p=`]
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
@@ -164,7 +164,7 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-"autoremove trailing spaces
+" Autoremove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.cpp :%s/\s\+$//e

@@ -31,13 +31,38 @@ Plug 'rust-lang/rust.vim'
 " Initialize plugin system
 call plug#end()
 
-" set clipboard=unnamedplus
 syntax on
 filetype plugin indent on
-" Enable history
-set history=1000
+
+" set clipboard=unnamedplus
+colorscheme ron 
+
 " Enable hidden buffers
 set hidden
+
+set exrc
+set number
+set mouse=a
+set background=dark
+set cursorline
+set lazyredraw
+set showmatch
+set listchars=tab:▸\ ,eol:¬,trail:-,nbsp:+
+set updatetime=500
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set expandtab
+set ignorecase
+set splitbelow " Open new split panes to right and bottom, which feels more natural
+set splitright
+
+" ------------------------ Settings in Vim only (not NeoVim) -----------------"
+
+" Enable history
+set history=10000
+
 " for my zsh terminal <3
 set term=screen-256color
 set t_Co=256
@@ -46,34 +71,142 @@ set timeoutlen=1000
 set ttimeoutlen=0
 " Always show the statusline
 set laststatus=2 
-set background=dark
-colorscheme ron 
 
 " Mouse
-set mouse=a
 set mousehide
 set mousemodel=popup
 
 "basic
-let mapleader = ","
 set showcmd 
 set mat=2
-set updatetime=500
-set splitbelow " Open new split panes to right and bottom, which feels more natural
-set splitright
 
-"set cursorline
+set smarttab
+set autoindent
+set backspace=2
+set ruler
+set colorcolumn=99  
+
 set magic
-set lazyredraw 
-set showmatch 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" -------------------- End of settings in Vim only (not NeoVim) --------------"
+
+let mapleader = ","
+
+" Open Vim RC and load automatically
+autocmd BufWritePost .vimrc source $MYVIMRC
+autocmd BufWritePost vimrc.vim source $MYVIMRC
+nmap <leader>ñ :tabedit $MYVIMRC<CR>
+
+" Window navigation mappings
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Tab navigation
+nnoremap <silent> <leader>1 :tabnext 1<CR>
+nnoremap <silent> <leader>2 :tabnext 2<CR>
+nnoremap <silent> <leader>3 :tabnext 3<CR>
+nnoremap <silent> <leader>4 :tabnext 4<CR>
+nnoremap <silent> <leader>5 :tabnext 5<CR>
+nnoremap <silent> <leader>9 :tablast<CR>
+
+" Use 'H' and 'L' keys to move to start/end of the line
+noremap H g^
+noremap L g$
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
-nnoremap p p=`]
 
-set listchars=tab:▸\ ,eol:¬
+" Map Ctrl+C to copy in Visual mode
+vmap <C-C> "+y
 
-"all nerdtree
+" Map Ctrl+V to paste (selection) in Insert mode
+imap <C-V> <C-R>*
+
+" Paste from clipboard in normal mode
+nmap <leader>p "+p
+nmap <leader>P "+P
+
+" Drop into insert mode on Backspace
+nnoremap <BS> a<BS>
+
+" Normalize Y behavior to yank till the end of line
+nnoremap Y y$
+
+" Buffer shortcuts
+nmap <leader>n :enew<CR>
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+" " Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+" " Close the current buffer and move to the previous one
+" " This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+" " Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+" " Show all open buffers with FZF
+nmap <leader>bb :Buffers<CR>
+
+" Edit files in the current file's directory
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Open FZF file finder
+map <leader>f :Files<CR>
+
+" Copy file basename only, file path, dirname
+command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
+
+" Replace selected text and keep clipboard
+" it's a capital 'p' on the end
+vmap r "_dP
+
+" Must check what this is
+" nnoremap p p=`]
+
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" Remap [] to {} for latam keyboards
+nmap { [
+nmap } ]
+omap { [
+omap } ]
+xmap { [
+xmap } ]
+
+autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
+autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
+
+set wildignore=Ui_*,*.git,*.pyc
+set wildignore+=*/vendor/**
+set wildignore+=*/node_modules/**
+set wildignore+=*/public/forum/**
+set wildignore+=*/deps/**
+set wildignore+=*/_build/**
+
+" Autoremove trailing spaces
+autocmd BufWritePre *.php :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.cpp :%s/\s\+$//e
+autocmd BufWritePre *.h :%s/\s\+$//e
+
+" All NERDTree
 map <C-b> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -94,9 +227,9 @@ nmap {c <Plug>GitGutterPrevHunk
 nmap <Leader>cs <Plug>GitGutterStageHunk
 nmap <Leader>cu <Plug>GitGutterUndoHunk
 nmap <Leader>cp <Plug>GitGutterPreviewHunk
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+highlight GitGutterAdd    guifg=#009900 ctermfg=80
+highlight GitGutterChange guifg=#bbbb00 ctermfg=116
+highlight GitGutterDelete guifg=#ff2222 ctermfg=200
 
 " Gundo
 nnoremap <F6> :GundoToggle<CR>
@@ -104,131 +237,18 @@ nnoremap <F6> :GundoToggle<CR>
 " Ack - Ag
 let g:ackprg = 'ag --vimgrep'
 
-"Shortcuts Buffer
-nmap <leader>T :enew<CR>
-" Move to the next buffer
-nmap <leader>l :bnext<CR>
-" " Move to the previous buffer
-nmap <leader>h :bprevious<CR>
-" " Close the current buffer and move to the previous one
-" " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
-" " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
-" " Show all open buffers with FZF
-nmap <leader>bb :Buffers<CR>
-
-"replace selected text and keep clipboard
-" it's a capital 'p' on the end
-vmap r "_dP
-" Set to auto read when a file is changed from the outside
-set autoread
-"Always show current position
-set ruler
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
-" Map Ctrl+C to copy in Visual mode
-vmap <C-C> "+y
-
-" Map Ctrl+V to paste (selection) in Insert mode
-imap <C-V> <C-R>*
-
-" Paste from clipboard in normal mode
-nmap <leader>p "+p
-nmap <leader>P "+P
-
-" Use 'H' and 'L' keys to move to start/end of the line
-noremap H g^
-noremap L g$
-
-" Remap [] to {} for latam keyboards
-nmap { [
-nmap } ]
-omap { [
-omap } ]
-xmap { [
-xmap } ]
-
-"autoremove trailing spaces
-autocmd BufWritePre *.php :%s/\s\+$//e
-autocmd BufWritePre *.py :%s/\s\+$//e
-
-set wildignore=Ui_*,*.git,*.pyc
-set wildignore+=*/vendor/**
-set wildignore+=*/node_modules/**
-set wildignore+=*/public/forum/**
-set wildignore+=*/deps/**
-set wildignore+=*/_build/**
-
-"set nofoldenable    " disable folding
-
-set cursorline                  " Highlight current line
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set smarttab
-set autoindent
-set smartindent
-set expandtab
-set number 
-set backspace=2
-set ruler
-set ignorecase
-set colorcolumn=99  
-
-autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
-autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
-
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Tab navigation
-nnoremap <silent> <leader>1 :tabnext 1<CR>
-nnoremap <silent> <leader>2 :tabnext 2<CR>
-nnoremap <silent> <leader>3 :tabnext 3<CR>
-nnoremap <silent> <leader>4 :tabnext 4<CR>
-nnoremap <silent> <leader>5 :tabnext 5<CR>
-nnoremap <silent> <leader>9 :tablast<CR>
-
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
-
-" Open FZF file finder
-map <leader>f :Files<CR>
-
-" Copy file basename only, file path, dirname
-command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
-command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
-command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
-
-" Drop into insert mode on Backspace
-nnoremap <BS> a<BS>
-
-" Normalize Y behavior to yank till the end of line
-nnoremap Y y$
-
-" javascript docs
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_underscore_private = 1
-let g:jsx_ext_required=0                     " jsx highlighting in .js files
-
 " Elixir
 let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
 
 " Rust
 let g:rustfmt_autosave = 1
+
+" MatchTagAlways
+nnoremap <leader>% :MtaJumpToOtherTag<CR>
+
+" JavaScript
+let g:jsx_ext_required=0                     " jsx highlighting in .js files
 
 " Haskell
 
@@ -251,22 +271,25 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-" MatchTagAlways
-nnoremap <leader>% :MtaJumpToOtherTag<CR>
-
 " Ale
 "let g:ale_linters = {
-"\'rust': ['rls'],
-"\'haskell': ['hie', 'hlint']
-"\}
+            "\'rust': ['rls'],
+            "\'haskell': ['hie', 'hlint']
+            "\}
 
 let g:ale_linters = {
             \'rust': ['rls'],
+            \'cpp': ['gcc', 'cppcheck'],
             \}
 
-let g:ale_completion_enabled = 1
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
+
+" let g:ale_completion_enabled = 1
+let g:ale_set_ballons = 1
 set omnifunc=ale#completion#OmniFunc
 let g:airline#extensions#ale#enabled = 1
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
+
+set secure
