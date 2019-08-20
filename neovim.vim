@@ -54,6 +54,7 @@ set expandtab
 set ignorecase
 set splitbelow " Open new split panes to right and bottom, which feels more natural
 set splitright
+set completeopt=menu,preview,noinsert " Do not insert first suggestion
 
 let mapleader = ","
 

@@ -57,6 +57,7 @@ set expandtab
 set ignorecase
 set splitbelow " Open new split panes to right and bottom, which feels more natural
 set splitright
+set completeopt=menu,preview,noinsert " Do not insert first suggestion
 
 " ------------------------ Settings in Vim only (not NeoVim) -----------------"
 
@@ -92,6 +93,10 @@ set hlsearch            " highlight matches
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Zsh like <Tab> completion in command mode
+set wildmenu
+set wildmode=full
 
 " -------------------- End of settings in Vim only (not NeoVim) --------------"
 
