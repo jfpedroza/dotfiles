@@ -40,7 +40,9 @@ installUbuntuPackages() {
     postgresql
     xdotool
     shellcheck
-    mc'
+    mc
+    ruby
+    httpie'
 
     echo "Installing the following packages: $packages"
 
@@ -98,7 +100,9 @@ installManjaroPackages() {
     xdotool
     clang
     cppcheck
-    mc'
+    mc
+    ruby
+    httpie'
 
     echo "Installing the following packages: $packages"
 
