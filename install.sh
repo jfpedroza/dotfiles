@@ -248,7 +248,6 @@ installLanguages() {
     # Python & PIP
     sudo pip install --upgrade pip
     sudo pip install virtualenv
-    pip install --user --upgrade awscli
     pip install --user --upgrade pynvim
     pip install --user --upgrade vcspull
 
