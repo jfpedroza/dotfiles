@@ -8,6 +8,8 @@
 ~/code/games/:
   parques: git+git@github.com:johnf9896/parques.git
   uno: git+git@github.com:johnf9896/uno.git
+~/code/elixir:
+  cluster-test: git+git@github.com:johnf9896/cluster-test.git
 ~/code/erlang:
   tanodb: git+git@github.com:johnf9896/tanodb.git
 ~/code/lib:
