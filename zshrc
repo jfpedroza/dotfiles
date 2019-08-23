@@ -71,6 +71,8 @@ plugins=(
   kubectl
   vi-mode
   tmux
+  z
+  fz
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,6 +130,9 @@ fpath=(~/.zsh/completion $fpath)
 
 [[ -e "$HOME/.asdf/completions/asdf.bash" ]] \
     && source "$HOME/.asdf/completions/asdf.bash"
+
+[[ -e "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] \
+    && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 

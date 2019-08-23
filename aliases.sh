@@ -25,3 +25,4 @@ alias gpl='git pull origin'
 alias rusti="rustup run nightly-2016-08-01 ~/.cargo/bin/rusti"
 alias pipi="pip install --upgrade"
 alias pipu="pip install --user --upgrade"
+alias pip-upgrade="sudo pip install --upgrade pip"

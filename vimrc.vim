@@ -130,7 +130,7 @@ map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Map Ctrl+C to copy in Visual mode
+" Map Ctrl+V to paste (selection) in Insert mode
 vmap <C-C> "+y
 
 " Map Ctrl+V to paste (selection) in Insert mode
@@ -140,11 +140,21 @@ imap <C-V> <C-R>*
 nmap <leader>p "+p
 nmap <leader>P "+P
 
-" Drop into insert mode on Backspace
-nnoremap <BS> a<BS>
+" Replace selected text and keep clipboard
+" it's a capital 'p' on the end
+vmap r "_dP
+
+" Do the same but pasting from the clipboard
+vmap <leader>r "_d"+P
+
+" Must check what this is
+" nnoremap p p=`]
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
+
+" Drop into insert mode on Backspace
+nnoremap <BS> a<BS>
 
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
@@ -174,13 +184,6 @@ map <leader>f :Files<CR>
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
 command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
 command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
-
-" Replace selected text and keep clipboard
-" it's a capital 'p' on the end
-vmap r "_dP
-
-" Must check what this is
-" nnoremap p p=`]
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]

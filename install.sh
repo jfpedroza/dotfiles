@@ -42,7 +42,8 @@ installUbuntuPackages() {
     shellcheck
     mc
     ruby
-    httpie'
+    httpie
+    zsh-syntax-highlighting'
 
     echo "Installing the following packages: $packages"
 
@@ -102,7 +103,8 @@ installManjaroPackages() {
     cppcheck
     mc
     ruby
-    httpie'
+    httpie
+    zsh-syntax-highlighting'
 
     echo "Installing the following packages: $packages"
 
