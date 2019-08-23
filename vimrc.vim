@@ -196,6 +196,9 @@ omap } ]
 xmap { [
 xmap } ]
 
+" Create a W command to write because I keep typing :W (:Windows) instead of :w
+command! -nargs=0 W write
+
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
@@ -260,6 +263,9 @@ let g:ackprg = 'ag --vimgrep'
 " Elixir
 let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
+
+" Wrap word in {:ok, word} tuple
+let @o = 'bi{:ok, ea}'
 
 " Rust
 let g:rustfmt_autosave = 1
