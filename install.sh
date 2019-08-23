@@ -103,6 +103,7 @@ installManjaroPackages() {
     cppcheck
     mc
     ruby
+    go
     httpie
     zsh-syntax-highlighting'
 
@@ -269,6 +270,9 @@ installLanguages() {
 
     # Haskell & Stack
     curl -sSL https://get.haskellstack.org/ | sh
+
+    # Go packages
+    go get github.com/edi9999/path-extractor/path-extractor
 }
 
 installFonts() {
@@ -387,6 +391,9 @@ useZsh() {
     git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
     cd ~/.fzf-extras || return
     git checkout zsh
+
+    # Forgit
+    git clone https://github.com/wfxr/forgit.git $zsh_custom/plugins/forgit
 }
 
 setupSsh() {

@@ -73,6 +73,7 @@ plugins=(
   tmux
   z
   fz
+  forgit
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -141,4 +142,4 @@ export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) =~ binary ]] &&
                  (bat --style=numbers --color=always {} ||
                   cat {}) 2> /dev/null | head -500'"
 
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/go/bin:$PATH
