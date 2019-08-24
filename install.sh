@@ -105,7 +105,8 @@ installManjaroPackages() {
     ruby
     go
     httpie
-    zsh-syntax-highlighting'
+    zsh-syntax-highlighting
+    expac'
 
     echo "Installing the following packages: $packages"
 
