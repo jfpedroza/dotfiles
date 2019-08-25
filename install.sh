@@ -106,7 +106,8 @@ installManjaroPackages() {
     go
     httpie
     zsh-syntax-highlighting
-    expac'
+    expac
+    xorg-xev'
 
     echo "Installing the following packages: $packages"
 

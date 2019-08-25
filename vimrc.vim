@@ -58,6 +58,7 @@ set ignorecase
 set splitbelow " Open new split panes to right and bottom, which feels more natural
 set splitright
 set completeopt=menu,preview,noinsert " Do not insert first suggestion
+set timeoutlen=300
 
 " ------------------------ Settings in Vim only (not NeoVim) -----------------"
 
@@ -125,6 +126,17 @@ nnoremap <silent> <leader>9 :tablast<CR>
 noremap H g^
 noremap L g$
 
+" Unbound the arrow keys to force myself to use hjkl
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
+
+vmap <Up> <Nop>
+vmap <Down> <Nop>
+vmap <Left> <Nop>
+vmap <Right> <Nop>
+
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <C-space> ?
@@ -135,6 +147,9 @@ vmap <C-C> "+y
 
 " Map Ctrl+V to paste (selection) in Insert mode
 imap <C-V> <C-R>*
+
+" Map Ctrl-V Ctrl-V to the default behavior of Ctrl-V
+inoremap <C-V><C-V> <C-V>
 
 " Paste from clipboard in normal mode
 nmap <leader>p "+p
@@ -252,7 +267,6 @@ nmap <leader>gl :Git pull<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
-nmap <leader>g? :map <leader>g<cr>
 
 " Gundo
 nnoremap <F6> :GundoToggle<CR>
