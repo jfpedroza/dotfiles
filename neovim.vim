@@ -172,6 +172,12 @@ omap } ]
 xmap { [
 xmap } ]
 
+" Map <localleader> { and } to the default behavior of { and }
+nnoremap <localleader>{ {
+nnoremap <localleader>} }
+vnoremap <localleader>{ {
+vnoremap <localleader>} }
+
 " Create a W command to write because I keep typing :W (:Windows) instead of :w
 command! -nargs=0 W write
 
@@ -247,7 +253,7 @@ let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
 
 " Wrap word in {:ok, word} tuple
-nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
+autocmd FileType elixir nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
 
 " Rust
 let g:rustfmt_autosave = 1
