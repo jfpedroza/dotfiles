@@ -302,6 +302,9 @@ cloneDotfiles() {
     git clone https://github.com/johnf9896/dotfiles.git
     cd dotfiles
     git remote set-url origin git@github.com:johnf9896/dotfiles.git
+
+    # Symlink keyboard modifations
+    ln -sf ~/dotfiles/Xmodmap ~/.Xmodmap
 }
 
 setupGit() {

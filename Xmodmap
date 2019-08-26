@@ -1,0 +1,8 @@
+! Make Caps_Lock = Mode_switch & Shift+Caps_Lock = Caps_Lock
+keycode 66 = Mode_switch Caps_Lock Mode_switch
+
+! Map Cap_Lock+h to ħ
+keycode 43 = h H hstroke Hstroke hstroke Hstroke
+
+! Map Cap_Lock+l to ł
+keycode 46 = l L lstroke Lstroke lstroke Lstroke
