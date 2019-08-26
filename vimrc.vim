@@ -185,6 +185,8 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 " " Show all open buffers with FZF
 nmap <leader>bb :Buffers<CR>
+" Move to the alternative buffer
+nmap <leader>ba :b#<CR>
 
 " Edit files in the current file's directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
