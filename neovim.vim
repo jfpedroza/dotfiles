@@ -58,6 +58,7 @@ set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=300
 
 let mapleader = ","
+let maplocalleader = "ñ"
 
 " Open Vim RC and load automatically
 autocmd BufWritePost init.vim source $MYVIMRC
@@ -195,7 +196,14 @@ autocmd BufWritePre *.h :%s/\s\+$//e
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+function! s:MaybeOpenNerdTree()
+    if argc() == 0 && !exists("s:std_in")
+        NERDTree 
+    endif
+endfunction
+
+autocmd VimEnter * call s:MaybeOpenNerdTree()
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -239,7 +247,7 @@ let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
 
 " Wrap word in {:ok, word} tuple
-let @o = 'bi{:ok, ea}'
+nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
 
 " Rust
 let g:rustfmt_autosave = 1
