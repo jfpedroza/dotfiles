@@ -60,6 +60,7 @@ autoload -Uz compinit && compinit -i
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
 export ZSH_TMUX_AUTOCONNECT=false
+export ZSH_TMUX_AUTONAME_SESSION=true
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*

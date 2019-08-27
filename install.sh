@@ -380,13 +380,15 @@ useZsh() {
     cd ~/ || return
 
     chsh -s "$(command -v zsh)"
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    REPO=johnf9896/on-my-zsh sh -c "$(curl -fsSL https://raw.github.com/johnf9896/oh-my-zsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom
-    wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -P $zsh_custom/themes/
 
     mkdir -p ~/.zsh/completion
     curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
+
+    cd ~/.oh-my-zsh
+    git remote set-url origin git@github.com:johnf9896/oh-my-zsh.git
 
     ln -sf ~/dotfiles/zshrc ~/.zshrc
     ln -sf ~/dotfiles/aliases.sh $zsh_custom/aliases.zsh
