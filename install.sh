@@ -471,3 +471,7 @@ install() {
 }
 
 install
+
+# Changes in sudoers file with sudo -E visudo:
+# Defaults passwd_timeout=0
+# Defaults timestamp_timeout=30
