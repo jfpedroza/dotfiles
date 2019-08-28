@@ -70,8 +70,8 @@ installManjaroPackages() {
     pmi='sudo pacman -S --noconfirm --needed'
     yai='yay -S --noconfirm --needed'
 
-    # Updating the index
-    sudo pacman -Syy
+    # Perform a full upgrade
+    sudo pacman -Syyu
 
     # Install with pacman
     packages='
