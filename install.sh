@@ -67,8 +67,8 @@ installManjaroPackages() {
     echo "==================================="
 
     # Temporary aliases
-    pmi='sudo pacman -S --noconfirm --needed'
-    yai='yay -S --noconfirm --needed'
+    pmi='sudo pacman -S --noconfirm --needed --quiet'
+    yai='yay -S --noconfirm --needed --quiet'
 
     # Perform a full upgrade
     sudo pacman -Syyu
@@ -380,7 +380,7 @@ useZsh() {
     cd ~/ || return
 
     chsh -s "$(command -v zsh)"
-    REPO=johnf9896/on-my-zsh sh -c "$(curl -fsSL https://raw.github.com/johnf9896/oh-my-zsh/master/tools/install.sh)"
+    REPO=johnf9896/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/johnf9896/oh-my-zsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom
 
