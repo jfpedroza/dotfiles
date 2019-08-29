@@ -73,7 +73,6 @@ plugins=(
   vi-mode
   tmux
   z
-  fz
   forgit
 )
 
