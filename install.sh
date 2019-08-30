@@ -107,7 +107,9 @@ installManjaroPackages() {
     httpie
     zsh-syntax-highlighting
     expac
-    xorg-xev'
+    xorg-xev
+    firefox-developer-edition
+    the_silver_searcher'
 
     echo "Installing the following packages: $packages"
 
