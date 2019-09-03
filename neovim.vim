@@ -208,6 +208,7 @@ autocmd StdinReadPre * let s:std_in=1
 function! s:MaybeOpenNerdTree()
     if argc() == 0 && !exists("s:std_in")
         NERDTree 
+        unlet s:std_in
     endif
 endfunction
 
@@ -253,6 +254,11 @@ let g:ackprg = 'ag --vimgrep'
 " Elixir
 let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_config = {
+\   'elixirLS': {
+\     'dialyzerEnabled': v:false,
+\   },
+\}
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
