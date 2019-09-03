@@ -203,12 +203,12 @@ autocmd BufWritePre *.h :%s/\s\+$//e
 
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
+autocmd StdinReadPre * let s:std_in = 1
 
 function! s:MaybeOpenNerdTree()
-    if argc() == 0 && !exists("s:std_in")
+    if argc() == 0 && !exists("s:std_in") && !exists("s:opened_nerd_tree")
         NERDTree 
-        unlet s:std_in
+        let s:opened_nerd_tree = 1
     endif
 endfunction
 
