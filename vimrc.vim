@@ -127,7 +127,7 @@ nnoremap <silent> <leader>9 :tablast<CR>
 noremap H g^
 noremap L g$
 
-" Unbound the arrow keys to force myself to use hjkl
+" Unbind the arrow keys to force myself to use hjkl
 nmap <Up> <Nop>
 nmap <Down> <Nop>
 nmap <Left> <Nop>
@@ -336,6 +336,7 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 let g:ale_linters = {
             \'rust': ['rls'],
             \'cpp': ['gcc', 'cppcheck'],
+            \'elixir': ['credo', 'elixir-ls', 'dialyxir'],
             \}
 
 let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
@@ -344,6 +345,13 @@ let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
 let g:ale_set_ballons = 1
 set omnifunc=ale#completion#OmniFunc
 let g:airline#extensions#ale#enabled = 1
+
+" Ale mappings
+nmap <leader>d :ALEGoToDefinition<CR>
+nmap <leader>dd :ALEGoToDefinition<CR>
+nmap <leader>ds :ALEGoToDefinitionInSplit<CR>
+nmap <leader>dv :ALEGoToDefinitionInVSplit<CR>
+nmap <leader>dt :ALEGoToDefinitionInTab<CR>
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
