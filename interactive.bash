@@ -21,6 +21,7 @@ colors[reset]=$(tput sgr0)
 
 declare distro
 declare everything
+declare custom
 declare binaries
 
 color() {
@@ -43,9 +44,10 @@ die() {
 
 should_do() {
     [[ -n "$1" || -n "$everything" ]] && return 0
+    [[ -n "$custom" ]] && return 1
 
     while true; do
-        read -p "$2 (Y/n) " answer
+        read -rp "$2 (Y/n) " answer
         case $answer in
             Y|y|yes|"") return 0 ;;
             N|n|no) return 1 ;;
@@ -69,7 +71,7 @@ verify_distro() {
 while getopts 'abh' opt; do
     case "$opt" in
         a) everything=1 ;;
-        b) binaries=1 ;;
+        b) binaries=1; custom=1 ;;
         h) usage; exit 0 ;;
         *) usage; exit 1 ;;
     esac
