@@ -15,4 +15,3 @@ if [ "$1" = "color" ]; then
 else
     echo "$capacity"
 fi
-

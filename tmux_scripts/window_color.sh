@@ -21,12 +21,13 @@ index=$3
 active=$(echo $4 | sed 's/}//g' | cut -f1 -d,)
 
 case $1 in
-    fg)
-        foreground
-        ;;
-    bg)
-        background
-        ;;
-    *)
-        echo black
+fg)
+    foreground
+    ;;
+bg)
+    background
+    ;;
+*)
+    echo black
+    ;;
 esac

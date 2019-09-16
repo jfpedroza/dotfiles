@@ -15,6 +15,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-compl
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'Chiel92/vim-autoformat'
 
 " Languages
 Plug 'w0rp/ale'
@@ -22,7 +23,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
@@ -35,7 +35,7 @@ syntax on
 filetype plugin indent on
 
 " set clipboard=unnamedplus
-colorscheme ron 
+colorscheme ron
 
 " Enable hidden buffers
 set hidden
@@ -69,24 +69,24 @@ set history=10000
 set term=screen-256color
 set t_Co=256
 set esckeys
-set timeoutlen=1000 
+set timeoutlen=1000
 set ttimeoutlen=0
 " Always show the statusline
-set laststatus=2 
+set laststatus=2
 
 " Mouse
 set mousehide
 set mousemodel=popup
 
 "basic
-set showcmd 
+set showcmd
 set mat=2
 
 set smarttab
 set autoindent
 set backspace=2
 set ruler
-set colorcolumn=99  
+set colorcolumn=99
 
 set magic
 set incsearch           " search as characters are entered
@@ -223,6 +223,9 @@ vnoremap <localleader>} }
 " Create a W command to write because I keep typing :W (:Windows) instead of :w
 command! -nargs=0 W write
 
+" Format JSON using Python's json.tool
+command! -nargs=0 FormatJson %!python -m json.tool
+
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
@@ -235,19 +238,13 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-" Autoremove trailing spaces
-autocmd BufWritePre *.php :%s/\s\+$//e
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.cpp :%s/\s\+$//e
-autocmd BufWritePre *.h :%s/\s\+$//e
-
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 
 function! s:MaybeOpenNerdTree()
     if argc() == 0 && !exists("s:std_in")
-        NERDTree 
+        NERDTree
     endif
 endfunction
 
@@ -290,9 +287,19 @@ nnoremap <F6> :GundoToggle<CR>
 " Ack - Ag
 let g:ackprg = 'ag --vimgrep'
 
+" Autoformat
+noremap <F3> :Autoformat<CR>
+autocmd BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+
 " Elixir
-let g:mix_format_on_save = 1
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_config = {
+            \   'elixirLS': {
+            \     'dialyzerEnabled': v:false,
+            \   },
+            \}
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
@@ -329,9 +336,9 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 
 " Ale
 "let g:ale_linters = {
-            "\'rust': ['rls'],
-            "\'haskell': ['hie', 'hlint']
-            "\}
+"\'rust': ['rls'],
+"\'haskell': ['hie', 'hlint']
+"\}
 
 let g:ale_linters = {
             \'rust': ['rls'],

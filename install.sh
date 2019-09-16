@@ -56,9 +56,9 @@ installUbuntuPackages() {
 
     # Erlang & Elixir
     wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb &&
-    sudo apt-get update &&
-    $apti esl-erlang &&
-    $apti elixir
+        sudo apt-get update &&
+        $apti esl-erlang &&
+        $apti elixir
 }
 
 installManjaroPackages() {
@@ -109,7 +109,8 @@ installManjaroPackages() {
     expac
     xorg-xev
     firefox-developer-edition
-    the_silver_searcher'
+    the_silver_searcher
+    dos2unix'
 
     echo "Installing the following packages: $packages"
 
@@ -140,7 +141,8 @@ installManjaroPackages() {
     musixmatch-bin
     franz-bin
     visual-studio-code-insiders
-    anydesk'
+    anydesk
+    ngrok'
 
     echo "Installing the following AUR packages: $aur_packages"
 
@@ -154,32 +156,32 @@ installSnapPackages() {
     echo "==================================="
 
     case $os in
-        Ubuntu*)
-            sudo snap install opera
-            sudo snap install spotify
-            sudo snap install insomnia
-            sudo snap install postman
-            sudo snap install intellij-idea-community --classic
-            sudo snap install discord
-            sudo snap install slack --classic
-            sudo snap install sublime-text --classic
-            sudo snap install --edge uget
-            sudo snap install skype --classic
-            sudo snap install vlc
-            sudo snap install gnome-easytag
-            sudo snap install gitkraken
-            sudo snap install gimp
-            sudo snap install android-studio --classic &&
-                $apti libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
-            ;;
+    Ubuntu*)
+        sudo snap install opera
+        sudo snap install spotify
+        sudo snap install insomnia
+        sudo snap install postman
+        sudo snap install intellij-idea-community --classic
+        sudo snap install discord
+        sudo snap install slack --classic
+        sudo snap install sublime-text --classic
+        sudo snap install --edge uget
+        sudo snap install skype --classic
+        sudo snap install vlc
+        sudo snap install gnome-easytag
+        sudo snap install gitkraken
+        sudo snap install gimp
+        sudo snap install android-studio --classic &&
+            $apti libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+        ;;
 
-        Manjaro*)
-            ;;
+    Manjaro*) ;;
 
+    \
         *)
-            echo "Unknown OS. Exiting..."
-            exit 1
-            ;;
+        echo "Unknown OS. Exiting..."
+        exit 1
+        ;;
     esac
 }
 
@@ -189,31 +191,31 @@ installAndConfigureDocker() {
     echo "==================================="
 
     case $os in
-        Ubuntu*)
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
+    Ubuntu*)
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
             sudo add-apt-repository -y \
                 "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-                $(lsb_release -cs) \
-                stable" &&
+                            $(lsb_release -cs) \
+                            stable" &&
             sudo apt-get update && $apti docker-ce
-            ;;
+        ;;
 
-        Manjaro*)
-            sudo systemctl enable docker &&
+    Manjaro*)
+        sudo systemctl enable docker &&
             sudo systemctl start docker
-            ;;
+        ;;
 
-        *)
-            echo "Unknown OS. Exiting..."
-            exit 1
-            ;;
+    *)
+        echo "Unknown OS. Exiting..."
+        exit 1
+        ;;
     esac
 
     sudo docker run hello-world &&
-    sudo usermod -aG docker "$USER"
+        sudo usermod -aG docker "$USER"
 
     sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
-    sudo chmod +x /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
 }
 
 configurePostgres() {
@@ -222,20 +224,20 @@ configurePostgres() {
     echo "==================================="
 
     case $os in
-        Ubuntu*)
-            ;;
+    Ubuntu*) ;;
 
+    \
         Manjaro*)
-            sudo -u postgres initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'
-            sudo systemctl enable postgresql &&
+        sudo -u postgres initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'
+        sudo systemctl enable postgresql &&
             sudo systemctl start postgresql
-            ;;
+        ;;
 
-        *)
-            echo "Unknown OS. Exiting..."
-            exit 1
-            ;;
-   esac
+    *)
+        echo "Unknown OS. Exiting..."
+        exit 1
+        ;;
+    esac
 }
 
 installNpmPackages() {
@@ -243,13 +245,13 @@ installNpmPackages() {
     echo "==================================="
     echo "Installing global npm packages"
     echo "@vue/cli"
-    echo "brunch"
+    echo "typescript-formatter"
     echo "==================================="
 
     cd ~/ || return
 
     sudo npm i -g @vue/cli
-    sudo npm i -g brunch
+    sudo npm i -g typescript-formatter
 }
 
 installLanguages() {
@@ -263,6 +265,7 @@ installLanguages() {
     pip install --user --upgrade ipython
     pip install --user --upgrade pynvim
     pip install --user --upgrade vcspull
+    pip install --user --upgrade autopep8
 
     # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
@@ -271,6 +274,7 @@ installLanguages() {
     rustup toolchain install nightly
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+    rustup component add rustfmt
     cargo install exa
     cargo install just
 
@@ -279,6 +283,7 @@ installLanguages() {
 
     # Go packages
     go get github.com/edi9999/path-extractor/path-extractor
+    go get -u mvdan.cc/sh/cmd/shfmt
 }
 
 installFonts() {
@@ -290,10 +295,10 @@ installFonts() {
 
     # Console fonts
     git clone https://github.com/powerline/fonts.git &&
-    cd fonts &&
-    ./install.sh &&
-    cd .. &&
-    rm -rf fonts
+        cd fonts &&
+        ./install.sh &&
+        cd .. &&
+        rm -rf fonts
 }
 
 cloneDotfiles() {
@@ -336,7 +341,7 @@ setupVim() {
     ln -sf ~/dotfiles/neovim.vim ~/.config/nvim/init.vim
 
     # Let's sneak this in here
-    ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc 
+    ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc
 
     # Vim-plug for Vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -370,10 +375,9 @@ installScripts() {
     mkdir -p $bin
     cd ~/dotfiles
 
-    while IFS= read -r -d '' script
-    do
+    while IFS= read -r -d '' script; do
         ln -fs -- "$(pwd)/$script" "$bin"
-    done <  <(find bin -type f -perm -+x -print0)
+    done < <(find bin -type f -perm -+x -print0)
 }
 
 useZsh() {
@@ -389,7 +393,7 @@ useZsh() {
     zsh_custom=~/.oh-my-zsh/custom
 
     mkdir -p ~/.zsh/completion
-    curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
+    curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
 
     cd ~/.oh-my-zsh
     git remote set-url origin git@github.com:johnf9896/oh-my-zsh.git
@@ -446,18 +450,18 @@ install() {
     os=$(lsb_release -d | cut -f2)
 
     case $os in
-        Ubuntu*)
-            installUbuntuPackages
-            ;;
+    Ubuntu*)
+        installUbuntuPackages
+        ;;
 
-        Manjaro*)
-            installManjaroPackages
-            ;;
+    Manjaro*)
+        installManjaroPackages
+        ;;
 
-        *)
-            echo "Unknown OS. Exiting..."
-            exit 1
-            ;;
+    *)
+        echo "Unknown OS. Exiting..."
+        exit 1
+        ;;
     esac
 
     installSnapPackages
