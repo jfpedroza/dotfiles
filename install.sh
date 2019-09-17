@@ -40,7 +40,7 @@ installUbuntuPackages() {
     postgresql
     xdotool
     shellcheck
-    mc
+    vimfm
     ruby
     httpie
     zsh-syntax-highlighting'
@@ -101,7 +101,7 @@ installManjaroPackages() {
     xdotool
     clang
     cppcheck
-    mc
+    vifm
     ruby
     go
     httpie
