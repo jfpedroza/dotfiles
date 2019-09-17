@@ -261,16 +261,33 @@ installLanguages() {
     echo "Installing python, rust and haskell..."
     echo "==================================="
 
+    pipi='pip install --upgrade'
+    pipu='pip install --user --upgrade'
+
     # Python & PIP
-    sudo pip install --upgrade pip
-    sudo pip install virtualenv
-    pip install --user --upgrade ipython
-    pip install --user --upgrade pynvim
-    pip install --user --upgrade vcspull
-    pip install --user --upgrade autopep8
-    pip install --user --upgrade taskwarrior-inthe.am
-    pip install --user --upgrade git+git://github.com/robgolding/tasklib@develop
-    pip install --user --upgrade vit
+
+    pip_packages='
+    pip
+    virtualenv'
+
+    echo "Installing the following PIP packages in the system: $pip_packages"
+
+    # Installing packages
+    sudo $pipi $pip_packages
+
+    pip_user_packages='
+    ipython
+    pynvim
+    vcspull
+    autopep8
+    taskwarrior-inthe.am
+    git+git://github.com/robgolding/tasklib@develop
+    vit'
+
+    echo "Installing the following PIP packages for the current user: $pip_user_packages"
+
+    # Installing packages
+    $pipu $pip_user_packages
 
     # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
