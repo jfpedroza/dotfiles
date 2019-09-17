@@ -110,7 +110,8 @@ installManjaroPackages() {
     xorg-xev
     firefox-developer-edition
     the_silver_searcher
-    dos2unix'
+    dos2unix
+    task'
 
     echo "Installing the following packages: $packages"
 
@@ -142,7 +143,8 @@ installManjaroPackages() {
     franz-bin
     visual-studio-code-insiders
     anydesk
-    ngrok'
+    ngrok
+    tasksh'
 
     echo "Installing the following AUR packages: $aur_packages"
 
@@ -266,6 +268,9 @@ installLanguages() {
     pip install --user --upgrade pynvim
     pip install --user --upgrade vcspull
     pip install --user --upgrade autopep8
+    pip install --user --upgrade taskwarrior-inthe.am
+    pip install --user --upgrade git+git://github.com/robgolding/tasklib@develop
+    pip install --user --upgrade vit
 
     # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly

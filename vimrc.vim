@@ -17,6 +17,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'tbabej/taskwiki'
 
 " Languages
 Plug 'w0rp/ale'
