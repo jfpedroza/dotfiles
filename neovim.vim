@@ -16,6 +16,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Chiel92/vim-autoformat'
+Plug 'skywind3000/asyncrun.vim'
 
 " Languages
 Plug 'w0rp/ale'
@@ -27,6 +28,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
 Plug 'rust-lang/rust.vim'
+Plug 'vhdirk/vim-cmake'
 
 " Initialize plugin system
 call plug#end()
@@ -247,6 +249,9 @@ nnoremap <F6> :GundoToggle<CR>
 
 " Ack - Ag
 let g:ackprg = 'ag --vimgrep'
+
+" AsyncRun
+let g:asyncrun_open = 8
 
 " Autoformat
 noremap <F3> :Autoformat<CR>
