@@ -147,7 +147,7 @@ map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Map Ctrl+V to paste (selection) in Insert mode
+" Map Ctrl+C to copy to clipboard in Visual mode
 vmap <C-C> "+y
 
 " Map Ctrl+V to paste (selection) in Insert mode
@@ -160,15 +160,12 @@ inoremap <C-V><C-V> <C-V>
 nmap <leader>p "+p
 nmap <leader>P "+P
 
-" Replace selected text and keep clipboard
+" Replace selected text and keep the registry contents
 " it's a capital 'p' on the end
 vmap r "_dP
 
 " Do the same but pasting from the clipboard
 vmap <leader>r "_d"+P
-
-" Must check what this is
-" nnoremap p p=`]
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
@@ -247,7 +244,7 @@ set wildignore+=*/_build/**
 
 " All NERDTree
 map <C-b> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
+autocmd StdinReadPre * let s:std_in = 1
 
 function! s:MaybeOpenNerdTree()
     if argc() == 0 && !exists("s:std_in")

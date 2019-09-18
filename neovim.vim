@@ -124,9 +124,6 @@ vmap r "_dP
 " Do the same but pasting from the clipboard
 vmap <leader>r "_d"+P
 
-" Must check what this is
-" nnoremap p p=`]
-
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
 
