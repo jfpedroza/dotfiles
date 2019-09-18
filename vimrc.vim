@@ -176,6 +176,9 @@ nnoremap Y y$
 " Drop into insert mode on Backspace
 nnoremap <BS> a<BS>
 
+" Toggle relative numbers
+nnoremap <silent> gr :set relativenumber!<CR>
+
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
 " Move to the next buffer
