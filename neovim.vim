@@ -1,5 +1,9 @@
 " Specify a directory for plugins
-call plug#begin('~/.local/share/nvim/plugged')
+if has('nvim')
+    call plug#begin('~/.local/share/nvim/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -35,6 +39,9 @@ Plug 'vhdirk/vim-cmake'
 " Initialize plugin system
 call plug#end()
 
+syntax on
+filetype plugin indent on
+
 " set clipboard=unnamedplus
 colorscheme ron
 
@@ -60,14 +67,52 @@ set splitbelow " Open new split panes to right and bottom, which feels more natu
 set splitright
 set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=300
+set ttimeoutlen=50
+
+" ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
+" These are here because they are defaults in NeoVim or just don't exist at
+" all
+
+" Neovim's default history is already 10000 but Vim's is 50
+set history=10000
+
+" Always show the statusline
+set laststatus=2
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+set showcmd             " show the partially entered command
+
+set backspace=2 " Allow all backspacing options
+set ruler
+set smarttab
+set autoindent " Inherit indentation when inserting a new line
+
+" Zsh like <Tab> completion in command mode
+set wildmenu
+
+" Settings that don't exist in NeoVim
+if !has('nvim')
+    set t_Co=256
+endif
+
+if has('gui_running')
+    " Mouse
+    set mousehide
+    set mousemodel=popup
+endif
+
+" -------------------- End of settings intended for Vim only (not NeoVim) --------------"
 
 let mapleader = ","
 let maplocalleader = "ñ"
 
 " Open Vim RC and load automatically
-autocmd BufWritePost init.vim source $MYVIMRC
-autocmd BufWritePost nvim.vim source $MYVIMRC
-autocmd BufWritePost neovim.vim source $MYVIMRC
+autocmd BufWritePost init.vim,neovim.vim,vimrc.vim source $MYVIMRC
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
 
 " Window navigation mappings
@@ -162,8 +207,10 @@ map <leader>et :tabe %%
 " Open FZF file finder
 map <leader>f :Files<CR>
 
-" Map <Esc> to exit terminal-mode
-" tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+    " Map <F1> to exit terminal-mode
+    tnoremap <F1> <C-\><C-n>
+endif
 
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+

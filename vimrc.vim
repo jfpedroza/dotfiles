@@ -1,5 +1,9 @@
 " Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
+if has('nvim')
+    call plug#begin('~/.local/share/nvim/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -63,54 +67,52 @@ set splitbelow " Open new split panes to right and bottom, which feels more natu
 set splitright
 set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=300
+set ttimeoutlen=50
 
-" ------------------------ Settings in Vim only (not NeoVim) -----------------"
+" ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
+" These are here because they are defaults in NeoVim or just don't exist at
+" all
 
-" Enable history
+" Neovim's default history is already 10000 but Vim's is 50
 set history=10000
 
-" for my zsh terminal <3
-set term=screen-256color
-set t_Co=256
-set esckeys
-set timeoutlen=1000
-set ttimeoutlen=0
 " Always show the statusline
 set laststatus=2
-
-" Mouse
-set mousehide
-set mousemodel=popup
-
-"basic
-set showcmd
-set mat=2
-
-set smarttab
-set autoindent
-set backspace=2
-set ruler
-set colorcolumn=99
-
-set magic
-set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+set showcmd             " show the partially entered command
+
+set backspace=2 " Allow all backspacing options
+set ruler
+set smarttab
+set autoindent " Inherit indentation when inserting a new line
+
 " Zsh like <Tab> completion in command mode
 set wildmenu
-set wildmode=full
 
-" -------------------- End of settings in Vim only (not NeoVim) --------------"
+" Settings that don't exist in NeoVim
+if !has('nvim')
+    set t_Co=256
+endif
+
+if has('gui_running')
+    " Mouse
+    set mousehide
+    set mousemodel=popup
+endif
+
+" -------------------- End of settings intended for Vim only (not NeoVim) --------------"
 
 let mapleader = ","
 let maplocalleader = "ñ"
 
 " Open Vim RC and load automatically
-autocmd BufWritePost .vimrc source $MYVIMRC
-autocmd BufWritePost vimrc.vim source $MYVIMRC
+autocmd BufWritePost init.vim,neovim.vim,vimrc.vim source $MYVIMRC
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
 
 " Window navigation mappings
@@ -205,6 +207,11 @@ map <leader>et :tabe %%
 " Open FZF file finder
 map <leader>f :Files<CR>
 
+if has('nvim')
+    " Map <F1> to exit terminal-mode
+    tnoremap <F1> <C-\><C-n>
+endif
+
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
 command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
@@ -250,8 +257,9 @@ map <C-b> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in = 1
 
 function! s:MaybeOpenNerdTree()
-    if argc() == 0 && !exists("s:std_in")
+    if argc() == 0 && !exists("s:std_in") && !exists("s:opened_nerd_tree")
         NERDTree
+        let s:opened_nerd_tree = 1
     endif
 endfunction
 
