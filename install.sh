@@ -359,9 +359,9 @@ setupVim() {
     cd ~/ || return
 
     # Link rc files
-    ln -sf ~/dotfiles/vimrc.vim ~/.vimrc
+    ln -sf ~/dotfiles/vimrc ~/.vimrc
     mkdir -p ~/.config/nvim
-    ln -sf ~/dotfiles/neovim.vim ~/.config/nvim/init.vim
+    ln -sf ~/dotfiles/vimrc ~/.config/nvim/init.vim
 
     # Let's sneak this in here
     ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc

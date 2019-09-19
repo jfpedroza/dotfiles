@@ -112,7 +112,7 @@ let mapleader = ","
 let maplocalleader = "ñ"
 
 " Open Vim RC and load automatically
-autocmd BufWritePost init.vim,neovim.vim,vimrc.vim source $MYVIMRC
+autocmd BufWritePost vimrc,init.vim,.vimrc source $MYVIMRC
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
 
 " Window navigation mappings
