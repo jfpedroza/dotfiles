@@ -111,7 +111,8 @@ installManjaroPackages() {
     firefox-developer-edition
     the_silver_searcher
     dos2unix
-    task'
+    task
+    hub'
 
     echo "Installing the following packages: $packages"
 
@@ -168,7 +169,7 @@ installSnapPackages() {
         sudo snap install slack --classic
         sudo snap install sublime-text --classic
         sudo snap install --edge uget
-        sudo snap install skype --classic
+        sudo snap install hub --classic
         sudo snap install vlc
         sudo snap install gnome-easytag
         sudo snap install gitkraken
@@ -375,6 +376,8 @@ setupVim() {
 
     nvim +PlugInstall +qall
     vim +PlugInstall +qall
+
+    ln -sf ~/Cloud/vimwiki ~/vimwiki
 }
 
 setupTmux() {
@@ -416,6 +419,7 @@ useZsh() {
 
     mkdir -p ~/.zsh/completion
     curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
+    curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
 
     cd ~/.oh-my-zsh
     git remote set-url origin git@github.com:johnf9896/oh-my-zsh.git

@@ -112,6 +112,7 @@ bindkey "^[OB" history-beginning-search-forward
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
 
 [ -x "$(which minikube)" ] && source <(minikube completion zsh)
 
