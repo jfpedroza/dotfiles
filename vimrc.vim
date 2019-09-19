@@ -162,10 +162,13 @@ nmap <leader>P "+P
 
 " Replace selected text and keep the registry contents
 " it's a capital 'p' on the end
-vmap r "_dP
+xmap r "_dP
 
 " Do the same but pasting from the clipboard
-vmap <leader>r "_d"+P
+xmap <leader>r "_d"+P
+
+" Replace line without overriding the register
+nnoremap <leader>r "_ddP
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
