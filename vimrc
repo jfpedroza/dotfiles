@@ -68,6 +68,7 @@ set splitright
 set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=300
 set ttimeoutlen=50
+set relativenumber " Show relative number lines
 
 " ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
 " These are here because they are defaults in NeoVim or just don't exist at
