@@ -59,6 +59,11 @@ installUbuntuPackages() {
         sudo apt-get update &&
         $apti esl-erlang &&
         $apti elixir
+
+    # Windscribe
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key FDC247B7
+    echo 'deb https://repo.windscribe.com/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/windscribe-repo.list
+    sudo apt-get update && $apti windscribe-cli
 }
 
 installManjaroPackages() {
@@ -145,12 +150,16 @@ installManjaroPackages() {
     visual-studio-code-insiders
     anydesk
     ngrok
-    tasksh'
+    tasksh
+    windscribe-cli'
 
     echo "Installing the following AUR packages: $aur_packages"
 
     # Installing packages
     $yai $aur_packages
+
+    sudo systemctl enable windscribe &&
+        sudo systemctl start windscribe
 }
 
 installSnapPackages() {
