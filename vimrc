@@ -5,8 +5,9 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
+Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
@@ -23,6 +24,8 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'tbabej/taskwiki'
+Plug 'tpope/vim-surround'
+Plug 'christoomey/vim-system-copy'
 
 " Languages
 Plug 'w0rp/ale'
@@ -266,9 +269,6 @@ endfunction
 
 autocmd VimEnter * call s:MaybeOpenNerdTree()
 
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
 "Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -299,6 +299,10 @@ nmap <leader>gw :Gbrowse<cr>
 
 " Gundo
 nnoremap <F6> :GundoToggle<CR>
+
+" System copy
+let g:system_copy#copy_command='xclip -sel clipboard'
+let g:system_copy#paste_command='xclip -sel clipboard -o'
 
 " Ack - Ag
 let g:ackprg = 'ag --vimgrep'
