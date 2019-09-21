@@ -26,6 +26,7 @@ Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'tbabej/taskwiki'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
+Plug 'Raimondi/delimitMate'
 
 " Languages
 Plug 'w0rp/ale'
