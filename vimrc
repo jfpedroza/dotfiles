@@ -69,7 +69,7 @@ set ignorecase
 set splitbelow " Open new split panes to right and bottom, which feels more natural
 set splitright
 set completeopt=menu,preview,noinsert " Do not insert first suggestion
-set timeoutlen=300
+set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 
@@ -153,16 +153,13 @@ map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Map Ctrl+C to copy to clipboard in Visual mode
-vmap <C-C> "+y
-
 " Map Ctrl+V to paste (selection) in Insert mode
 imap <C-V> <C-R>*
 
 " Map Ctrl-V Ctrl-V to the default behavior of Ctrl-V
 inoremap <C-V><C-V> <C-V>
 
-" Paste from clipboard in normal mode
+" Paste from clipboard in normal mode in addition to system-copy mappings
 nmap <leader>p "+p
 nmap <leader>P "+P
 
