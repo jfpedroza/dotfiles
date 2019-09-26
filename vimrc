@@ -209,6 +209,9 @@ map <leader>et :tabe %%
 " Open FZF file finder
 map <leader>f :Files<CR>
 
+" Do not open Vim's help with F1
+map <F1> <Nop>
+
 if has('nvim')
     " Map <F1> to exit terminal-mode
     tnoremap <F1> <C-\><C-n>
@@ -255,7 +258,7 @@ set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
 " All NERDTree
-map <C-b> :NERDTreeToggle<CR>
+map <F5> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in = 1
 
 function! s:MaybeOpenNerdTree()
@@ -275,11 +278,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Gitgutter
-nmap }c <Plug>GitGutterNextHunk
-nmap {c <Plug>GitGutterPrevHunk
-nmap <Leader>cs <Plug>GitGutterStageHunk
-nmap <Leader>cu <Plug>GitGutterUndoHunk
-nmap <Leader>cp <Plug>GitGutterPreviewHunk
+nmap }c :GitGutterNextHunk<CR>
+nmap {c :GitGutterPrevHunk<CR>
+nmap <Leader>cs :GitGutterStageHunk<CR>
+nmap <Leader>cu :GitGutterUndoHunk<CR>
+nmap <Leader>cp :GitGutterPreviewHunk<CR>
 highlight GitGutterAdd    guifg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#ff2222 ctermfg=200
