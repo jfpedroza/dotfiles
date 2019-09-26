@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Valloric/MatchTagAlways'
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
@@ -73,6 +73,19 @@ set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
+
+" Enable persistent undo so that undo history persists across vim sessions
+if has('nvim')
+    set undodir=~/.local/share/nvim/undo
+else
+    set undodir=~/.vim/undo
+endif
+
+if !isdirectory(&undodir)
+    call mkdir(&undodir)
+end
+
+set undofile
 
 " ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
 " These are here because they are defaults in NeoVim or just don't exist at
@@ -298,8 +311,8 @@ nmap <leader>gp :Git push<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
 
-" Gundo
-nnoremap <F6> :GundoToggle<CR>
+" Mundo
+nnoremap <F6> :MundoToggle<CR>
 
 " System copy
 let g:system_copy#copy_command='xclip -sel clipboard'
