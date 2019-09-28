@@ -27,6 +27,7 @@ Plug 'tbabej/taskwiki'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'Raimondi/delimitMate'
+Plug 'machakann/vim-highlightedyank'
 
 " Languages
 Plug 'w0rp/ale'
@@ -73,6 +74,7 @@ set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
+set cmdheight=2
 
 " Enable persistent undo so that undo history persists across vim sessions
 if has('nvim')
@@ -224,6 +226,7 @@ map <leader>f :Files<CR>
 
 " Do not open Vim's help with F1
 map <F1> <Nop>
+imap <F1> <Nop>
 
 if has('nvim')
     " Map <F1> to exit terminal-mode
@@ -323,6 +326,9 @@ let g:ackprg = 'ag --vimgrep'
 
 " AsyncRun
 let g:asyncrun_open = 8
+
+" Highlighted Yank
+let g:highlightedyank_highlight_duration = 300
 
 " Autoformat
 noremap <F3> :Autoformat<CR>
