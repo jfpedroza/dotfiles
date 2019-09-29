@@ -81,11 +81,12 @@ if has('nvim')
     set undodir=~/.local/share/nvim/undo
 else
     set undodir=~/.vim/undo
-endif
 
-if !isdirectory(&undodir)
-    call mkdir(&undodir)
-end
+    " Create directory if it doesn't exist (NeoVimc creates it automatically)
+    if !isdirectory(&undodir)
+        call mkdir(&undodir)
+    end
+endif
 
 set undofile
 
@@ -191,9 +192,6 @@ nnoremap <leader>r "_ddP
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
-
-" Drop into insert mode on Backspace
-nnoremap <BS> a<BS>
 
 " Toggle relative numbers
 nnoremap <silent> gr :set relativenumber!<CR>
