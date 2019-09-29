@@ -343,7 +343,12 @@ let g:ale_elixir_elixir_ls_config = {
             \}
 
 " Wrap word in {:ok, word} tuple
-autocmd FileType elixir nmap <localleader>o bi{:ok, <Esc>ea}<Esc>
+autocmd FileType elixir nmap <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
+autocmd FileType elixir xmap <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
+
+" Wrap word in {:error, word} tuple
+autocmd FileType elixir nmap <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
+autocmd FileType elixir xmap <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -405,3 +410,26 @@ au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
 
 set secure
+
+" ------------------------ Utility functions ----------------------"
+
+" Wrap the current word in some text
+function! s:NormalWrap(before, after)
+    DelimitMateOff
+    execute "normal bi" . a:before . "ea" . a:after . ""
+    DelimitMateOn
+endfunction
+
+" Wrap the selected text in some text
+function! s:VisualWrap(before, after) range
+    let start = getpos("'<")
+    let end = getpos("'>")
+
+    DelimitMateOff
+    call setpos('.', end)
+    execute "normal a" . a:after . ""
+    call setpos('.', start)
+    execute "normal i" . a:before . ""
+    DelimitMateOn
+endfunction
+
