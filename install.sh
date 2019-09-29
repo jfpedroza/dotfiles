@@ -31,6 +31,7 @@ installUbuntuPackages() {
     curl
     software-properties-common
     python-pip
+    python2-pip
     mysql-workbench
     dconf-editor
     net-tools
@@ -89,6 +90,7 @@ installManjaroPackages() {
     neovim
     php
     python-pip
+    python2-pip
     mysql-workbench
     net-tools
     bat
@@ -273,6 +275,7 @@ installLanguages() {
 
     pipi='pip install --upgrade'
     pipu='pip install --user --upgrade'
+    pip2u='pip install --user --upgrade'
 
     # Python & PIP
 
@@ -298,6 +301,14 @@ installLanguages() {
 
     # Installing packages
     $pipu $pip_user_packages
+
+    pip2_user_packages='
+    pynvim'
+
+    echo "Installing the following PIP2 packages for the current user: $pip2_user_packages"
+
+    # Installing packages
+    $pip2u $pip2_user_packages
 
     # Rust & Cargo
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
