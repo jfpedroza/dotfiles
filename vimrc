@@ -292,11 +292,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Gitgutter
-nmap }c :GitGutterNextHunk<CR>
-nmap {c :GitGutterPrevHunk<CR>
-nmap <Leader>cs :GitGutterStageHunk<CR>
-nmap <Leader>cu :GitGutterUndoHunk<CR>
-nmap <Leader>cp :GitGutterPreviewHunk<CR>
+nmap <silent> }c :GitGutterNextHunk<CR>
+nmap <silent> {c :GitGutterPrevHunk<CR>
+nmap <silent> <Leader>cs :GitGutterStageHunk<CR>
+nmap <silent> <Leader>cu :GitGutterUndoHunk<CR>
+nmap <silent> <Leader>cp :GitGutterPreviewHunk<CR>
 highlight GitGutterAdd    guifg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#ff2222 ctermfg=200
@@ -313,7 +313,7 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
 
 " Mundo
-nnoremap <F6> :MundoToggle<CR>
+nnoremap <silent> <F6> :MundoToggle<CR>
 
 " System copy
 let g:system_copy#copy_command='xclip -sel clipboard'
