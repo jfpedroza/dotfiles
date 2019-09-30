@@ -343,12 +343,12 @@ let g:ale_elixir_elixir_ls_config = {
             \}
 
 " Wrap word in {:ok, word} tuple
-autocmd FileType elixir nmap <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
-autocmd FileType elixir xmap <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
+autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
+autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
 
 " Wrap word in {:error, word} tuple
-autocmd FileType elixir nmap <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
-autocmd FileType elixir xmap <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
+autocmd FileType elixir nmap <silent> <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
+autocmd FileType elixir xmap <silent> <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -415,9 +415,9 @@ set secure
 
 " Wrap the current word in some text
 function! s:NormalWrap(before, after)
-    DelimitMateOff
+    silent DelimitMateOff
     execute "normal bi" . a:before . "ea" . a:after . ""
-    DelimitMateOn
+    silent DelimitMateOn
 endfunction
 
 " Wrap the selected text in some text
@@ -425,11 +425,11 @@ function! s:VisualWrap(before, after) range
     let start = getpos("'<")
     let end = getpos("'>")
 
-    DelimitMateOff
+    silent DelimitMateOff
     call setpos('.', end)
     execute "normal a" . a:after . ""
     call setpos('.', start)
     execute "normal i" . a:before . ""
-    DelimitMateOn
+    silent DelimitMateOn
 endfunction
 
