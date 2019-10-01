@@ -30,6 +30,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lag13/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
+
+if !has('nvim')
+    Plug 'rhysd/vim-healthcheck'
+endif
 
 " Languages
 Plug 'w0rp/ale'
@@ -319,6 +324,9 @@ nmap <leader>gl :Git pull<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
+
+" Git Messenger
+nmap <Leader>gm <Plug>(git-messenger)
 
 " Mundo
 nnoremap <silent> <F6> :MundoToggle<CR>
