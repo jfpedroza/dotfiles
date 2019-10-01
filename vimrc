@@ -28,6 +28,8 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'Raimondi/delimitMate'
 Plug 'machakann/vim-highlightedyank'
+Plug 'lag13/ReplaceWithRegister'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Languages
 Plug 'w0rp/ale'
@@ -170,6 +172,10 @@ map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Map Ctrl+C to copy to clipboard in Visual mode
+" Added back to be used in minimal.vim
+vmap <C-C> "+y
+
 " Map Ctrl+V to paste (selection) in Insert mode
 imap <C-V> <C-R>*
 
@@ -188,13 +194,15 @@ xmap r "_dP
 xmap <leader>r "_d"+P
 
 " Replace line without overriding the register
-nnoremap <leader>r "_ddP
+" Commented out because ReplaceWithRegister already provides this functionality
+" Will be added back in minimal.vim
+" nnoremap <leader>r "_ddP
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
 
 " Toggle relative numbers
-nnoremap <silent> gr :set relativenumber!<CR>
+nnoremap <silent> <leader>r :set relativenumber!<CR>
 
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
