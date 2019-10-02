@@ -286,16 +286,6 @@ set wildignore+=*/_build/**
 
 " All NERDTree
 map <F5> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in = 1
-
-function! s:MaybeOpenNerdTree()
-    if argc() == 0 && !exists("s:std_in") && !exists("s:opened_nerd_tree")
-        NERDTree
-        let s:opened_nerd_tree = 1
-    endif
-endfunction
-
-autocmd VimEnter * call s:MaybeOpenNerdTree()
 
 "Airline
 let g:airline_powerline_fonts = 1
@@ -327,6 +317,18 @@ nmap <leader>gw :Gbrowse<cr>
 
 " Git Messenger
 nmap <Leader>gm <Plug>(git-messenger)
+
+" Normal color in popup window with custom colors
+highlight gitmessengerPopupNormal term=None guifg=#eeeeee guibg=#333333 ctermfg=255 ctermbg=234
+
+" Header such as 'Commit:', 'Author:' with 'Statement' highlight group
+highlight link gitmessengerHeader Statement
+
+" Commit hash at 'Commit:' header with 'Special' highlight group
+highlight link gitmessengerHash Special
+
+" History number at 'History:' header with 'Title' highlight group
+highlight link gitmessengerHistory Title
 
 " Mundo
 nnoremap <silent> <F6> :MundoToggle<CR>
