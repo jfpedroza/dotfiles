@@ -31,6 +31,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'lag13/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
+Plug 'kshenoy/vim-signature'
 
 if !has('nvim')
     Plug 'rhysd/vim-healthcheck'
@@ -345,6 +346,8 @@ let g:asyncrun_open = 8
 
 " Highlighted Yank
 let g:highlightedyank_highlight_duration = 300
+
+let g:SignatureMarkTextHLDynamic = 1
 
 " Autoformat
 noremap <F3> :Autoformat<CR>
