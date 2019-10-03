@@ -119,7 +119,8 @@ installManjaroPackages() {
     the_silver_searcher
     dos2unix
     task
-    hub'
+    hub
+    most'
 
     echo "Installing the following packages: $packages"
 
