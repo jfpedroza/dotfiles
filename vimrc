@@ -31,6 +31,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'lag13/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'vim-scripts/argtextobj.vim'
 Plug 'kshenoy/vim-signature'
 
 if !has('nvim')
