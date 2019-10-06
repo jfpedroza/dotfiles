@@ -34,6 +34,7 @@ Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'kshenoy/vim-signature'
+Plug 'easymotion/vim-easymotion'
 
 if !has('nvim')
     Plug 'rhysd/vim-healthcheck'
@@ -92,7 +93,7 @@ if has('nvim')
 else
     set undodir=~/.vim/undo
 
-    " Create directory if it doesn't exist (NeoVimc creates it automatically)
+    " Create directory if it doesn't exist (NeoVim creates it automatically)
     if !isdirectory(&undodir)
         call mkdir(&undodir)
     end
@@ -332,6 +333,14 @@ highlight link gitmessengerHash Special
 
 " History number at 'History:' header with 'Title' highlight group
 highlight link gitmessengerHistory Title
+
+" EasyMotion
+let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
+map ¿ <Plug>(easymotion-prefix)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map ẁ <Plug>(easymotion-w)
+map ş <Plug>(easymotion-s)
 
 " Mundo
 nnoremap <silent> <F6> :MundoToggle<CR>

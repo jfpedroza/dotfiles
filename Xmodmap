@@ -13,6 +13,12 @@ keycode 43 = h H hstroke Hstroke hstroke Hstroke
 ! Map Cap_Lock+l to ł
 keycode 46 = l L lstroke Lstroke lstroke Lstroke
 
+! Map Cap_Lock+w to ẁ
+keycode  25 = w W wgrave Wgrave wacute Wacute aring Aring
+
+! Map Cap_Lock+s to ş
+keycode  39 = s S scedilla Scedilla ssharp section ssharp section
+
 ! Invert numbers and their shift counterpart
 keycode 10 = exclam 1 1 exclam bar exclamdown exclamdown onesuperior
 keycode 11 = quotedbl 2 2 at at oneeighth twosuperior U030B
@@ -23,7 +29,7 @@ keycode 15 = ampersand 6 6 asciicircum notsign fiveeighths onequarter U0302
 keycode 16 = slash 7 7 ampersand braceleft seveneighths onehalf U031B
 keycode 17 = parenleft 8 8 asterisk bracketleft trademark threequarters U0328
 keycode 18 = parenright 9 9 parenleft bracketright plusminus leftsinglequotemark U0306
-keycode 19 = equal 0 0 parenright braceright degree rightsinglequotemark U030A
+keycode 19 = equal 0 0 parenright notequal degree rightsinglequotemark U030A
 
 ! Map Cap_Lock+{ to ^
 keycode  48 = braceleft bracketleft asciicircum quotedbl dead_circumflex braceleft U0301 U0308
