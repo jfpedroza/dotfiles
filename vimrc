@@ -345,6 +345,7 @@ map ¿ <Plug>(easymotion-prefix)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map ẁ <Plug>(easymotion-w)
+map Ẁ <Plug>(easymotion-W)
 map ş <Plug>(easymotion-s)
 
 " Mundo

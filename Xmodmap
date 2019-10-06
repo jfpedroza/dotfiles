@@ -7,8 +7,11 @@
 ! ----------------------------------------- Modifiers -----------------------------------------
 ! Key code      Normal      Shift           ModeSwitch
 
-! Make Caps_Lock = Mode_switch & Shift+Caps_Lock = Caps_Lock
-keycode 66  =   Mode_switch Caps_Lock       Mode_switch
+! Make Caps_Lock = Mode_switch
+keycode 66  =   Mode_switch NoSymbol        Mode_switch
+
+! Make Pause = Caps_Lock & Mode_switch+Pause = Pause
+keycode 127 =   Caps_Lock   Break           Pause
 
 ! Make Num_Lock = Home & Shift+Num_Lock = Num_Lock
 keycode 77  =   Home        Num_Lock        Num_Lock
