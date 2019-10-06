@@ -1,38 +1,50 @@
+! Keyboard customizations for a Latin American keyboard
+!
+! Resources:
+! https://wiki.archlinux.org/index.php/Xmodmap
+! http://wiki.linuxquestions.org/wiki/List_of_Keysyms_Recognised_by_Xmodmap
+
+! ----------------------------------------- Modifiers -----------------------------------------
+! Key code      Normal      Shift           ModeSwitch
+
 ! Make Caps_Lock = Mode_switch & Shift+Caps_Lock = Caps_Lock
-keycode 66 = Mode_switch Caps_Lock Mode_switch
+keycode 66  =   Mode_switch Caps_Lock       Mode_switch
 
 ! Make Num_Lock = Home & Shift+Num_Lock = Num_Lock
-keycode 77 = Home Num_Lock Num_Lock
+keycode 77  =   Home        Num_Lock        Num_Lock
 
 ! Make Insert = Nothing & Mode_switch+Insert = Insert
-keycode 118 = NoSymbol Insert Insert
+keycode 118 =   NoSymbol    Insert          Insert
+
+! ----------------------------------------- Keys ----------------------------------------------
+! Key code      Normal      Shift           ModeSwitch  Shift+MS    AltGr          Shift+AltGr
 
 ! Map Cap_Lock+h to ħ
-keycode 43 = h H hstroke Hstroke hstroke Hstroke
+keycode 43  =   h           H               hstroke     Hstroke     hstroke         Hstroke
 
 ! Map Cap_Lock+l to ł
-keycode 46 = l L lstroke Lstroke lstroke Lstroke
+keycode 46  =   l           L               lstroke     Lstroke     lstroke         Lstroke
 
 ! Map Cap_Lock+w to ẁ
-keycode  25 = w W wgrave Wgrave wacute Wacute aring Aring
+keycode 25  =   w           W               wgrave      Wgrave      wacute          Wacute
 
 ! Map Cap_Lock+s to ş
-keycode  39 = s S scedilla Scedilla ssharp section ssharp section
+keycode 39  =   s           S               scedilla    Scedilla    ssharp          section
 
 ! Invert numbers and their shift counterpart
-keycode 10 = exclam 1 1 exclam bar exclamdown exclamdown onesuperior
-keycode 11 = quotedbl 2 2 at at oneeighth twosuperior U030B
-keycode 12 = numbersign 3 3 numbersign periodcentered sterling threesuperior U0304
-keycode 13 = dollar 4 4 dollar asciitilde dollar currency sterling
-keycode 14 = percent 5 5 percent onehalf threeeighths EuroSign dead_cedilla
-keycode 15 = ampersand 6 6 asciicircum notsign fiveeighths onequarter U0302
-keycode 16 = slash 7 7 ampersand braceleft seveneighths onehalf U031B
-keycode 17 = parenleft 8 8 asterisk bracketleft trademark threequarters U0328
-keycode 18 = parenright 9 9 parenleft bracketright plusminus leftsinglequotemark U0306
-keycode 19 = equal 0 0 parenright notequal degree rightsinglequotemark U030A
+keycode 10  =   exclam      1               1           exclam      bar             exclamdown
+keycode 11  =   quotedbl    2               2           at          at              oneeighth
+keycode 12  =   numbersign  3               3           numbersign  periodcentered  sterling
+keycode 13  =   dollar      4               4           dollar      asciitilde      dollar
+keycode 14  =   percent     5               5           percent     onehalf         threeeighths
+keycode 15  =   ampersand   6               6           asciicircum notsign         fiveeighths
+keycode 16  =   slash       7               7           ampersand   braceleft       seveneighths
+keycode 17  =   parenleft   8               8           asterisk    bracketleft     trademark
+keycode 18  =   parenright  9               9           parenleft   bracketright    plusminus
+keycode 19  =   equal       0               0           parenright  notequal        degree
 
 ! Map Cap_Lock+{ to ^
-keycode  48 = braceleft bracketleft asciicircum quotedbl dead_circumflex braceleft U0301 U0308
+keycode 48  =   braceleft   bracketleft     asciicircum quotedbl    dead_circumflex braceleft
 
 ! Map Cap_Lock+} to `
-keycode  51 = braceright bracketright grave bar dead_grave braceright notsign brokenbar
+keycode 51  =   braceright  bracketright    grave       bar         dead_grave      braceright
