@@ -44,7 +44,8 @@ installUbuntuPackages() {
     vimfm
     ruby
     httpie
-    zsh-syntax-highlighting'
+    zsh-syntax-highlighting
+    meld'
 
     echo "Installing the following packages: $packages"
 
@@ -120,7 +121,8 @@ installManjaroPackages() {
     dos2unix
     task
     hub
-    most'
+    most
+    meld'
 
     echo "Installing the following packages: $packages"
 

@@ -272,6 +272,11 @@ vnoremap <localleader>} }
 
 " Create a W command to write because I keep typing :W (:Windows) instead of :w
 command! -nargs=0 W write
+command! -nargs=0 Q quit
+command! -nargs=0 Qa quitall
+
+" Use XX to exit Vim in normal mode
+nmap <silent> XX :quitall<CR>
 
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
