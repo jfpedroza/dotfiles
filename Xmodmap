@@ -22,16 +22,17 @@ keycode 118 =   NoSymbol    Insert          Insert
 ! ----------------------------------------- Keys ----------------------------------------------
 ! Key code      Normal      Shift           ModeSwitch  Shift+MS    AltGr          Shift+AltGr
 
-! Map Cap_Lock+h to ħ
+!                                              ħ           Ħ           ħ               Ħ
 keycode 43  =   h           H               hstroke     Hstroke     hstroke         Hstroke
-
-! Map Cap_Lock+l to ł
+!                                              ĵ           Ĵ           ĵ               ∘
+keycode 44  =   j           J               jcircumflex Jcircumflex jcircumflex     jot
+!                                              ķ           Ķ           ĸ               ĸ
+keycode 45  =   k           K               kcedilla    Kcedilla    kra             kra
+!                                              ł           Ł           ł               Ł
 keycode 46  =   l           L               lstroke     Lstroke     lstroke         Lstroke
-
-! Map Cap_Lock+w to ẁ
+!                                              ẁ           Ẁ           ẃ               Ẃ
 keycode 25  =   w           W               wgrave      Wgrave      wacute          Wacute
-
-! Map Cap_Lock+s to ş
+!                                              ş           Ş           ß               §
 keycode 39  =   s           S               scedilla    Scedilla    ssharp          section
 
 ! Invert numbers and their shift counterpart
@@ -46,8 +47,7 @@ keycode 17  =   parenleft   8               8           asterisk    bracketleft 
 keycode 18  =   parenright  9               9           parenleft   bracketright    plusminus
 keycode 19  =   equal       0               0           parenright  notequal        degree
 
-! Map Cap_Lock+{ to ^
+!                   {            [               ^          "           ^               {
 keycode 48  =   braceleft   bracketleft     asciicircum quotedbl    dead_circumflex braceleft
-
-! Map Cap_Lock+} to `
+!                   }            ]               `          |           `               }
 keycode 51  =   braceright  bracketright    grave       bar         dead_grave      braceright

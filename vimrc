@@ -342,8 +342,8 @@ highlight link gitmessengerHistory Title
 " EasyMotion
 let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
 map ¿ <Plug>(easymotion-prefix)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map ĵ <Plug>(easymotion-j)
+map ķ <Plug>(easymotion-k)
 map ẁ <Plug>(easymotion-w)
 map Ẁ <Plug>(easymotion-W)
 map ş <Plug>(easymotion-s)
