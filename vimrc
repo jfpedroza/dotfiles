@@ -165,16 +165,16 @@ nnoremap <silent> <leader>9 :tablast<CR>
 noremap H g^
 noremap L g$
 
-" Unbind the arrow keys to force myself to use hjkl
-nmap <Up> <Nop>
-nmap <Down> <Nop>
-nmap <Left> <Nop>
-nmap <Right> <Nop>
+" Use the arrow keys for window resizing
+nnoremap <Up> <C-W>-
+nnoremap <Down> <C-W>+
+nnoremap <Left> <C-W><
+nnoremap <Right> <C-W>>
 
-vmap <Up> <Nop>
-vmap <Down> <Nop>
-vmap <Left> <Nop>
-vmap <Right> <Nop>
+vnoremap <Up> <C-W>-
+vnoremap <Down> <C-W>+
+vnoremap <Left> <C-W>>
+vnoremap <Right> <C-W><
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
