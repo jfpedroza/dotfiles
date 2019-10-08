@@ -14,6 +14,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'Valloric/MatchTagAlways'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
@@ -341,9 +342,12 @@ highlight link gitmessengerHistory Title
 
 " EasyMotion
 let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
+let g:EasyMotion_startofline = 0
 map ¿ <Plug>(easymotion-prefix)
 map ĵ <Plug>(easymotion-j)
+map Ĵ <Plug>(easymotion-sol-j)
 map ķ <Plug>(easymotion-k)
+map Ķ <Plug>(easymotion-sol-k)
 map ẁ <Plug>(easymotion-w)
 map Ẁ <Plug>(easymotion-W)
 map ş <Plug>(easymotion-s)
