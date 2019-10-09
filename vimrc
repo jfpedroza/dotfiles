@@ -88,6 +88,7 @@ set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
+set inccommand=split
 
 " Enable persistent undo so that undo history persists across vim sessions
 if has('nvim')
