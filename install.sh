@@ -45,7 +45,8 @@ installUbuntuPackages() {
     ruby
     httpie
     zsh-syntax-highlighting
-    meld'
+    meld
+    ctags'
 
     echo "Installing the following packages: $packages"
 
@@ -122,7 +123,8 @@ installManjaroPackages() {
     task
     hub
     most
-    meld'
+    meld
+    ctags'
 
     echo "Installing the following packages: $packages"
 
@@ -388,6 +390,7 @@ setupVim() {
 
     # Let's sneak this in here
     ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc
+    ln -sf ~/dotfiles/ctags ~/.ctags
 
     # Vim-plug for Vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

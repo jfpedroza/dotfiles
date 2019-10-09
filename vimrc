@@ -36,6 +36,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
+Plug 'majutsushi/tagbar'
 
 if !has('nvim')
     Plug 'rhysd/vim-healthcheck'
@@ -375,6 +376,16 @@ noremap <F3> :Autoformat<CR>
 autocmd BufWrite * :Autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
+
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" TaskWiki
+let g:taskwiki_markup_syntax = 'markdown'
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Elixir
 let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
