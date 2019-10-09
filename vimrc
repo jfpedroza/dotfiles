@@ -352,6 +352,10 @@ map Ķ <Plug>(easymotion-sol-k)
 map ẁ <Plug>(easymotion-w)
 map Ẁ <Plug>(easymotion-W)
 map ş <Plug>(easymotion-s)
+map ť <Plug>(easymotion-t)
+map Ť <Plug>(easymotion-T)
+map ḟ <Plug>(easymotion-f)
+map Ḟ <Plug>(easymotion-F)
 
 " Mundo
 nnoremap <silent> <F6> :MundoToggle<CR>
