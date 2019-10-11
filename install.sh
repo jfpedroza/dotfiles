@@ -92,7 +92,9 @@ installManjaroPackages() {
     neovim
     php
     python-pip
+    python-virtualenv
     python2-pip
+    python2-virtualenv
     mysql-workbench
     net-tools
     bat
@@ -278,20 +280,18 @@ installLanguages() {
     echo "Installing python, rust and haskell..."
     echo "==================================="
 
-    pipi='pip install --upgrade'
+    # pipi='pip install --upgrade'
     pipu='pip install --user --upgrade'
     pip2u='pip install --user --upgrade'
 
     # Python & PIP
 
-    pip_packages='
-    pip
-    virtualenv'
+    # pip_packages=''
 
-    echo "Installing the following PIP packages in the system: $pip_packages"
+    # echo "Installing the following PIP packages in the system: $pip_packages"
 
     # Installing packages
-    sudo $pipi $pip_packages
+    # sudo $pipi $pip_packages
 
     pip_user_packages='
     ipython
