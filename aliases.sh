@@ -24,6 +24,7 @@ alias docker-rm-none="docker images | grep none | awk '{print \$3}' | xargs dock
 alias ghci='stack ghci'
 alias gpl='git pull origin'
 alias git='hub'
+alias gsy='hub sync'
 alias rusti="rustup run nightly-2016-08-01 ~/.cargo/bin/rusti"
 alias pipi="pip install --upgrade"
 alias pipu="pip install --user --upgrade"

@@ -63,11 +63,11 @@ verify_distro() {
     fi
 
     case "$distro" in
-    manjaro | ubuntu)
+    manjaro | ubuntu | arch)
         color green "Found distro: $distro"
         return 0
         ;;
-    *) die "Unknown distro :(" ;;
+    *) die "Unknown distro '$distro' :(" ;;
     esac
 }
 
@@ -91,10 +91,25 @@ done
 
 shift "$((OPTIND - 1))"
 
+install_binary_scripts() {
+    echo "==================================="
+    echo "Installing binaries scripts"
+    echo "==================================="
+
+    bin=~/.local/bin
+    mkdir -p $bin
+    cd ~/dotfiles
+
+    while IFS= read -r -d '' script; do
+        basename "$script"
+        ln -fs -- "$PWD/$script" "$bin"
+    done < <(find bin -type f -perm -+x -print0)
+}
+
 main() {
     verify_distro
 
-    (should_do "$binaries" "Install binary scripts?") && echo "Installing binaries"
+    (should_do "$binaries" "Install binary scripts?") && install_binary_scripts
 
     return 0
 }
