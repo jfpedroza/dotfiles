@@ -126,7 +126,10 @@ installManjaroPackages() {
     hub
     most
     meld
-    ctags'
+    ctags
+    kubectl
+    minikube
+    kubectx'
 
     echo "Installing the following packages: $packages"
 
@@ -160,7 +163,8 @@ installManjaroPackages() {
     anydesk
     ngrok
     tasksh
-    windscribe-cli'
+    windscribe-cli
+    kubernetes-helm'
 
     echo "Installing the following AUR packages: $aur_packages"
 
