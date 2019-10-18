@@ -38,7 +38,9 @@ Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 
-if !has('nvim')
+if has('nvim')
+    Plug 'voldikss/vim-floaterm'
+else
     Plug 'rhysd/vim-healthcheck'
 endif
 
@@ -88,7 +90,6 @@ set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
-set inccommand=split
 
 " Enable persistent undo so that undo history persists across vim sessions
 if has('nvim')
@@ -103,6 +104,14 @@ else
 endif
 
 set undofile
+
+" ------------------------ Settings for NeoVim only  -----------------"
+
+if has('nvim')
+    set inccommand=split
+endif
+
+" -------------------- End of settings for NeoVim only  --------------"
 
 " ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
 " These are here because they are defaults in NeoVim or just don't exist at
@@ -384,6 +393,11 @@ autocmd BufWrite * :Autoformat
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
+" Floaterm
+let g:floaterm_background = '#000000'
+noremap  <silent> <F10> :FloatermToggle<CR>i
+noremap! <silent> <F10> <Esc>:FloatermToggle<CR>i
+tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>
 
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
