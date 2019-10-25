@@ -30,6 +30,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 
 if has('nvim')
     Plug 'voldikss/vim-floaterm'
@@ -284,11 +285,10 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-vimlsp', 'coc-rls']
+let g:coc_global_extensions = ['coc-explorer', 'coc-git', 'coc-highlight', 'coc-snippets', 'coc-json', 'coc-yaml', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-vimlsp', 'coc-rls', 'coc-python']
 nmap <silent> <leader>d <Plug>(coc-definition)
-
-" All NERDTree
-map <F5> :NERDTreeToggle<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+map <F5> :CocCommand explorer<CR>
 
 "Airline
 let g:airline_powerline_fonts = 1
@@ -298,11 +298,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Gitgutter
-nmap <silent> }c :GitGutterNextHunk<CR>
-nmap <silent> {c :GitGutterPrevHunk<CR>
-nmap <silent> <Leader>cs :GitGutterStageHunk<CR>
-nmap <silent> <Leader>cu :GitGutterUndoHunk<CR>
-nmap <silent> <Leader>cp :GitGutterPreviewHunk<CR>
+nmap <silent> }c <Plug>(coc-git-nextchunk)
+nmap <silent> {c <Plug>(coc-git-prevchunk)
+nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
+nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
+nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
 highlight GitGutterAdd    guifg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#ff2222 ctermfg=200
@@ -319,7 +319,7 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
 
 " Git Messenger
-nmap <Leader>gm <Plug>(git-messenger)
+nmap <Leader>gm <Plug>(coc-git-commit)
 
 " Normal color in popup window with custom colors
 highlight gitmessengerPopupNormal term=None guifg=#eeeeee guibg=#333333 ctermfg=255 ctermbg=234
