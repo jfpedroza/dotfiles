@@ -234,8 +234,6 @@ nmap <leader>h :bprevious<CR>
 " " Close the current buffer and move to the previous one
 " " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
-" " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
 " " Show all open buffers with FZF
 nmap <leader>bb :Buffers<CR>
 " Move to the alternative buffer
@@ -394,7 +392,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
 " Floaterm
-let g:floaterm_background = '#000000'
+let g:floaterm_background = '#303030'
 noremap  <silent> <F10> :FloatermToggle<CR>i
 noremap! <silent> <F10> <Esc>:FloatermToggle<CR>i
 tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>

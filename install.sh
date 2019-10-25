@@ -164,7 +164,8 @@ installManjaroPackages() {
     ngrok
     tasksh
     windscribe-cli
-    kubernetes-helm'
+    kubernetes-helm
+    crow-translate'
 
     echo "Installing the following AUR packages: $aur_packages"
 
@@ -302,6 +303,7 @@ installLanguages() {
     pynvim
     vcspull
     autopep8
+    jedi
     taskwarrior-inthe.am
     git+git://github.com/robgolding/tasklib@develop
     vit'
