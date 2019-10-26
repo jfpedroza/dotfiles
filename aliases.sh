@@ -26,6 +26,7 @@ alias gpl='git pull origin'
 alias git='hub'
 alias gsy='hub sync'
 alias rusti="rustup run nightly-2016-08-01 ~/.cargo/bin/rusti"
+alias ipy="ipython"
 alias pipi="pip install --upgrade"
 alias pipu="pip install --user --upgrade"
 alias pip2i="pip2 install --upgrade"

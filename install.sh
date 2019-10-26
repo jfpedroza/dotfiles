@@ -543,3 +543,7 @@ install
 # Changes in sudoers file with sudo -E visudo:
 # Defaults passwd_timeout=0
 # Defaults timestamp_timeout=30
+
+# i3 Config
+# Packages feh i3-gaps wmctrl rofi
+# Aur packages compton-tryone-git conky-cairo
