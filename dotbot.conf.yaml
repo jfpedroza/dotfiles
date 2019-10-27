@@ -1,0 +1,27 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- link:
+    ~/.tmux.conf: tmux.conf
+    ~/.zshrc: zshrc
+    ~/.vimrc: vimrc
+    ~/.config/nvim/init.vim: vimrc
+    ~/.config/nvim/coc-settings.json: vim/coc-settings.json
+    ~/.vim/coc-settings.json: vim/coc-settings.json
+    ~/.tridactylrc: tridactylrc
+    ~/.ctags: ctags
+    ~/.vcspull.yaml: vcspull.yaml
+    ~/.gitignore: global.gitignore
+    ~/.Xmodmap: Xmodmap
+    ~/.oh-my-zsh/custom/aliases.zsh: zsh/aliases.sh
+    ~/.oh-my-zsh/custom/shortcuts.zsh: zsh/shortcuts.zsh
+    ~/.config/plasma-workspace/env/wm.sh: i3/wm.sh
+    ~/.config/i3/config: i3/i3_config
+    ~/.config/compton.conf: i3/compton.conf
+    ~/.config/rofi: i3/rofi
+    ~/.config/conky: i3/conky
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

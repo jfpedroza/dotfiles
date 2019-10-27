@@ -13,45 +13,9 @@ installUbuntuPackages() {
 
     cd ~/ || return
 
-    packages='
-    git
-    wget
-    build-essential
-    cmake
-    libssl-dev
-    python-dev
-    xclip
-    zsh
-    vim
-    vim-gnome
-    neovim
-    php
-    apt-transport-https
-    ca-certificates
-    curl
-    software-properties-common
-    python-pip
-    python2-pip
-    mysql-workbench
-    dconf-editor
-    net-tools
-    ttf-ancient-fonts
-    tmux
-    the_silver_searcher
-    postgresql
-    xdotool
-    shellcheck
-    vimfm
-    ruby
-    httpie
-    zsh-syntax-highlighting
-    meld
-    ctags'
+    echo "Installing packages with APT"
 
-    echo "Installing the following packages: $packages"
-
-    # Installing packages
-    $apti $packages
+    xargs <~/dotfiles/packages/ubuntu.txt $apti
 
     # NodeJS
     curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
@@ -78,63 +42,15 @@ installManjaroPackages() {
     pmi='sudo pacman -S --noconfirm --needed --quiet'
     yai='yay -S --noconfirm --needed --quiet'
 
+    # Switch to testing branch
+    sudo pacman-mirrors --api --set-branch testing
+    sudo pacman-mirrors --fasttrack 5
+
     # Perform a full upgrade
     sudo pacman -Syyu
 
-    # Install with pacman
-    packages='
-    base-devel
-    unzip
-    xclip
-    cmake
-    zsh
-    vim
-    neovim
-    php
-    python-pip
-    python-virtualenv
-    python2-pip
-    python2-virtualenv
-    mysql-workbench
-    net-tools
-    bat
-    nodejs
-    npm
-    shellcheck
-    docker
-    postgresql
-    postgis
-    gimp
-    fd
-    tmux
-    gdb
-    gparted
-    xdotool
-    clang
-    cppcheck
-    vifm
-    ruby
-    go
-    httpie
-    zsh-syntax-highlighting
-    expac
-    xorg-xev
-    firefox-developer-edition
-    the_silver_searcher
-    dos2unix
-    task
-    hub
-    most
-    meld
-    ctags
-    kubectl
-    minikube
-    kubectx'
-
-    echo "Installing the following packages: $packages"
-
-    # Installing packages
-    $pmi $packages
+    echo "Installing packages with Pacman"
+    $pmi - <~/dotfiles/packages/pacman.txt
 
     mkdir -p ~/builds
     cd ~/builds
@@ -143,34 +59,10 @@ installManjaroPackages() {
     makepkg -si --noconfirm --needed
     cd ~
 
-    # Install with Yay
-    aur_packages='
-    spotify
-    insomnia
-    postman-bin
-    dbeaver-ce
-    discord
-    slack-desktop
-    sublime-text-dev
-    gitkraken
-    pcloud-drive
-    ttf-ancient-fonts
-    gitflow-avh
-    gitflow-zshcompletion-avh
-    musixmatch-bin
-    franz-bin
-    visual-studio-code-insiders
-    anydesk
-    ngrok
-    tasksh
-    windscribe-cli
-    kubernetes-helm
-    crow-translate'
+    # Install packages with Yay
+    echo "Installing AUR packages with Yay:"
 
-    echo "Installing the following AUR packages: $aur_packages"
-
-    # Installing packages
-    $yai $aur_packages
+    $yai - <~/dotfiles/packages/aur.txt
 
     sudo systemctl enable windscribe &&
         sudo systemctl start windscribe
@@ -362,12 +254,10 @@ cloneDotfiles() {
 
     cd ~/ || return
 
-    git clone https://github.com/johnf9896/dotfiles.git
+    git clone --recurse-submodule https://github.com/johnf9896/dotfiles.git
     cd dotfiles
     git remote set-url origin git@github.com:johnf9896/dotfiles.git
-
-    # Symlink keyboard modifations
-    ln -sf ~/dotfiles/Xmodmap ~/.Xmodmap
+    ./dotfiles.sh
 }
 
 setupGit() {
@@ -375,11 +265,9 @@ setupGit() {
     echo "Setting up git"
     echo "==================================="
 
-    ln -sf ~/dotfiles/global.gitignore ~/.gitignore
     git config --global user.name 'Jhon Pedroza'
     git config --global user.email 'jhonfpedroza@gmail.com'
     git config --global core.excludesfile '~/.gitignore'
-    ln -sf ~/dotfiles/vcspull.yaml ~/.vcspull.yaml
 }
 
 setupVim() {
@@ -388,15 +276,6 @@ setupVim() {
     echo "==================================="
 
     cd ~/ || return
-
-    # Link rc files
-    ln -sf ~/dotfiles/vimrc ~/.vimrc
-    mkdir -p ~/.config/nvim
-    ln -sf ~/dotfiles/vimrc ~/.config/nvim/init.vim
-
-    # Let's sneak this in here
-    ln -sf ~/dotfiles/tridactylrc ~/.tridactylrc
-    ln -sf ~/dotfiles/ctags ~/.ctags
 
     # Vim-plug for Vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -410,17 +289,6 @@ setupVim() {
     vim +PlugInstall +qall
 
     ln -sf ~/Cloud/vimwiki ~/vimwiki
-}
-
-setupTmux() {
-    echo "==================================="
-    echo "Linking tmux config"
-    echo "==================================="
-
-    cd ~/ || return
-
-    touch ~/.tmux.conf
-    ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
 }
 
 installScripts() {
@@ -455,10 +323,6 @@ useZsh() {
 
     cd ~/.oh-my-zsh
     git remote set-url origin git@github.com:johnf9896/oh-my-zsh.git
-
-    ln -sf ~/dotfiles/zshrc ~/.zshrc
-    ln -sf ~/dotfiles/aliases.sh $zsh_custom/aliases.zsh
-    ln -sf ~/dotfiles/shortcuts.zsh $zsh_custom/shortcuts.zsh
 
     # FZF extras
     git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
@@ -507,6 +371,8 @@ install() {
 
     os=$(lsb_release -d | cut -f2)
 
+    cloneDotfiles
+
     case $os in
     Ubuntu*)
         installUbuntuPackages
@@ -528,10 +394,8 @@ install() {
     installNpmPackages
     installLanguages
     installFonts
-    cloneDotfiles
     setupGit
     setupVim
-    setupTmux
     installScripts
     useZsh
     setupSsh

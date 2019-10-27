@@ -201,7 +201,7 @@ bar {
 }
 
 # Startup
-exec --no-startup-id feh --bg-scale ~/Pictures/code-wallpaper-20.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id compton
 exec --no-startup-id conky -c ~/.config/conky/conkyrc
 
