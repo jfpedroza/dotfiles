@@ -66,6 +66,8 @@ installManjaroPackages() {
 
     sudo systemctl enable windscribe &&
         sudo systemctl start windscribe
+
+    systemctl --user enable spotifyd
 }
 
 installSnapPackages() {
@@ -214,10 +216,8 @@ installLanguages() {
     $pip2u $pip2_user_packages
 
     # Rust & Cargo
-    curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
-    # shellcheck source=/dev/null
-    source ~/.cargo/env
     rustup toolchain install nightly
+    rustup default nightly
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
     rustup component add rustfmt
@@ -408,7 +408,3 @@ install
 # Changes in sudoers file with sudo -E visudo:
 # Defaults passwd_timeout=0
 # Defaults timestamp_timeout=30
-
-# i3 Config
-# Packages feh i3-gaps wmctrl rofi
-# Aur packages compton-tryone-git conky-cairo

@@ -20,3 +20,5 @@ kubernetes-helm
 crow-translate
 compton-tryone-git
 conky-cairo
+spotifyd-full
+spotify-tui

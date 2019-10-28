@@ -15,6 +15,7 @@ bat
 nodejs
 npm
 shellcheck
+rustup
 docker
 postgresql
 postgis
