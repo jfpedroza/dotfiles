@@ -22,6 +22,9 @@
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
     ~/.config/conky: i3/conky
+    ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
+    ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
+    ~/.config/kcminputrc: kde/kcminputrc
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -372,6 +372,7 @@ install() {
     os=$(lsb_release -d | cut -f2)
 
     cloneDotfiles
+    sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 
     case $os in
     Ubuntu*)
