@@ -9,5 +9,292 @@
             "expand": true
         }
     ],
-    "explorer.icon.enableNerdfont": true
+    "explorer.icon.enableNerdfont": true,
+    "yank.highlight.duration": 300,
+    "coc.preferences.jumpCommand": "drop",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "typescript",
+        "json",
+        "elixir",
+        "eelixir",
+        "python",
+        "haskell",
+        "vim",
+        "sh",
+        "rust"
+    ],
+    "elixir.pathToElixirLS": "~/code/lib/elixir-ls/rel/language_server.sh",
+    "elixirLS.dialyzerEnabled": false,
+    "diagnostic.infoSign": "\u2611",
+    "diagnostic.hintSign": "\u261d",
+    "diagnostic.warningSign": "\u26a0",
+    "diagnostic.errorSign": "\u2612",
+    "diagnostic.signOffset": 9999999,
+    "diagnostic.highlightOffset": 9999999,
+    "suggest.detailField": "abbr",
+    "suggest.maxCompleteItemCount": 50,
+    "suggest.maxPreviewWidth": 80,
+    "suggest.triggerAfterInsertEnter": false,
+    "suggest.completionItemKindLabels": {
+        "keyword": "\uf1de",
+        "variable": "\ue79b",
+        "value": "\uf89f",
+        "operator": "\u03a8",
+        "function": "\u0192",
+        "reference": "\ufa46",
+        "constant": "\uf8fe",
+        "method": "\uf09a",
+        "struct": "\ufb44",
+        "class": "\uf0e8",
+        "interface": "\uf417",
+        "text": "\ue612",
+        "enum": "\uf435",
+        "enumMember": "\uf02b",
+        "module": "\uf40d",
+        "color": "\ue22b",
+        "property": "\ue624",
+        "field": "\uf9be",
+        "unit": "\uf475",
+        "event": "\ufacd",
+        "file": "\uf723",
+        "folder": "\uf114",
+        "snippet": "\ue60b",
+        "typeParameter": "\uf728",
+        "default": "\uf29c"
+    },
+    "prettier.eslintIntegration": true,
+    "prettier.tslintIntegration": true,
+    "prettier.stylelintIntegration": true,
+    "prettier.statusItemText": "",
+    "eslint.filetypes": [
+        "javascript",
+        "javascript.jsx",
+        "javascriptreact"
+    ],
+    "eslint.autoFix": true,
+    "eslint.autoFixOnSave": true,
+    "tslint.autoFixOnSave": true,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        },
+        "dls": {
+            "command": "diagnostic-languageserver",
+            "args": [
+                "--stdio"
+            ],
+            "filetypes": [
+                "sh",
+                "email",
+                "markdown",
+                "vim",
+                "elixir",
+                "eelixir"
+            ],
+            "initializationOptions": {
+                "linters": {
+                    "shellcheck": {
+                        "command": "shellcheck",
+                        "debounce": 100,
+                        "args": [
+                            "--format=gcc",
+                            "-"
+                        ],
+                        "offsetLine": 0,
+                        "offsetColumn": 0,
+                        "sourceName": "shellcheck",
+                        "formatLines": 1,
+                        "formatPattern": [
+                            "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+                            {
+                                "line": 1,
+                                "column": 2,
+                                "message": 4,
+                                "security": 3
+                            }
+                        ],
+                        "securities": {
+                            "error": "error",
+                            "warning": "warning",
+                            "note": "info"
+                        }
+                    },
+                    "markdownlint": {
+                        "command": "markdownlint",
+                        "isStderr": true,
+                        "debounce": 100,
+                        "args": [
+                            "--stdin"
+                        ],
+                        "offsetLine": 0,
+                        "offsetColumn": 0,
+                        "sourceName": "markdownlint",
+                        "formatLines": 1,
+                        "formatPattern": [
+                            "^.*?:\\s+(\\d+):\\s+(.*)$",
+                            {
+                                "line": 1,
+                                "column": -1,
+                                "message": 2
+                            }
+                        ]
+                    },
+                    "mix_credo": {
+                        "command": "mix",
+                        "debounce": 100,
+                        "rootPatterns": [
+                            "mix.exs"
+                        ],
+                        "args": [
+                            "credo",
+                            "suggest",
+                            "--strict",
+                            "--format",
+                            "flycheck",
+                            "--read-from-stdin"
+                        ],
+                        "offsetLine": 0,
+                        "offsetColumn": 0,
+                        "sourceName": "mix_credo",
+                        "formatLines": 1,
+                        "formatPattern": [
+                            "^[^ ]+?:([0-9]+)(:([0-9]+))?:\\s+([^ ]+):\\s+(.*)$",
+                            {
+                                "line": 1,
+                                "column": 3,
+                                "message": 5,
+                                "security": 4
+                            }
+                        ],
+                        "securities": {
+                            "F": "warning",
+                            "C": "warning",
+                            "D": "info",
+                            "R": "info"
+                        }
+                    },
+                    "mix_credo_compile": {
+                        "command": "mix",
+                        "debounce": 100,
+                        "rootPatterns": [
+                            "mix.exs"
+                        ],
+                        "args": [
+                            "credo",
+                            "suggest",
+                            "--strict",
+                            "--format",
+                            "flycheck",
+                            "--read-from-stdin"
+                        ],
+                        "offsetLine": -1,
+                        "offsetColumn": 0,
+                        "sourceName": "mix_credo",
+                        "formatLines": 1,
+                        "formatPattern": [
+                            "^([^ ]+)\\s+\\(([^)]+)\\)\\s+([^ ]+?):([0-9]+):\\s+(.*)$",
+                            {
+                                "line": -1,
+                                "column": -1,
+                                "message": [
+                                    "[",
+                                    2,
+                                    "]: ",
+                                    3,
+                                    ": ",
+                                    5
+                                ],
+                                "security": 1
+                            }
+                        ],
+                        "securities": {
+                            "**": "error"
+                        }
+                    },
+                    "languagetool": {
+                        "command": "languagetool",
+                        "debounce": 200,
+                        "args": [
+                            "-"
+                        ],
+                        "offsetLine": 0,
+                        "offsetColumn": 0,
+                        "sourceName": "languagetool",
+                        "formatLines": 2,
+                        "formatPattern": [
+                            "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
+                            {
+                                "line": 1,
+                                "column": 2,
+                                "message": [
+                                    4,
+                                    3
+                                ]
+                            }
+                        ]
+                    },
+                    "vint": {
+                        "command": "vint",
+                        "debounce": 100,
+                        "args": [
+                            "--enable-neovim",
+                            "-"
+                        ],
+                        "offsetLine": 0,
+                        "offsetColumn": 0,
+                        "sourceName": "vint",
+                        "formatLines": 1,
+                        "formatPattern": [
+                            "[^:]+:(\\d+):(\\d+):\\s*(.*$)",
+                            {
+                                "line": 1,
+                                "column": 2,
+                                "message": 3
+                            }
+                        ]
+                    }
+                },
+                "filetypes": {
+                    "vim": "vint",
+                    "email": "languagetool",
+                    "markdown": [
+                        "write-good",
+                        "markdownlint"
+                    ],
+                    "sh": "shellcheck",
+                    "elixir": [
+                        "mix_credo",
+                        "mix_credo_compile"
+                    ],
+                    "eelixir": [
+                        "mix_credo",
+                        "mix_credo_compile"
+                    ]
+                },
+                "formatFiletypes": {
+                    "elixir": "mix_format",
+                    "eelixir": "mix_format"
+                }
+            }
+        }
+    }
 }

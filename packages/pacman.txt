@@ -14,6 +14,7 @@ net-tools
 bat
 nodejs
 npm
+yarn
 shellcheck
 rustup
 docker

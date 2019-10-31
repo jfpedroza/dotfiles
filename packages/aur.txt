@@ -22,3 +22,4 @@ compton-tryone-git
 conky-cairo
 spotifyd-full
 spotify-tui
+ccls

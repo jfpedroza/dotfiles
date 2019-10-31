@@ -46,15 +46,12 @@ endif
 
 " Languages
 Plug 'w0rp/ale'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'posva/vim-vue'
-Plug 'elixir-editors/vim-elixir'
-Plug 'neovimhaskell/haskell-vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
-Plug 'rust-lang/rust.vim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'vhdirk/vim-cmake'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 " Initialize plugin system
 call plug#end()
@@ -217,23 +214,25 @@ xmap <leader>r "_d"+P
 " Replace line without overriding the register
 " Commented out because ReplaceWithRegister already provides this functionality
 " Will be added back in minimal.vim
-" nnoremap <leader>r "_ddP
+" nnoremap grr "_ddP
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
 
 " Toggle relative numbers
-nnoremap <silent> <leader>r :set relativenumber!<CR>
+nnoremap <silent> <leader>rn :set relativenumber!<CR>
 
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
+nnoremap <Tab> :bn<CR>
 " " Move to the previous buffer
 nmap <leader>h :bprevious<CR>
+nnoremap <S-Tab> :bp<CR>
 " " Close the current buffer and move to the previous one
 " " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 " " Show all open buffers with FZF
 nmap <leader>bb :Buffers<CR>
 " Move to the alternative buffer
@@ -280,10 +279,19 @@ nnoremap <localleader>} }
 vnoremap <localleader>{ {
 vnoremap <localleader>} }
 
-" Create a W command to write because I keep typing :W (:Windows) instead of :w
-command! -nargs=0 W write
-command! -nargs=0 Q quit
-command! -nargs=0 Qa quitall
+" Command abbreviations
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qa qa
+cnoreabbrev Qall qall
 
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
@@ -309,6 +317,7 @@ map <F5> :NERDTreeToggle<CR>
 "Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_skip_empty_sections = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -352,7 +361,6 @@ highlight link gitmessengerHistory Title
 " EasyMotion
 let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
 let g:EasyMotion_startofline = 0
-map ¿ <Plug>(easymotion-prefix)
 map ĵ <Plug>(easymotion-j)
 map Ĵ <Plug>(easymotion-sol-j)
 map ķ <Plug>(easymotion-k)

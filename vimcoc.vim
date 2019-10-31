@@ -24,13 +24,22 @@ Plug 'christoomey/vim-system-copy'
 Plug 'Raimondi/delimitMate'
 Plug 'lag13/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
+
+" Languages
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'alx741/vim-hindent'
+Plug 'parsonsmatt/intero-neovim'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'vhdirk/vim-cmake'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 if has('nvim')
     Plug 'voldikss/vim-floaterm'
@@ -72,6 +81,9 @@ set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
 " Enable persistent undo so that undo history persists across vim sessions
 if has('nvim')
@@ -199,23 +211,25 @@ xmap <leader>r "_d"+P
 " Replace line without overriding the register
 " Commented out because ReplaceWithRegister already provides this functionality
 " Will be added back in minimal.vim
-" nnoremap <leader>r "_ddP
+" nnoremap grr "_ddP
 
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
 
 " Toggle relative numbers
-nnoremap <silent> <leader>r :set relativenumber!<CR>
+nnoremap <silent> <leader>rn :set relativenumber!<CR>
 
 " Buffer shortcuts
 nmap <leader>n :enew<CR>
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
+nnoremap <Tab> :bn<CR>
 " " Move to the previous buffer
 nmap <leader>h :bprevious<CR>
+nnoremap <S-Tab> :bp<CR>
 " " Close the current buffer and move to the previous one
 " " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 " " Show all open buffers with FZF
 nmap <leader>bb :Buffers<CR>
 " Move to the alternative buffer
@@ -262,10 +276,19 @@ nnoremap <localleader>} }
 vnoremap <localleader>{ {
 vnoremap <localleader>} }
 
-" Create a W command to write because I keep typing :W (:Windows) instead of :w
-command! -nargs=0 W write
-command! -nargs=0 Q quit
-command! -nargs=0 Qa quitall
+" Command abbreviations
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qa qa
+cnoreabbrev Qall qall
 
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
@@ -285,14 +308,106 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-let g:coc_global_extensions = ['coc-explorer', 'coc-git', 'coc-highlight', 'coc-snippets', 'coc-json', 'coc-yaml', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-vimlsp', 'coc-rls', 'coc-python']
+" CoC
+
+"" Extensions
+let g:coc_global_extensions = [
+    \ 'coc-explorer',
+    \ 'coc-marketplace',
+    \ 'coc-diagnostic',
+    \ 'coc-git',
+    \ 'coc-highlight',
+    \ 'coc-yank',
+    \ 'coc-snippets',
+    \ 'coc-json',
+    \ 'coc-yaml',
+    \ 'coc-tsserver',
+    \ 'coc-tslint-plugin',
+    \ 'coc-eslint',
+    \ 'coc-tslint-plugin',
+    \ 'coc-prettier',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-vimlsp',
+    \ 'coc-rls',
+    \ 'coc-python',
+    \ 'coc-elixir'
+    \ ]
+
+let g:airline#extensions#coc#enabled = 1
+
+"" Mappings
+""" Gotos
 nmap <silent> <leader>d <Plug>(coc-definition)
-autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <silent> <leader>dt <Plug>(coc-type-definition)
+nmap <silent> <leader>di <Plug>(coc-implementation)
+nmap <silent> <leader>dr <Plug>(coc-references)
+
+""" Use `{g` and `}g` to navigate diagnostics
+nmap <silent> {g <Plug>(coc-diagnostic-prev)
+nmap <silent> }g <Plug>(coc-diagnostic-next)
+
+""" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+""" Rename current word
+nmap <leader>re <Plug>(coc-rename)
+
+""" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+""" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+""" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+""" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+""" Using CocList
+"""" Show all diagnostics
+nnoremap <silent> ¿d  :<C-u>CocList diagnostics<cr>
+"""" Manage extensions
+nnoremap <silent> ¿e  :<C-u>CocList extensions<cr>
+"""" Show commands
+nnoremap <silent> ¿c  :<C-u>CocList commands<cr>
+"""" Find symbol of current document
+nnoremap <silent> ¿o  :<C-u>CocList outline<cr>
+"""" Search workspace symbols
+nnoremap <silent> ¿s  :<C-u>CocList -I symbols<cr>
+"""" Yanked text list
+nnoremap <silent> <leader>y :<C-U>CocList -A --normal yank<CR>
+
 map <F5> :CocCommand explorer<CR>
+
+"" Auto commands
+""" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup CocGroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 "Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_skip_empty_sections = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -319,7 +434,7 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gw :Gbrowse<cr>
 
 " Git Messenger
-nmap <Leader>gm <Plug>(coc-git-commit)
+nmap <Leader>gm <Plug>(git-messenger)
 
 " Normal color in popup window with custom colors
 highlight gitmessengerPopupNormal term=None guifg=#eeeeee guibg=#333333 ctermfg=255 ctermbg=234
@@ -336,7 +451,6 @@ highlight link gitmessengerHistory Title
 " EasyMotion
 let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
 let g:EasyMotion_startofline = 0
-map ¿ <Plug>(easymotion-prefix)
 map ĵ <Plug>(easymotion-j)
 map Ĵ <Plug>(easymotion-sol-j)
 map ķ <Plug>(easymotion-k)
@@ -364,9 +478,6 @@ let g:ackprg = 'ag --vimgrep'
 " AsyncRun
 let g:asyncrun_open = 8
 
-" Highlighted Yank
-let g:highlightedyank_highlight_duration = 300
-
 let g:SignatureMarkTextHLDynamic = 1
 
 " Floaterm
@@ -383,14 +494,6 @@ let g:taskwiki_markup_syntax = 'markdown'
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" Elixir
-let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
-let g:ale_elixir_elixir_ls_config = {
-            \   'elixirLS': {
-            \     'dialyzerEnabled': v:false,
-            \   },
-            \}
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
@@ -437,9 +540,9 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 "\}
 
 let g:ale_linters = {
-            \'rust': ['rls'],
+            \'rust': [],
             \'cpp': ['gcc', 'cppcheck'],
-            \'elixir': ['credo', 'elixir-ls', 'dialyxir'],
+            \'elixir': [],
             \}
 
 let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
@@ -448,12 +551,6 @@ let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
 let g:ale_set_ballons = 1
 set omnifunc=ale#completion#OmniFunc
 let g:airline#extensions#ale#enabled = 1
-
-" Ale mappings
-nmap <leader>dd :ALEGoToDefinition<CR>
-nmap <leader>ds :ALEGoToDefinitionInSplit<CR>
-nmap <leader>dv :ALEGoToDefinitionInVSplit<CR>
-nmap <leader>dt :ALEGoToDefinitionInTab<CR>
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
