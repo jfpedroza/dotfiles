@@ -33,6 +33,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'honza/vim-snippets'
 
+if has('nvim')
+    Plug 'voldikss/vim-floaterm'
+else
+    Plug 'rhysd/vim-healthcheck'
+endif
+
 " Languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
@@ -41,12 +47,6 @@ Plug 'parsonsmatt/intero-neovim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'vhdirk/vim-cmake'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-if has('nvim')
-    Plug 'voldikss/vim-floaterm'
-else
-    Plug 'rhysd/vim-healthcheck'
-endif
 
 " Initialize plugin system
 call plug#end()
@@ -370,6 +370,13 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
+""" Git
+nmap <silent> }c <Plug>(coc-git-nextchunk)
+nmap <silent> {c <Plug>(coc-git-prevchunk)
+nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
+nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
+nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
+
 """ Using CocList
 """" Show all diagnostics
 nnoremap <silent> ¿d  :<C-u>CocList diagnostics<cr>
@@ -389,6 +396,11 @@ map <F5> :CocCommand explorer<CR>
 "" Auto commands
 """ Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
+highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
+highlight GitGutterDelete guifg=#000000 guibg=#ff2222 ctermfg=200
+highlight GitGutterChangeDelete guifg=#000000 guibg=#ff9122 ctermfg=200
 
 augroup CocGroup
     autocmd!
@@ -413,16 +425,6 @@ let g:airline_skip_empty_sections = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" Gitgutter
-nmap <silent> }c <Plug>(coc-git-nextchunk)
-nmap <silent> {c <Plug>(coc-git-prevchunk)
-nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
-nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
-nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
-highlight GitGutterAdd    guifg=#009900 ctermfg=80
-highlight GitGutterChange guifg=#bbbb00 ctermfg=116
-highlight GitGutterDelete guifg=#ff2222 ctermfg=200
 
 " Fugitive mapping
 nmap <leader>gb :Gblame<cr>
@@ -489,9 +491,9 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
 " Floaterm
-let g:floaterm_background = '#000000'
-noremap  <silent> <F10> :FloatermToggle<CR>i
-noremap! <silent> <F10> <Esc>:FloatermToggle<CR>i
+let g:floaterm_background = '#303030'
+noremap  <silent> <F10> :FloatermToggle<CR>
+noremap! <silent> <F10> <Esc>:FloatermToggle<CR>
 tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>
 
 " VimWiki
@@ -510,12 +512,6 @@ autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok
 " Wrap word in {:error, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
 autocmd FileType elixir xmap <silent> <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
-
-" Rust
-let g:rustfmt_autosave = 1
-
-" MatchTagAlways
-nnoremap <leader>% :MtaJumpToOtherTag<CR>
 
 " JavaScript
 let g:jsx_ext_required=0                     " jsx highlighting in .js files
@@ -541,24 +537,6 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-" Ale
-"let g:ale_linters = {
-"\'rust': ['rls'],
-"\'haskell': ['hie', 'hlint']
-"\}
-
-let g:ale_linters = {
-            \'rust': [],
-            \'cpp': ['gcc', 'cppcheck'],
-            \'elixir': [],
-            \}
-
-let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
-
-" let g:ale_completion_enabled = 1
-let g:ale_set_ballons = 1
-set omnifunc=ale#completion#OmniFunc
-let g:airline#extensions#ale#enabled = 1
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy

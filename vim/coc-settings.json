@@ -15,6 +15,11 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "haskell"
     ],
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "elixir.pathToElixirLS": "~/code/lib/elixir-ls/rel/language_server.sh",
     "elixirLS.dialyzerEnabled": false,
     "diagnostic.infoSign": "☑",
