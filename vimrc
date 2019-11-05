@@ -6,18 +6,13 @@ else
 endif
 
 Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'Valloric/MatchTagAlways'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer --rust-completer --clang-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
@@ -28,7 +23,6 @@ Plug 'tbabej/taskwiki'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'Raimondi/delimitMate'
-Plug 'machakann/vim-highlightedyank'
 Plug 'lag13/ReplaceWithRegister'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
@@ -37,6 +31,7 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
+Plug 'honza/vim-snippets'
 
 if has('nvim')
     Plug 'voldikss/vim-floaterm'
@@ -45,7 +40,7 @@ else
 endif
 
 " Languages
-Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'alx741/vim-hindent'
 Plug 'parsonsmatt/intero-neovim'
@@ -88,6 +83,9 @@ set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
 " Enable persistent undo so that undo history persists across vim sessions
 if has('nvim')
@@ -312,8 +310,113 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-" All NERDTree
-map <F5> :NERDTreeToggle<CR>
+" CoC
+
+"" Extensions
+let g:coc_global_extensions = [
+            \ 'coc-explorer',
+            \ 'coc-marketplace',
+            \ 'coc-diagnostic',
+            \ 'coc-git',
+            \ 'coc-highlight',
+            \ 'coc-yank',
+            \ 'coc-snippets',
+            \ 'coc-json',
+            \ 'coc-yaml',
+            \ 'coc-tsserver',
+            \ 'coc-tslint-plugin',
+            \ 'coc-eslint',
+            \ 'coc-tslint-plugin',
+            \ 'coc-prettier',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-vimlsp',
+            \ 'coc-rls',
+            \ 'coc-python',
+            \ 'coc-elixir'
+            \ ]
+
+let g:airline#extensions#coc#enabled = 1
+
+"" Mappings
+""" Gotos
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>dt <Plug>(coc-type-definition)
+nmap <silent> <leader>di <Plug>(coc-implementation)
+nmap <silent> <leader>dr <Plug>(coc-references)
+
+""" Use `{g` and `}g` to navigate diagnostics
+nmap <silent> {g <Plug>(coc-diagnostic-prev)
+nmap <silent> }g <Plug>(coc-diagnostic-next)
+
+""" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+""" Rename current word
+nmap <leader>re <Plug>(coc-rename)
+
+""" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+""" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+""" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+""" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+""" Git
+nmap <silent> }c <Plug>(coc-git-nextchunk)
+nmap <silent> {c <Plug>(coc-git-prevchunk)
+nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
+nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
+nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
+
+""" Using CocList
+"""" Show all diagnostics
+nnoremap <silent> ¿d  :<C-u>CocList diagnostics<cr>
+"""" Manage extensions
+nnoremap <silent> ¿e  :<C-u>CocList extensions<cr>
+"""" Show commands
+nnoremap <silent> ¿c  :<C-u>CocList commands<cr>
+"""" Find symbol of current document
+nnoremap <silent> ¿o  :<C-u>CocList outline<cr>
+"""" Search workspace symbols
+nnoremap <silent> ¿s  :<C-u>CocList -I symbols<cr>
+"""" Yanked text list
+nnoremap <silent> <leader>y :<C-U>CocList -A --normal yank<CR>
+
+map <F5> :CocCommand explorer<CR>
+
+"" Auto commands
+""" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
+highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
+highlight GitGutterDelete guifg=#000000 guibg=#ff2222 ctermfg=200
+highlight GitGutterChangeDelete guifg=#000000 guibg=#ff9122 ctermfg=200
+
+augroup CocGroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
 
 "Airline
 let g:airline_powerline_fonts = 1
@@ -322,16 +425,6 @@ let g:airline_skip_empty_sections = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" Gitgutter
-nmap <silent> }c :GitGutterNextHunk<CR>
-nmap <silent> {c :GitGutterPrevHunk<CR>
-nmap <silent> <Leader>cs :GitGutterStageHunk<CR>
-nmap <silent> <Leader>cu :GitGutterUndoHunk<CR>
-nmap <silent> <Leader>cp :GitGutterPreviewHunk<CR>
-highlight GitGutterAdd    guifg=#009900 ctermfg=80
-highlight GitGutterChange guifg=#bbbb00 ctermfg=116
-highlight GitGutterDelete guifg=#ff2222 ctermfg=200
 
 " Fugitive mapping
 nmap <leader>gb :Gblame<cr>
@@ -389,9 +482,6 @@ let g:ackprg = 'ag --vimgrep'
 " AsyncRun
 let g:asyncrun_open = 8
 
-" Highlighted Yank
-let g:highlightedyank_highlight_duration = 300
-
 let g:SignatureMarkTextHLDynamic = 1
 
 " Autoformat
@@ -402,8 +492,8 @@ let g:autoformat_retab = 0
 
 " Floaterm
 let g:floaterm_background = '#303030'
-noremap  <silent> <F10> :FloatermToggle<CR>i
-noremap! <silent> <F10> <Esc>:FloatermToggle<CR>i
+noremap  <silent> <F10> :FloatermToggle<CR>
+noremap! <silent> <F10> <Esc>:FloatermToggle<CR>
 tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>
 
 " VimWiki
@@ -415,14 +505,6 @@ let g:taskwiki_markup_syntax = 'markdown'
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" Elixir
-let g:ale_elixir_elixir_ls_release = '/home/jhon/code/lib/elixir-ls/rel'
-let g:ale_elixir_elixir_ls_config = {
-            \   'elixirLS': {
-            \     'dialyzerEnabled': v:false,
-            \   },
-            \}
-
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
 autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
@@ -430,12 +512,6 @@ autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok
 " Wrap word in {:error, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
 autocmd FileType elixir xmap <silent> <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
-
-" Rust
-let g:rustfmt_autosave = 1
-
-" MatchTagAlways
-nnoremap <leader>% :MtaJumpToOtherTag<CR>
 
 " JavaScript
 let g:jsx_ext_required=0                     " jsx highlighting in .js files
@@ -460,32 +536,6 @@ let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-
-" Ale
-"let g:ale_linters = {
-"\'rust': ['rls'],
-"\'haskell': ['hie', 'hlint']
-"\}
-
-let g:ale_linters = {
-            \'rust': ['rls'],
-            \'cpp': ['gcc', 'cppcheck'],
-            \'elixir': ['credo', 'elixir-ls', 'dialyxir'],
-            \}
-
-let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
-
-" let g:ale_completion_enabled = 1
-let g:ale_set_ballons = 1
-set omnifunc=ale#completion#OmniFunc
-let g:airline#extensions#ale#enabled = 1
-
-" Ale mappings
-nmap <leader>d :ALEGoToDefinition<CR>
-nmap <leader>dd :ALEGoToDefinition<CR>
-nmap <leader>ds :ALEGoToDefinitionInSplit<CR>
-nmap <leader>dv :ALEGoToDefinitionInVSplit<CR>
-nmap <leader>dt :ALEGoToDefinitionInTab<CR>
 
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
