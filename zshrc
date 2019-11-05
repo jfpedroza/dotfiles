@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -98,7 +98,6 @@ export EDITOR='nvim'
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
-export TERM="xterm-256color"
 BULLETTRAIN_PROMPT_CHAR=\λ
 BULLETTRAIN_PROMPT_ROOT=TRUE
 BULLETTRAIN_VIRTUALENV_PREFIX=env:

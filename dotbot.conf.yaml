@@ -23,6 +23,7 @@
     ~/.config/rofi: i3/rofi
     ~/.config/conky: i3/conky
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
+    ~/.local/share/konsole/Shell.profile: kde/Shell.profile
     ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
     ~/.config/kcminputrc: kde/kcminputrc
     ~/.config/spotifyd/spotifyd.conf: spotifyd.conf

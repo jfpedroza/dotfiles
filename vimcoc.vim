@@ -16,6 +16,7 @@ Plug 'tpope/vim-obsession'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'Chiel92/vim-autoformat'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'tbabej/taskwiki'
@@ -54,7 +55,7 @@ syntax on
 filetype plugin indent on
 
 " set clipboard=unnamedplus
-colorscheme ron
+colorscheme darkblue
 
 " Enable hidden buffers
 set hidden
@@ -63,6 +64,7 @@ set exrc
 set number
 set mouse=a
 set background=dark
+set termguicolors
 set cursorline
 set lazyredraw
 set showmatch
@@ -312,27 +314,27 @@ set wildignore+=*/_build/**
 
 "" Extensions
 let g:coc_global_extensions = [
-    \ 'coc-explorer',
-    \ 'coc-marketplace',
-    \ 'coc-diagnostic',
-    \ 'coc-git',
-    \ 'coc-highlight',
-    \ 'coc-yank',
-    \ 'coc-snippets',
-    \ 'coc-json',
-    \ 'coc-yaml',
-    \ 'coc-tsserver',
-    \ 'coc-tslint-plugin',
-    \ 'coc-eslint',
-    \ 'coc-tslint-plugin',
-    \ 'coc-prettier',
-    \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-vimlsp',
-    \ 'coc-rls',
-    \ 'coc-python',
-    \ 'coc-elixir'
-    \ ]
+            \ 'coc-explorer',
+            \ 'coc-marketplace',
+            \ 'coc-diagnostic',
+            \ 'coc-git',
+            \ 'coc-highlight',
+            \ 'coc-yank',
+            \ 'coc-snippets',
+            \ 'coc-json',
+            \ 'coc-yaml',
+            \ 'coc-tsserver',
+            \ 'coc-tslint-plugin',
+            \ 'coc-eslint',
+            \ 'coc-tslint-plugin',
+            \ 'coc-prettier',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-vimlsp',
+            \ 'coc-rls',
+            \ 'coc-python',
+            \ 'coc-elixir'
+            \ ]
 
 let g:airline#extensions#coc#enabled = 1
 
@@ -389,19 +391,19 @@ map <F5> :CocCommand explorer<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 augroup CocGroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 "Airline
@@ -479,6 +481,12 @@ let g:ackprg = 'ag --vimgrep'
 let g:asyncrun_open = 8
 
 let g:SignatureMarkTextHLDynamic = 1
+
+" Autoformat
+noremap <F3> :Autoformat<CR>
+autocmd BufWrite * :Autoformat
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
 
 " Floaterm
 let g:floaterm_background = '#000000'

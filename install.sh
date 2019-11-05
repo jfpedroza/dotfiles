@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 set -e
 
 installUbuntuPackages() {
@@ -166,13 +167,14 @@ installNpmPackages() {
     echo "Installing global npm packages"
     echo "@vue/cli"
     echo "typescript-formatter"
+    echo "fixjson"
     printf "\nInstalling global yarn packages\n"
     echo "diagnostic-languageserver"
     echo "==================================="
 
     cd ~/ || return
 
-    sudo npm i -g @vue/cli typescript-formatter markdownlint-cli
+    sudo npm i -g @vue/cli typescript-formatter markdownlint-cli fixjson
     yarn global add diagnostic-languageserver
 }
 

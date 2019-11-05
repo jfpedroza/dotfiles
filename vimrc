@@ -60,7 +60,7 @@ syntax on
 filetype plugin indent on
 
 " set clipboard=unnamedplus
-colorscheme ron
+colorscheme darkblue
 
 " Enable hidden buffers
 set hidden
@@ -69,6 +69,7 @@ set exrc
 set number
 set mouse=a
 set background=dark
+set termguicolors
 set cursorline
 set lazyredraw
 set showmatch
