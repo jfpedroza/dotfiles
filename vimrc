@@ -154,8 +154,8 @@ let mapleader = ","
 let maplocalleader = "ñ"
 
 " Open Vim RC and load automatically
-autocmd BufWritePost vimrc,init.vim,.vimrc source $MYVIMRC
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
+nmap <expr> <localleader>ñ &filetype == 'vim' ? ':source %<CR>' : ':source $MYVIMRC<CR>'
 
 " Window navigation mappings
 map <C-h> <C-w>h
@@ -258,11 +258,6 @@ if has('nvim')
     tnoremap <F1> <C-\><C-n>
 endif
 
-" Copy file basename only, file path, dirname
-command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
-command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
-command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
-
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
@@ -296,9 +291,6 @@ cnoreabbrev Qall qall
 
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
-
-" Format JSON using Python's json.tool
-command! -nargs=0 FormatJson %!python -m json.tool
 
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -544,7 +536,63 @@ au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
 
 set secure
 
-" ------------------------ Utility functions ----------------------"
+" ----------------------- Custom commands ------------------------- "
+" Copy file basename only, file path, dirname
+command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
+
+" Format JSON using Python's json.tool
+command! -nargs=0 FormatJson %!python -m json.tool
+
+" List of branches and tags for the Checkout command
+function s:CheckoutList() abort
+    " Get git tags
+    let tags = split(system('git tag'), '\n')
+    " Mark each line as a tag with a color
+    call map(tags, '"\x1b[31;1mtag\x1b[m\t" . v:val')
+
+    " Get git branches
+    let branches_command = 'git branch --all '
+                \ . '| grep -v HEAD '
+                \ . '| sed ''s/.* //'' '
+                \ . '| sed ''s#remotes/[^/]*/##'' '
+                \ . '| sort -u '
+    let branches = split(system(branches_command), '\n')
+    " Mark each line as a branch with a color
+    call map(branches, '"\x1b[34;1mbranch\x1b[m\t" . v:val')
+
+    return tags + branches
+endfunction
+
+" Checkout branch/tag when the user selects one
+function s:CheckoutAction(selection) abort
+    let name = split(a:selection, '\t')[1]
+    execute '!git checkout ' . name
+endfunction
+
+" Options for FZF
+function! s:CheckoutCommandOptions(query) abort
+    return [
+            \ '--ansi',
+            \ '--prompt=Checkout> ',
+            \ '--no-hscroll',
+            \ '+m',
+            \ '-d\t',
+            \ '-n2',
+            \ '-1',
+            \ '--query=' . a:query
+            \ ]
+endfunction
+
+" Checkout branch/tag using FZF
+command! -nargs=? Checkout call fzf#run(fzf#wrap('CheckoutLocal', {
+            \ 'source': s:CheckoutList(),
+            \ 'sink': function('s:CheckoutBranch', []),
+            \ 'options': s:CheckoutCommandOptions("<args>")
+            \ }))
+
+" ------------------------ Utility functions ---------------------- "
 
 " Wrap the current word in some text
 function! s:NormalWrap(before, after)
