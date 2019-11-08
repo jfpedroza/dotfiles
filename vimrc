@@ -545,8 +545,36 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
 
-" List of branches and tags for the Checkout command
-function s:CheckoutList() abort
+" List of recent branches for the Checkout command
+function s:CheckoutShortList() abort
+    let branches_command = 'git for-each-ref '
+                \ . '--count=30 '
+                \ . '--sort=-committerdate '
+                \ . 'refs/heads/ '
+                \ . '--format="%(refname:short)"'
+    let branches = split(system(branches_command), '\n')
+    return branches
+endfunction
+
+" Checkout branch when the user selects one
+function s:CheckoutShortAction(selection) abort
+    let name = substitute(a:selection, ".* ", "", "")
+    let name = substitute(name, "remotes/[^/]*/", "", "")
+    execute '!git checkout ' . name
+endfunction
+
+" Options for FZF
+function! s:CheckoutShortCommandOptions(query) abort
+    return [
+            \ '--prompt=Checkout> ',
+            \ '--no-hscroll',
+            \ '+m',
+            \ '--query=' . a:query
+            \ ]
+endfunction
+
+" List of branches and tags for the Checkout! command
+function s:CheckoutLongList() abort
     " Get git tags
     let tags = split(system('git tag'), '\n')
     " Mark each line as a tag with a color
@@ -566,13 +594,13 @@ function s:CheckoutList() abort
 endfunction
 
 " Checkout branch/tag when the user selects one
-function s:CheckoutAction(selection) abort
+function s:CheckoutLongAction(selection) abort
     let name = split(a:selection, '\t')[1]
     execute '!git checkout ' . name
 endfunction
 
 " Options for FZF
-function! s:CheckoutCommandOptions(query) abort
+function! s:CheckoutLongCommandOptions(query) abort
     return [
             \ '--ansi',
             \ '--prompt=Checkout> ',
@@ -586,10 +614,10 @@ function! s:CheckoutCommandOptions(query) abort
 endfunction
 
 " Checkout branch/tag using FZF
-command! -nargs=? Checkout call fzf#run(fzf#wrap('CheckoutLocal', {
-            \ 'source': s:CheckoutList(),
-            \ 'sink': function('s:CheckoutBranch', []),
-            \ 'options': s:CheckoutCommandOptions("<args>")
+command! -nargs=? -bang Checkout call fzf#run(fzf#wrap('Checkout', {
+            \ 'source': "<bang>" == "!" ? s:CheckoutLongList() : s:CheckoutShortList(),
+            \ 'sink': "<bang>" == "!" ? function('s:CheckoutLongAction', []) : function('s:CheckoutShortAction', []),
+            \ 'options': "<bang>" == "!" ? s:CheckoutLongCommandOptions("<args>") : s:CheckoutShortCommandOptions("<args>")
             \ }))
 
 " ------------------------ Utility functions ---------------------- "
