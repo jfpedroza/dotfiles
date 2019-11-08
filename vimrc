@@ -545,6 +545,14 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
 
+" Checkout branch/tag using FZF
+" Ported from https://github.com/atweiden/fzf-extras/blob/zsh/fzf-extras.zsh
+command! -nargs=? -bang Checkout call fzf#run(fzf#wrap('Checkout', {
+            \ 'source': "<bang>" == "!" ? s:CheckoutLongList() : s:CheckoutShortList(),
+            \ 'sink': "<bang>" == "!" ? function('s:CheckoutLongAction', []) : function('s:CheckoutShortAction', []),
+            \ 'options': "<bang>" == "!" ? s:CheckoutLongCommandOptions("<args>") : s:CheckoutShortCommandOptions("<args>")
+            \ }))
+
 " List of recent branches for the Checkout command
 function s:CheckoutShortList() abort
     let branches_command = 'git for-each-ref '
@@ -612,13 +620,6 @@ function! s:CheckoutLongCommandOptions(query) abort
             \ '--query=' . a:query
             \ ]
 endfunction
-
-" Checkout branch/tag using FZF
-command! -nargs=? -bang Checkout call fzf#run(fzf#wrap('Checkout', {
-            \ 'source': "<bang>" == "!" ? s:CheckoutLongList() : s:CheckoutShortList(),
-            \ 'sink': "<bang>" == "!" ? function('s:CheckoutLongAction', []) : function('s:CheckoutShortAction', []),
-            \ 'options': "<bang>" == "!" ? s:CheckoutLongCommandOptions("<args>") : s:CheckoutShortCommandOptions("<args>")
-            \ }))
 
 " ------------------------ Utility functions ---------------------- "
 
