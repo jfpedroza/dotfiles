@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "fzf-scripts"]
+	path = fzf-scripts
+	url = https://github.com/DanielFGray/fzf-scripts.git
