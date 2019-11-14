@@ -12,6 +12,7 @@ python2-virtualenv
 mysql-workbench
 net-tools
 bat
+exa
 nodejs
 npm
 yarn
@@ -51,3 +52,4 @@ i3-gaps
 wmctrl
 rofi
 feh
+shfmt

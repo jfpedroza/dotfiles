@@ -226,7 +226,6 @@ installLanguages() {
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
     rustup component add rustfmt
-    cargo install exa
     cargo install just
 
     # Haskell & Stack
@@ -234,7 +233,6 @@ installLanguages() {
 
     # Go packages
     go get github.com/edi9999/path-extractor/path-extractor
-    go get -u mvdan.cc/sh/cmd/shfmt
 }
 
 installFonts() {
