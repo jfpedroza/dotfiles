@@ -19,6 +19,7 @@ yarn
 shellcheck
 rustup
 docker
+docker-compose
 postgresql
 postgis
 gimp
