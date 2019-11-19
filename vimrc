@@ -43,7 +43,6 @@ endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'alx741/vim-hindent'
-Plug 'parsonsmatt/intero-neovim'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'vhdirk/vim-cmake'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}

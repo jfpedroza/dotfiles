@@ -134,9 +134,6 @@ installAndConfigureDocker() {
 
     sudo docker run hello-world &&
         sudo usermod -aG docker "$USER"
-
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
-        sudo chmod +x /usr/local/bin/docker-compose
 }
 
 configurePostgres() {
@@ -229,7 +226,8 @@ installLanguages() {
     cargo install just
 
     # Haskell & Stack
-    curl -sSL https://get.haskellstack.org/ | sh
+    stack install hlint apply-refact hindent hoogle
+    ~/.local/bin/hoogle generate
 
     # Go packages
     go get github.com/edi9999/path-extractor/path-extractor

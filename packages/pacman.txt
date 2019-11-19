@@ -54,3 +54,6 @@ wmctrl
 rofi
 feh
 shfmt
+ghc
+stack
+cabal-install
