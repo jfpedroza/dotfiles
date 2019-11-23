@@ -4,4 +4,4 @@
 	ignore = dirty
 [submodule "fzf-scripts"]
 	path = fzf-scripts
-	url = https://github.com/DanielFGray/fzf-scripts.git
+	url = git@github.com:johnf9896/fzf-scripts.git
