@@ -291,6 +291,9 @@ cnoreabbrev Qall qall
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
 
+" Use AltGr+. to execute last Ex command
+nnoremap · @:
+
 autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
