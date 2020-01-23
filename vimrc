@@ -425,7 +425,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " Fugitive mapping
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gc :Gcommit<cr>
-nmap <leader>gd :Gdiff<cr>
+nmap <leader>gd :Gvdiff<cr>
 nmap <leader>gg :Ggrep
 nmap <leader>gL :Glog<cr>
 nmap <leader>gl :Git pull<cr>
