@@ -31,6 +31,7 @@ alias gwls='git worktree list'
 alias gwco='git worktree add'
 alias gwcb='git worktree add -b'
 alias gwrm='git worktree remove'
+alias tm='tmux'
 alias rusti="rustup run nightly-2016-08-01 ~/.cargo/bin/rusti"
 alias ipy="ipython"
 alias pipi="pip install --upgrade"

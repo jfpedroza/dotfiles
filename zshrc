@@ -57,7 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 autoload -Uz compinit && compinit -i
 
 # Tmux plugin settings
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 export ZSH_TMUX_AUTOQUIT=false
 export ZSH_TMUX_AUTOCONNECT=false
 export ZSH_TMUX_AUTONAME_SESSION=true
