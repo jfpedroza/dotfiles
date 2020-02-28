@@ -287,6 +287,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qa qa
 cnoreabbrev Qall qall
+cnoreabbrev X x
 
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
