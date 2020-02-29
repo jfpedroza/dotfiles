@@ -1,5 +1,6 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-797400cb-95bd-42f2-9c24-625b856efa5d=none,none,Switch to activity "Default"
 switch-to-activity-bcdfebb4-50cc-4fae-8b89-724122fe96df=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -7,7 +8,7 @@ Switch keyboard layout to English (US, international AltGr Unicode combining)=no
 Switch keyboard layout to Español (latinoamericano)=none,none,Cambiar la distribución del teclado a Español (latinoamericano)
 Switch keyboard layout to Spanish (Latin American)=none,none,Switch keyboard layout to Spanish (Latin American)
 Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
-_k_friendly_name=System Settings
+_k_friendly_name=KDE Daemon
 
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
@@ -25,8 +26,9 @@ _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
-_k_friendly_name=System Settings
-{977f4019-c907-40b6-9edf-14192f82ec6a}=Ctrl+Alt+T,none,Launch Konsole
+_k_friendly_name=KDE Daemon
+{a55b6bde-075d-4e2e-bf9c-c4fd32df4b55}=none,none,Launch Konsole
+{0c6221f4-6116-4dab-9115-3b50b04f43fc}=none,none,Launch Konsole
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
 
 [kmix]
@@ -44,9 +46,9 @@ next_active_tab=none,none,Next Active Tab
 toggle_mainwindow_visibility=none,none,Show/Hide Konversation
 
 [krunner.desktop]
-RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Ejecutar orden sobre el contenido del portapapeles
+RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
-_launch=Alt+Space\tAlt+F2\tSearch,none,KRunner
+_launch=Alt+Space\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner
 
 [ksmserver]
 Halt Without Confirmation=Ctrl+Alt+Shift+PgDown,none,Halt Without Confirmation
@@ -254,7 +256,7 @@ activate task manager entry 6=Meta+6,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
-activate widget 2=Alt+F1,none,Activate Lanzador de aplicaciones Widget
+activate widget 2=Alt+F1,none,Activate Activate Application Launcher Widget
 clear-history=none,none,Clear Clipboard History
 clipboard_action=Ctrl+Alt+X,Ctrl+Alt+X,Enable Clipboard Actions
 cycleNextAction=none,none,Next History Item
@@ -268,6 +270,9 @@ show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,none,Show Barcode...
 show-on-mouse-pos=none,none,Open Klipper at Mouse Position
 stop current activity=Meta+S,Meta+S,Stop Current Activity
+switch to next activity=none,none,Switch to Next Activity
+switch to previous activity=none,none,Switch to Previous Activity
+toggle do not disturb=none,none,Toggle do not disturb
 
 [yakuake]
 _k_friendly_name=Yakuake

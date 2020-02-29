@@ -162,7 +162,6 @@ installNpmPackages() {
 
     echo "==================================="
     echo "Installing global npm packages"
-    echo "@vue/cli"
     echo "typescript-formatter"
     echo "fixjson"
     printf "\nInstalling global yarn packages\n"
@@ -171,7 +170,7 @@ installNpmPackages() {
 
     cd ~/ || return
 
-    sudo npm i -g @vue/cli typescript-formatter markdownlint-cli fixjson
+    sudo npm i -g typescript-formatter markdownlint-cli fixjson
     yarn global add diagnostic-languageserver
 }
 
@@ -182,7 +181,7 @@ installLanguages() {
 
     # pipi='pip install --upgrade'
     pipu='pip install --user --upgrade'
-    pip2u='pip install --user --upgrade'
+    pip2u='pip2 install --user --upgrade'
 
     # Python & PIP
 
@@ -246,6 +245,9 @@ installFonts() {
         ./install.sh &&
         cd .. &&
         rm -rf fonts
+
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts && curl -fLo "Noto Mono Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Noto/Mono/complete/Noto%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
 }
 
 cloneDotfiles() {
@@ -267,7 +269,7 @@ setupGit() {
     echo "==================================="
 
     git config --global user.name 'Jhon Pedroza'
-    git config --global user.email 'jhonfpedroza@gmail.com'
+    git config --global user.email 'jhon@pedroza.me'
     git config --global core.excludesfile '~/.gitignore'
 }
 
@@ -319,7 +321,7 @@ useZsh() {
     zsh_custom=~/.oh-my-zsh/custom
 
     mkdir -p ~/.zsh/completion
-    curl -L https://raw.githubusercontent.com/docker/compose/1.23.2/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
+    curl -L https://raw.githubusercontent.com/docker/compose/1.25.4/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
     curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
 
     cd ~/.oh-my-zsh

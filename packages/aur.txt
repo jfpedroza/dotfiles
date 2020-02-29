@@ -2,7 +2,6 @@ spotify
 insomnia
 postman-bin
 discord
-slack-desktop
 sublime-text-dev
 gitkraken
 pcloud-drive
@@ -23,3 +22,4 @@ conky-cairo
 spotifyd-full
 spotify-tui
 ccls
+ghostwriter
