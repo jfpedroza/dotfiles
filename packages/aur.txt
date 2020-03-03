@@ -23,3 +23,5 @@ spotifyd-full
 spotify-tui
 ccls
 ghostwriter
+google-cloud-sdk
+webtorrent-desktop

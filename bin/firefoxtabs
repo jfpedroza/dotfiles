@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+export opentabs=$(find ~/.mozilla/firefox/*.default*/sessionstore-backups/recovery.jsonlz4)
+
+python3 <<<$'import os, json, lz4.block
+f = open(os.environ["opentabs"], "rb")
+magic = f.read(8)
+jdata = json.loads(lz4.block.decompress(f.read()).decode("utf-8"))
+f.close()
+exported_wins = []
+for win in jdata.get("windows"):
+    exported_tabs = []
+    for tab in win.get("tabs"):
+        i = int(tab.get("index")) - 1
+        entry = tab.get("entries")[i]
+        exported_tab = {"ID": entry.get("ID"), "title": entry.get("title"), "url": entry.get("url")}
+        exported_tabs.append(exported_tab)
+
+    exported_wins.append(exported_tabs)
+
+print(json.dumps(exported_wins, indent=2))'
