@@ -221,7 +221,7 @@ installLanguages() {
     rustup default nightly
     rustup install nightly-2016-08-01
     rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
-    rustup component add rustfmt
+    rustup component add rustfmt rls rust-analysis rust-src
     cargo install just
 
     # Haskell & Stack
