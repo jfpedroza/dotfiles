@@ -62,6 +62,8 @@ i3-gaps
 wmctrl
 rofi
 feh
+ttt-font-awesome
+otf-ipafont
 shfmt
 ghc
 stack
