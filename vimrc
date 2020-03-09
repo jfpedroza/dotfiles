@@ -238,6 +238,9 @@ nmap <leader>bb :Buffers<CR>
 " Move to the alternative buffer
 nmap <leader>ba :b#<CR>
 
+" Map Ctrl+p to Ctrl+i because Tab, which is Ctrl+i, is mapped to next buffer
+nnoremap <C-p> <C-i>
+
 " Edit files in the current file's directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
