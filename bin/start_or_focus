@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+program=$1
+class=$2
+
+if wmctrl -l -x | grep "$class" >/dev/null; then
+    i3-msg "[class=\"$class\"] focus"
+else
+    i3-msg "exec $program"
+fi

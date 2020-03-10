@@ -32,9 +32,11 @@ docker-compose
 postgresql
 postgis
 gimp
+telegram-desktop
 fd
 tmux
 gdb
+htop
 gparted
 xdotool
 clang

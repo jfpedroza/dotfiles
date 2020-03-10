@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# set environment variables
+export PATH="${PATH}:$HOME/private_dotfiles/bin:$HOME/dotfiles/bin"
