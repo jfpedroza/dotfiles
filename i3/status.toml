@@ -1,0 +1,26 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "music"
+# on_collapsed_click = "start_or_focus spotify Spotify"
+
+[[block]]
+block = "pacman"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mug}GB/{MTg}GB({Mup}%)"
+format_swap = "{SUg}GB/{STg}GB({SUp}%)"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{utilization}% {frequency}GHz"
+
+[[block]]
+block = "battery"
+driver = "upower"
+device = "DisplayDevice"
+format = "{percentage}%"

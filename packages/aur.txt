@@ -25,3 +25,5 @@ ccls
 ghostwriter
 google-cloud-sdk
 webtorrent-desktop
+ttf-font-awesome-4
+i3status-rust

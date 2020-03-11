@@ -61,6 +61,7 @@ minikube
 kubectx
 dbeaver
 i3-gaps
+python-i3ipc
 wmctrl
 rofi
 feh
