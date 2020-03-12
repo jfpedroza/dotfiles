@@ -38,6 +38,7 @@ tmux
 gdb
 htop
 gparted
+sl
 xdotool
 clang
 cppcheck
@@ -59,6 +60,7 @@ ctags
 kubectl
 minikube
 kubectx
+gnome-keyring
 dbeaver
 i3-gaps
 python-i3ipc

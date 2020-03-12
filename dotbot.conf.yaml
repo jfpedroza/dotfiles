@@ -30,6 +30,7 @@
     ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
     ~/.config/kcminputrc: kde/kcminputrc
     ~/.config/spotifyd/spotifyd.conf: spotifyd.conf
+    ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
