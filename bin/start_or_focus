@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import sys
+from i3ipc import Connection
+
+if len(sys.argv) < 3:
+    raise Exception("Too few arguments, expected 2: program and class")
+
+if len(sys.argv) > 3:
+    raise Exception("Too many arguments, expected 2: program and class")
+
+program = sys.argv[1]
+window_class = sys.argv[2]
+
+print("Program: " + program)
+print("Class: " + window_class)
+
+i3 = Connection()
+
+windows = i3.get_tree().find_classed("^{}$".format(window_class))
+if windows:
+    window = windows[0]
+    i3.command('[id="{}"] focus'.format(window.window))
+    print("Window found and focused")
+else:
+    i3.command('exec {}'.format(program))
+    print("Window not found. Started")
