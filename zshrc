@@ -110,6 +110,22 @@ bindkey -v
 bindkey "^[OA" history-beginning-search-backward
 bindkey "^[OB" history-beginning-search-forward
 
+function set_title () {
+    # Name the terminal after the basename of the current directory
+    local terminal_title=${PWD##*/}
+    # If the current directory is the home directory, name it 'home'
+    [[ "$PWD" == "$HOME" ]] && terminal_title="home"
+
+    print -Pn "\e]0;$terminal_title\a"
+}
+
+case $TERM in
+    xterm*)
+        chpwd () { set_title }
+        set_title
+        ;;
+esac
+
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
 fpath=(~/.zsh/completion $fpath)
