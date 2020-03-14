@@ -1,27 +1,60 @@
 #!/usr/bin/env python3
 
-import sys
+import argparse
 from i3ipc import Connection
 
-if len(sys.argv) < 3:
-    raise Exception("Too few arguments, expected 2: program and class")
+parser = argparse.ArgumentParser(
+    description="Focuses a program if it's running or otherwise starts it")
+parser.add_argument(
+    "command", help="Command to execute if the program is not running")
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument(
+    "-c", "--class", help="Class of the window to focus", dest="win_class", metavar="CLASS")
+group.add_argument("-i", "--instance", help="Instance of the window to focus")
+group.add_argument("-t", "--title", help="Title of the window to focus")
+parser.add_argument("-w", "--workspace",
+                    help="Workspace to focus when starting the program", type=int)
+args = parser.parse_args()
 
-if len(sys.argv) > 3:
-    raise Exception("Too many arguments, expected 2: program and class")
+print("Command: " + args.command)
 
-program = sys.argv[1]
-window_class = sys.argv[2]
+workspace_map = {
+    1: "1:一",
+    2: "2:二",
+    3: "3:三",
+    4: "4:四",
+    5: "5:五",
+    6: "6:六",
+    7: "7:七",
+    8: "8:八",
+    9: "9:九",
+    10: "10:十",
+}
 
-print("Program: " + program)
-print("Class: " + window_class)
 
 i3 = Connection()
+tree = i3.get_tree()
 
-windows = i3.get_tree().find_classed("^{}$".format(window_class))
+if args.win_class:
+    print("Finding by class: " + args.win_class)
+    windows = tree.find_classed("^{}$".format(args.win_class))
+
+if args.instance:
+    print("Finding by instance: " + args.instance)
+    windows = tree.find_instanced("^{}$".format(args.instance))
+
+if args.title:
+    print("Finding by title: " + args.title)
+    windows = tree.find_titled("^{}$".format(args.title))
+
 if windows:
     window = windows[0]
     i3.command('[id="{}"] focus'.format(window.window))
     print("Window found and focused")
 else:
-    i3.command('exec {}'.format(program))
-    print("Window not found. Started")
+    cmd = 'exec {}'.format(args.command)
+    if args.workspace:
+        cmd += "; workspace number {}".format(workspace_map[args.workspace])
+
+    print("Window not found. Starting with i3 command: " + cmd)
+    i3.command(cmd)
