@@ -14,6 +14,8 @@ group.add_argument("-i", "--instance", help="Instance of the window to focus")
 group.add_argument("-t", "--title", help="Title of the window to focus")
 parser.add_argument("-w", "--workspace",
                     help="Workspace to focus when starting the program", type=int)
+parser.add_argument("-r", "--regex", help="Match against a regex instead of the whole string",
+                    action="store_true", default=False)
 args = parser.parse_args()
 
 print("Command: " + args.command)
@@ -37,15 +39,18 @@ tree = i3.get_tree()
 
 if args.win_class:
     print("Finding by class: " + args.win_class)
-    windows = tree.find_classed("^{}$".format(args.win_class))
+    fmt = "{}" if args.regex else "^{}$"
+    windows = tree.find_classed(fmt.format(args.win_class))
 
 if args.instance:
     print("Finding by instance: " + args.instance)
-    windows = tree.find_instanced("^{}$".format(args.instance))
+    fmt = "{}" if args.regex else "^{}$"
+    windows = tree.find_instanced(fmt.format(args.instance))
 
 if args.title:
     print("Finding by title: " + args.title)
-    windows = tree.find_titled("^{}$".format(args.title))
+    fmt = "{}" if args.regex else "^{}$"
+    windows = tree.find_titled(fmt.format(args.title))
 
 if windows:
     window = windows[0]
