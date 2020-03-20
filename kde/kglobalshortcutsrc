@@ -27,7 +27,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=KDE Daemon
-{0c6221f4-6116-4dab-9115-3b50b04f43fc}=none,none,Launch Konsole
+{a55b6bde-075d-4e2e-bf9c-c4fd32df4b55}=none,none,Launch Konsole
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,Search
 
 [kmix]

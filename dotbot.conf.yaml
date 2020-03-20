@@ -22,6 +22,7 @@
     ~/.config/plasma-workspace/env/wm.sh: i3/wm.sh
     ~/.config/i3/config: i3/i3.config
     ~/.config/i3/status.toml: i3/status.toml
+    ~/.config/autostart-scripts/i3_focus_last: bin/i3_focus_last
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
     ~/.config/conky: i3/conky
