@@ -80,6 +80,13 @@ class FocusWatcher:
             t.start()
 
 
+def switch():
+    client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    client_socket.connect(SOCKET_FILE)
+    client_socket.send(b'switch')
+    client_socket.close()
+
+
 if __name__ == '__main__':
     parser = ArgumentParser(prog='focus-last.py',
                             description='''
@@ -101,7 +108,4 @@ if __name__ == '__main__':
         focus_watcher = FocusWatcher()
         focus_watcher.run()
     else:
-        client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        client_socket.connect(SOCKET_FILE)
-        client_socket.send(b'switch')
-        client_socket.close()
+        switch()

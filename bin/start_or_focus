@@ -2,6 +2,7 @@
 
 import argparse
 from i3ipc import Connection
+import i3_focus_last
 
 parser = argparse.ArgumentParser(
     description="Focuses a program if it's running or otherwise starts it")
@@ -54,12 +55,16 @@ if args.title:
 
 if windows:
     window = windows[0]
-    i3.command('[id="{}"] focus'.format(window.window))
-    print("Window found and focused")
+    if window.focused:
+        i3_focus_last.switch()
+        print("Target window found and is already focused. Switching back to last focused")
+    else:
+        i3.command('[id="{}"] focus'.format(window.window))
+        print("Target window found and focused")
 else:
     cmd = 'exec {}'.format(args.command)
     if args.workspace:
         cmd += "; workspace number {}".format(workspace_map[args.workspace])
 
-    print("Window not found. Starting with i3 command: " + cmd)
+    print("Target window not found. Starting with i3 command: " + cmd)
     i3.command(cmd)
