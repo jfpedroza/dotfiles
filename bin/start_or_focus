@@ -17,6 +17,8 @@ parser.add_argument("-w", "--workspace",
                     help="Workspace to focus when starting the program", type=int)
 parser.add_argument("-r", "--regex", help="Match against a regex instead of the whole string",
                     action="store_true", default=False)
+parser.add_argument("-s", "--scratchpad", help="Treat window as a scratchpad window",
+                    action="store_true", default=False)
 args = parser.parse_args()
 
 print("Command: " + args.command)
@@ -56,8 +58,13 @@ if args.title:
 if windows:
     window = windows[0]
     if window.focused:
-        i3_focus_last.switch()
-        print("Target window found and is already focused. Switching back to last focused")
+        if args.scratchpad:
+            i3.command("move scratchpad")
+            print("Target window found in scratchpad. Hiding")
+        else:
+            i3_focus_last.switch()
+            print(
+                "Target window found and is already focused. Switching back to last focused")
     else:
         i3.command('[id="{}"] focus'.format(window.window))
         print("Target window found and focused")
