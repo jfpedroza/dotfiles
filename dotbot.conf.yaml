@@ -24,7 +24,6 @@
     ~/.config/i3/status.toml: i3/status.toml
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
-    ~/.config/conky: i3/conky
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
     ~/.local/share/konsole/Shell.profile: kde/Shell.profile
     ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
