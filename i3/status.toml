@@ -11,7 +11,7 @@ block = "pacman"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mug}GB/{MTg}GB({Mup}%)"
+format_mem = "{Mug}GB({Mup}%)"
 format_swap = "{SUg}GB/{STg}GB({SUp}%)"
 
 [[block]]
