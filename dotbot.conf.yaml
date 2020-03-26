@@ -5,6 +5,7 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
+    ~/.tmate.conf: tmate.conf
     ~/.zshrc: zshrc
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
