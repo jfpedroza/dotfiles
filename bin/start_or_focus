@@ -71,7 +71,10 @@ if windows:
 else:
     cmd = 'exec {}'.format(args.command)
     if args.workspace:
-        cmd += "; workspace number {}".format(workspace_map[args.workspace])
+        focused = tree.find_focused()
+        if focused is None or focused.workspace().num != args.workspace:
+            cmd += "; workspace number {}".format(
+                workspace_map[args.workspace])
 
     print("Target window not found. Starting with i3 command: " + cmd)
     i3.command(cmd)
