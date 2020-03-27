@@ -62,6 +62,7 @@ ctags
 kubectl
 minikube
 kubectx
+k9s
 gnome-keyring
 dbeaver
 i3-gaps
