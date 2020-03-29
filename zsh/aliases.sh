@@ -46,3 +46,4 @@ alias pip-upgrade="sudo pip install --upgrade pip"
 alias pe="path-extractor"
 alias -g PE='| pe | fzf | read filename; [ ! -z $filename ] && nvim $filename'
 alias -g PEC='| pe | fzf | read filename; [ ! -z $filename ] && echo -n $filename | xclip -sel c'
+alias lpassc="dmenu-lpass-nu"
