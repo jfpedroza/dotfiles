@@ -22,7 +22,7 @@
     ~/.oh-my-zsh/custom/10_shortcuts.zsh: zsh/shortcuts.zsh
     ~/.config/plasma-workspace/env/wm.sh: i3/wm.sh
     ~/.config/i3/config: i3/i3.config
-    ~/.config/i3/status.toml: i3/status.toml
+    ~/.config/i3/status.toml: mnt/i3status.toml.erb
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc

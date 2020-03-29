@@ -260,6 +260,7 @@ cloneDotfiles() {
     git clone --recurse-submodule https://github.com/johnf9896/dotfiles.git
     cd dotfiles
     git remote set-url origin git@github.com:johnf9896/dotfiles.git
+    mkdir mnt
     ./dotfiles.sh
 }
 

@@ -22,3 +22,8 @@
 ~/code/lib:
   linenoise-ng: git+https://github.com/arangodb/linenoise-ng.git
   elixir-ls: git+https://github.com/elixir-lsp/elixir-ls.git
+  scriptfs:
+    url: git+git@github.com:johnf9896/scriptfs.git
+    remotes:
+      origin: git+git@github.com:johnf9896/scriptfs.git
+      upstream: git+https://github.com/frodonh/scriptfs.git

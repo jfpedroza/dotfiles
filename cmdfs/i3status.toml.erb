@@ -1,3 +1,4 @@
+#!/usr/bin/env -S erb -T 1
 theme = "slick"
 icons = "awesome"
 
@@ -19,8 +20,10 @@ block = "cpu"
 interval = 1
 format = "{utilization}% {frequency}GHz"
 
+<% if system("ls /sys/class/power_supply/*/capacity >/dev/null 2>&1") %>
 [[block]]
 block = "battery"
 driver = "upower"
 device = "DisplayDevice"
 format = "{percentage}%"
+<% end %>

@@ -2,3 +2,4 @@
 *.swo
 *.swp
 __pycache__
+/mnt
