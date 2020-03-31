@@ -1,8 +1,8 @@
-# vi: ft=toml
+#!/usr/bin/env -S erb -T 1
 [global]
 username = jhonfpedroza@gmail.com
 use_keyring = true
 device_name = spotifyd
 volume_normalisation = true
 backend = pulseaudio
-cache_path = /home/jhon/.cache/spotifyd
+cache_path = <%=ENV["HOME"]%>/.cache/spotifyd

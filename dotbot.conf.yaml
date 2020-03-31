@@ -29,7 +29,7 @@
     ~/.local/share/konsole/Shell.profile: kde/Shell.profile
     ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
     ~/.config/kcminputrc: kde/kcminputrc
-    ~/.config/spotifyd/spotifyd.conf: spotifyd.conf
+    ~/.config/spotifyd/spotifyd.conf: mnt/spotifyd.toml.erb
     ~/.config/kitty/kitty.conf: kitty.conf
 
 - shell:
