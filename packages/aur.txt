@@ -9,13 +9,13 @@ ttf-ancient-fonts
 gitflow-avh
 gitflow-zshcompletion-avh
 musixmatch-bin
+4kvideodownloader
 franz-bin
 visual-studio-code-insiders
 anydesk
 ngrok
 tasksh
 windscribe-cli
-kubernetes-helm
 crow-translate
 compton-tryone-git
 conky-cairo

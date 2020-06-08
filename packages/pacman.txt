@@ -58,11 +58,13 @@ task
 hub
 most
 meld
+easytag
 ctags
 kubectl
 minikube
 kubectx
 k9s
+helm
 gnome-keyring
 dbeaver
 i3-gaps
