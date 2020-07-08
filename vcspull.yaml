@@ -12,6 +12,7 @@
 ~/code/languages/:
   lispy: git+git@github.com:johnf9896/lispy.git
   simple_lexer: git+git@github.com:johnf9896/simple_lexer.git
+  lox: git+git@github.com:johnf9896/lox.git
 ~/code/games/:
   parques: git+git@github.com:johnf9896/parques.git
   uno: git+git@github.com:johnf9896/uno.git

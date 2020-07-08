@@ -72,7 +72,7 @@ python-i3ipc
 wmctrl
 rofi
 feh
-ttt-font-awesome
+ttf-font-awesome
 otf-ipafont
 shfmt
 ghc

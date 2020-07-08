@@ -334,7 +334,8 @@ let g:coc_global_extensions = [
             \ 'coc-rls',
             \ 'coc-python',
             \ 'coc-elixir',
-            \ 'coc-solargraph'
+            \ 'coc-solargraph',
+            \ 'coc-java'
             \ ]
 
 let g:airline#extensions#coc#enabled = 1

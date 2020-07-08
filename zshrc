@@ -149,6 +149,9 @@ autoload -Uz compinit && compinit -i
 [[ -e "$HOME/.asdf/completions/asdf.bash" ]] \
     && source "$HOME/.asdf/completions/asdf.bash"
 
+[[ -e "$HOME/.asdf/plugins/java/set-java-home.zsh" ]] \
+    && source "$HOME/.asdf/plugins/java/set-java-home.zsh"
+
 [[ -e "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] \
     && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
