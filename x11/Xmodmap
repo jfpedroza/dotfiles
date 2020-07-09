@@ -38,8 +38,10 @@ keycode 39  =   s           S               scedilla    Scedilla    ssharp      
 keycode 28  =   t           T               tcaron      Tcaron      tslash          Tslash
 !                                              t           T           ŧ               Ŧ
 keycode 41  =   f           F               fabovedot   Fabovedot   dstroke         Dstroke
-!               b           B                  ḃ           Ḃ           ”               ’
+!                                              ḃ           Ḃ           ”               ’
 keycode 56  =   b           B               babovedot   Babovedot   rightdoublequotemark rightsinglequotemark
+!                                              ė           Ė           €               ¢
+keycode 26  =   e           E               eabovedot   Eabovedot   EuroSign        cent
 
 ! Invert numbers and their shift counterpart
 !                  !                                       !           ¹                ¡
