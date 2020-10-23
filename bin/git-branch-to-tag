@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ $# -eq 0 || $# -gt 2 ]]; then
+    echo "Usage: git-branch-to-tag branch [tag]"
+    exit 0
+fi
+
+BRANCH=$1
+TAG=${2:-v$BRANCH}
+
+echo "Branch: $BRANCH"
+echo "Tag: $TAG"
+
+echo "Checking branch out..."
+git checkout "$BRANCH"
+
+echo "Creating tag..."
+git tag -a "$TAG" -m "Release tag from branch $BRANCH"
+git push origin "$TAG"
+
+echo "Deleting branch..."
+git checkout -
+git branch -D "$BRANCH"
+git push origin :"$BRANCH"
+
+echo "Done!"

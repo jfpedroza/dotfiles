@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $# -ne 2 ]]; then
-  echo "Usage: git-split.sh original copy"
+  echo "Usage: git-split original copy"
   exit 0
 fi
 
