@@ -51,3 +51,5 @@ alias pe="path-extractor"
 alias -g PE='| pe | fzf | read filename; [ ! -z $filename ] && nvim $filename'
 alias -g PEC='| pe | fzf | read filename; [ ! -z $filename ] && echo -n $filename | xclip -sel c'
 alias lpassc="dmenu-lpass-nu"
+alias age="ag --elixir"
+alias lox="cargo lox"

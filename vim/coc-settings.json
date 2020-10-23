@@ -18,7 +18,7 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-    "elixir.pathToElixirLS": "~/code/lib/elixir-ls/rel/language_server.sh",
+    "elixir.pathToElixirLS": "~/code/lib/elixir-ls/release/language_server.sh",
     "elixirLS.dialyzerEnabled": false,
     "python.linting.pylintEnabled": true,
     "diagnostic.infoSign": "☑",
