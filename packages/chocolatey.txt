@@ -1,1 +1,11 @@
+firefox
+thunderbird
+winrar
+webtorrent-desktop
+vlc
+sumatrapdf
+ghostwriter
+sublimetext3.app
 linkshellextension
+discord
+dolphin
