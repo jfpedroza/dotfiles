@@ -1,0 +1,4 @@
+#! /bin/sh
+
+xkbcomp "$HOME/.Xkeymap" "$DISPLAY"
+notify-send -a set-keymap "Custom keymap set"

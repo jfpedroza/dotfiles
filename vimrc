@@ -263,20 +263,6 @@ endif
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
-" Remap [] to {} for latam keyboards
-nmap { [
-nmap } ]
-omap { [
-omap } ]
-xmap { [
-xmap } ]
-
-" Map <localleader> { and } to the default behavior of { and }
-nnoremap <localleader>{ {
-nnoremap <localleader>} }
-vnoremap <localleader>{ {
-vnoremap <localleader>} }
-
 " Command abbreviations
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
@@ -347,9 +333,9 @@ nmap <silent> <leader>dt <Plug>(coc-type-definition)
 nmap <silent> <leader>di <Plug>(coc-implementation)
 nmap <silent> <leader>dr <Plug>(coc-references)
 
-""" Use `{g` and `}g` to navigate diagnostics
-nmap <silent> {g <Plug>(coc-diagnostic-prev)
-nmap <silent> }g <Plug>(coc-diagnostic-next)
+""" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 """ Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -373,8 +359,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 """ Git
-nmap <silent> }c <Plug>(coc-git-nextchunk)
-nmap <silent> {c <Plug>(coc-git-prevchunk)
+nmap <silent> ]c <Plug>(coc-git-nextchunk)
+nmap <silent> [c <Plug>(coc-git-prevchunk)
 nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
 nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
 nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
@@ -455,7 +441,7 @@ highlight link gitmessengerHash Special
 highlight link gitmessengerHistory Title
 
 " EasyMotion
-let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnmñ'
+let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnm;'
 let g:EasyMotion_startofline = 0
 map ĵ <Plug>(easymotion-j)
 map Ĵ <Plug>(easymotion-sol-j)
