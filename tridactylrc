@@ -17,6 +17,7 @@ unbind --mode=ex <C-c>
 " Handy multiwindow/multitasking binds
 bind gd tabdetach
 bind gD composite tabduplicate | tabdetach
+bind <C-O> tab #
 
 " Stupid workaround to let hint -; be used with composite which steals semi-colons
 command hint_focus hint -;

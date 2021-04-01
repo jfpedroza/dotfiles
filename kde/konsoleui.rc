@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="konsole" version="11">
+<kpartgui name="konsole" version="12">
  <MenuBar>
   <Menu name="file">
    <text>File</text>
@@ -26,6 +26,7 @@
     <Action name="close-other-views"/>
     <Action name="expand-active-view"/>
     <Action name="shrink-active-view"/>
+    <Action name="toggle-maximize-current-view"/>
    </Menu>
    <Separator/>
    <Action name="detach-tab"/>
@@ -55,10 +56,10 @@
   <Action name="help_contents" shortcut=""/>
   <Action name="last-used-tab" shortcut=""/>
   <Action name="last-used-tab-reverse" shortcut=""/>
-  <Action name="next-view" shortcut="Shift+Right; Ctrl+Tab"/>
-  <Action name="previous-view" shortcut="Shift+Left; Ctrl+Shift+Tab"/>
   <Action name="next-tab" shortcut="Shift+Right; Ctrl+Tab"/>
+  <Action name="next-view" shortcut="Shift+Right; Ctrl+Tab"/>
   <Action name="previous-tab" shortcut="Shift+Left; Ctrl+Shift+Tab"/>
+  <Action name="previous-view" shortcut="Shift+Left; Ctrl+Shift+Tab"/>
   <Action name="split-view-left-right" shortcut=""/>
   <Action name="split-view-top-bottom" shortcut=""/>
  </ActionProperties>

@@ -1,5 +1,8 @@
+[$Version]
+update_info=kcminputrc_repeat.upd:kcminputrc_migrate_repeat_value,kcminputrc_fix_botched_5_21_0.upd:kcminputrc_fix_botched_5_21_0_pre,kcminputrc_fix_botched_5_21_0.upd:kcminputrc_fix_botched_5_21_0,kcminputrc_repeat.upd:kcminputrc_migrate_key_repeat
+
 [Keyboard]
-KeyboardRepeating=0
+KeyRepeat=repeat
 NumLock=0
 RepeatDelay=450
 RepeatRate=25

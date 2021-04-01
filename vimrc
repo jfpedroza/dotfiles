@@ -240,9 +240,11 @@ nmap <leader>ba :b#<CR>
 
 " Map Ctrl+p to Ctrl+i because Tab, which is Ctrl+i, is mapped to next buffer
 nnoremap <C-p> <C-i>
+map! <C-F> <Esc>gUiw`]a
 
 " Edit files in the current file's directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+cnoremap %$ <C-R>=fnameescape(expand('%'))<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
@@ -466,8 +468,8 @@ nnoremap <silent> <F6> :MundoToggle<CR>
 let g:system_copy#copy_command='xclip -sel clipboard'
 let g:system_copy#paste_command='xclip -sel clipboard -o'
 
-" Ack - Ag
-let g:ackprg = 'ag --vimgrep'
+" Ack - Rg
+let g:ackprg = 'rg --vimgrep'
 
 " AsyncRun
 let g:asyncrun_open = 8
