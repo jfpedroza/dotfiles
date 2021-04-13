@@ -14,6 +14,7 @@
     ~/.tridactylrc: tridactylrc
     ~/.ctags: ctags
     ~/.vcspull.yaml: vcspull.yaml
+    ~/.gitconfig: gitconfig
     ~/.gitignore: global.gitignore
     ~/.Xkeymap: x11/Xkeymap
     ~/.xinitrc: x11/xinitrc

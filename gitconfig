@@ -1,0 +1,11 @@
+[user]
+	name = Jhon Pedroza
+	email = jhon@pedroza.me
+[core]
+	excludesfile = ~/.gitignore
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[init]
+	defaultBranch = master

@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-set -e
+set -euo pipefail
 
 installUbuntuPackages() {
     echo "==================================="
@@ -260,21 +260,15 @@ cloneDotfiles() {
 
     cd ~/ || return
 
-    git clone --recurse-submodule https://github.com/johnf9896/dotfiles.git
+    if [[ ! -f ~/.ssh/id_rsa ]]; then
+        echo "SSH key not found"
+        exit 1
+    fi
+
+    git clone --recurse-submodule git@github.com:johnf9896/dotfiles.git
     cd dotfiles
-    git remote set-url origin git@github.com:johnf9896/dotfiles.git
-    mkdir mnt
+    mkdir -p mnt
     ./dotfiles.sh
-}
-
-setupGit() {
-    echo "==================================="
-    echo "Setting up git"
-    echo "==================================="
-
-    git config --global user.name 'Jhon Pedroza'
-    git config --global user.email 'jhon@pedroza.me'
-    git config --global core.excludesfile '~/.gitignore'
 }
 
 setupVim() {
@@ -340,14 +334,6 @@ useZsh() {
     git clone https://github.com/wfxr/forgit.git $zsh_custom/plugins/forgit
 }
 
-setupSsh() {
-    echo "==================================="
-    echo "Setting SSH key"
-    echo "==================================="
-
-    ssh-keygen -t rsa -b 4096
-}
-
 createSymlinks() {
     echo "==================================="
     echo "Creating PCloud Symlinks"
@@ -402,11 +388,9 @@ install() {
     installNpmPackages
     installLanguages
     installFonts
-    setupGit
     setupVim
     installScripts
     useZsh
-    setupSsh
     createSymlinks
 }
 
