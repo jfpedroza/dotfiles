@@ -136,30 +136,7 @@ installAndConfigureDocker() {
         sudo usermod -aG docker "$USER"
 }
 
-configurePostgres() {
-    echo "==================================="
-    echo "Installing and configuring Postgresql..."
-    echo "==================================="
-
-    case $os in
-    Ubuntu*) ;;
-
-    \
-        Manjaro*)
-        sudo -u postgres initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'
-        sudo systemctl enable postgresql &&
-            sudo systemctl start postgresql
-        ;;
-
-    *)
-        echo "Unknown OS. Exiting..."
-        exit 1
-        ;;
-    esac
-}
-
 installNpmPackages() {
-
     echo "==================================="
     echo "Installing global npm packages"
     echo "typescript-formatter"
@@ -267,7 +244,6 @@ cloneDotfiles() {
 
     git clone --recurse-submodule git@github.com:johnf9896/dotfiles.git
     cd dotfiles
-    mkdir -p mnt
     ./dotfiles.sh
 }
 
@@ -292,20 +268,6 @@ setupVim() {
     ln -sf ~/Cloud/vimwiki ~/vimwiki
 }
 
-installScripts() {
-    echo "==================================="
-    echo "Installing scripts"
-    echo "==================================="
-
-    bin=~/.local/bin
-    mkdir -p $bin
-    cd ~/dotfiles
-
-    while IFS= read -r -d '' script; do
-        ln -fs -- "$(pwd)/$script" "$bin"
-    done < <(find bin -type f -perm -+x -print0)
-}
-
 useZsh() {
     echo "==================================="
     echo "Setting ZSH as default shell"
@@ -319,7 +281,7 @@ useZsh() {
     zsh_custom=~/.oh-my-zsh/custom
 
     mkdir -p ~/.zsh/completion
-    curl -L https://raw.githubusercontent.com/docker/compose/1.25.4/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
+    curl -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
     curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
 
     cd ~/.oh-my-zsh
@@ -332,6 +294,21 @@ useZsh() {
 
     # Forgit
     git clone https://github.com/wfxr/forgit.git $zsh_custom/plugins/forgit
+
+    cd ~/dotfiles
+    ./dotfiles.sh
+}
+
+setupScriptfs() {
+    echo "==================================="
+    echo "Cloning and building scriptfs"
+    echo "==================================="
+
+    mkdir -p ~/code/lib
+    git clone git@github.com:johnf9896/scriptfs.git ~/code/lib/scriptfs
+    cd ~/code/lib/scriptfs
+    make
+    sudo cp scriptfs /usr/bin/scriptfs
 }
 
 createSymlinks() {
@@ -344,17 +321,11 @@ createSymlinks() {
     sudo mkdir /media
     sudo chown "$USER" /media
     mkdir -p Programming
-    mkdir -p Work/Peiky
-    mkdir -p Work/MMLabs
 
     # pCloud Symlinks
-    ln -sf /media/data/Cloud ~/Cloud
     ln -s ~/Cloud/Documents ~/Documents/Cloud
     ln -s ~/Cloud/Pictures ~/Pictures/Cloud
     ln -s ~/Cloud/Programming ~/Programming/Cloud
-    ln -s ~/Cloud/Work/MMLabs ~/Work/MMLabs/Cloud
-    ln -s ~/Cloud/Work/Peiky ~/Work/Peiky/Cloud
-    ln -s ~/Cloud/Work/Docs ~/Work/Docs
 }
 
 install() {
@@ -384,13 +355,12 @@ install() {
 
     installSnapPackages
     installAndConfigureDocker
-    configurePostgres
     installNpmPackages
     installLanguages
     installFonts
     setupVim
-    installScripts
     useZsh
+    setupScriptfs
     createSymlinks
 }
 

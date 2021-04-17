@@ -6,7 +6,6 @@
 - link:
     ~/.tmux.conf: tmux.conf
     ~/.tmate.conf: tmate.conf
-    ~/.zshrc: zshrc
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: vimrc
     ~/.config/nvim/coc-settings.json: vim/coc-settings.json
@@ -17,22 +16,42 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore: global.gitignore
     ~/.Xkeymap: x11/Xkeymap
-    ~/.xinitrc: x11/xinitrc
     ~/.xprofile: x11/xprofile
     ~/.config/autostart-scripts/set-keymap: bin/set-keymap
     ~/.oh-my-zsh/custom/01_aliases.zsh: zsh/aliases.sh
     ~/.oh-my-zsh/custom/10_shortcuts.zsh: zsh/shortcuts.zsh
     ~/.config/plasma-workspace/env/wm.sh: i3/wm.sh
     ~/.config/i3/config: i3/i3.config
-    ~/.config/i3/status.toml: mnt/i3status.toml.erb
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
     ~/.local/share/konsole/Shell.profile: kde/Shell.profile
+    ~/.config/kitty/kitty.conf: kitty.conf
+
+- defaults:
+    link:
+        create: true
+        relink: true
+        force: true
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.xinitrc: x11/xinitrc
     ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
     ~/.config/kcminputrc: kde/kcminputrc
+
+- defaults:
+    link:
+        create: true
+        relink: true
+        ignore-missing: true
+
+- link:
+    ~/.config/i3/status.toml: mnt/i3status.toml.erb
     ~/.config/spotifyd/spotifyd.conf: mnt/spotifyd.toml.erb
-    ~/.config/kitty/kitty.conf: kitty.conf
+
+- create:
+    - ~/dotfiles/mnt
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
