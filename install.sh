@@ -53,6 +53,9 @@ installManjaroPackages() {
     echo "Installing packages with Pacman"
     $pmi - <~/dotfiles/packages/pacman.txt
 
+    sudo pacman -S --quiet pulseaudio-modules-bt <<<"y
+    y"
+
     mkdir -p ~/builds
     cd ~/builds
     [ ! -d yay ] && git clone https://aur.archlinux.org/yay.git
@@ -336,7 +339,6 @@ install() {
     os=$(lsb_release -d | cut -f2)
 
     cloneDotfiles
-    sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 
     case $os in
     Ubuntu*)
@@ -352,6 +354,8 @@ install() {
         exit 1
         ;;
     esac
+
+    sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 
     installSnapPackages
     installAndConfigureDocker

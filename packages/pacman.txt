@@ -1,4 +1,3 @@
-pulseaudio-modules-bt
 firefox
 kcalc
 konsole
