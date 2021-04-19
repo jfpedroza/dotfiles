@@ -203,7 +203,7 @@ installLanguages() {
     go get github.com/edi9999/path-extractor/path-extractor
 
     # Ruby gem
-    gem install solargraph irb
+    gem install solargraph
 }
 
 installFonts() {

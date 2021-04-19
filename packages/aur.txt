@@ -19,7 +19,7 @@ windscribe-cli
 crow-translate
 compton-tryone-git
 conky-cairo
-spotify-tui
+spotify-tui-bin
 google-cloud-sdk
 webtorrent-desktop
 ttf-font-awesome-4
