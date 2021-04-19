@@ -56,22 +56,13 @@ installManjaroPackages() {
     sudo pacman -S --quiet pulseaudio-modules-bt <<<"y
     y"
 
-    mkdir -p ~/builds
-    cd ~/builds
-    [ ! -d yay ] && git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm --needed
-    cd ~
-
     # Install packages with Yay
     echo "Installing AUR packages with Yay:"
 
     $yai - <~/dotfiles/packages/aur.txt
 
-    sudo systemctl enable windscribe &&
-        sudo systemctl start windscribe
-
-    systemctl --user enable spotifyd
+    sudo systemctl enable windscribe
+    sudo systemctl enable spotifyd
 }
 
 installSnapPackages() {

@@ -1,3 +1,4 @@
+yay
 firefox
 kcalc
 konsole
@@ -7,6 +8,7 @@ filelight
 kdeconnect
 gwenview
 flameshot
+spotifyd
 kitty
 unzip
 xclip
@@ -34,7 +36,9 @@ docker-compose
 postgresql
 postgis
 gimp
+ghostwriter
 telegram-desktop
+discord
 fd
 tmux
 tmate
@@ -45,6 +49,7 @@ sl
 xdotool
 clang
 cppcheck
+ccls
 vifm
 ruby
 go
@@ -71,6 +76,7 @@ gnome-keyring
 dbeaver
 i3-gaps
 python-i3ipc
+i3status-rust
 wmctrl
 rofi
 feh
