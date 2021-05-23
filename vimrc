@@ -189,6 +189,8 @@ vnoremap <Right> <C-W><
 map <space> /
 map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
+" Use Ctrl+N to search the previous search term
+nmap <silent> <C-N> /<Up><Up><CR>
 
 " Map Ctrl+C to copy to clipboard in Visual mode
 " Added back to be used in minimal.vim

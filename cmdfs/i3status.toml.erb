@@ -12,8 +12,8 @@ block = "pacman"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mug}GB({Mup}%)"
-format_swap = "{SUg}GB/{STg}GB({SUp}%)"
+format_mem = "{mem_used;G}({mem_used_percents})"
+format_swap = "{swap_used;G}/{swap_total;G}({swap_used_percents})"
 
 [[block]]
 block = "cpu"
