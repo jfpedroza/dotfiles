@@ -1,3 +1,5 @@
+// vim: set filetype=xkb:
+
 xkb_keymap {
 xkb_keycodes "evdev+aliases(qwerty)" {
     minimum = 8;
@@ -1419,7 +1421,7 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     };
     key <AB09> {
         type= "FOUR_LEVEL",
-        symbols[Group1]= [          period,         greater,   dead_abovedot,      dead_caron ]
+        symbols[Group1]= [          period,         greater,   periodcentered,      dead_caron ]
     };
     key <AB10> {
         type= "FOUR_LEVEL",
