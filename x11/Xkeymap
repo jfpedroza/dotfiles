@@ -1668,23 +1668,17 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <I251> {         [ XF86MonBrightnessCycle ] };
     key <I254> {         [        XF86WWAN ] };
     key <I255> {         [      XF86RFKill ] };
-    modifier_map Shift { <LFSH> };
-    modifier_map Shift { <RTSH> };
+
+    modifier_map Shift   { <LFSH>, <RTSH> };
     // TODO: Enable Caps Lock back
     // modifier_map Lock { <CAPS> };
-    modifier_map Control { <LCTL> };
-    modifier_map Control { <RCTL> };
-    modifier_map Mod1 { <LALT> };
-    modifier_map Mod1 { <META> };
+    modifier_map Control { <LCTL>, <RCTL> };
+    modifier_map Mod1    { <LALT>, <META> };
     modifier_map Mod2 { <NMLK> };
     // TODO: Enable Caps Lock back
-    modifier_map Mod3 { <CAPS> };
-    modifier_map Mod3 { <HYPR> };
-    modifier_map Mod4 { <LWIN> };
-    modifier_map Mod4 { <RWIN> };
-    modifier_map Mod4 { <SUPR> };
-    modifier_map Mod5 { <LVL3> };
-    modifier_map Mod5 { <MDSW> };
+    modifier_map Mod3    { <CAPS>, <HYPR> };
+    modifier_map Mod4    { <LWIN>, <RWIN>, <SUPR> };
+    modifier_map Mod5    { <LVL3>, <MDSW> };
 };
 
 };
