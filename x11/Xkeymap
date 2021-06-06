@@ -375,12 +375,6 @@ xkb_types "complete" {
         level_name[Level1]= "Base";
         level_name[Level2]= "RAlt";
     };
-    type "MOD3_LEVEL2" {
-        modifiers= Mod3;
-        map[Mod3]= Level2;
-        level_name[Level1]= "Base";
-        level_name[Level2]= "Mod3";
-    };
     type "CTRL+ALT" {
         modifiers= Shift+Control+Alt+LevelThree;
         map[Shift]= Level2;
@@ -1434,8 +1428,7 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     };
     key <LALT> {         [           Alt_L,          Meta_L ] };
     key <SPCE> {         [           space ] };
-    // TODO: Enable Caps Lock back
-    key <CAPS> {         [         Hyper_L ] };
+    key <CAPS> {         [         Caps_Lock ] };
     key <FK01> {
         type= "CTRL+ALT",
         symbols[Group1]= [              F1,              F1,              F1,              F1, XF86Switch_VT_1 ]
@@ -1544,10 +1537,7 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key  <END> {         [             End ] };
     key <DOWN> {         [            Down ] };
     key <PGDN> {         [            Next ] };
-    key  <INS> {
-        type= "MOD3_LEVEL2",
-        symbols[Group1]= [        NoSymbol,          Insert ]
-    };
+    key <INS>  {         [          Insert ] };
     key <DELE> {         [          Delete ] };
     key <MUTE> {         [   XF86AudioMute ] };
     key <VOL-> {         [ XF86AudioLowerVolume ] };
@@ -1621,6 +1611,7 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <FK16> {         [     XF86Launch7 ] };
     key <FK17> {         [     XF86Launch8 ] };
     key <FK18> {         [     XF86Launch9 ] };
+    key <FK19> {         [             F19 ] };
     key <FK20> {         [ XF86AudioMicMute ] };
     key <FK21> {         [ XF86TouchpadToggle ] };
     key <FK22> {         [  XF86TouchpadOn ] };
@@ -1670,13 +1661,11 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <I255> {         [      XF86RFKill ] };
 
     modifier_map Shift   { <LFSH>, <RTSH> };
-    // TODO: Enable Caps Lock back
-    // modifier_map Lock { <CAPS> };
+    modifier_map Lock { <CAPS> };
     modifier_map Control { <LCTL>, <RCTL> };
     modifier_map Mod1    { <LALT>, <META> };
     modifier_map Mod2 { <NMLK> };
-    // TODO: Enable Caps Lock back
-    modifier_map Mod3    { <CAPS>, <HYPR> };
+    modifier_map Mod3    { <FK19> };
     modifier_map Mod4    { <LWIN>, <RWIN>, <SUPR> };
     modifier_map Mod5    { <LVL3>, <MDSW> };
 };
