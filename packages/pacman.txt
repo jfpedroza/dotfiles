@@ -87,4 +87,5 @@ shfmt
 ghc
 stack
 cabal-install
-lastpass-cli
+bitwarden
+qmk

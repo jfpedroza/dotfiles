@@ -24,4 +24,4 @@ google-cloud-sdk
 webtorrent-desktop
 ttf-font-awesome-4
 rofi-dmenu
-dmenu-lpass-nu
+bear
