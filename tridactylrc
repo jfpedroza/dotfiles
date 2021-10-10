@@ -37,4 +37,11 @@ jsb browser.runtime.getPlatformInfo().then(os=>{const profiledir = os.os=="win" 
 " Sane hinting mode
 " Filter hints
 set hintfiltermode vimperator-reflow
-set hintnames numeric
+" set hintnames numeric
+
+" Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
+set smoothscroll true
+
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
