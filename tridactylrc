@@ -1,7 +1,6 @@
-" This will have to do until someone writes us a nice syntax file :)
-" vim: set filetype=vim:
-
-" Reset settings (I think)
+" This wipes all existing settings. This means that if a setting in this file
+" is removed, then it will return to default. In other words, this file serves
+" as an enforced single point of truth for Tridactyl's configuration.
 sanitise tridactyllocal tridactylsync
 
 "
