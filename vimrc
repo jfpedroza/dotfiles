@@ -85,6 +85,7 @@ set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
+set scrolloff=10 " Minimal number of screen lines to keep above and below the cursor.
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
