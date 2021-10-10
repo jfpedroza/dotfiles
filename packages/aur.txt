@@ -1,7 +1,7 @@
 spotify
 insomnia
 postman-bin
-sublime-text-dev
+sublime-text-4
 gitkraken
 pcloud-drive
 ttf-ancient-fonts
