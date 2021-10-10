@@ -32,6 +32,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'honza/vim-snippets'
+Plug 'editorconfig/editorconfig-vim'
 
 if has('nvim')
     Plug 'voldikss/vim-floaterm'
@@ -46,6 +47,8 @@ Plug 'alx741/vim-hindent'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'vhdirk/vim-cmake'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'tridactyl/vim-tridactyl'
+Plug 'aklt/plantuml-syntax'
 
 " Initialize plugin system
 call plug#end()
@@ -498,6 +501,9 @@ let g:taskwiki_markup_syntax = 'markdown'
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
