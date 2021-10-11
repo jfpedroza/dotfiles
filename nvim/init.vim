@@ -40,6 +40,7 @@ Plug 'vhdirk/vim-cmake'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'tridactyl/vim-tridactyl'
 Plug 'aklt/plantuml-syntax'
+Plug 'rafcamlet/coc-nvim-lua'
 
 " Initialize plugin system
 call plug#end()
@@ -266,7 +267,8 @@ let g:coc_global_extensions = [
             \ 'coc-python',
             \ 'coc-elixir',
             \ 'coc-solargraph',
-            \ 'coc-java'
+            \ 'coc-java',
+            \ 'coc-lua'
             \ ]
 
 let g:airline#extensions#coc#enabled = 1

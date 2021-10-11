@@ -70,6 +70,7 @@
     "eslint.autoFix": true,
     "eslint.autoFixOnSave": true,
     "tslint.autoFixOnSave": true,
+    "Lua.diagnostics.globals": ["vim"],
     "languageserver": {
         "ccls": {
             "command": "ccls",
