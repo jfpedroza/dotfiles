@@ -7,7 +7,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.tmate.conf: tmate.conf
     ~/.vimrc: vimrc
-    ~/.config/nvim/init.vim: vimrc
+    ~/.config/nvim/init.vim: nvim/init.vim
     ~/.config/nvim/coc-settings.json: vim/coc-settings.json
     ~/.vim/coc-settings.json: vim/coc-settings.json
     ~/.tridactylrc: tridactylrc
