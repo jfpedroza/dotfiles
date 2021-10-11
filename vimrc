@@ -1,9 +1,5 @@
 " Specify a directory for plugins
-if has('nvim')
-    call plug#begin('~/.local/share/nvim/plugged')
-else
-    call plug#begin('~/.vim/plugged')
-endif
+call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -33,12 +29,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
-
-if has('nvim')
-    Plug 'voldikss/vim-floaterm'
-else
-    Plug 'rhysd/vim-healthcheck'
-endif
+Plug 'rhysd/vim-healthcheck'
 
 " Languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -91,30 +82,14 @@ set scrolloff=10 " Minimal number of screen lines to keep above and below the cu
 set shortmess+=c
 
 " Enable persistent undo so that undo history persists across vim sessions
-if has('nvim')
-    set undodir=~/.local/share/nvim/undo
-else
-    set undodir=~/.vim/undo
+set undodir=~/.vim/undo
 
-    " Create directory if it doesn't exist (NeoVim creates it automatically)
-    if !isdirectory(&undodir)
-        call mkdir(&undodir)
-    end
-endif
+" Create directory if it doesn't exist (NeoVim creates it automatically)
+if !isdirectory(&undodir)
+    call mkdir(&undodir)
+end
 
 set undofile
-
-" ------------------------ Settings for NeoVim only  -----------------"
-
-if has('nvim')
-    set inccommand=split
-endif
-
-" -------------------- End of settings for NeoVim only  --------------"
-
-" ------------------------ Settings intended for Vim only (not NeoVim) -----------------"
-" These are here because they are defaults in NeoVim or just don't exist at
-" all
 
 " Neovim's default history is already 10000 but Vim's is 50
 set history=10000
@@ -138,20 +113,15 @@ set autoindent " Inherit indentation when inserting a new line
 " Zsh like <Tab> completion in command mode
 set wildmenu
 
-" Settings that don't exist in NeoVim
-if !has('nvim')
-    set t_Co=256
-    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-endif
+set t_Co=256
+let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
 if has('gui_running')
     " Mouse
     set mousehide
     set mousemodel=popup
 endif
-
-" -------------------- End of settings intended for Vim only (not NeoVim) --------------"
 
 let mapleader = ","
 let maplocalleader = "ñ"
