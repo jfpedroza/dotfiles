@@ -90,6 +90,8 @@ set inccommand=split
 let mapleader = ","
 let maplocalleader = "ñ"
 
+let g:vimsyn_embed = 'l'
+
 " Open Vim RC and load automatically
 nmap <leader>ñ :tabedit $MYVIMRC<CR>
 nmap <expr> <localleader>ñ &filetype == 'vim' ? ':source %<CR>' : ':source $MYVIMRC<CR>'
@@ -486,6 +488,8 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
+
+command! Scratch lua require'tools'.makeScratch()
 
 " Checkout branch/tag using FZF
 " Ported from https://github.com/atweiden/fzf-extras/blob/zsh/fzf-extras.zsh
