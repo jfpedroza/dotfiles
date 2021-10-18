@@ -58,6 +58,8 @@ httpie
 zsh-syntax-highlighting
 expac
 xorg-xev
+obs-studio
+v4l2loopback-dkms
 firefox-developer-edition
 the_silver_searcher
 ripgrep
