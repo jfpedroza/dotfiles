@@ -1,3 +1,4 @@
+paccache-hook
 spotify
 insomnia
 postman-bin
