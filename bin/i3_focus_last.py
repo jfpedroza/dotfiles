@@ -62,6 +62,21 @@ class FocusWatcher:
                         else:
                             self.i3.command('[con_id=%s] focus' % window_id)
                             break
+            elif data[:10] == b'find-last:':
+                id_data = str(data[10:], 'utf-8')
+                windows = [int(window) for window in id_data.split(',')]
+
+                with self.window_list_lock:
+                    last = None
+                    for window_id in self.window_list:
+                        if window_id in windows:
+                            last = window_id
+                            break
+
+                    if not last:
+                        last = windows[0]
+
+                conn.send(bytes(str(last), 'utf-8'))
             elif not data:
                 selector.unregister(conn)
                 conn.close()
@@ -85,6 +100,17 @@ def switch():
     client_socket.connect(SOCKET_FILE)
     client_socket.send(b'switch')
     client_socket.close()
+
+
+def get_last_focused(window_ids):
+    data = bytes("find-last:" + ",".join(map(str, window_ids)), 'utf-8')
+
+    client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    client_socket.connect(SOCKET_FILE)
+    client_socket.send(data)
+    last_focused = int(client_socket.recv(1024))
+    client_socket.close()
+    return last_focused
 
 
 if __name__ == '__main__':

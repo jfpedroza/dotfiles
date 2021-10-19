@@ -56,7 +56,15 @@ if args.title:
     windows = tree.find_titled(fmt.format(args.title))
 
 if windows:
-    window = windows[0]
+    last_focused_id = i3_focus_last.get_last_focused(
+        [window.id for window in windows])
+
+    window = None
+    for w in windows:
+        if w.id == last_focused_id:
+            window = w
+            break
+
     if window.focused:
         if args.scratchpad:
             i3.command("move scratchpad")
@@ -66,7 +74,7 @@ if windows:
             print(
                 "Target window found and is already focused. Switching back to last focused")
     else:
-        i3.command('[id="{}"] focus'.format(window.window))
+        i3.command('[con_id="{}"] focus'.format(window.id))
         print("Target window found and focused")
 else:
     cmd = 'exec {}'.format(args.command)
