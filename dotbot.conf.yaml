@@ -28,6 +28,7 @@
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
     ~/.local/share/konsole/Shell.profile: kde/Shell.profile
     ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/gsimplecal/config: gsimplecal.config
 
 - defaults:
     link:

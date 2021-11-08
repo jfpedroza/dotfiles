@@ -1,6 +1,14 @@
 base-devel
 yay
 firefox
+network-manager-applet
+blueman
+dunst
+gsimplecal
+playerctl
+pamixer
+xorg-xrandr
+arandr
 kcalc
 konsole
 dolphin
