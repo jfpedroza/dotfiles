@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Set the same tag so the notification is replaced
+tag=string:x-dunst-stack-tag:volume
+
+# Change volume or mute according to the parameters
+pamixer "$@"
+
+volume=$(pamixer --get-volume)
+mute=$(pamixer --get-mute)
+
+if [[ $volume == 0 || $mute == "true" ]]; then
+    # Show the sound muted notification
+    dunstify -a "change-volume" -h $tag -u low -i audio-volume-muted "Volume muted"
+else
+    # Show the volume notification
+    dunstify -a "change-volume" -h $tag -u low -i audio-volume-high -h int:value:$volume "Volume: ${volume}%"
+fi
+
+# Play the volume changed sound
+canberra-gtk-play -i audio-volume-change -d "change-volume"
