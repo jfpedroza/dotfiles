@@ -21,6 +21,7 @@ spotifyd
 kitty
 unzip
 xclip
+copyq
 cmake
 zsh
 vim
