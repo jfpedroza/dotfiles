@@ -10,7 +10,7 @@ hide_when_empty = true
 
 [[block]]
 block = "pacman"
-format = "{pacman}|{aur}"
+format = "{pacman:1}|{aur:1}"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "yay -Qua"
 hide_when_uptodate = true
@@ -18,13 +18,13 @@ hide_when_uptodate = true
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{mem_used;G}({mem_used_percents})"
+format_mem = "{mem_used:1;G}({mem_used_percents:1})"
 format_swap = "{swap_used;_G*_B}/{swap_total;G}({swap_used_percents})"
 
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}"
+format = "{utilization:1}"
 
 <% if system("ls /sys/class/power_supply/*/capacity >/dev/null 2>&1") %>
 [[block]]
@@ -51,4 +51,4 @@ step_width = 5
 block = "time"
 format = "%a %d/%m %I:%M %p"
 on_click = "gsimplecal"
-interval = 60
+interval = 10
