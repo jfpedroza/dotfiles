@@ -172,7 +172,8 @@ installLanguages() {
     jedi
     taskwarrior-inthe.am
     git+git://github.com/robgolding/tasklib@develop
-    vit'
+    vit
+    yq'
 
     echo "Installing the following PIP packages for the current user: $pip_user_packages"
 
