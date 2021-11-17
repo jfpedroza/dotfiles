@@ -25,6 +25,7 @@
     ~/.config/i3/config: i3/i3.config
     ~/.config/compton.conf: i3/compton.conf
     ~/.config/rofi: i3/rofi
+    ~/.config/dunst/dunstrc: dunstrc
     ~/.config/copyq/copyq.conf: copyq.conf
     ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
     ~/.local/share/konsole/Shell.profile: kde/Shell.profile
