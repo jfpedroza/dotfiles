@@ -1611,7 +1611,7 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <FK16> {         [     XF86Launch7 ] };
     key <FK17> {         [     XF86Launch8 ] };
     key <FK18> {         [     XF86Launch9 ] };
-    key <FK19> {         [             F19 ] };
+    key <FK19> {         [     XF86Launch9 ] };
     key <FK20> {         [ XF86AudioMicMute ] };
     key <FK21> {         [ XF86TouchpadToggle ] };
     key <FK22> {         [  XF86TouchpadOn ] };
