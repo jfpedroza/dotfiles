@@ -64,6 +64,7 @@ ccls
 vifm
 ruby
 go
+lua
 httpie
 zsh-syntax-highlighting
 expac
