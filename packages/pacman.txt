@@ -1,6 +1,7 @@
 base-devel
 yay
 firefox
+lxsession
 network-manager-applet
 blueman
 dunst
