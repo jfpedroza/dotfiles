@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -ueo pipefail
+
+if [ -n "$(pactl list source-outputs short)" ]; then
+    icon="microphone_full"
+    state="Critical"
+    text=""
+else
+    icon=""
+    state="Idle"
+    text=""
+fi
+
+cat - <<EOF
+    {
+        "icon": "${icon}",
+        "state": "${state}",
+        "text": "${text}"
+    }
+EOF
