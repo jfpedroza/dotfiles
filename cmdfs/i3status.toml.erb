@@ -20,6 +20,9 @@ block = "memory"
 display_type = "memory"
 format_mem = "{mem_used:1;G}({mem_used_percents:1})"
 format_swap = "{swap_used;_G*_B}/{swap_total;G}({swap_used_percents})"
+<% if system("cat /proc/meminfo | grep SwapTotal | awk '$2 != 0 {exit 1}'") %>
+clickable = false
+<% end %>
 
 [[block]]
 block = "cpu"
