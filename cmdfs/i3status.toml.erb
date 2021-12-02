@@ -29,13 +29,11 @@ block = "cpu"
 interval = 1
 format = "{utilization:1}"
 
-<% if system("ls /sys/class/power_supply/*/capacity >/dev/null 2>&1") %>
 [[block]]
 block = "battery"
-driver = "upower"
-device = "DisplayDevice"
-format = "{percentage}%"
-<% end %>
+driver = "sysfs"
+allow_missing = true
+hide_missing = true
 
 [[block]]
 block = "notify"
