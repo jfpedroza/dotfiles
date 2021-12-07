@@ -96,7 +96,7 @@ export EDITOR='nvim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
 
 BULLETTRAIN_PROMPT_CHAR=\λ
 BULLETTRAIN_PROMPT_ROOT=true
