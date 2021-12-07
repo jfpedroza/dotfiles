@@ -10,6 +10,7 @@ playerctl
 pamixer
 xorg-xrandr
 arandr
+qt5ct
 kcalc
 konsole
 dolphin
