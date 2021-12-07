@@ -276,7 +276,6 @@ useZsh() {
     zsh_custom=~/.oh-my-zsh/custom
 
     mkdir -p ~/.zsh/completion
-    curl -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/zsh/_docker-compose >~/.zsh/completion/_docker-compose
     curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
 
     cd ~/.oh-my-zsh
