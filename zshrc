@@ -149,6 +149,9 @@ autoload -Uz compinit && compinit -i
 [[ -e "$HOME/.asdf/asdf.sh" ]] \
     && source "$HOME/.asdf/asdf.sh"
 
+[[ -e "/opt/asdf-vm/asdf.sh" ]] \
+    && source "/opt/asdf-vm/asdf.sh"
+
 [[ -e "$HOME/.asdf/completions/asdf.bash" ]] \
     && source "$HOME/.asdf/completions/asdf.bash"
 
