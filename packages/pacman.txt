@@ -11,6 +11,7 @@ pamixer
 xorg-xrandr
 arandr
 qt5ct
+light
 kcalc
 konsole
 dolphin
