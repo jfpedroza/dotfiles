@@ -1,4 +1,5 @@
 paccache-hook
+lightdm-settings
 spotify
 insomnia
 postman-bin

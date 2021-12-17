@@ -2,6 +2,10 @@ base-devel
 yay
 firefox
 lxsession
+lightdm
+lightdm-slick-greeter
+accountsservice
+light-locker
 network-manager-applet
 blueman
 dunst
