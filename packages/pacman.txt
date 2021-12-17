@@ -8,6 +8,7 @@ dunst
 gsimplecal
 playerctl
 pamixer
+pavucontrol-qt
 xorg-xrandr
 arandr
 qt5ct
