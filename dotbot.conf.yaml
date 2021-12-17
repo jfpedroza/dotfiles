@@ -26,8 +26,6 @@
     ~/.config/rofi: i3/rofi
     ~/.config/dunst/dunstrc: dunstrc
     ~/.config/copyq/copyq.conf: copyq.conf
-    ~/.local/share/kxmlgui5/konsole/konsoleui.rc: kde/konsoleui.rc
-    ~/.local/share/konsole/Shell.profile: kde/Shell.profile
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/gsimplecal/config: gsimplecal.config
 
@@ -40,8 +38,6 @@
 - link:
     ~/.zshrc: zshrc
     ~/.xinitrc: x11/xinitrc
-    ~/.config/kglobalshortcutsrc: kde/kglobalshortcutsrc
-    ~/.config/kcminputrc: kde/kcminputrc
 
 - defaults:
     link:
