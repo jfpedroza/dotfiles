@@ -28,6 +28,7 @@
     ~/.config/copyq/copyq.conf: copyq.conf
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/gsimplecal/config: gsimplecal.config
+    ~/.config/qmk/qmk.ini: qmk.ini
 
 - defaults:
     link:
