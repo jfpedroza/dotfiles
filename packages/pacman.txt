@@ -14,7 +14,7 @@ qt5ct
 light
 kcalc
 konsole
-dolphin
+pcmanfm-qt
 thunderbird
 filelight
 kdeconnect
