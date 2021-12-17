@@ -12,7 +12,7 @@ xorg-xrandr
 arandr
 qt5ct
 light
-kcalc
+qalculate-qt
 konsole
 pcmanfm-qt
 thunderbird
