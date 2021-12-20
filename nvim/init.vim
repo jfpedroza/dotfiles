@@ -30,6 +30,9 @@ Plug 'majutsushi/tagbar'
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -178,7 +181,7 @@ nnoremap <S-Tab> :bp<CR>
 " " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
 " " Show all open buffers with FZF
-nmap <leader>bb :Buffers<CR>
+nmap <leader>bb :Telescope buffers<CR>
 " Move to the alternative buffer
 nmap <leader>ba :b#<CR>
 
@@ -195,7 +198,7 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 " Open FZF file finder
-map <leader>f :Files<CR>
+map <leader>f :Telescope find_files<CR>
 
 " Do not open Vim's help with F1
 map <F1> <Nop>
@@ -352,6 +355,13 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
+
+" Telescope
+lua require('telescope').load_extension('fzf')
+
+highlight TelescopeSelection guibg=#303030
+
+autocmd User TelescopePreviewerLoaded setlocal number
 
 "Airline
 let g:airline_powerline_fonts = 1
