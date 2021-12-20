@@ -43,6 +43,7 @@ Plug 'vhdirk/vim-cmake'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'tridactyl/vim-tridactyl'
 Plug 'aklt/plantuml-syntax'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'rafcamlet/coc-nvim-lua'
 
 " Initialize plugin system
@@ -454,6 +455,10 @@ nmap <F8> :TagbarToggle<CR>
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Markdown Preview
+let g:mkdp_browser = 'qutebrowser'
+let g:mkdp_auto_close = 0
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
