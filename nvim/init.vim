@@ -82,6 +82,7 @@ set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
 set scrolloff=10 " Minimal number of screen lines to keep above and below the cursor.
+set wildmode=longest:full,full " Fill only the longest common string
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -93,7 +94,7 @@ set undofile
 set inccommand=split
 
 let mapleader = ","
-let maplocalleader = "ñ"
+let maplocalleader = "\\"
 
 let g:vimsyn_embed = 'l'
 
@@ -205,10 +206,8 @@ map <leader>f :Telescope find_files<CR>
 map <F1> <Nop>
 imap <F1> <Nop>
 
-if has('nvim')
-    " Map <F1> to exit terminal-mode
-    tnoremap <F1> <C-\><C-n>
-endif
+" Map <F1> to exit terminal-mode
+tnoremap <F1> <C-\><C-n>
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
