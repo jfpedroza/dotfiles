@@ -35,6 +35,7 @@ cmake
 zsh
 vim
 neovim
+qutebrowser
 tree
 php
 python-pip
