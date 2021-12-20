@@ -19,7 +19,6 @@ ngrok
 tasksh
 windscribe-cli
 crow-translate
-compton-tryone-git
 spotify-tui-bin
 google-cloud-sdk
 webtorrent-desktop

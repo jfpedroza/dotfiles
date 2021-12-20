@@ -6,6 +6,7 @@ lightdm
 lightdm-slick-greeter
 accountsservice
 light-locker
+picom
 network-manager-applet
 blueman
 dunst
