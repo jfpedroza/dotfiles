@@ -357,8 +357,6 @@ install() {
     useZsh
     setupScriptfs
     createSymlinks
-
-    xset r rate 450 25
 }
 
 install
