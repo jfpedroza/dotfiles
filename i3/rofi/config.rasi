@@ -1,8 +1,14 @@
 configuration {
-    display-drun:                   "Apps";
-    display-window:                 "Window";
-    show-icons:true;
-    modi:                           "window,run,ssh,drun";
+    show-icons: true;
+    modi: "window,run,ssh,drun";
+
+    drun {
+        display-name: "Apps";
+    }
+
+    window {
+        display-name: "Window";
+    }
 }
 
 * {
