@@ -22,6 +22,7 @@ qalculate-qt
 konsole
 pcmanfm-qt
 thunderbird
+xfce4-power-manager
 filelight
 kdeconnect
 gwenview
