@@ -44,6 +44,7 @@ python-virtualenv
 python2-pip
 python2-virtualenv
 net-tools
+inotify-tools
 wxgtk2
 bat
 exa
@@ -56,6 +57,8 @@ docker
 docker-compose
 postgresql
 postgis
+zathura
+zathira-pdf-mupdf
 gimp
 ghostwriter
 telegram-desktop
