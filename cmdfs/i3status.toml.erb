@@ -43,11 +43,19 @@ block = "custom"
 command = "i3_audio_status"
 json = true
 interval = 1
+hide_when_empty = true
 
 [[block]]
 block = "sound"
 step_width = 5
+headphones_indicator = true
 on_click = "pavucontrol-qt -t 3"
+
+[[block]]
+block = "sound"
+device_kind = "source"
+step_width = 5
+on_click = "pavucontrol-qt -t 4"
 
 [[block]]
 block = "time"
