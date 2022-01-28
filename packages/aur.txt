@@ -25,3 +25,4 @@ webtorrent-desktop
 ttf-font-awesome-4
 rofi-dmenu
 bear
+junction
