@@ -114,3 +114,4 @@ stack
 cabal-install
 bitwarden
 qmk
+syncthing
