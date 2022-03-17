@@ -60,3 +60,12 @@ alias age="ag --elixir"
 alias rge="rg -telixir"
 alias rgjs="rg -tjs"
 alias lox="cargo run"
+
+# Actually functions
+
+function xrun() {
+    (
+        "$@" &
+        disown
+    ) &>/dev/null
+}
