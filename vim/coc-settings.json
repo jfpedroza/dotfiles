@@ -20,6 +20,7 @@
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "elixir.pathToElixirLS": "~/code/lib/elixir-ls/release/language_server.sh",
     "elixirLS.dialyzerEnabled": true,
+    "elixirLS.dialyzerFormat": "dialyxir_long",
     "python.linting.pylintEnabled": true,
     "diagnostic.infoSign": "☑",
     "diagnostic.hintSign": "☝",
