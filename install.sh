@@ -302,7 +302,7 @@ setupScriptfs() {
     git clone git@github.com:johnf9896/scriptfs.git ~/code/lib/scriptfs
     cd ~/code/lib/scriptfs
     make
-    sudo cp scriptfs /usr/bin/scriptfs
+    sudo cp scriptfs /usr/local/bin/scriptfs
 }
 
 createSymlinks() {
