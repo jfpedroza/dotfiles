@@ -14,6 +14,7 @@ format = "{pacman:1}|{aur:1}"
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "yay -Qua"
 hide_when_uptodate = true
+on_click = "fakeroot pacman -Qu --dbpath /tmp/checkup-db-jhon/ | rofi -dmenu"
 
 [[block]]
 block = "memory"
@@ -32,7 +33,6 @@ format = "{utilization:1}"
 [[block]]
 block = "battery"
 driver = "sysfs"
-allow_missing = true
 hide_missing = true
 
 [[block]]
