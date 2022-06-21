@@ -46,6 +46,7 @@ Plug 'tridactyl/vim-tridactyl'
 Plug 'aklt/plantuml-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'rafcamlet/coc-nvim-lua'
+Plug 'vim-test/vim-test'
 
 " Initialize plugin system
 call plug#end()
@@ -459,6 +460,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Markdown Preview
 let g:mkdp_browser = 'qutebrowser'
 let g:mkdp_auto_close = 0
+
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
 
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
