@@ -25,8 +25,11 @@ thunderbird
 xfce4-power-manager
 filelight
 kdeconnect
-gwenview
+lximage-qt
 flameshot
+mpv
+vlc
+lxqt-archiver
 spotifyd
 kitty
 unzip
@@ -58,9 +61,10 @@ docker-compose
 postgresql
 postgis
 zathura
-zathira-pdf-mupdf
+zathura-pdf-mupdf
 gimp
 ghostwriter
+libreoffice-fresh
 telegram-desktop
 discord
 fd
