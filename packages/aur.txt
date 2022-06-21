@@ -12,7 +12,7 @@ gitflow-zshcompletion-avh
 electron9-bin
 musixmatch-bin
 4kvideodownloader
-franz-bin
+ferdium-bin
 visual-studio-code-insiders-bin
 anydesk
 ngrok
