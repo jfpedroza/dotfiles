@@ -134,14 +134,16 @@ installNpmPackages() {
     echo "==================================="
     echo "Installing global npm packages"
     echo "typescript-formatter"
+    echo "markdownlint-cli"
     echo "fixjson"
+    echo "airpaste"
     printf "\nInstalling global yarn packages\n"
     echo "diagnostic-languageserver"
     echo "==================================="
 
     cd ~/ || return
 
-    sudo npm i -g typescript-formatter markdownlint-cli fixjson
+    sudo npm i -g typescript-formatter markdownlint-cli fixjson airpaste
     yarn global add diagnostic-languageserver
 }
 
