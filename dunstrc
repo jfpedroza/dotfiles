@@ -421,6 +421,10 @@
     history_ignore = yes
     timeout = 1
 
+[ignore_ex_unit]
+    appname = ExUnit
+    history_ignore = yes
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
