@@ -51,6 +51,7 @@ inotify-tools
 wxgtk2
 bat
 exa
+git-delta
 nodejs
 npm
 yarn

@@ -1,11 +1,28 @@
 [user]
 	name = Jhon Pedroza
 	email = jhon@pedroza.me
+
 [core]
 	excludesfile = ~/.gitignore
+    pager = delta
+
 [pull]
 	rebase = true
+
 [rerere]
 	enabled = true
+
 [init]
 	defaultBranch = master
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
