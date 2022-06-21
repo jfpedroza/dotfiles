@@ -1,0 +1,8 @@
+[Unit]
+Description=Notification server for showing notifications using HTTP
+
+[Service]
+ExecStart=/home/jhon/dotfiles/bin/notif-server.py
+
+[Install]
+WantedBy=default.target
