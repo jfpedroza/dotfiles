@@ -41,6 +41,7 @@ vim
 neovim
 qutebrowser
 tree
+fzf
 php
 python-pip
 python-virtualenv

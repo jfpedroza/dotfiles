@@ -140,7 +140,8 @@ autoload -Uz compinit && compinit -i
 
 [ -f ~/.local/bin/tmuxinator.zsh ] && source ~/.local/bin/tmuxinator.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 [ -f /usr/share/zsh/site-functions/git-flow-completion.zsh ] \
 	&& source /usr/share/zsh/site-functions/git-flow-completion.zsh
