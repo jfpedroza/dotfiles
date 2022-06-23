@@ -1,55 +1,4 @@
-" Specify a directory for plugins
-call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-abolish'
-Plug 'vim-airline/vim-airline'
-Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-obsession'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
-Plug 'tbabej/taskwiki'
-Plug 'tpope/vim-surround'
-Plug 'christoomey/vim-system-copy'
-Plug 'Raimondi/delimitMate'
-Plug 'lag13/ReplaceWithRegister'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger', '<Plug>(git-messenger)']}
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'vim-scripts/argtextobj.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'easymotion/vim-easymotion'
-Plug 'majutsushi/tagbar'
-Plug 'honza/vim-snippets'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'voldikss/vim-floaterm'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-
-" Languages
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-Plug 'alx741/vim-hindent'
-Plug 'pbrisbin/vim-syntax-shakespeare'
-Plug 'vhdirk/vim-cmake'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-Plug 'tridactyl/vim-tridactyl'
-Plug 'aklt/plantuml-syntax'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'rafcamlet/coc-nvim-lua'
-Plug 'vim-test/vim-test'
-
-" Initialize plugin system
-call plug#end()
+lua require('plugins')
 
 syntax on
 filetype plugin indent on
@@ -359,8 +308,6 @@ function! s:show_documentation()
 endfunction
 
 " Telescope
-lua require('telescope').load_extension('fzf')
-
 highlight TelescopeSelection guibg=#303030
 
 autocmd User TelescopePreviewerLoaded setlocal number

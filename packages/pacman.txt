@@ -84,6 +84,7 @@ vifm
 ruby
 go
 lua
+stylua
 httpie
 zsh-syntax-highlighting
 expac

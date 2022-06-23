@@ -255,11 +255,6 @@ setupVim() {
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    # Vim-plug for NeoVim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-    nvim +PlugInstall +qall
     vim +PlugInstall +qall
 
     ln -sf ~/Cloud/vimwiki ~/vimwiki
