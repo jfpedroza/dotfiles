@@ -1,4 +1,4 @@
-lua require('plugins')
+lua require('jp.plugins')
 
 colorscheme darkblue
 
@@ -455,7 +455,7 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
 
-command! Scratch lua require'tools'.makeScratch()
+command! Scratch lua require'jp.tools'.makeScratch()
 
 " Checkout branch/tag using FZF
 " Ported from https://github.com/atweiden/fzf-extras/blob/zsh/fzf-extras.zsh
