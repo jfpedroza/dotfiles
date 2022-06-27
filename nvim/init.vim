@@ -129,8 +129,6 @@ nnoremap <S-Tab> :bp<CR>
 " " Close the current buffer and move to the previous one
 " " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
-" " Show all open buffers with FZF
-nmap <leader>bb :Telescope buffers<CR>
 " Move to the alternative buffer
 nmap <leader>ba :b#<CR>
 
@@ -145,9 +143,6 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
-
-" Open FZF file finder
-map <leader>f :Telescope find_files<CR>
 
 " Do not open Vim's help with F1
 map <F1> <Nop>
