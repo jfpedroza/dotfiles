@@ -294,6 +294,13 @@ augroup end
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
+    elseif &filetype == "lua"
+      let line = getline(".")
+      if line =~ 'vim\.\([bwg]\?o\|opt\|api\)\.'
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
     else
         call CocAction('doHover')
     endif
