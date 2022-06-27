@@ -305,9 +305,7 @@ function! s:show_documentation()
 endfunction
 
 " Telescope
-highlight TelescopeSelection guibg=#303030
-
-autocmd User TelescopePreviewerLoaded setlocal number
+lua require("jp.telescope")
 
 "Airline
 let g:airline_powerline_fonts = 1
