@@ -1,9 +1,5 @@
 lua require('plugins')
 
-syntax on
-filetype plugin indent on
-
-" set clipboard=unnamedplus
 colorscheme darkblue
 
 " Enable hidden buffers
