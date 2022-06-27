@@ -20,8 +20,13 @@ require("telescope").setup({
   },
 })
 
-vim.cmd([[highlight TelescopeSelection guibg=#303030]])
-vim.cmd([[autocmd User TelescopePreviewerLoaded setlocal number]])
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#303030" })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopePreviewerLoaded",
+  callback = function()
+    vim.wo.number = true
+  end,
+})
 
 vim.keymap.set("n", "<leader>bb", require("telescope.builtin").buffers, { desc = "Show buffers on Telescope" })
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files, { desc = "Find files using Telescope" })
