@@ -48,6 +48,7 @@ startup({
         require("telescope").load_extension("fzf")
       end,
     })
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
     -- Languages
     use({ "neoclide/coc.nvim", branch = "release" })
