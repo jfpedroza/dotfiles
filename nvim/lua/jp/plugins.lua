@@ -43,6 +43,7 @@ startup({
     use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use("nvim-treesitter/nvim-treesitter-refactor")
 
     -- Languages
     use({ "neoclide/coc.nvim", branch = "release" })

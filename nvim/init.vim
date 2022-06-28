@@ -274,10 +274,6 @@ nnoremap <silent> <leader>y :<C-U>CocList -A --normal yank<CR>
 
 map <F5> :CocCommand explorer<CR>
 
-"" Auto commands
-""" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#000000 guibg=#ff2222 ctermfg=200
