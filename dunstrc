@@ -425,6 +425,31 @@
     appname = ExUnit
     history_ignore = yes
 
+[ignore_kde_connect_gmail]
+    appname = "KDE Connect"
+    summary = "Gmail"
+    format = ""
+
+[ignore_kde_connect_yandex]
+    appname = "KDE Connect"
+    summary = "Yandex Mail"
+    format = ""
+
+[ignore_kde_connect_slack]
+    appname = "KDE Connect"
+    summary = "com.Slack"
+    format = ""
+
+[ignore_kde_connect_telegram]
+    appname = "KDE Connect"
+    summary = "Telegram"
+    format = ""
+
+[ignore_kde_connect_whatsapp]
+    appname = "KDE Connect"
+    summary = "WhatsApp"
+    format = ""
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
