@@ -34,41 +34,57 @@ local custom_attach = function(_client, bufnr)
   vim.keymap.set("n", "]g", vim.diagnostic.goto_next, bufopts)
 end
 
-lspconfig.elixirls.setup({
-  cmd = { vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh") },
-  on_attach = custom_attach,
-  settings = {
-    elixirLS = {
-      dialyzerEnabled = true,
-      dialyzerFormat = "dialyxir_long",
-    },
-  },
-})
-
-lspconfig.sumneko_lua.setup({
-  on_attach = custom_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
+local servers = {
+  elixirls = {
+    cmd = { vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh") },
+    settings = {
+      elixirLS = {
+        dialyzerEnabled = true,
+        dialyzerFormat = "dialyxir_long",
       },
     },
   },
-})
+  sumneko_lua = {
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim" },
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  },
+  vimls = true,
+}
 
-lspconfig.vimls.setup({
-  on_attach = custom_attach,
-})
+local setup_server = function(server, config)
+  if not config then
+    return
+  end
+
+  if type(config) ~= "table" then
+    config = {}
+  end
+
+  config = vim.tbl_deep_extend("force", {
+    on_attach = custom_attach,
+  }, config)
+
+  lspconfig[server].setup(config)
+end
+
+for server, config in pairs(servers) do
+  setup_server(server, config)
+end
