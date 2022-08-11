@@ -34,6 +34,17 @@ local custom_attach = function(_client, bufnr)
   vim.keymap.set("n", "]g", vim.diagnostic.goto_next, bufopts)
 end
 
+lspconfig.elixirls.setup({
+  cmd = { vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh") },
+  on_attach = custom_attach,
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = true,
+      dialyzerFormat = "dialyxir_long",
+    },
+  },
+})
+
 lspconfig.sumneko_lua.setup({
   on_attach = custom_attach,
   settings = {

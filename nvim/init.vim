@@ -211,7 +211,6 @@ let g:coc_global_extensions = [
             \ 'coc-vimlsp',
             \ 'coc-rls',
             \ 'coc-python',
-            \ 'coc-elixir',
             \ 'coc-solargraph',
             \ 'coc-java'
             \ ]
