@@ -40,7 +40,7 @@ startup({
     use("honza/vim-snippets")
     use("editorconfig/editorconfig-vim")
     use("voldikss/vim-floaterm")
-    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { { "nvim-lua/plenary.nvim" } } })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/nvim-treesitter-refactor")
