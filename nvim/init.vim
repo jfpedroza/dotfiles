@@ -213,8 +213,7 @@ let g:coc_global_extensions = [
             \ 'coc-python',
             \ 'coc-elixir',
             \ 'coc-solargraph',
-            \ 'coc-java',
-            \ 'coc-lua'
+            \ 'coc-java'
             \ ]
 
 let g:airline#extensions#coc#enabled = 1
@@ -304,6 +303,9 @@ endfunction
 
 " Telescope
 lua require("jp.telescope")
+
+" Builtin LSP
+lua require("jp.lsp")
 
 "Airline
 let g:airline_powerline_fonts = 1

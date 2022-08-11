@@ -85,6 +85,7 @@ ruby
 go
 lua
 stylua
+lua-language-server
 httpie
 zsh-syntax-highlighting
 expac

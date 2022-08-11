@@ -46,6 +46,7 @@ startup({
     use("nvim-treesitter/nvim-treesitter-refactor")
 
     -- Languages
+    use("neovim/nvim-lspconfig")
     use({ "neoclide/coc.nvim", branch = "release" })
     use("sheerun/vim-polyglot")
     use("alx741/vim-hindent")
