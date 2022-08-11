@@ -37,7 +37,6 @@ startup({
     use("kshenoy/vim-signature")
     use("easymotion/vim-easymotion")
     use("majutsushi/tagbar")
-    use("honza/vim-snippets")
     use("editorconfig/editorconfig-vim")
     use("voldikss/vim-floaterm")
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { { "nvim-lua/plenary.nvim" } } })
@@ -58,6 +57,17 @@ startup({
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
     use("rafcamlet/coc-nvim-lua")
     use("vim-test/vim-test")
+
+    -- Completion
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+
+    -- Snippets
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
+    use("honza/vim-snippets")
 
     -- Authomatically set up configuration after cloning packer.nvim
     if packer_bootstrap then

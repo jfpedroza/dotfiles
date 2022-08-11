@@ -34,6 +34,8 @@ local custom_attach = function(_client, bufnr)
   vim.keymap.set("n", "]g", vim.diagnostic.goto_next, bufopts)
 end
 
+local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local servers = {
   elixirls = {
     cmd = { vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh") },
@@ -80,6 +82,7 @@ local setup_server = function(server, config)
 
   config = vim.tbl_deep_extend("force", {
     on_attach = custom_attach,
+    capabilities = updated_capabilities,
   }, config)
 
   lspconfig[server].setup(config)

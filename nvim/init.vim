@@ -198,7 +198,6 @@ let g:coc_global_extensions = [
             \ 'coc-git',
             \ 'coc-highlight',
             \ 'coc-yank',
-            \ 'coc-snippets',
             \ 'coc-json',
             \ 'coc-yaml',
             \ 'coc-tsserver',
