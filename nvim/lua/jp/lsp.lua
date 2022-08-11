@@ -68,3 +68,7 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+
+lspconfig.vimls.setup({
+  on_attach = custom_attach,
+})

@@ -208,7 +208,6 @@ let g:coc_global_extensions = [
             \ 'coc-prettier',
             \ 'coc-html',
             \ 'coc-css',
-            \ 'coc-vimlsp',
             \ 'coc-rls',
             \ 'coc-python',
             \ 'coc-solargraph',

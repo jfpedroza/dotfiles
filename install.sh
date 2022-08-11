@@ -133,6 +133,7 @@ installAndConfigureDocker() {
 installNpmPackages() {
     echo "==================================="
     echo "Installing global npm packages"
+    echo "vim-language-server"
     echo "typescript-formatter"
     echo "markdownlint-cli"
     echo "fixjson"
@@ -143,7 +144,7 @@ installNpmPackages() {
 
     cd ~/ || return
 
-    sudo npm i -g typescript-formatter markdownlint-cli fixjson airpaste
+    sudo npm i -g vim-language-server typescript-formatter markdownlint-cli fixjson airpaste
     yarn global add diagnostic-languageserver
 }
 
