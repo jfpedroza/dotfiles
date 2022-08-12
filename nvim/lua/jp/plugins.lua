@@ -12,7 +12,12 @@ startup({
   function(use)
     use({ "wbthomason/packer.nvim", opt = true })
     use("tpope/vim-repeat")
-    use("tpope/vim-commentary")
+    use({
+      "numToStr/Comment.nvim",
+      config = function()
+        require("Comment").setup()
+      end,
+    })
     use("tpope/vim-abolish")
     use("vim-airline/vim-airline")
     use("simnalamburt/vim-mundo")
