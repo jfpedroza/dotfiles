@@ -21,9 +21,8 @@ ls.config.set_config({
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 local snippet = ls.s
-local i, f = ls.insert_node, ls.function_node
+local i, c, t, f = ls.insert_node, ls.choice_node, ls.text_node, ls.function_node
 local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
 
 local same = function(index)
   return f(function(arg)
@@ -32,7 +31,6 @@ local same = function(index)
 end
 
 ls.add_snippets("all", {
-  snippet("sametest", fmt([[example: {}, function: {}]], { i(1), same(1) })),
   snippet(
     "time",
     f(function()
@@ -52,6 +50,12 @@ ls.add_snippets("lua", {
       i(1),
     })
   ),
+})
+
+-- Test and exmaple snippets
+ls.add_snippets("all", {
+  snippet("sametest", fmt([[example: {}, function: {}]], { i(1), same(1) })),
+  snippet("choicetest", fmt("Choose: {}", { c(1, { t("one"), t("two"), t("three") }) })),
 })
 
 -- TODO: Find or create snippets for date, datetime and uuid
@@ -79,3 +83,5 @@ vim.keymap.set("i", "<c-l>", function()
     ls.change_choice(1)
   end
 end)
+
+vim.keymap.set("i", "<c-u>", require("luasnip.extras.select_choice"))
