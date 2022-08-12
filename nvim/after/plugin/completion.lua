@@ -3,8 +3,6 @@ if not has_cmp then
   return
 end
 
-require("luasnip.loaders.from_snipmate").lazy_load()
-
 cmp.setup({
   snippet = {
     expand = function(args)
