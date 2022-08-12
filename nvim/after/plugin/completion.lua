@@ -3,6 +3,8 @@ if not has_cmp then
   return
 end
 
+local lspkind = require("lspkind")
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -23,6 +25,19 @@ cmp.setup({
     { name = "luasnip" },
     { name = "path" },
   }, {
-    { name = "buffer" },
+    { name = "buffer", keyword_length = 3 },
   }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      maxwidth = 50,
+      menu = {
+        buffer = "[buf]",
+        path = "[path]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        luasnip = "[snip]",
+      },
+    }),
+  },
 })
