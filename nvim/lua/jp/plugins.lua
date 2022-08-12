@@ -24,6 +24,13 @@ startup({
     use("mileszs/ack.vim")
     use("Chiel92/vim-autoformat")
     use("skywind3000/asyncrun.vim")
+    use({
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+        "kyazdani42/nvim-web-devicons",
+      },
+      tag = "nightly",
+    })
     use({ "vimwiki/vimwiki", branch = "dev" })
     use("tbabej/taskwiki")
     use("tpope/vim-surround")

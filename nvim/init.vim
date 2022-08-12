@@ -192,7 +192,6 @@ set wildignore+=*/_build/**
 
 "" Extensions
 let g:coc_global_extensions = [
-            \ 'coc-explorer',
             \ 'coc-marketplace',
             \ 'coc-diagnostic',
             \ 'coc-git',
@@ -267,8 +266,6 @@ nnoremap <silent> ¿o  :<C-u>CocList outline<cr>
 nnoremap <silent> ¿s  :<C-u>CocList -I symbols<cr>
 """" Yanked text list
 nnoremap <silent> <leader>y :<C-U>CocList -A --normal yank<CR>
-
-map <F5> :CocCommand explorer<CR>
 
 highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
