@@ -111,6 +111,9 @@ xmap <leader>r "_d"+P
 " Normalize Y behavior to yank till the end of line
 nnoremap Y y$
 
+" Map Ctrl-K Ctrl-K to the default behavior of Ctrl-K
+inoremap <C-K><C-K> <C-K>
+
 " Toggle relative numbers
 nnoremap <silent> <leader>rn :set relativenumber!<CR>
 
