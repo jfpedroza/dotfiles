@@ -62,7 +62,6 @@ startup({
     use("tridactyl/vim-tridactyl")
     use("aklt/plantuml-syntax")
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
-    use("rafcamlet/coc-nvim-lua")
     use("vim-test/vim-test")
 
     -- Completion
