@@ -5,6 +5,11 @@ end
 
 local lspkind = require("lspkind")
 
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+-- Don't give |ins-completion-menu| messages.
+vim.opt.shortmess:append("c")
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -12,11 +17,32 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<c-y>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      }),
+      { "i", "c" }
+    ),
+    ["<c-space>"] = cmp.mapping({
+      i = cmp.mapping.complete(),
+      c = function(
+        _ --[[fallback]]
+      )
+        if cmp.visible() then
+          if not cmp.confirm({ select = true }) then
+            return
+          end
+        else
+          cmp.complete()
+        end
+      end,
+    }),
   }),
   sources = cmp.config.sources({
     { name = "nvim_lua" },

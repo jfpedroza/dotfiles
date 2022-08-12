@@ -23,16 +23,12 @@ set expandtab
 set ignorecase
 set splitbelow " Open new split panes to right and bottom, which feels more natural
 set splitright
-set completeopt=menu,preview,noinsert " Do not insert first suggestion
 set timeoutlen=350
 set ttimeoutlen=50
 set relativenumber " Show relative number lines
 set cmdheight=2
 set scrolloff=10 " Minimal number of screen lines to keep above and below the cursor.
 set wildmode=longest:full,full " Fill only the longest common string
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
 
 " Enable persistent undo so that undo history persists across vim sessions
 set undodir=~/.local/share/nvim/undo
