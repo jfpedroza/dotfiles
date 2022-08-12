@@ -2,8 +2,6 @@ if not pcall(require, "telescope") then
   return
 end
 
-require("telescope").load_extension("fzf")
-
 local actions = require("telescope.actions")
 
 require("telescope").setup({
@@ -18,7 +16,15 @@ require("telescope").setup({
       },
     },
   },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({}),
+    },
+  },
 })
+
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("ui-select")
 
 vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#303030" })
 vim.api.nvim_create_autocmd("User", {
