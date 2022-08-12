@@ -20,6 +20,40 @@ ls.config.set_config({
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
+local snippet = ls.s
+local i, f = ls.insert_node, ls.function_node
+local fmt = require("luasnip.extras.fmt").fmt
+local rep = require("luasnip.extras").rep
+
+local same = function(index)
+  return f(function(arg)
+    return arg[1]
+  end, { index })
+end
+
+ls.add_snippets("all", {
+  snippet("sametest", fmt([[example: {}, function: {}]], { i(1), same(1) })),
+  snippet(
+    "time",
+    f(function()
+      return os.date("%H:%M")
+    end)
+  ),
+})
+
+ls.add_snippets("lua", {
+  snippet(
+    "req",
+    fmt([[local {} = require("{}")]], {
+      f(function(import_name)
+        local parts = vim.split(import_name[1][1], ".", true)
+        return parts[#parts]
+      end, { 1 }),
+      i(1),
+    })
+  ),
+})
+
 -- TODO: Find or create snippets for date, datetime and uuid
 
 -- <c-k> is my expansion key
@@ -37,3 +71,11 @@ vim.keymap.set({ "i", "s" }, "<c-j>", function()
     ls.jump(-1)
   end
 end, { silent = true })
+
+-- <c-l> is selecting within a list of options.
+-- This is useful for choice nodes
+vim.keymap.set("i", "<c-l>", function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end)
