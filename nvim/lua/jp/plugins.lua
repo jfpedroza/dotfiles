@@ -56,6 +56,7 @@ startup({
     use("nvim-telescope/telescope-ui-select.nvim")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/nvim-treesitter-refactor")
+    use("rcarriga/nvim-notify")
 
     -- Languages
     use("neovim/nvim-lspconfig")
