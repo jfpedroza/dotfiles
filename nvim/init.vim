@@ -207,7 +207,6 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-rls',
             \ 'coc-python',
-            \ 'coc-solargraph',
             \ 'coc-java'
             \ ]
 

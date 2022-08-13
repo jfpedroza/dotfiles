@@ -69,6 +69,7 @@ local servers = {
     },
   },
   vimls = true,
+  solargraph = true,
 }
 
 local setup_server = function(server, config)

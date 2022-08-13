@@ -175,4 +175,4 @@ export KERL_BUILD_DOCS=yes
 export KERL_INSTALL_HTMLDOCS=no
 export KERL_INSTALL_MANPAGES=no
 
-export PATH=$HOME/private_dotfiles/bin:$HOME/dotfiles/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$PATH
+export PATH=$HOME/private_dotfiles/bin:$HOME/dotfiles/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$PATH
