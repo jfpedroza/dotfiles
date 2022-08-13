@@ -172,7 +172,7 @@ installLanguages() {
     vcspull
     autopep8
     pylint
-    jedi
+    pyright
     taskwarrior-inthe.am
     git+git://github.com/robgolding/tasklib@develop
     vit

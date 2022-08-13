@@ -18,7 +18,6 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-    "python.linting.pylintEnabled": true,
     "diagnostic.infoSign": "☑",
     "diagnostic.hintSign": "☝",
     "diagnostic.warningSign": "⚠",

@@ -70,6 +70,7 @@ local servers = {
   },
   vimls = true,
   solargraph = true,
+  pyright = true,
 }
 
 local setup_server = function(server, config)
