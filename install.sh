@@ -148,7 +148,8 @@ installNpmPackages() {
     airpaste'
 
     yarn_packages='
-    diagnostic-languageserver'
+    diagnostic-languageserver
+    yaml-language-server'
 
     echo "Installing the following global NPM packages: $npm_packages"
     sudo npm i -g $npm_packages

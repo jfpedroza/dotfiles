@@ -77,6 +77,7 @@ local servers = {
   cssls = true,
   eslint = true,
   tsserver = true,
+  yamlls = true,
 }
 
 local setup_server = function(server, config)
