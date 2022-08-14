@@ -132,20 +132,29 @@ installAndConfigureDocker() {
 
 installNpmPackages() {
     echo "==================================="
-    echo "Installing global npm packages"
-    echo "vim-language-server"
-    echo "typescript-formatter"
-    echo "markdownlint-cli"
-    echo "fixjson"
-    echo "airpaste"
-    printf "\nInstalling global yarn packages\n"
-    echo "diagnostic-languageserver"
+    echo "Installing global npm and yarn packages"
     echo "==================================="
 
     cd ~/ || return
 
-    sudo npm i -g vim-language-server typescript-formatter markdownlint-cli fixjson airpaste
-    yarn global add diagnostic-languageserver
+    npm_packages='
+    vim-language-server
+    vscode-langservers-extracted
+    typescript
+    typescript-language-server
+    typescript-formatter
+    markdownlint-cli
+    fixjson
+    airpaste'
+
+    yarn_packages='
+    diagnostic-languageserver'
+
+    echo "Installing the following global NPM packages: $npm_packages"
+    sudo npm i -g $npm_packages
+
+    echo "Installing the following global Yarn packages: $npm_packages"
+    yarn global add $yarn_packages
 }
 
 installLanguages() {

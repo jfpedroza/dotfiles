@@ -196,15 +196,7 @@ let g:coc_global_extensions = [
             \ 'coc-git',
             \ 'coc-highlight',
             \ 'coc-yank',
-            \ 'coc-json',
             \ 'coc-yaml',
-            \ 'coc-tsserver',
-            \ 'coc-tslint-plugin',
-            \ 'coc-eslint',
-            \ 'coc-tslint-plugin',
-            \ 'coc-prettier',
-            \ 'coc-html',
-            \ 'coc-css',
             \ 'coc-java'
             \ ]
 

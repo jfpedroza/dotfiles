@@ -72,6 +72,11 @@ local servers = {
   solargraph = true,
   pyright = true,
   rls = true,
+  jsonls = true,
+  html = true,
+  cssls = true,
+  eslint = true,
+  tsserver = true,
 }
 
 local setup_server = function(server, config)
