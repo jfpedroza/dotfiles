@@ -9,6 +9,9 @@ require("yanky").setup({
   system_clipboard = {
     sync_with_ring = false,
   },
+  highlight = {
+    timer = 300,
+  },
   picker = {
     telescope = {
       -- Override default mappings because changing <c-p> is an aberration

@@ -10,7 +10,6 @@
         }
     ],
     "explorer.icon.enableNerdfont": true,
-    "yank.highlight.duration": 300,
     "coc.preferences.jumpCommand": "drop",
     "coc.preferences.formatOnSaveFiletypes": [],
     "git.addedSign.hlGroup": "GitGutterAdd",
