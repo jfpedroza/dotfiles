@@ -192,7 +192,6 @@ set wildignore+=*/_build/**
 "" Extensions
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
-            \ 'coc-git',
             \ ]
 
 let g:airline#extensions#coc#enabled = 1
@@ -202,13 +201,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-""" Git
-nmap <silent> ]c <Plug>(coc-git-nextchunk)
-nmap <silent> [c <Plug>(coc-git-prevchunk)
-nmap <silent> <Leader>cs :CocCommand git.chunkStage<CR>
-nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
-nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
 
 """ Using CocList
 """" Manage extensions

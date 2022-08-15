@@ -64,6 +64,7 @@ startup({
       end,
     })
     use({ "gbprod/yanky.nvim" })
+    use({ "lewis6991/gitsigns.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")
