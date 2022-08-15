@@ -78,6 +78,8 @@ local servers = {
   eslint = true,
   tsserver = true,
   yamlls = true,
+  ccls = true,
+  diagnosticls = require("jp.lsp.diagnosticls"),
 }
 
 local setup_server = function(server, config)

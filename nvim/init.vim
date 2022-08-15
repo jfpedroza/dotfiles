@@ -192,7 +192,6 @@ set wildignore+=*/_build/**
 "" Extensions
 let g:coc_global_extensions = [
             \ 'coc-marketplace',
-            \ 'coc-diagnostic',
             \ 'coc-git',
             \ ]
 

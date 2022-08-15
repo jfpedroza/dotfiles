@@ -186,7 +186,8 @@ installLanguages() {
     taskwarrior-inthe.am
     git+git://github.com/robgolding/tasklib@develop
     vit
-    yq'
+    yq
+    vim-vint'
 
     echo "Installing the following PIP packages for the current user: $pip_user_packages"
 
