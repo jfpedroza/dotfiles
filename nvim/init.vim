@@ -1,3 +1,4 @@
+scriptencoding utf-8
 lua require('jp.plugins')
 
 colorscheme darkblue
@@ -36,7 +37,7 @@ set undofile
 
 set inccommand=split
 
-let mapleader = ","
+let mapleader = ','
 let maplocalleader = "\\"
 
 let g:vimsyn_embed = 'l'
@@ -174,11 +175,13 @@ nmap <silent> XX :quitall<CR>
 " Use AltGr+. to execute last Ex command
 nnoremap · @:
 
-autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
-autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
+augroup FileTypeSpacing
+  autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
+  autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
+augroup end
 
 set wildignore=Ui_*,*.git,*.pyc
 set wildignore+=*/vendor/**
@@ -268,7 +271,9 @@ let g:SignatureMarkTextHLDynamic = 1
 
 " Autoformat
 noremap <F3> :Autoformat<CR>
+augroup Autoformat
 autocmd BufWrite * :Autoformat
+augroup end
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
@@ -298,6 +303,7 @@ let g:mkdp_auto_close = 0
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 
+augroup ElixirWrap
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
 autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
@@ -305,6 +311,7 @@ autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok
 " Wrap word in {:error, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
 autocmd FileType elixir xmap <silent> <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
+augroup end
 
 " JavaScript
 let g:jsx_ext_required=0                     " jsx highlighting in .js files
@@ -330,8 +337,10 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
+augroup FileTypeDetection
 au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
 au BufNewFile,BufRead Jenkinsfile* setlocal ft=groovy
+augroup end
 
 set secure
 
@@ -367,8 +376,8 @@ endfunction
 
 " Checkout branch when the user selects one
 function s:CheckoutShortAction(selection) abort
-    let name = substitute(a:selection, ".* ", "", "")
-    let name = substitute(name, "remotes/[^/]*/", "", "")
+    let name = substitute(a:selection, '.* ', '', '')
+    let name = substitute(name, 'remotes/[^/]*/', '', '')
     execute '!git checkout ' . name
 endfunction
 
@@ -427,7 +436,7 @@ endfunction
 " Wrap the current word in some text
 function! s:NormalWrap(before, after)
     silent DelimitMateOff
-    execute "normal bi" . a:before . "ea" . a:after . ""
+    execute 'normal bi' . a:before . 'ea' . a:after . ''
     silent DelimitMateOn
 endfunction
 
@@ -438,9 +447,9 @@ function! s:VisualWrap(before, after) range
 
     silent DelimitMateOff
     call setpos('.', end)
-    execute "normal a" . a:after . ""
+    execute 'normal a' . a:after . ''
     call setpos('.', start)
-    execute "normal i" . a:before . ""
+    execute 'normal i' . a:before . ''
     silent DelimitMateOn
 endfunction
 
