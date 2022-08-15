@@ -65,6 +65,10 @@ function M.find_files()
   })
 end
 
+function M.yank_history()
+  require("yanky.telescope.yank_history").yank_history({})
+end
+
 local pickers = setmetatable({}, {
   __index = function(_, k)
     if M[k] then
@@ -79,3 +83,4 @@ local pickers = setmetatable({}, {
 
 vim.keymap.set("n", "<leader>bb", pickers.buffers, { desc = "Show buffers on Telescope" })
 vim.keymap.set("n", "<leader>f", pickers.find_files, { desc = "Find files using Telescope" })
+vim.keymap.set("n", "<leader>y", pickers.yank_history, { desc = "Show yank history using Telescope" })

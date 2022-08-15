@@ -194,7 +194,6 @@ let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-diagnostic',
             \ 'coc-git',
-            \ 'coc-yank',
             \ ]
 
 let g:airline#extensions#coc#enabled = 1
@@ -249,8 +248,6 @@ nnoremap <silent> ¿c  :<C-u>CocList commands<cr>
 nnoremap <silent> ¿o  :<C-u>CocList outline<cr>
 """" Search workspace symbols
 nnoremap <silent> ¿s  :<C-u>CocList -I symbols<cr>
-"""" Yanked text list
-nnoremap <silent> <leader>y :<C-U>CocList -A --normal yank<CR>
 
 highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116

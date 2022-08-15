@@ -63,6 +63,7 @@ startup({
         require("colorizer").setup(nil, { css = true })
       end,
     })
+    use({ "gbprod/yanky.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")
