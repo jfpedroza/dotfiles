@@ -49,6 +49,7 @@ cmp.setup({
   }, {
     { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "yank_history", keyword_length = 3 },
     { name = "path" },
   }, {
     { name = "buffer", keyword_length = 3 },
@@ -63,6 +64,7 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         nvim_lua = "[api]",
         luasnip = "[snip]",
+        yank_history = "[yank]",
       },
     }),
   },
