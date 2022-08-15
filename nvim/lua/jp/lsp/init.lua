@@ -16,6 +16,9 @@ local show_documentation = function(bufnr)
   vim.lsp.buf.hover()
 end
 
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+
 local custom_attach = function(_client, bufnr)
   local bufopts = { buffer = bufnr, silent = true }
   vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, bufopts)
@@ -28,10 +31,6 @@ local custom_attach = function(_client, bufnr)
   vim.keymap.set("n", "K", function()
     show_documentation(bufnr)
   end, bufopts)
-
-  -- Move outside the function when CoC is removed
-  vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, bufopts)
-  vim.keymap.set("n", "]g", vim.diagnostic.goto_next, bufopts)
 end
 
 local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())

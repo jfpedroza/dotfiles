@@ -197,32 +197,6 @@ let g:coc_global_extensions = [
 
 let g:airline#extensions#coc#enabled = 1
 
-"" Mappings
-""" Gotos
-nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <leader>dt <Plug>(coc-type-definition)
-nmap <silent> <leader>di <Plug>(coc-implementation)
-nmap <silent> <leader>dr <Plug>(coc-references)
-
-""" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-""" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-""" Rename current word
-nmap <leader>re <Plug>(coc-rename)
-
-""" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-""" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-""" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
 """ Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -237,16 +211,10 @@ nmap <silent> <Leader>cu :CocCommand git.chunkUndo<CR>
 nmap <silent> <Leader>cp <Plug>(coc-git-chunkinfo)
 
 """ Using CocList
-"""" Show all diagnostics
-nnoremap <silent> ¿d  :<C-u>CocList diagnostics<cr>
 """" Manage extensions
 nnoremap <silent> ¿e  :<C-u>CocList extensions<cr>
 """" Show commands
 nnoremap <silent> ¿c  :<C-u>CocList commands<cr>
-"""" Find symbol of current document
-nnoremap <silent> ¿o  :<C-u>CocList outline<cr>
-"""" Search workspace symbols
-nnoremap <silent> ¿s  :<C-u>CocList -I symbols<cr>
 
 highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
@@ -260,21 +228,6 @@ augroup CocGroup
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    elseif &filetype == "lua"
-      let line = getline(".")
-      if line =~ 'vim\.\([bwg]\?o\|opt\|api\)\.'
-        execute 'h '.expand('<cword>')
-      else
-        call CocAction('doHover')
-      endif
-    else
-        call CocAction('doHover')
-    endif
-endfunction
 
 " Telescope
 lua require("jp.telescope")
