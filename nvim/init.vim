@@ -194,7 +194,6 @@ let g:coc_global_extensions = [
             \ 'coc-marketplace',
             \ 'coc-diagnostic',
             \ 'coc-git',
-            \ 'coc-highlight',
             \ 'coc-yank',
             \ ]
 

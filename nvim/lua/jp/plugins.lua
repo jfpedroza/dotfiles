@@ -57,6 +57,12 @@ startup({
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("nvim-treesitter/nvim-treesitter-refactor")
     use("rcarriga/nvim-notify")
+    use({
+      "NvChad/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup(nil, { css = true })
+      end,
+    })
 
     -- Languages
     use("neovim/nvim-lspconfig")
