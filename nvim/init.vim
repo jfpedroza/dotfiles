@@ -196,7 +196,6 @@ let g:coc_global_extensions = [
             \ 'coc-git',
             \ 'coc-highlight',
             \ 'coc-yank',
-            \ 'coc-java'
             \ ]
 
 let g:airline#extensions#coc#enabled = 1
