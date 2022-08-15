@@ -187,39 +187,10 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-" CoC
-
-"" Extensions
-let g:coc_global_extensions = [
-            \ 'coc-marketplace',
-            \ ]
-
-let g:airline#extensions#coc#enabled = 1
-
-""" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-""" Using CocList
-"""" Manage extensions
-nnoremap <silent> ¿e  :<C-u>CocList extensions<cr>
-"""" Show commands
-nnoremap <silent> ¿c  :<C-u>CocList commands<cr>
-
 highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
 highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
 highlight GitGutterDelete guifg=#000000 guibg=#ff2222 ctermfg=200
 highlight GitGutterChangeDelete guifg=#000000 guibg=#ff9122 ctermfg=200
-
-augroup CocGroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 " Telescope
 lua require("jp.telescope")

@@ -68,7 +68,6 @@ startup({
 
     -- Languages
     use("neovim/nvim-lspconfig")
-    use({ "neoclide/coc.nvim", branch = "release" })
     use("sheerun/vim-polyglot")
     use("alx741/vim-hindent")
     use("pbrisbin/vim-syntax-shakespeare")
