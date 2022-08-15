@@ -3,6 +3,6 @@
 ## Instructions
 
 ```bash
-curl https://raw.githubusercontent.com/johnf9896/dotfiles/master/install.sh | bash
+curl https://raw.githubusercontent.com/jfpedroza/dotfiles/master/install.sh | bash
 ```
 

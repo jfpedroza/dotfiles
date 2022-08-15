@@ -1,30 +1,30 @@
 ~/:
-  dotfiles: git+git@github.com:johnf9896/dotfiles.git
+  dotfiles: git+git@github.com:jfpedroza/dotfiles.git
   .oh-my-zsh:
-    url: git+git@github.com:johnf9896/oh-my-zsh.git
+    url: git+git@github.com:jfpedroza/oh-my-zsh.git
     remotes:
-      origin: git+git@github.com:johnf9896/oh-my-zsh.git
+      origin: git+git@github.com:jfpedroza/oh-my-zsh.git
       upstream: git+https://github.com/robbyrussell/oh-my-zsh.git
 ~/code/:
-  ProjectEuler: git+git@github.com:johnf9896/ProjectEuler.git
-  spring_config: git+git@github.com:johnf9896/spring_config.git
-  exercism: git+git@github.com:johnf9896/exercism.git
+  ProjectEuler: git+git@github.com:jfpedroza/ProjectEuler.git
+  spring_config: git+git@github.com:jfpedroza/spring_config.git
+  exercism: git+git@github.com:jfpedroza/exercism.git
 ~/code/languages/:
-  lispy: git+git@github.com:johnf9896/lispy.git
-  simple_lexer: git+git@github.com:johnf9896/simple_lexer.git
-  lox: git+git@github.com:johnf9896/lox.git
+  lispy: git+git@github.com:jfpedroza/lispy.git
+  simple_lexer: git+git@github.com:jfpedroza/simple_lexer.git
+  lox: git+git@github.com:jfpedroza/lox.git
 ~/code/games/:
-  parques: git+git@github.com:johnf9896/parques.git
-  uno: git+git@github.com:johnf9896/uno.git
+  parques: git+git@github.com:jfpedroza/parques.git
+  uno: git+git@github.com:jfpedroza/uno.git
 ~/code/elixir:
-  cluster-test: git+git@github.com:johnf9896/cluster-test.git
+  cluster-test: git+git@github.com:jfpedroza/cluster-test.git
 ~/code/erlang:
-  tanodb: git+git@github.com:johnf9896/tanodb.git
+  tanodb: git+git@github.com:jfpedroza/tanodb.git
 ~/code/lib:
   linenoise-ng: git+https://github.com/arangodb/linenoise-ng.git
   elixir-ls: git+https://github.com/elixir-lsp/elixir-ls.git
   scriptfs:
-    url: git+git@github.com:johnf9896/scriptfs.git
+    url: git+git@github.com:jfpedroza/scriptfs.git
     remotes:
-      origin: git+git@github.com:johnf9896/scriptfs.git
+      origin: git+git@github.com:jfpedroza/scriptfs.git
       upstream: git+https://github.com/frodonh/scriptfs.git

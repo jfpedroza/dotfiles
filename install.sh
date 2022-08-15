@@ -250,7 +250,7 @@ cloneDotfiles() {
         exit 1
     fi
 
-    git clone --recurse-submodule git@github.com:johnf9896/dotfiles.git
+    git clone --recurse-submodule git@github.com:jfpedroza/dotfiles.git
     cd dotfiles
     ./dotfiles.sh
 }
@@ -279,7 +279,7 @@ useZsh() {
     cd ~/ || return
 
     chsh -s "$(command -v zsh)"
-    REPO=johnf9896/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/johnf9896/oh-my-zsh/master/tools/install.sh)"
+    REPO=jfpedroza/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/jfpedroza/oh-my-zsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom
 
@@ -287,7 +287,7 @@ useZsh() {
     curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
 
     cd ~/.oh-my-zsh
-    git remote set-url origin git@github.com:johnf9896/oh-my-zsh.git
+    git remote set-url origin git@github.com:jfpedroza/oh-my-zsh.git
 
     # FZF extras
     git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
@@ -307,7 +307,7 @@ setupScriptfs() {
     echo "==================================="
 
     mkdir -p ~/code/lib
-    git clone git@github.com:johnf9896/scriptfs.git ~/code/lib/scriptfs
+    git clone git@github.com:jfpedroza/scriptfs.git ~/code/lib/scriptfs
     cd ~/code/lib/scriptfs
     make
     sudo cp scriptfs /usr/local/bin/scriptfs
