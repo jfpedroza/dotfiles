@@ -3,7 +3,7 @@
   .oh-my-zsh:
     url: git+git@github.com:jfpedroza/oh-my-zsh.git
     remotes:
-      origin: git+git@github.com:jfpedroza/oh-my-zsh.git
+      origin: git+ssh://git@github.com/jfpedroza/oh-my-zsh.git
       upstream: git+https://github.com/robbyrussell/oh-my-zsh.git
 ~/code/:
   ProjectEuler: git+git@github.com:jfpedroza/ProjectEuler.git
@@ -26,5 +26,5 @@
   scriptfs:
     url: git+git@github.com:jfpedroza/scriptfs.git
     remotes:
-      origin: git+git@github.com:jfpedroza/scriptfs.git
+      origin: git+ssh://git@github.com/jfpedroza/scriptfs.git
       upstream: git+https://github.com/frodonh/scriptfs.git
