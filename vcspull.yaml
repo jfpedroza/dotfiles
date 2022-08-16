@@ -9,11 +9,19 @@
   ProjectEuler: git+ssh://git@github.com/jfpedroza/ProjectEuler.git
   spring_config: git+ssh://git@github.com/jfpedroza/spring_config.git
   exercism: git+ssh://git@github.com/jfpedroza/exercism.git
+  advent_of_code: git+ssh://git@github.com/jfpedroza/advent_of_code.git
+  qmk_firmware:
+    url: git+ssh://git@github.com/jfpedroza/qmk_firmware.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/qmk_firmware.git
+      upstream: git+https://github.com/qmk/qmk_firmware.git
 ~/code/languages/:
   lispy: git+ssh://git@github.com/jfpedroza/lispy.git
   simple_lexer: git+ssh://git@github.com/jfpedroza/simple_lexer.git
   lox: git+ssh://git@github.com/jfpedroza/lox.git
+  lox-vm: git+ssh://git@github.com/jfpedroza/lox-vm.git
 ~/code/games/:
+  parquex: git+ssh://git@github.com/jfpedroza/parquex.git
   parques: git+ssh://git@github.com/jfpedroza/parques.git
   uno: git+ssh://git@github.com/jfpedroza/uno.git
 ~/code/elixir:
