@@ -48,6 +48,7 @@ cmp.setup({
     { name = "nvim_lua" },
   }, {
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
     { name = "yank_history", keyword_length = 3 },
     { name = "path" },

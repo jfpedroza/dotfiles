@@ -87,6 +87,7 @@ startup({
     use("hrsh7th/cmp-nvim-lua")
     use("onsails/lspkind.nvim")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
 
     -- Snippets
     use("L3MON4D3/LuaSnip")
