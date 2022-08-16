@@ -28,3 +28,12 @@
     remotes:
       origin: git+ssh://git@github.com/jfpedroza/scriptfs.git
       upstream: git+https://github.com/frodonh/scriptfs.git
+  neovim: git+https://github.com/neovim/neovim.git
+  stripity_stripe:
+    url: git+git@github.com:jfpedroza/stripity_stripe.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/stripity_stripe.git
+      upstream: git+https://github.com/beam-community/stripity_stripe.git
+~/code/lib/other_dotfiles:
+  tjdevries: git+https://github.com/tjdevries/config_manager.git
+  mhanberg: git+https://github.com/mhanberg/.dotfiles.git
