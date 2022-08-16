@@ -144,6 +144,8 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
+map <leader><leader>x :lua require("jp.tools").save_and_exec()<CR>
+
 " Do not open Vim's help with F1
 map <F1> <Nop>
 imap <F1> <Nop>
@@ -343,7 +345,7 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
 
-command! Scratch lua require'jp.tools'.makeScratch()
+command! Scratch lua require'jp.tools'.make_scratch()
 
 " Checkout branch/tag using FZF
 " Ported from https://github.com/atweiden/fzf-extras/blob/zsh/fzf-extras.zsh
