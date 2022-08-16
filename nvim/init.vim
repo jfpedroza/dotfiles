@@ -190,11 +190,6 @@ set wildignore+=*/public/forum/**
 set wildignore+=*/deps/**
 set wildignore+=*/_build/**
 
-highlight GitGutterAdd    guifg=#ffffff guibg=#009900 ctermfg=80
-highlight GitGutterChange guifg=#000000 guibg=#bbbb00 ctermfg=116
-highlight GitGutterDelete guifg=#000000 guibg=#ff2222 ctermfg=200
-highlight GitGutterChangeDelete guifg=#000000 guibg=#ff9122 ctermfg=200
-
 " Telescope
 lua require("jp.telescope")
 
