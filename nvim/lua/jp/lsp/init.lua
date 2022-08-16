@@ -33,15 +33,6 @@ end
 local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local servers = {
-  elixirls = {
-    cmd = { vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh") },
-    settings = {
-      elixirLS = {
-        dialyzerEnabled = true,
-        dialyzerFormat = "dialyxir_long",
-      },
-    },
-  },
   sumneko_lua = {
     settings = {
       Lua = {
@@ -98,3 +89,16 @@ end
 for server, config in pairs(servers) do
   setup_server(server, config)
 end
+
+local elixir = require("elixir")
+
+elixir.setup({
+  settings = elixir.settings({
+    dialyzerEnabled = true,
+    dialyzerFormat = "dialyxir_long",
+    suggestSpecs = true,
+    enableTestLenses = true,
+  }),
+  on_attach = custom_attach,
+  capabilities = updated_capabilities,
+})

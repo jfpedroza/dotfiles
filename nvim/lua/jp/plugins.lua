@@ -68,6 +68,7 @@ startup({
 
     -- Languages
     use("neovim/nvim-lspconfig")
+    use("mhanberg/elixir.nvim")
     use("sheerun/vim-polyglot")
     use("alx741/vim-hindent")
     use("pbrisbin/vim-syntax-shakespeare")
