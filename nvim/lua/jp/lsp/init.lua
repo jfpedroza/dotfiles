@@ -16,9 +16,6 @@ local show_documentation = function(bufnr)
   vim.lsp.buf.hover()
 end
 
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
-
 local custom_attach = function(_client, bufnr)
   local bufopts = { buffer = bufnr, silent = true }
   vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, bufopts)

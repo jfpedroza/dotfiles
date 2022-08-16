@@ -39,7 +39,7 @@ signs.setup({
 
     -- Actions
     map({ "n", "v" }, "<leader>cs", ":Gitsigns stage_hunk<CR>")
-    map({ "n", "v" }, "<leader>cu", ":GitSigns reset_hunk<CR>")
+    map({ "n", "v" }, "<leader>cu", ":Gitsigns reset_hunk<CR>")
     map("n", "<leader>cp", signs.preview_hunk)
     map("n", "<leader>cd", signs.toggle_deleted)
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
