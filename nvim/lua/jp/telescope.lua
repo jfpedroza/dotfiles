@@ -10,6 +10,7 @@ require("telescope").setup({
     layout_config = {
       prompt_position = "top",
     },
+    dynamic_preview_title = true,
     mappings = {
       i = {
         ["<Esc>"] = actions.close,

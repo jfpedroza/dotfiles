@@ -6,6 +6,11 @@ local utils = require("yanky.utils")
 local mapping = require("yanky.telescope.mapping")
 
 require("yanky").setup({
+  ring = {
+    filter = function(entry)
+      return #entry.regcontents > 3
+    end,
+  },
   system_clipboard = {
     sync_with_ring = false,
   },
