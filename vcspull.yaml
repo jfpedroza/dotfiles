@@ -42,6 +42,11 @@
     remotes:
       origin: git+ssh://git@github.com/jfpedroza/stripity_stripe.git
       upstream: git+https://github.com/beam-community/stripity_stripe.git
+  yanky.nvim:
+    url: git+ssh://git@github.com/jfpedroza/yanky.nvim.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/yanky.nvim.git
+      upstream: git+https://github.com/gbprod/yanky.nvim.git
 ~/code/lib/other_dotfiles:
   tjdevries: git+https://github.com/tjdevries/config_manager.git
   mhanberg: git+https://github.com/mhanberg/.dotfiles.git

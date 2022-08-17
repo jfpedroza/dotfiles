@@ -63,7 +63,7 @@ startup({
         require("colorizer").setup(nil, { css = true })
       end,
     })
-    use({ "gbprod/yanky.nvim" })
+    use({ "~/code/lib/yanky.nvim" })
     use({ "lewis6991/gitsigns.nvim" })
 
     -- Languages
