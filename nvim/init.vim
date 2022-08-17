@@ -1,4 +1,5 @@
 scriptencoding utf-8
+lua require('jp.globals')
 lua require('jp.plugins')
 
 colorscheme darkblue
