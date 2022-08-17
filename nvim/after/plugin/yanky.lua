@@ -8,7 +8,7 @@ local mapping = require("yanky.telescope.mapping")
 require("yanky").setup({
   ring = {
     filter = function(entry)
-      return #entry.regcontents > 3
+      return #entry.regcontents > 3 and not entry.regcontents:match("^[%s\n]*$")
     end,
   },
   system_clipboard = {
