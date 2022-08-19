@@ -51,9 +51,8 @@ cmp.setup({
     { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
     { name = "yank_history", keyword_length = 3 },
-    { name = "path" },
-  }, {
     { name = "buffer", keyword_length = 3 },
+    { name = "path" },
   }),
   formatting = {
     format = lspkind.cmp_format({
