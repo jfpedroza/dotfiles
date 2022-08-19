@@ -102,6 +102,9 @@ xmap r "_dP
 " Do the same but pasting from the clipboard
 xmap <leader>r "_d"+P
 
+" Black hole delete
+map <space>d "_d
+
 " Replace line without overriding the register
 " Commented out because ReplaceWithRegister already provides this functionality
 " Will be added back in minimal.vim
