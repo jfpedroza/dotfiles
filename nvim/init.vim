@@ -76,9 +76,6 @@ vnoremap <Down> <C-W>+
 vnoremap <Left> <C-W>>
 vnoremap <Right> <C-W><
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <C-space> ?
 nnoremap <leader><space> :nohlsearch<CR>
 " Use Ctrl+N to search the previous search term
 nmap <silent> <C-N> /<Up><Up><CR>
