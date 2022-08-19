@@ -82,6 +82,6 @@ local pickers = setmetatable({}, {
   end,
 })
 
-vim.keymap.set("n", "<leader>bb", pickers.buffers, { desc = "Show buffers on Telescope" })
+vim.keymap.set("n", "<leader>b", pickers.buffers, { desc = "Show buffers on Telescope" })
 vim.keymap.set("n", "<leader>f", pickers.find_files, { desc = "Find files using Telescope" })
 vim.keymap.set("n", "<leader>y", pickers.yank_history, { desc = "Show yank history using Telescope" })

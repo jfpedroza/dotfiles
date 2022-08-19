@@ -130,8 +130,6 @@ nnoremap <S-Tab> :bp<CR>
 " " Close the current buffer and move to the previous one
 " " This replicates the idea of closing a tab
 nmap <leader>q :bp <BAR> bd #<CR>
-" Move to the alternative buffer
-nmap <leader>ba :b#<CR>
 
 " Map Ctrl+p to Ctrl+i because Tab, which is Ctrl+i, is mapped to next buffer
 nnoremap <C-p> <C-i>
