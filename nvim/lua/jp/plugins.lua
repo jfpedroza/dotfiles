@@ -25,6 +25,7 @@ startup({
     use("tpope/vim-rhubarb")
     use("tpope/vim-unimpaired")
     use("tpope/vim-obsession")
+    use("tpope/vim-projectionist")
     use("junegunn/fzf.vim")
     use("mileszs/ack.vim")
     use("Chiel92/vim-autoformat")
