@@ -1,5 +1,17 @@
 vim.g.projectionist_heuristics = vim.json.decode([[
 {
+  "nvim/": {
+    "nvim/after/plugin/*.lua": {
+      "type": "after",
+      "template": [
+        "if not pcall(require, \"{}\") then",
+        "  return",
+        "end",
+        "",
+        "require(\"{}\").setup()"
+      ]
+    }
+  },
   "mix.exs": {
     "lib/*.ex": {
       "alternate": "test/{}_test.exs",
