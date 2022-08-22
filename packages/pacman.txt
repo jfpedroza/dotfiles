@@ -119,6 +119,7 @@ ttf-font-awesome
 otf-ipafont
 shfmt
 languagetool
+libbsd
 ghc
 stack
 cabal-install

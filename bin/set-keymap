@@ -1,4 +1,15 @@
 #!/bin/sh
 
-xkbcomp "$HOME/.Xkeymap" "$DISPLAY"
+keymap=$HOME/.Xkeymap
+device_id=$1
+
+case "$device_id" in
+'')
+    xkbcomp "$keymap" "$DISPLAY"
+    ;;
+*)
+    xkbcomp -i "$device_id" "$keymap" "$DISPLAY"
+    ;;
+esac
+
 notify-send -a set-keymap "Custom keymap set"
