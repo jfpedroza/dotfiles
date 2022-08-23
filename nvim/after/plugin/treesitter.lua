@@ -16,6 +16,16 @@ require("nvim-treesitter.configs").setup({
         smart_rename = "<leader>re",
       },
     },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition_lsp_fallback = "<leader>d",
+        list_definitions = nil,
+        list_definitions_toc = nil,
+        goto_next_usage = nil,
+        goto_previous_usage = nil,
+      },
+    },
   },
 })
 
