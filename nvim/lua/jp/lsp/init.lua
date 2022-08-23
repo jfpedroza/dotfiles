@@ -16,14 +16,17 @@ local show_documentation = function(bufnr)
   vim.lsp.buf.hover()
 end
 
-local custom_attach = function(_client, bufnr)
+local custom_attach = function(client, bufnr)
   local bufopts = { buffer = bufnr, silent = true }
   vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "<leader>dt", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>di", vim.lsp.buf.implementation, bufopts)
   vim.keymap.set("n", "<leader>dr", "<cmd>Telescope lsp_references<CR>", bufopts)
-  vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, bufopts)
   vim.keymap.set("n", "<leader>ac", vim.lsp.buf.code_action, bufopts)
+
+  if client.server_capabilities.renameProvider then
+    vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, bufopts)
+  end
 
   vim.keymap.set("n", "K", function()
     show_documentation(bufnr)
