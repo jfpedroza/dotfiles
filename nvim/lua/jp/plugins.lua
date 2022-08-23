@@ -57,6 +57,7 @@ startup({
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use("nvim-telescope/telescope-ui-select.nvim")
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-refactor")
     use("rcarriga/nvim-notify")
     use({
