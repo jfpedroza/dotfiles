@@ -61,6 +61,9 @@ alias age="ag --elixir"
 alias rge="rg -telixir"
 alias rgjs="rg -tjs"
 alias lox="cargo run"
+alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim stable'
+alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
 
 # Actually functions
 
