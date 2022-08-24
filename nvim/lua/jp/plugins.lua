@@ -97,6 +97,12 @@ startup({
     use("saadparwaiz1/cmp_luasnip")
     use("honza/vim-snippets")
 
+    -- Debugger Adapter Protocol
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui")
+    use("theHamsta/nvim-dap-virtual-text")
+    use("nvim-telescope/telescope-dap.nvim")
+
     -- Authomatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
       require("packer").sync()

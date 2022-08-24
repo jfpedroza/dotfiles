@@ -27,6 +27,7 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("notify")
+require("telescope").load_extension("dap")
 
 vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#303030" })
 vim.api.nvim_create_autocmd("User", {
