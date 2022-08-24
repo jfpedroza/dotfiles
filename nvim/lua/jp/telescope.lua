@@ -71,6 +71,13 @@ function M.yank_history()
   require("yanky.telescope.yank_history").yank_history({})
 end
 
+function M.edit_neovim()
+  require("telescope.builtin").find_files({
+    prompt_title = "~ dotfiles ~",
+    cwd = "~/.config/nvim",
+  })
+end
+
 local pickers = setmetatable({}, {
   __index = function(_, k)
     if M[k] then
@@ -85,5 +92,6 @@ local pickers = setmetatable({}, {
 
 vim.keymap.set("n", "<leader>b", pickers.buffers, { desc = "Show buffers on Telescope" })
 vim.keymap.set("n", "<leader>f", pickers.find_files, { desc = "Find files using Telescope" })
+vim.keymap.set("n", "<leader>;", pickers.edit_neovim, { desc = "Find Neovim files using Telescope" })
 vim.keymap.set("n", "<leader>s", pickers.live_grep, { desc = "Find string using Telescope" })
 vim.keymap.set("n", "<leader>y", pickers.yank_history, { desc = "Show yank history using Telescope" })
