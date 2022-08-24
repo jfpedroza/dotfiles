@@ -250,6 +250,9 @@ map Ḃ <Plug>(easymotion-B)
 " map ḟ <Plug>(easymotion-f)
 " map Ḟ <Plug>(easymotion-F)
 
+" FixCursorHold
+let g:cursorhold_updatetime = 100
+
 " Mundo
 nnoremap <silent> <F6> :MundoToggle<CR>
 

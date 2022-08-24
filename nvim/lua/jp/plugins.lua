@@ -68,6 +68,7 @@ startup({
     })
     use({ "~/code/lib/yanky.nvim" })
     use({ "lewis6991/gitsigns.nvim" })
+    use({ "antoinemadec/FixCursorHold.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")
@@ -80,7 +81,6 @@ startup({
     use("tridactyl/vim-tridactyl")
     use("aklt/plantuml-syntax")
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
-    use("vim-test/vim-test")
 
     -- Completion
     use("hrsh7th/nvim-cmp")
@@ -96,6 +96,11 @@ startup({
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
     use("honza/vim-snippets")
+
+    -- Testing
+    use({ "vim-test/vim-test" })
+    use({ "nvim-neotest/neotest" })
+    use({ "nvim-neotest/neotest-vim-test" })
 
     -- Debugger Adapter Protocol
     use("mfussenegger/nvim-dap")
