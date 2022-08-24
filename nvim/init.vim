@@ -104,6 +104,7 @@ xmap <leader>r "_d"+P
 
 " Black hole delete
 map <space>d "_d
+map <space>D "_D
 
 " Replace line without overriding the register
 " Commented out because ReplaceWithRegister already provides this functionality
