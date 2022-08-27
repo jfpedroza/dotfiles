@@ -81,13 +81,14 @@ startup({
     use("tridactyl/vim-tridactyl")
     use("aklt/plantuml-syntax")
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
+    use({ "folke/lua-dev.nvim" })
 
     -- Completion
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
+    -- use("hrsh7th/cmp-nvim-lua")
     use("onsails/lspkind.nvim")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
     use("hrsh7th/cmp-nvim-lsp-signature-help")
