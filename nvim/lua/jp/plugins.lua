@@ -92,6 +92,7 @@ startup({
     use("onsails/lspkind.nvim")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
     use("hrsh7th/cmp-nvim-lsp-signature-help")
+    use("davidsierradz/cmp-conventionalcommits")
 
     -- Snippets
     use("L3MON4D3/LuaSnip")
