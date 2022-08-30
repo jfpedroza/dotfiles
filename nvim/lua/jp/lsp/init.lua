@@ -22,6 +22,7 @@ local custom_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>dt", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>di", vim.lsp.buf.implementation, bufopts)
   vim.keymap.set("n", "<leader>dr", "<cmd>Telescope lsp_references<CR>", bufopts)
+  vim.keymap.set("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", bufopts)
   vim.keymap.set("n", "<leader>ac", vim.lsp.buf.code_action, bufopts)
 
   if client.server_capabilities.renameProvider then
