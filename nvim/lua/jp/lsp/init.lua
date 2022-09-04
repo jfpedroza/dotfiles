@@ -18,7 +18,11 @@ end
 
 local custom_attach = function(client, bufnr)
   local bufopts = { buffer = bufnr, silent = true }
-  -- vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("n", "<leader>d", function()
+    require("nvim-treesitter-refactor.navigation").goto_definition(nil, function()
+      vim.lsp.buf.definition({ reuse_win = true })
+    end)
+  end, bufopts)
   vim.keymap.set("n", "<leader>dt", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>di", vim.lsp.buf.implementation, bufopts)
   vim.keymap.set("n", "<leader>dr", "<cmd>Telescope lsp_references<CR>", bufopts)

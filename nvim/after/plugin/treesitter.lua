@@ -17,9 +17,10 @@ require("nvim-treesitter.configs").setup({
       },
     },
     navigation = {
-      enable = true,
+      enable = false,
       keymaps = {
-        goto_definition_lsp_fallback = "<leader>d",
+        goto_definition = nil,
+        goto_definition_lsp_fallback = nil,
         list_definitions = nil,
         list_definitions_toc = nil,
         goto_next_usage = nil,
