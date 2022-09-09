@@ -29,19 +29,19 @@ vim.keymap.set("", "ẁ", function()
   require("hop").hint_words({ direction = after_cursor })
 end)
 
-vim.keymap.set("", "ḟ", function()
+vim.keymap.set({ "n", "x", "o" }, "f", function()
   require("hop").hint_char1({ direction = after_cursor, current_line_only = true })
 end)
 
-vim.keymap.set("", "Ḟ", function()
+vim.keymap.set({ "n", "x", "o" }, "F", function()
   require("hop").hint_char1({ direction = before_cursor, current_line_only = true })
 end)
 
-vim.keymap.set("", "ť", function()
+vim.keymap.set({ "n", "x", "o" }, "t", function()
   require("hop").hint_char1({ direction = after_cursor, current_line_only = true, hint_offset = -1 })
 end)
 
-vim.keymap.set("", "Ť", function()
+vim.keymap.set({ "n", "x", "o" }, "T", function()
   require("hop").hint_char1({ direction = before_cursor, current_line_only = true, hint_offset = 1 })
 end)
 
