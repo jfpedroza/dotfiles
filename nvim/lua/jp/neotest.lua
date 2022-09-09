@@ -27,4 +27,8 @@ function M.run_suite(args)
   M.run(args)
 end
 
+function M.read_env(...)
+  vim.g.neotest_run_env = vim.fn.DotenvRead(...)
+end
+
 return M
