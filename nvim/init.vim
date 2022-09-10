@@ -206,17 +206,6 @@ let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Fugitive mapping
-nmap <leader>gb :Gblame<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>gd :Gvdiff<cr>
-nmap <leader>gg :Ggrep
-nmap <leader>gL :Glog<cr>
-nmap <leader>gl :Git pull<cr>
-nmap <leader>gp :Git push<cr>
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gw :Gbrowse<cr>
-
 " Git Messenger
 nmap <Leader>gm <Plug>(git-messenger)
 
