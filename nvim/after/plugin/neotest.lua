@@ -17,3 +17,6 @@ vim.api.nvim_create_user_command("NeotestLast", neotest.run.run_last, {})
 vim.api.nvim_create_user_command("NeotestAttach", neotest.run.attach, {})
 vim.api.nvim_create_user_command("NeotestSummary", neotest.summary.toggle, {})
 vim.api.nvim_create_user_command("NeotestOutput", neotest.output.open, {})
+
+vim.keymap.set("n", "<leader>t", require("jp.neotest").run)
+vim.keymap.set("n", "<leader>T", require("jp.neotest").run_file)

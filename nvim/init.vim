@@ -299,10 +299,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:mkdp_browser = 'qutebrowser'
 let g:mkdp_auto_close = 0
 
-" vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-
 augroup ElixirWrap
 " Wrap word in {:ok, word} tuple
 autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
