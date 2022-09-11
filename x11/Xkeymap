@@ -619,6 +619,20 @@ xkb_types "complete" {
         level_name[Level3]= "Alt Base";
         level_name[Level4]= "Shift Alt";
     };
+    type "SIX_LEVEL" {
+        modifiers= Shift+LevelThree+Mod3;
+        map[Shift]= Level2;
+        map[LevelThree]= Level3;
+        map[Shift+LevelThree]= Level4;
+        map[Mod3]= Level5;
+        map[Shift+Mod3]= Level6;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Shift";
+        level_name[Level3]= "Alt Base";
+        level_name[Level4]= "Shift Alt";
+        level_name[Level5]= "Hyper Base";
+        level_name[Level6]= "Hyper Alt";
+    };
     type "SIX_LEVEL_ALPHABETIC" {
         modifiers= Shift+Lock+LevelThree+Mod3;
         map[Shift]= Level2;
@@ -1226,24 +1240,24 @@ xkb_symbols "pc+us(altgr-intl)+inet(evdev)+terminate(ctrl_alt_bksp)" {
 
     key  <ESC> {         [          Escape ] };
     key <AE01> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [          exclam,               1,      exclamdown,      onesuperior]
+        type= "SIX_LEVEL",
+        symbols[Group1]= [          exclam,               1,      exclamdown,      onesuperior,    Cyrillic_de,     Cyrillic_de ]
     };
     key <AE02> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [              at,               2,     twosuperior,       oneeighth ]
+        type= "SIX_LEVEL",
+        symbols[Group1]= [              at,               2,     twosuperior,       oneeighth,     Cyrillic_zhe,     Cyrillic_zhe ]
     };
     key <AE03> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [      numbersign,               3,   threesuperior,     dead_macron ]
+        type= "SIX_LEVEL",
+        symbols[Group1]= [      numbersign,               3,   threesuperior,     dead_macron,   Cyrillic_o,   Cyrillic_o ]
     };
     key <AE04> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [          dollar,               4,        currency,        sterling ]
+        type= "SIX_LEVEL",
+        symbols[Group1]= [          dollar,               4,        currency,        sterling, Cyrillic_en, Cyrillic_en ]
     };
     key <AE05> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [         percent,               5,        EuroSign,    dead_cedilla ]
+        type= "SIX_LEVEL",
+        symbols[Group1]= [         percent,               5,        EuroSign,    dead_cedilla, Cyrillic_pe, Cyrillic_pe ]
     };
     key <AE06> {
         type= "FOUR_LEVEL",
