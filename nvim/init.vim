@@ -327,7 +327,8 @@ set secure
 " ----------------------- Custom commands ------------------------- "
 " Copy file basename only, file path, dirname
 command! -nargs=0 CopyFileName let @+ = expand("%:t") | echo 'Copied to clipboard: ' . @+
-command! -nargs=0 CopyFilePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFilePath let @+ = fnamemodify(expand("%"), ":.") | echo 'Copied to clipboard: ' . @+
+command! -nargs=0 CopyFileAbsolutePath let @+ = expand("%:p:~") | echo 'Copied to clipboard: ' . @+
 command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipboard: ' . @+
 
 " Format JSON using Python's json.tool
