@@ -56,8 +56,6 @@ export SAVEHIST=50000
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-autoload -Uz compinit && compinit -i
-
 # Tmux plugin settings
 export ZSH_TMUX_AUTOSTART=false
 export ZSH_TMUX_AUTOQUIT=false
