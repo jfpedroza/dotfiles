@@ -8,6 +8,9 @@ neotest.setup({
   adapters = {
     require("neotest-elixir"),
   },
+  icons = {
+    running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+  },
 })
 
 vim.api.nvim_create_user_command("Neotest", require("jp.neotest").run_suite, {})
