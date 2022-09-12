@@ -134,8 +134,6 @@ esac
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-[ -x "$(which minikube)" ] && source <(minikube completion zsh)
-
 [ -f ~/.local/bin/tmuxinator.zsh ] && source ~/.local/bin/tmuxinator.zsh
 
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
