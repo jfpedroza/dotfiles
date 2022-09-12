@@ -134,16 +134,13 @@ esac
 
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 [ -f ~/.local/bin/tmuxinator.zsh ] && source ~/.local/bin/tmuxinator.zsh
 
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 [ -f /usr/share/zsh/site-functions/git-flow-completion.zsh ] \
-	&& source /usr/share/zsh/site-functions/git-flow-completion.zsh
+    && source /usr/share/zsh/site-functions/git-flow-completion.zsh
 
 [[ -e "$HOME/.fzf-extras/fzf-extras.zsh" ]] \
   && source "$HOME/.fzf-extras/fzf-extras.zsh"

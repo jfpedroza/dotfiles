@@ -284,9 +284,6 @@ useZsh() {
 
     zsh_custom=~/.oh-my-zsh/custom
 
-    mkdir -p ~/.zsh/completion
-    curl -L https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion >~/.zsh/completion/_hub
-
     cd ~/.oh-my-zsh
     git remote set-url origin git@github.com:jfpedroza/oh-my-zsh.git
 
