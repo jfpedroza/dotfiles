@@ -34,6 +34,23 @@ table.insert(components.active[1], {
       style = "bold",
     }
   end,
+  right_sep = "right",
+})
+
+---- Third section, active statusline
+table.insert(components.active[3], {
+  provider = "line_percentage",
+  left_sep = "left",
+})
+
+table.insert(components.active[3], {
+  provider = "position",
+  left_sep = "left",
+})
+
+table.insert(components.active[3], {
+  provider = "scroll_bar",
+  left_sep = "left",
 })
 
 R("feline").setup({
