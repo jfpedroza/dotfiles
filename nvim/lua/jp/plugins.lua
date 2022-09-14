@@ -19,7 +19,9 @@ startup({
       end,
     })
     use("tpope/vim-abolish")
-    use("vim-airline/vim-airline")
+    use({ "vim-airline/vim-airline", disable = true })
+    use({ "feline-nvim/feline.nvim" })
+    use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("simnalamburt/vim-mundo")
     use("tpope/vim-fugitive")
     use("tpope/vim-rhubarb")
