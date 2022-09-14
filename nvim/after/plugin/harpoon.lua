@@ -14,6 +14,7 @@ end, {})
 
 vim.keymap.set("n", "<space>m", function()
   require("harpoon.mark").add_file()
+  print("File marked in Harpoon as #" .. require("harpoon.mark").get_length())
 end, {})
 
 vim.keymap.set("n", "д", function() -- Mod3 + 1
