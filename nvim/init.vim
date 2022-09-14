@@ -2,7 +2,7 @@ scriptencoding utf-8
 lua require('jp.globals')
 lua require('jp.plugins')
 
-colorscheme darkblue
+" colorscheme darkblue
 
 " Enable hidden buffers
 set hidden

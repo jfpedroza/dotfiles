@@ -72,6 +72,7 @@ startup({
     use({ "lewis6991/gitsigns.nvim" })
     use({ "antoinemadec/FixCursorHold.nvim" })
     use({ "ThePrimeagen/harpoon" })
+    use({ "navarasu/onedark.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")
