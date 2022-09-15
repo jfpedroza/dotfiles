@@ -118,6 +118,7 @@ feh
 ttf-font-awesome
 otf-ipafont
 shfmt
+tidy
 languagetool
 libbsd
 ghc
