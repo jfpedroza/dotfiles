@@ -19,7 +19,6 @@ table.insert(components.inactive, {})
 table.insert(components.inactive, {})
 
 ---- First section, active statusline
--- Vi Mode
 table.insert(components.active[1], {
   provider = {
     name = "vi_mode",
@@ -34,23 +33,40 @@ table.insert(components.active[1], {
       style = "bold",
     }
   end,
-  right_sep = "right",
+  right_sep = " ",
+})
+
+table.insert(components.active[1], {
+  provider = "git_branch",
+  hl = { bg = "violet", fg = "black", style = "bold" },
+  left_sep = { { str = " ", hl = { bg = "violet", fg = "NONE" } } },
+  right_sep = { { str = " ", hl = { bg = "violet", fg = "NONE" } } },
+})
+
+---- Second section, active statusline
+table.insert(components.active[1], {
+  provider = { name = "file_info", opts = { type = "relative" } },
+  hl = { bg = "black" },
+  left_sep = { { str = " ", hl = { bg = "black", fg = "NONE" } } },
 })
 
 ---- Third section, active statusline
 table.insert(components.active[3], {
   provider = "line_percentage",
-  left_sep = "left",
+  hl = { bg = "oceanblue" },
+  left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
 })
 
 table.insert(components.active[3], {
   provider = "position",
-  left_sep = "left",
+  hl = { bg = "oceanblue" },
+  left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
 })
 
 table.insert(components.active[3], {
   provider = "scroll_bar",
-  left_sep = "left",
+  hl = { bg = "oceanblue" },
+  left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
 })
 
 R("feline").setup({
