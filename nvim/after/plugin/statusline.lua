@@ -44,6 +44,30 @@ table.insert(components.active[1], {
   icon = " ",
 })
 
+table.insert(components.active[1], {
+  provider = "git_diff_added",
+  hl = {
+    fg = "green",
+    bg = "black",
+  },
+})
+
+table.insert(components.active[1], {
+  provider = "git_diff_changed",
+  hl = {
+    fg = "orange",
+    bg = "black",
+  },
+})
+
+table.insert(components.active[1], {
+  provider = "git_diff_removed",
+  hl = {
+    fg = "red",
+    bg = "black",
+  },
+})
+
 ---- Second section, active statusline
 table.insert(components.active[1], {
   provider = { name = "file_info", opts = { type = "relative" } },
