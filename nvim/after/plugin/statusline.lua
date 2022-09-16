@@ -41,6 +41,7 @@ table.insert(components.active[1], {
   hl = { bg = "violet", fg = "black", style = "bold" },
   left_sep = { { str = " ", hl = { bg = "violet", fg = "black" } } },
   right_sep = { { str = " ", hl = { bg = "violet" } }, { str = "right_filled", hl = { bg = "black", fg = "violet" } } },
+  icon = " ",
 })
 
 ---- Second section, active statusline
@@ -61,7 +62,7 @@ table.insert(components.active[3], {
 })
 
 table.insert(components.active[3], {
-  provider = "position",
+  provider = { name = "position", opts = { format = ":{line} ℅:{col}" } },
   hl = { bg = "oceanblue" },
   left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
 })
