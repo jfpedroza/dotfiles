@@ -33,14 +33,14 @@ table.insert(components.active[1], {
       style = "bold",
     }
   end,
-  right_sep = " ",
+  right_sep = { " ", { str = "right_filled", hl = { bg = "violet", fg = "black" } } },
 })
 
 table.insert(components.active[1], {
   provider = "git_branch",
   hl = { bg = "violet", fg = "black", style = "bold" },
-  left_sep = { { str = " ", hl = { bg = "violet", fg = "NONE" } } },
-  right_sep = { { str = " ", hl = { bg = "violet", fg = "NONE" } } },
+  left_sep = { { str = " ", hl = { bg = "violet", fg = "black" } } },
+  right_sep = { { str = " ", hl = { bg = "violet" } }, { str = "right_filled", hl = { bg = "black", fg = "violet" } } },
 })
 
 ---- Second section, active statusline
@@ -54,7 +54,10 @@ table.insert(components.active[1], {
 table.insert(components.active[3], {
   provider = "line_percentage",
   hl = { bg = "oceanblue" },
-  left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
+  left_sep = {
+    { str = "left_filled", hl = { bg = "black", fg = "oceanblue" } },
+    { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
+  },
 })
 
 table.insert(components.active[3], {
