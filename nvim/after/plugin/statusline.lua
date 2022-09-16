@@ -152,6 +152,36 @@ table.insert(components.active[3], {
   left_sep = { { str = " ", hl = { bg = "oceanblue", fg = "NONE" } } },
 })
 
+---- First section, inactive statusline
+table.insert(components.inactive[1], {
+  provider = { name = "file_type", opts = { case = "titlecase" } },
+  hl = {
+    fg = "white",
+    bg = "green",
+    style = "bold",
+  },
+  left_sep = {
+    str = " ",
+    hl = {
+      fg = "NONE",
+      bg = "green",
+    },
+  },
+  right_sep = {
+    {
+      str = " ",
+      hl = {
+        fg = "NONE",
+        bg = "green",
+      },
+    },
+    "right_filled",
+  },
+})
+
+-- Empty component to fix the highlight till the end of the statusline
+table.insert(components.inactive[1], {})
+
 R("feline").setup({
   components = components,
   conditional_components = {},
