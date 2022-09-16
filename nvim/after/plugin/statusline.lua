@@ -182,10 +182,45 @@ table.insert(components.inactive[1], {
 -- Empty component to fix the highlight till the end of the statusline
 table.insert(components.inactive[1], {})
 
+-- Winbar
+local winbar_components = {
+  active = {},
+  inactive = {},
+}
+
+-- One section for the winbar
+table.insert(winbar_components.active, {})
+table.insert(winbar_components.inactive, {})
+
+table.insert(winbar_components.active[1], {
+  provider = "file_info",
+  hl = {
+    fg = "skyblue",
+    bg = "NONE",
+    style = "bold",
+  },
+})
+
+table.insert(winbar_components.inactive[1], {
+  provider = "file_info",
+  hl = {
+    fg = "white",
+    bg = "NONE",
+    style = "bold",
+  },
+})
+
 R("feline").setup({
   components = components,
   conditional_components = {},
 })
+
+if vim.fn.has("nvim-0.8") then
+  require("feline").winbar.setup({
+    components = winbar_components,
+    conditional_components = {},
+  })
+end
 
 -- R("feline").setup()
 require("feline").winbar.setup()
