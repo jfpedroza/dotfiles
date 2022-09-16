@@ -82,11 +82,45 @@ table.insert(components.active[3], {
 })
 
 table.insert(components.active[3], {
+  provider = "",
+  hl = { bg = "black", fg = "white" },
+  enabled = function()
+    return require("feline.providers.lsp").diagnostics_exist()
+  end,
+})
+
+table.insert(components.active[3], {
+  provider = "diagnostic_errors",
+  hl = { fg = "red" },
+})
+
+table.insert(components.active[3], {
+  provider = "diagnostic_warnings",
+  hl = { fg = "yellow" },
+})
+
+table.insert(components.active[3], {
+  provider = "diagnostic_hints",
+  hl = { fg = "cyan" },
+})
+
+table.insert(components.active[3], {
+  provider = "diagnostic_info",
+  hl = { fg = "skyblue" },
+})
+
+table.insert(components.active[3], {
+  provider = " ",
+  enabled = function()
+    return require("feline.providers.lsp").diagnostics_exist()
+  end,
+})
+
+table.insert(components.active[3], {
   provider = "file_encoding",
   hl = { bg = "yellow", fg = "black" },
   left_sep = {
     { str = "left_filled", hl = { bg = "black", fg = "yellow" } },
-    { str = " ", hl = { bg = "yellow", fg = "NONE" } },
   },
 })
 
