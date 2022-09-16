@@ -58,10 +58,26 @@ table.insert(components.active[3], {
 })
 
 table.insert(components.active[3], {
+  provider = "file_encoding",
+  hl = { bg = "yellow", fg = "black" },
+  left_sep = {
+    { str = "left_filled", hl = { bg = "black", fg = "yellow" } },
+    { str = " ", hl = { bg = "yellow", fg = "NONE" } },
+  },
+})
+
+table.insert(components.active[3], {
+  provider = "file_format",
+  hl = { bg = "yellow", fg = "black" },
+  left_sep = { { str = "[", hl = { bg = "yellow", fg = "black" } } },
+  right_sep = { { str = "]", hl = { bg = "yellow", fg = "black" } } },
+})
+
+table.insert(components.active[3], {
   provider = "line_percentage",
   hl = { bg = "oceanblue" },
   left_sep = {
-    { str = "left_filled", hl = { bg = "black", fg = "oceanblue" } },
+    { str = "left_filled", hl = { bg = "yellow", fg = "oceanblue" } },
     { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
   },
 })
