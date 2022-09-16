@@ -53,6 +53,11 @@ table.insert(components.active[1], {
 
 ---- Third section, active statusline
 table.insert(components.active[3], {
+  provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
+  right_sep = " ",
+})
+
+table.insert(components.active[3], {
   provider = "line_percentage",
   hl = { bg = "oceanblue" },
   left_sep = {
