@@ -210,9 +210,27 @@ table.insert(winbar_components.inactive[1], {
   },
 })
 
+local force_inactive = {
+  filetypes = {
+    "^NvimTree$",
+    "^packer$",
+    "^startify$",
+    "^fugitive$",
+    "^fugitiveblame$",
+    "^qf$",
+    "^help$",
+    "^neotest%-summary$",
+  },
+  buftypes = {
+    "^terminal$",
+  },
+  bufnames = {},
+}
+
 R("feline").setup({
   components = components,
   conditional_components = {},
+  force_inactive = force_inactive,
 })
 
 if vim.fn.has("nvim-0.8") then
