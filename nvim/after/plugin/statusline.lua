@@ -29,17 +29,31 @@ table.insert(components.active[1], {
   hl = function()
     return {
       name = require("feline.providers.vi_mode").get_mode_highlight_name(),
-      fg = require("feline.providers.vi_mode").get_mode_color(),
+      bg = require("feline.providers.vi_mode").get_mode_color(),
+      fg = "black",
       style = "bold",
     }
   end,
-  right_sep = { " ", { str = "right_filled", hl = { bg = "violet", fg = "black" } } },
+  right_sep = {
+    "block",
+    {
+      str = "right_filled",
+      hl = function()
+        local fg = require("feline.providers.vi_mode").get_mode_color()
+        if require("feline.providers.git").git_info_exists() then
+          return { bg = "violet", fg = fg }
+        else
+          return { bg = "black", fg = fg }
+        end
+      end,
+    },
+  },
 })
 
 table.insert(components.active[1], {
   provider = "git_branch",
   hl = { bg = "violet", fg = "black", style = "bold" },
-  left_sep = { { str = " ", hl = { bg = "violet", fg = "black" } } },
+  left_sep = { { str = "block" } },
   right_sep = { { str = " ", hl = { bg = "violet" } }, { str = "right_filled", hl = { bg = "black", fg = "violet" } } },
   icon = " ",
 })
