@@ -3,6 +3,9 @@ if not has_lsp then
   return
 end
 
+local lsp_status = require("lsp-status")
+require("jp.lsp.status").activate()
+
 local show_documentation = function(bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
   if filetype == "lua" then
@@ -36,9 +39,12 @@ local custom_attach = function(client, bufnr)
   vim.keymap.set("n", "K", function()
     show_documentation(bufnr)
   end, bufopts)
+
+  lsp_status.on_attach(client)
 end
 
 local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+updated_capabilities = vim.tbl_extend("keep", updated_capabilities, lsp_status.capabilities)
 
 local servers = {
   vimls = true,

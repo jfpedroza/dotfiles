@@ -91,7 +91,28 @@ table.insert(components.active[1], {
 
 ---- Third section, active statusline
 table.insert(components.active[3], {
+  provider = function()
+    return require("lsp-status").status_progress()
+  end,
+  right_sep = { " ", { str = "left", hl = { bg = "black", fg = "white" } } },
+  truncate_hide = true,
+})
+
+table.insert(components.active[3], {
+  provider = function()
+    return vim.b.lsp_current_function or ""
+  end,
+  left_sep = " ",
+  right_sep = { " ", { str = "left", hl = { bg = "black", fg = "white" } } },
+  enabled = function()
+    return #vim.lsp.get_active_clients({ bufnr = 0 }) > 0
+  end,
+  truncate_hide = true,
+})
+
+table.insert(components.active[3], {
   provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
+  left_sep = " ",
   right_sep = " ",
 })
 
