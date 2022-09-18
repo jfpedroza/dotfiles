@@ -75,6 +75,7 @@ startup({
     use({ "antoinemadec/FixCursorHold.nvim" })
     use({ "ThePrimeagen/harpoon" })
     use({ "navarasu/onedark.nvim" })
+    use({ "folke/trouble.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")
