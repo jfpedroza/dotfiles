@@ -39,11 +39,11 @@ linters.markdownlint = {
   sourceName = "markdownlint",
   formatLines = 1,
   formatPattern = {
-    "^.*:\\s*(\\d+)\\s+(.*)$",
+    "^[^:]*:\\s*(\\d+)(:(\\d+))?\\s+(.*)$",
     {
       line = 1,
-      column = -1,
-      message = 2,
+      column = 3,
+      message = 4,
     },
   },
 }
