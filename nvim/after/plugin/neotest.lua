@@ -7,6 +7,7 @@ local neotest = require("neotest")
 neotest.setup({
   adapters = {
     require("neotest-elixir"),
+    require("neotest-python"),
   },
   icons = {
     running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },

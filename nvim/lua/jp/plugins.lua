@@ -110,6 +110,7 @@ startup({
     -- Testing
     use({ "nvim-neotest/neotest" })
     use({ "~/code/nvim_plugins/neotest-elixir" })
+    use({ "nvim-neotest/neotest-python" })
 
     -- Debugger Adapter Protocol
     use("mfussenegger/nvim-dap")
