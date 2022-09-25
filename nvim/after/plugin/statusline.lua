@@ -100,7 +100,8 @@ table.insert(components.active[3], {
 
 table.insert(components.active[3], {
   provider = function()
-    return vim.b.lsp_current_function or ""
+    local fun, _ = string.gsub(vim.b.lsp_current_function or "", "%%", "%%%%")
+    return fun
   end,
   left_sep = " ",
   right_sep = { " ", { str = "left", hl = { bg = "black", fg = "white" } } },
