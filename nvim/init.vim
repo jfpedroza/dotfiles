@@ -274,9 +274,7 @@ tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>
 
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" TaskWiki
-let g:taskwiki_markup_syntax = 'markdown'
+let g:vimwiki_global_ext = 0
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
