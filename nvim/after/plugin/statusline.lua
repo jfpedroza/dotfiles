@@ -271,12 +271,7 @@ R("feline").setup({
   force_inactive = force_inactive,
 })
 
-if vim.fn.has("nvim-0.8") then
-  require("feline").winbar.setup({
-    components = winbar_components,
-    conditional_components = {},
-  })
-end
-
--- R("feline").setup()
-require("feline").winbar.setup()
+require("feline").winbar.setup({
+  components = winbar_components,
+  conditional_components = {},
+})
