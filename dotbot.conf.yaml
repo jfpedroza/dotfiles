@@ -4,8 +4,8 @@
         relink: true
 
 - link:
-    ~/.tmux.conf: tmux.conf
-    ~/.tmate.conf: tmate.conf
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmate.conf: tmux/tmate.conf
     ~/.vimrc: vimrc
     ~/.config/nvim: nvim
     ~/.vim/coc-settings.json: vim/coc-settings.json
