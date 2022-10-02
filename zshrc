@@ -115,6 +115,7 @@ bindkey -v
 
 bindkey "^[OA" history-beginning-search-backward
 bindkey "^[OB" history-beginning-search-forward
+bindkey -s ^f "tmux-sessionizer\n"
 
 function set_title () {
     # Name the terminal after the basename of the current directory
