@@ -33,7 +33,7 @@ set scrolloff=10 " Minimal number of screen lines to keep above and below the cu
 set wildmode=longest:full,full " Fill only the longest common string
 
 " Enable persistent undo so that undo history persists across vim sessions
-set undodir=~/.local/share/nvim/undo
+set undodir=~/.local/state/nvim/undo
 set undofile
 
 set inccommand=split

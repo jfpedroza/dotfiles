@@ -11,7 +11,7 @@ local show_documentation = function(bufnr)
   if filetype == "lua" then
     local line = vim.api.nvim_get_current_line()
     if vim.regex([[vim\.\([bwg]\?o\|opt\|api\)\.]]):match_str(line) then
-      vim.cmd("help " .. vim.fn.expand("<cword>"))
+      vim.cmd.help(vim.fn.expand("<cword>"))
       return
     end
   end

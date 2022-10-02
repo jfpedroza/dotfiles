@@ -2,7 +2,7 @@ if not pcall(require, "feline") then
   return
 end
 
-vim.opt.laststatus = 3
+vim.o.laststatus = 3
 
 local components = {
   active = {},
