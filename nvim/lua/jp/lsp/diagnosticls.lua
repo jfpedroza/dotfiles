@@ -74,6 +74,7 @@ linters.mix_credo = {
     },
   },
   securities = {
+    W = "warning",
     F = "warning",
     C = "warning",
     D = "info",
