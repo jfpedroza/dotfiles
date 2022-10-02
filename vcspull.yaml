@@ -28,6 +28,8 @@
   cluster-test: git+ssh://git@github.com/jfpedroza/cluster-test.git
 ~/code/erlang:
   tanodb: git+ssh://git@github.com/jfpedroza/tanodb.git
+~/code/nvim_plugins:
+  neotest-elixir: git+ssh://git@github.com/jfpedroza/neotest-elixir.git
 ~/code/lib:
   linenoise-ng: git+https://github.com/arangodb/linenoise-ng.git
   elixir-ls: git+https://github.com/elixir-lsp/elixir-ls.git
@@ -47,6 +49,19 @@
     remotes:
       origin: git+ssh://git@github.com/jfpedroza/yanky.nvim.git
       upstream: git+https://github.com/gbprod/yanky.nvim.git
+  neotest:
+    url: git+ssh://git@github.com/jfpedroza/neotest.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/neotest.git
+      upstream: git+https://github.com/nvim-neotest/neotest.git
+  neotest-plenary: git+https://github.com/nvim-neotest/neotest-plenary.git
+  neotest-python: git+https://github.com/nvim-neotest/neotest-python.git
+  libvcs:
+    url: git+ssh://git@github.com/jfpedroza/libvcs.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/libvcs.git
+      upstream: git+https://github.com/vcs-python/libvcs.git
+  vcspull: git+https://github.com/vcs-python/vcspull.git
 ~/code/lib/other_dotfiles:
   tjdevries: git+https://github.com/tjdevries/config_manager.git
   mhanberg: git+https://github.com/mhanberg/.dotfiles.git
