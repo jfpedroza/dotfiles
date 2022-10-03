@@ -156,21 +156,6 @@ tnoremap <F1> <C-\><C-n>
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
-" Command abbreviations
-"" no one is really happy until you have this shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qa qa
-cnoreabbrev Qall qall
-cnoreabbrev X x
-
 " Use XX to exit Vim in normal mode
 nmap <silent> XX :quitall<CR>
 
