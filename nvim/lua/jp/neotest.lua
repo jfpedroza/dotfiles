@@ -1,7 +1,9 @@
 local M = {}
 
+M.env = nil
+
 function M.run(arg)
-  local default_env = vim.g.neotest_run_env or {}
+  local default_env = M.env or {}
   local args
 
   if type(arg) == "table" then
@@ -12,6 +14,7 @@ function M.run(arg)
     args = { arg, env = default_env }
   end
 
+  print("Neotest run called with arg", args[1])
   require("neotest").run.run(args)
 end
 
@@ -28,7 +31,7 @@ function M.run_suite(args)
 end
 
 function M.read_env(...)
-  vim.g.neotest_run_env = vim.fn.DotenvRead(...)
+  M.env = vim.fn.DotenvRead(...)
 end
 
 return M
