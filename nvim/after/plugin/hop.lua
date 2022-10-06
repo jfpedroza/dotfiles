@@ -18,11 +18,11 @@ vim.keymap.set("", "ķ", function()
 end)
 
 vim.keymap.set("", "Ĵ", function()
-  require("hop").hint_lines_skip_whitespace({ direction = after_cursor })
+  require("hop").hint_lines({ direction = after_cursor })
 end)
 
 vim.keymap.set("", "Ķ", function()
-  require("hop").hint_lines_skip_whitespace({ direction = before_cursor })
+  require("hop").hint_lines({ direction = before_cursor })
 end)
 
 vim.keymap.set({ "n", "x", "o" }, "f", function()
