@@ -7,6 +7,7 @@ local mapping = require("yanky.telescope.mapping")
 
 require("yanky").setup({
   ring = {
+    storage = "sqlite",
     filter = function(entry)
       return #entry.regcontents > 3 and not entry.regcontents:match("^[%s\n]*$")
     end,
@@ -37,6 +38,3 @@ require("yanky").setup({
     },
   },
 })
-
--- Due to load order this can't be in telescope.lua (yanky setup must happen before extension load)
-require("telescope").load_extension("yank_history")

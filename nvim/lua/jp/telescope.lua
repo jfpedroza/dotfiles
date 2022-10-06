@@ -31,6 +31,7 @@ require("telescope").load_extension("ui-select")
 require("telescope").load_extension("notify")
 require("telescope").load_extension("dap")
 require("telescope").load_extension("harpoon")
+require("telescope").load_extension("yank_history")
 
 vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#303030" })
 vim.api.nvim_create_autocmd("User", {

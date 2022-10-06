@@ -69,7 +69,7 @@ startup({
         require("colorizer").setup(nil, { css = true })
       end,
     })
-    use({ "~/code/lib/yanky.nvim" })
+    use({ "~/code/lib/yanky.nvim", requires = { "kkharji/sqlite.lua" } })
     use({ "lewis6991/gitsigns.nvim" })
     use({ "antoinemadec/FixCursorHold.nvim" })
     use({ "ThePrimeagen/harpoon" })
