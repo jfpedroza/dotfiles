@@ -84,25 +84,6 @@ highlight link gitmessengerHash Special
 " History number at 'History:' header with 'Title' highlight group
 highlight link gitmessengerHistory Title
 
-" EasyMotion
-let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnm;'
-let g:EasyMotion_startofline = 0
-" map ĵ <Plug>(easymotion-j)
-" map Ĵ <Plug>(easymotion-sol-j)
-" map ķ <Plug>(easymotion-k)
-" map Ķ <Plug>(easymotion-sol-k)
-" map ẁ <Plug>(easymotion-w)
-map Ẁ <Plug>(easymotion-W)
-map ė <Plug>(easymotion-e)
-map Ė <Plug>(easymotion-E)
-map ḃ <Plug>(easymotion-b)
-map Ḃ <Plug>(easymotion-B)
-" map ş <Plug>(easymotion-s)
-" map ť <Plug>(easymotion-t)
-" map Ť <Plug>(easymotion-T)
-" map ḟ <Plug>(easymotion-f)
-" map Ḟ <Plug>(easymotion-F)
-
 " FixCursorHold
 let g:cursorhold_updatetime = 100
 

@@ -51,7 +51,6 @@ startup({
     use("AndrewRadev/splitjoin.vim")
     use("vim-scripts/argtextobj.vim")
     use("kshenoy/vim-signature")
-    use("easymotion/vim-easymotion")
     use({ "phaazon/hop.nvim", branch = "v2" })
     use("majutsushi/tagbar")
     use("editorconfig/editorconfig-vim")
