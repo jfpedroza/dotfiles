@@ -79,6 +79,7 @@ startup({
     -- Languages
     use("neovim/nvim-lspconfig")
     use({ "nvim-lua/lsp-status.nvim" })
+    use({ "kosayoda/nvim-lightbulb" })
     use("mhanberg/elixir.nvim")
     use("sheerun/vim-polyglot")
     use("alx741/vim-hindent")
