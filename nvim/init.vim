@@ -94,14 +94,6 @@ let g:asyncrun_open = 8
 
 let g:SignatureMarkTextHLDynamic = 1
 
-" Autoformat
-noremap <F3> :Autoformat<CR>
-augroup Autoformat
-autocmd BufWrite * :Autoformat
-augroup end
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
