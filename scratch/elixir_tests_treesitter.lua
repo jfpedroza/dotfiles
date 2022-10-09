@@ -1,4 +1,5 @@
 local query = [[
+  ;; query
   ;; Describe blocks
   (call
     target: (identifier) @_target (#eq? @_target "describe")
