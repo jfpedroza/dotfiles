@@ -108,16 +108,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:mkdp_browser = 'qutebrowser'
 let g:mkdp_auto_close = 0
 
-augroup ElixirWrap
-" Wrap word in {:ok, word} tuple
-autocmd FileType elixir nmap <silent> <localleader>o :call <SID>NormalWrap("{:ok, ", "}")<CR>
-autocmd FileType elixir xmap <silent> <localleader>o :call <SID>VisualWrap("{:ok, ", "}")<CR>
-
-" Wrap word in {:error, word} tuple
-autocmd FileType elixir nmap <silent> <localleader>e :call <SID>NormalWrap("{:error, ", "}")<CR>
-autocmd FileType elixir xmap <silent> <localleader>e :call <SID>VisualWrap("{:error, ", "}")<CR>
-augroup end
-
 " JavaScript
 let g:jsx_ext_required=0                     " jsx highlighting in .js files
 
@@ -143,26 +133,3 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 set secure
-
-" ------------------------ Utility functions ---------------------- "
-
-" Wrap the current word in some text
-function! s:NormalWrap(before, after)
-    silent DelimitMateOff
-    execute 'normal bi' . a:before . 'ea' . a:after . ''
-    silent DelimitMateOn
-endfunction
-
-" Wrap the selected text in some text
-function! s:VisualWrap(before, after) range
-    let start = getpos("'<")
-    let end = getpos("'>")
-
-    silent DelimitMateOff
-    call setpos('.', end)
-    execute 'normal a' . a:after . ''
-    call setpos('.', start)
-    execute 'normal i' . a:before . ''
-    silent DelimitMateOn
-endfunction
-
