@@ -5,6 +5,7 @@ end
 local neotest = require("neotest")
 
 neotest.setup({
+  log_level = vim.log.levels.INFO,
   adapters = {
     require("neotest-elixir"),
     require("neotest-python"),
@@ -24,3 +25,8 @@ vim.api.nvim_create_user_command("NeotestOutput", neotest.output.open, {})
 
 vim.keymap.set("n", "<leader>t", require("jp.neotest").run)
 vim.keymap.set("n", "<leader>T", require("jp.neotest").run_file)
+vim.keymap.set("n", "<space>to", neotest.output.open)
+
+vim.cmd.cnoreabbrev("ntl NeotestLast")
+vim.cmd.cnoreabbrev("nts NeotestSummary")
+vim.cmd.cnoreabbrev("nto NeotestOutput")
