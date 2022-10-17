@@ -43,8 +43,12 @@ local custom_attach = function(client, bufnr)
   lsp_status.on_attach(client)
 end
 
-local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-updated_capabilities = vim.tbl_extend("keep", updated_capabilities, lsp_status.capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
+capabilities.window = {
+  workDoneProgress = true,
+}
+
 
 require("neodev").setup({})
 
@@ -75,7 +79,7 @@ local setup_server = function(server, config)
 
   config = vim.tbl_deep_extend("force", {
     on_attach = custom_attach,
-    capabilities = updated_capabilities,
+    capabilities = capabilities,
   }, config)
 
   lspconfig[server].setup(config)
@@ -95,5 +99,5 @@ elixir.setup({
     enableTestLenses = true,
   }),
   on_attach = custom_attach,
-  capabilities = updated_capabilities,
+  capabilities = capabilities,
 })
