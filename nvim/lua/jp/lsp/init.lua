@@ -46,7 +46,10 @@ end
 local updated_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 updated_capabilities = vim.tbl_extend("keep", updated_capabilities, lsp_status.capabilities)
 
+require("neodev").setup({})
+
 local servers = {
+  sumneko_lua = true,
   vimls = true,
   solargraph = true,
   pyright = true,
@@ -81,15 +84,6 @@ end
 for server, config in pairs(servers) do
   setup_server(server, config)
 end
-
-local luadev = require("lua-dev").setup({
-  lspconfig = {
-    on_attach = custom_attach,
-    capabilities = updated_capabilities,
-  },
-})
-
-lspconfig.sumneko_lua.setup(luadev)
 
 local elixir = require("elixir")
 

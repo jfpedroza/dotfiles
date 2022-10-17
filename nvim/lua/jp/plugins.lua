@@ -88,7 +88,7 @@ startup({
     use("tridactyl/vim-tridactyl")
     use("aklt/plantuml-syntax")
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
-    use({ "folke/lua-dev.nvim" })
+    use({ "folke/neodev.nvim" })
 
     -- Completion
     use("hrsh7th/nvim-cmp")
