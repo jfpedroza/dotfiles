@@ -5,7 +5,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Work/Mono ~/code ~/code/nvim_plugins ~/code/lib ~/code/lib/other_dotfiles ~/code/languages ~/code/games -mindepth 1 -maxdepth 1 -type d | fzf --preview 'echo {}\\n; exa -lgha --git {}')
+    function fixed_folders() {
+        echo ~/dotfiles
+    }
+
+    function find_folders() {
+        find ~/Work/Mono ~/code ~/code/nvim_plugins ~/code/lib ~/code/lib/other_dotfiles ~/code/languages ~/code/games -mindepth 1 -maxdepth 1 -type d
+    }
+
+    selected=$(cat <(fixed_folders) <(find_folders) | fzf --preview 'echo {}\\n; exa -lgha --git {}')
 fi
 
 if [[ -z $selected ]]; then
