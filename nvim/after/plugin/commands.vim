@@ -7,9 +7,6 @@ command! -nargs=0 CopyFileDir let @+ = expand("%:p:~:h") | echo 'Copied to clipb
 " Format JSON using Python's json.tool
 command! -nargs=0 FormatJson %!python -m json.tool
 
-" TODO: Make it receive an optional filetype arg
-command! Scratch lua require'jp.tools'.make_scratch()
-
 " Checkout branch/tag using FZF
 " Ported from https://github.com/atweiden/fzf-extras/blob/zsh/fzf-extras.zsh
 command! -nargs=? -bang Checkout call fzf#run(fzf#wrap('Checkout', {

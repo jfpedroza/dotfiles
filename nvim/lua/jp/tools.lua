@@ -2,11 +2,15 @@ local ts_utils = require("nvim-treesitter.ts_utils")
 
 local M = {}
 
-function M.make_scratch()
+function M.make_scratch(filetype)
   vim.api.nvim_command("enew")
   vim.bo.buftype = "nofile"
   vim.bo.bufhidden = "hide"
   vim.bo.swapfile = false
+
+  if filetype then
+    vim.bo.filetype = filetype
+  end
 end
 
 -- Ported from tjdevries' save_and_exec
