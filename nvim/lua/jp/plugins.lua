@@ -74,6 +74,7 @@ startup({
     use({ "ThePrimeagen/harpoon" })
     use({ "navarasu/onedark.nvim" })
     use({ "folke/trouble.nvim" })
+    use({ "stevearc/overseer.nvim" })
 
     -- Languages
     use("neovim/nvim-lspconfig")

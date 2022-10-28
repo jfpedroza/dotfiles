@@ -258,6 +258,7 @@ local force_inactive = {
     "^neotest%-summary$",
     "^Mundo$",
     "^MundoDiff$",
+    "^OverseerList$",
   },
   buftypes = {
     "^terminal$",
