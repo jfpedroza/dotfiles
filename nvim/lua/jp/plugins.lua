@@ -118,6 +118,14 @@ startup({
     use("theHamsta/nvim-dap-virtual-text")
     use("nvim-telescope/telescope-dap.nvim")
 
+    -- Turn textareas in Firefox into Neovim instances
+    use({
+      "glacambre/firenvim",
+      run = function()
+        vim.fn["firenvim#install"](0)
+      end,
+    })
+
     -- Authomatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
       require("packer").sync()

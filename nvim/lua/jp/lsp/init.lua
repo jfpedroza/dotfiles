@@ -3,6 +3,10 @@ if not has_lsp then
   return
 end
 
+if vim.g.started_by_firenvim then
+  return
+end
+
 local lsp_status = require("lsp-status")
 require("jp.lsp.status").activate()
 

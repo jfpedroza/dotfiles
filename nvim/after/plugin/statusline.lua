@@ -2,6 +2,10 @@ if not pcall(require, "feline") then
   return
 end
 
+if vim.g.started_by_firenvim then
+  return
+end
+
 vim.o.laststatus = 3
 
 local components = {
