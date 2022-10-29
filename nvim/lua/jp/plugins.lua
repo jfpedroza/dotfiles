@@ -40,7 +40,7 @@ startup({
       tag = "nightly",
     })
     use({ "vimwiki/vimwiki", branch = "dev" })
-    use("tbabej/taskwiki")
+    use("tools-life/taskwiki")
     use("tpope/vim-surround")
     use("christoomey/vim-system-copy")
     use("Raimondi/delimitMate")
