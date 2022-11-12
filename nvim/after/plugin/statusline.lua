@@ -270,6 +270,12 @@ local force_inactive = {
   bufnames = {},
 }
 
+local winbar_disable = {
+  filetypes = {},
+  buftypes = {},
+  bufnames = {},
+}
+
 R("feline").setup({
   components = components,
   conditional_components = {},
@@ -279,4 +285,5 @@ R("feline").setup({
 require("feline").winbar.setup({
   components = winbar_components,
   conditional_components = {},
+  disable = winbar_disable,
 })
