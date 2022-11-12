@@ -9,3 +9,7 @@ nmap <leader>gp :Git push<CR>
 nmap <leader>gs :Git<CR>
 nmap <leader>gw :GBrowse<CR>
 ]])
+
+vim.cmd.cnoreabbrev("gpf Git push --force-with-lease")
+vim.cmd.cnoreabbrev("gpnoci Git push -o ci.skip")
+vim.cmd.cnoreabbrev("gpfnoci Git push --force-with-lease -o ci.skip")
