@@ -107,7 +107,7 @@ startup({
     use("honza/vim-snippets")
 
     -- Testing
-    use({ "nvim-neotest/neotest" })
+    use({ "~/code/lib/neotest" })
     use({ "~/code/nvim_plugins/neotest-elixir" })
     use({ "nvim-neotest/neotest-python" })
 
