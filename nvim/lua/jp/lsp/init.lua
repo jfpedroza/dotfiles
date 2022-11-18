@@ -96,6 +96,7 @@ end
 local elixir = require("elixir")
 
 elixir.setup({
+  cmd = vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh"),
   settings = elixir.settings({
     dialyzerEnabled = true,
     dialyzerFormat = "dialyxir_long",
