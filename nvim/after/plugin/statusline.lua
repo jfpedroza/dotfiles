@@ -233,7 +233,12 @@ table.insert(winbar_components.active, {})
 table.insert(winbar_components.inactive, {})
 
 table.insert(winbar_components.active[1], {
-  provider = "file_info",
+  provider = {
+    name = "file_info",
+    opts = {
+      type = "unique",
+    },
+  },
   hl = {
     fg = "skyblue",
     bg = "NONE",
@@ -242,7 +247,12 @@ table.insert(winbar_components.active[1], {
 })
 
 table.insert(winbar_components.inactive[1], {
-  provider = "file_info",
+  provider = {
+    name = "file_info",
+    opts = {
+      type = "unique",
+    },
+  },
   hl = {
     fg = "white",
     bg = "NONE",
