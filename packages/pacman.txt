@@ -127,3 +127,4 @@ cabal-install
 bitwarden
 qmk
 syncthing
+direnv

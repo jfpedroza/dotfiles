@@ -174,4 +174,7 @@ export KERL_INSTALL_MANPAGES=no
 
 export PATH=$HOME/private_dotfiles/bin:$HOME/dotfiles/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$PATH
 
+[[ -e "$HOME/.config/asdf-direnv/zshrc" ]] \
+  && source "$HOME/.config/asdf-direnv/zshrc"
+
 # zprof
