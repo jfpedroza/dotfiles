@@ -89,9 +89,6 @@ let g:system_copy#paste_command='xclip -sel clipboard -o'
 " Ack - Rg
 let g:ackprg = 'rg --vimgrep'
 
-" AsyncRun
-let g:asyncrun_open = 8
-
 let g:SignatureMarkTextHLDynamic = 1
 
 " VimWiki

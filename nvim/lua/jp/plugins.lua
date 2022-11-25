@@ -31,7 +31,6 @@ startup({
     use("junegunn/fzf.vim")
     use("mileszs/ack.vim")
     use("Chiel92/vim-autoformat")
-    use("skywind3000/asyncrun.vim")
     use({
       "kyazdani42/nvim-tree.lua",
       requires = {
