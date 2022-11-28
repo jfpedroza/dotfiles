@@ -292,9 +292,6 @@ useZsh() {
     cd ~/.fzf-extras || return
     git checkout zsh
 
-    # Forgit
-    git clone https://github.com/wfxr/forgit.git $zsh_custom/plugins/forgit
-
     cd ~/dotfiles
     ./dotfiles.sh
 }
