@@ -39,6 +39,7 @@ startup({
       tag = "nightly",
     })
     use({ "vimwiki/vimwiki", branch = "dev" })
+    use({ "mickael-menu/zk-nvim" })
     use("tpope/vim-surround")
     use("christoomey/vim-system-copy")
     use("Raimondi/delimitMate")

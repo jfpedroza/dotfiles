@@ -129,3 +129,4 @@ qmk
 syncthing
 direnv
 nix
+zk

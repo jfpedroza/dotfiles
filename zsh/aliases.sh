@@ -64,6 +64,7 @@ alias lox="cargo run"
 alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim stable'
 alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
+alias xtype='xdotool type'
 
 # Actually functions
 
@@ -73,3 +74,7 @@ function xrun() {
         disown
     ) &>/dev/null
 }
+
+# Actually env vars
+export neotest_log=~/.local/state/nvim/neotest.log
+export ZK_NOTEBOOK_DIR=~/pwiki

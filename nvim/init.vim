@@ -92,7 +92,7 @@ let g:ackprg = 'rg --vimgrep'
 let g:SignatureMarkTextHLDynamic = 1
 
 " VimWiki
-let g:vimwiki_list = [{'path': '~/pwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
 
 " Tagbar
