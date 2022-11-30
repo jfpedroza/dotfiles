@@ -6,6 +6,8 @@
       upstream: git+https://github.com/robbyrussell/oh-my-zsh.git
 ~/.oh-my-zsh/custom/plugins/:
   forgit: git+https://github.com/wfxr/forgit.git
+  nix-zsh-completions: git+https://github.com/spwhitt/nix-zsh-completions.git
+  nix-shell: git+https://github.com/chisui/zsh-nix-shell.git
 ~/code/:
   ProjectEuler: git+ssh://git@github.com/jfpedroza/ProjectEuler.git
   spring_config: git+ssh://git@github.com/jfpedroza/spring_config.git

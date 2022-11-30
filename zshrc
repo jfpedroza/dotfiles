@@ -79,7 +79,10 @@ plugins=(
   forgit
   docker
   docker-compose
+  nix-shell
 )
+
+fpath+=${ZSH_CUSTOM:-$ZSH/custom}/plugins/nix-zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,6 +110,10 @@ BULLETTRAIN_PROMPT_CHAR=\λ
 BULLETTRAIN_PROMPT_ROOT=true
 BULLETTRAIN_VIRTUALENV_PREFIX=env:
 BULLETTRAIN_TIME_12HR=true
+
+BULLETTRAIN_CUSTOM_MSG='$(prompt_nix_shell)'
+BULLETTRAIN_CUSTOM_BG=yellow
+BULLETTRAIN_CUSTOM_FG=black
 
 export MANPAGER='nvim +Man!'
 

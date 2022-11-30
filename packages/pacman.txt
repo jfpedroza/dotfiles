@@ -128,3 +128,4 @@ bitwarden
 qmk
 syncthing
 direnv
+nix

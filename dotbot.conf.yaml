@@ -19,6 +19,7 @@
     ~/.face: x11/face
     ~/.oh-my-zsh/custom/01_aliases.zsh: zsh/aliases.sh
     ~/.oh-my-zsh/custom/10_shortcuts.zsh: zsh/shortcuts.zsh
+    ~/.oh-my-zsh/custom/11_nix.zsh: zsh/nix.zsh
     ~/.config/i3/config: i3/i3.config
     ~/.config/picom.conf: i3/picom.conf
     ~/.config/rofi: i3/rofi
