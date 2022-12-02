@@ -71,7 +71,7 @@ startup({
     use({ "lewis6991/gitsigns.nvim" })
     use({ "antoinemadec/FixCursorHold.nvim" })
     use({ "ThePrimeagen/harpoon" })
-    use({ "navarasu/onedark.nvim" })
+    use({ "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" })
     use({ "folke/trouble.nvim" })
     use({ "stevearc/overseer.nvim" })
 
