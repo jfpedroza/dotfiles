@@ -28,6 +28,7 @@
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/gsimplecal/config: gsimplecal.config
     ~/.config/qmk/qmk.ini: qmk.ini
+    ~/.config/systemd/user/notif-server.service: systemd/notif-server.service
 
 - defaults:
     link:
