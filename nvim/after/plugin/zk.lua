@@ -43,7 +43,7 @@ vim.keymap.set("n", "<leader>zf", function()
 end)
 
 -- Search for the notes matching the current visual selection.
-vim.keymap.set("v", "<leader>zf", ":'<,'>ZkMatch<CR>")
+vim.keymap.set("v", "<leader>zf", ":ZkMatch<CR>")
 
 local augroup = vim.api.nvim_create_augroup("zk-config", { clear = true })
 
@@ -54,3 +54,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.backupcopy = "yes"
   end,
 })
+
+function _G.zk_new_note_selection()
+  vim.ui.select({ "Title", "Content" }, { prompt = "Set selection as:" }, function(choice)
+    if choice == "Title" then
+      vim.cmd([['<,'>ZkNewFromTitleSelection]])
+    elseif choice == "Content" then
+      vim.cmd([['<,'>ZkNewFromContentSelection]])
+    end
+  end)
+end
