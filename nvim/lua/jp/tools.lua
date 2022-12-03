@@ -73,4 +73,60 @@ function M.wrap_selected_nodes(before, after)
   M.wrap_range(bufnr, range, before, after)
 end
 
+function M.get_link_title(link)
+  if not vim.startswith(link, "https://") then
+    print("Input is not a link")
+    return
+  end
+
+  local curl = require("plenary.curl")
+
+  local request = curl.get(link)
+  if request == nil then
+    print("Request is nil")
+    return
+  end
+
+  if not request.status == 200 then
+    print("Failed to get link")
+    return
+  end
+
+  local html_parser = vim.treesitter.get_string_parser(request.body, "html")
+  if not html_parser then
+    print("Must have html parser installed")
+    return
+  end
+
+  local tree = (html_parser:parse() or {})[1]
+  if not tree then
+    print("Failed to parse tree")
+    return
+  end
+
+  local query = vim.treesitter.parse_query(
+    "html",
+    [[
+      (
+       (element
+        (start_tag
+         (tag_name) @tag)
+        (text) @text
+       )
+       (#eq? @tag "title")
+      )
+    ]]
+  )
+
+  for id, node in query:iter_captures(tree:root(), request.body, 0, -1) do
+    local name = query.captures[id]
+    if name == "text" then
+      local title = vim.treesitter.get_node_text(node, request.body)
+      return title
+    end
+  end
+
+  print("Title not found")
+end
+
 return M
