@@ -14,22 +14,35 @@ commands.add("ZkJournal", function(options)
   zk.new(options)
 end)
 
+-- Create a new note after asking for its title.
 vim.keymap.set("n", "<leader>zn", function()
-  zk.new({ title = vim.fn.input("Title: ") })
+  vim.ui.input({ prompt = "Title: " }, function(title)
+    if title then
+      zk.new({ title = title })
+    end
+  end)
 end)
 
+-- Open notes.
 vim.keymap.set("n", "<leader>zo", function()
   zk.edit({ sort = { "modified" } }, {})
 end)
 
+-- Open notes associated with the selected tags.
 vim.keymap.set("n", "<leader>zt", function()
   vim.cmd.ZkTags()
 end)
 
+-- Search for the notes matching a given query.
 vim.keymap.set("n", "<leader>zf", function()
-  zk.edit({ sort = { "modified" }, match = vim.fn.input("Search: ") }, {})
+  vim.ui.input({ prompt = "Search: " }, function(match)
+    if match then
+      zk.edit({ sort = { "modified" }, match = match }, {})
+    end
+  end)
 end)
 
+-- Search for the notes matching the current visual selection.
 vim.keymap.set("v", "<leader>zf", ":'<,'>ZkMatch<CR>")
 
 local augroup = vim.api.nvim_create_augroup("zk-config", { clear = true })
