@@ -320,6 +320,12 @@
     # dunstctl context
     # context = ctrl+shift+period
 
+[phone_battery_full]
+    appname = "KDE Connect"
+    summary = "MacroDroid"
+    body = "Batería"
+    urgency = critical
+
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
