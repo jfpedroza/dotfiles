@@ -12,7 +12,7 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
   end, { buffer = true })
 
   -- Create a note using the selection as title or content
-  vim.keymap.set("v", "<leader>zn", ":lua zk_new_note_selection()<CR>", { buffer = true })
+  vim.keymap.set("v", "<leader>zn", ":lua require('jp.zk').new_note_selection()<CR>", { buffer = true })
 
   -- Preview a linked note.
   vim.keymap.set("n", "K", function()
