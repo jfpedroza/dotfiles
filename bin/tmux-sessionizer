@@ -7,6 +7,7 @@ if [[ $# -eq 1 ]]; then
 else
     function fixed_folders() {
         echo ~/dotfiles
+        echo ~/pwiki
     }
 
     function find_folders() {
