@@ -20,19 +20,11 @@
     # Enable POSIX regular expressions in filters
     enable_posix_regex = true
 
-    # The geometry of the window:
-    #   [{width}]x{height}[+/-{x}+/-{y}]
-    # The geometry of the message window.
-    # The height is measured in number of notifications everything else
-    # in pixels.  If the width is omitted but the height is given
-    # ("-geometry x2"), the message window expands over the whole screen
-    # (dmenu-like).  If width is 0, the window expands to the longest
-    # message displayed.  A positive x is measured from the left, a
-    # negative from the right side of the screen.  Y is measured from
-    # the top and down respectively.
-    # The width can be negative.  In this case the actual width is the
-    # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+20"
+    width = 300
+    # height = 0
+    notification_limit = 11
+    origin = top-right
+    offset = 30x40
 
     # Turn on the progess bar
     progress_bar = true
@@ -49,7 +41,6 @@
 
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
-
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -88,6 +79,8 @@
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"
+
+    gap_size = 10
 
     # Define a color for the separator.
     # possible values are:
