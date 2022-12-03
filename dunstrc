@@ -17,6 +17,9 @@
     # will be ignored.
     follow = mouse
 
+    # Enable POSIX regular expressions in filters
+    enable_posix_regex = true
+
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -425,29 +428,9 @@
     appname = ExUnit
     history_ignore = yes
 
-[ignore_kde_connect_gmail]
+[ignore_kde_connect_apps]
     appname = "KDE Connect"
-    summary = "Gmail"
-    format = ""
-
-[ignore_kde_connect_yandex]
-    appname = "KDE Connect"
-    summary = "Yandex Mail"
-    format = ""
-
-[ignore_kde_connect_slack]
-    appname = "KDE Connect"
-    summary = "com.Slack"
-    format = ""
-
-[ignore_kde_connect_telegram]
-    appname = "KDE Connect"
-    summary = "Telegram"
-    format = ""
-
-[ignore_kde_connect_whatsapp]
-    appname = "KDE Connect"
-    summary = "WhatsApp"
+    summary = "Gmail|Yandex Mail|Slack|Telegram|WhatsApp|Reddit|Netflix|YouTube|Rappi"
     format = ""
 
 #[espeak]
