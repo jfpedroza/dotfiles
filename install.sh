@@ -145,7 +145,8 @@ installNpmPackages() {
     typescript-formatter
     markdownlint-cli
     fixjson
-    airpaste'
+    airpaste
+    bash-language-server'
 
     yarn_packages='
     diagnostic-languageserver
