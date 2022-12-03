@@ -1,4 +1,4 @@
-if not pcall(require, "neotest") then
+if not pcall(require, "neotest") or PLUGIN_DISABLE.neotest then
   return
 end
 
