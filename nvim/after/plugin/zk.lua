@@ -54,3 +54,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.backupcopy = "yes"
   end,
 })
+
+vim.api.nvim_create_user_command("ZkAddNoteFromURL", function(opts)
+  local link = opts.fargs[1]
+  table.remove(opts.fargs, 1)
+  local tags = opts.fargs
+  require("jp.zk").new_from_url(link, tags)
+end, { nargs = "+" })
