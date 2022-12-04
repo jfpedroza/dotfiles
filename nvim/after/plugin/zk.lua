@@ -4,9 +4,27 @@ end
 
 local zk = require("zk")
 local commands = require("zk.commands")
+local tag_timer
 
 zk.setup({
   picker = "telescope",
+  lsp = {
+    config = {
+      on_attach = function()
+        require("jp.zk").refresh_tags()
+        if not tag_timer then
+          tag_timer = vim.loop.new_timer()
+          tag_timer:start(
+            10000,
+            10000,
+            vim.schedule_wrap(function()
+              require("jp.zk").refresh_tags()
+            end)
+          )
+        end
+      end,
+    },
+  },
 })
 
 commands.add("ZkJournal", function(options)
@@ -60,4 +78,7 @@ vim.api.nvim_create_user_command("ZkAddNoteFromURL", function(opts)
   table.remove(opts.fargs, 1)
   local tags = opts.fargs
   require("jp.zk").new_from_url(link, tags)
-end, { nargs = "+" })
+end, {
+  nargs = "+",
+  complete = require("jp.zk").tag_complete,
+})
