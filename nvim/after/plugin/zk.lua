@@ -37,6 +37,16 @@ commands.add("ZkJournalNew", function(options)
   zk.new(options)
 end)
 
+commands.add("ZkWork", function(options)
+  options = vim.tbl_extend("force", { hrefs = { "work" }, sort = { "modified-" } }, options or {})
+  zk.edit(options, { title = "Work Notes" })
+end)
+
+commands.add("ZkWorkNew", function(options)
+  options = vim.tbl_extend("force", { dir = "work" }, options or {})
+  zk.new(options)
+end)
+
 -- Create a new note after asking for its title.
 vim.keymap.set("n", "<leader>zn", function()
   vim.ui.input({ prompt = "Title: " }, function(title)
