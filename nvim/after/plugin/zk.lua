@@ -28,6 +28,11 @@ zk.setup({
 })
 
 commands.add("ZkJournal", function(options)
+  options = vim.tbl_extend("force", { hrefs = { "journal/daily" }, sort = { "path-" } }, options or {})
+  zk.edit(options, { title = "Journal Notes" })
+end)
+
+commands.add("ZkJournalNew", function(options)
   options = vim.tbl_extend("force", { dir = "journal/daily" }, options or {})
   zk.new(options)
 end)
