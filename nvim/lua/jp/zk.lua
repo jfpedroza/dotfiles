@@ -34,7 +34,7 @@ function M.new_from_url(link, tags)
   if title then
     zk.new({
       title = title,
-      content = string.format("[%s](%s)", link, link),
+      content = string.format("<%s>", link),
       extra = {
         tags = table.concat(tags, ", "),
       },

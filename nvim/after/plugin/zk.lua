@@ -42,6 +42,8 @@ commands.add("ZkWork", function(options)
   zk.edit(options, { title = "Work Notes" })
 end)
 
+vim.cmd.cnoreabbrev("ZW ZkWork")
+
 commands.add("ZkWorkNew", function(options)
   options = vim.tbl_extend("force", { dir = "work" }, options or {})
   zk.new(options)
