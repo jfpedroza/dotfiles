@@ -31,7 +31,7 @@ alias dlogf='docker logs -f'
 alias dclog='docker-compose logs'
 alias dclogf='docker-compose logs -f'
 alias docker-rm-none="docker images | grep none | awk '{print \$3}' | xargs docker rmi"
-alias ghci='stack ghci'
+# alias ghci='stack ghci'
 alias gpl='git pull origin'
 alias gpo='git push origin'
 alias git='hub'
@@ -73,6 +73,10 @@ function xrun() {
         "$@" &
         disown
     ) &>/dev/null
+}
+
+function git_commit_date() {
+    git log -1 --format=format:%ad $1
 }
 
 # Actually env vars
