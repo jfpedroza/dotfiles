@@ -69,7 +69,13 @@ if has_ufo and not PLUGIN_DISABLE.ufo then
   }
 end
 
-require("neodev").setup({})
+require("neodev").setup({
+  override = function(root_dir, library)
+    if vim.endswith(root_dir, "/neotest-elixir") then
+      library.plugins = { "neotest" }
+    end
+  end,
+})
 
 local servers = {
   sumneko_lua = true,
