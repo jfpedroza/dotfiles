@@ -160,8 +160,8 @@ linters.languagetool = {
 
 local linter_filetypes = {
   sh = "shellcheck",
-  markdown = { "markdownlint", "languagetool" },
-  vimwiki = { "markdownlint", "languagetool" },
+  markdown = { "markdownlint" },
+  vimwiki = { "markdownlint" },
   vim = "vint",
   elixir = {
     "mix_credo",

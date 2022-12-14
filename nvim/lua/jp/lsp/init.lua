@@ -71,6 +71,31 @@ local servers = {
   ccls = true,
   bashls = true,
   hls = true,
+  ltex = {
+    settings = {
+      ltex = {
+        language = "en-US",
+        dictionary = {
+          ["en-US"] = {
+            "Redpanda",
+            "Oban",
+            "PubSub",
+            "LiveView",
+            "AppSignal",
+            "TODO",
+          },
+        },
+        markdown = {
+          nodes = {
+            CodeBlock = "ignore",
+            FencedCodeBlock = "ignore",
+            AutoLink = "dummy",
+            Code = "dummy",
+          },
+        },
+      },
+    },
+  },
   diagnosticls = require("jp.lsp.diagnosticls"),
 }
 
