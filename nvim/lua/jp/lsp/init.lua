@@ -10,6 +10,8 @@ end
 local lsp_status = require("lsp-status")
 require("jp.lsp.status").activate()
 
+local has_ufo, ufo = pcall(require, "ufo")
+
 local show_documentation = function(bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
   if filetype == "lua" then
@@ -41,7 +43,14 @@ local custom_attach = function(client, bufnr)
   end
 
   vim.keymap.set("n", "K", function()
-    show_documentation(bufnr)
+    local winid
+    if has_ufo and not PLUGIN_DISABLE.ufo then
+      winid = ufo.peekFoldedLinesUnderCursor()
+    end
+
+    if not winid then
+      show_documentation(bufnr)
+    end
   end, bufopts)
 
   lsp_status.on_attach(client)
@@ -53,6 +62,12 @@ capabilities.window = {
   workDoneProgress = true,
 }
 
+if has_ufo and not PLUGIN_DISABLE.ufo then
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+end
 
 require("neodev").setup({})
 

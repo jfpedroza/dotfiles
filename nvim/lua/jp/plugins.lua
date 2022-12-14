@@ -73,6 +73,7 @@ startup({
     use({ "ThePrimeagen/harpoon" })
     use({ "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" })
     use({ "folke/trouble.nvim" })
+    use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
     use({ "stevearc/overseer.nvim" })
 
     -- Languages
