@@ -28,11 +28,11 @@ linters.shellcheck = {
 }
 
 linters.markdownlint = {
-  command = "markdownlint",
+  command = "markdownlint-wrap",
   isStderr = true,
   debounce = 100,
   args = {
-    "--stdin",
+    "%filepath",
   },
   offsetLine = 0,
   offsetColumn = 0,

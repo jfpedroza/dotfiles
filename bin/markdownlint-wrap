@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+filename=$(readlink -f "$1")
+config_file=.markdownlint.yml
+
+config_dir=$filename
+
+while [[ "$config_dir" != "/" && ! -f "$config_dir/$config_file" ]]; do
+    config_dir=$(dirname "$config_dir")
+done
+
+if [[ "$config_dir" == "/" ]]; then
+    markdownlint --stdin
+else
+    markdownlint --stdin --config "$config_dir/$config_file"
+fi
