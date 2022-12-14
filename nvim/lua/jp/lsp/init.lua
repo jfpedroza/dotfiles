@@ -70,6 +70,7 @@ local servers = {
   yamlls = true,
   ccls = true,
   bashls = true,
+  hls = true,
   diagnosticls = require("jp.lsp.diagnosticls"),
 }
 
