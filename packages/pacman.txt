@@ -23,6 +23,7 @@ konsole
 pcmanfm-qt
 thunderbird
 xfce4-power-manager
+xfc4-taskmanager
 filelight
 kdeconnect
 lximage-qt
@@ -70,6 +71,7 @@ libreoffice-fresh
 telegram-desktop
 discord
 fd
+sd
 tmux
 tmate
 gdb
@@ -130,3 +132,4 @@ syncthing
 direnv
 nix
 zk
+jless
