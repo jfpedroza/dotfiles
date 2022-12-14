@@ -5,7 +5,7 @@ local M = {
 local zk = require("zk")
 
 function M.refresh_tags()
-  require("zk.api").tag.list(nil, nil, function(err, tags)
+  require("zk.api").tag.list(nil, {}, function(err, tags)
     assert(not err, err)
     M.tags = vim.tbl_map(function(tag)
       return tag.name
