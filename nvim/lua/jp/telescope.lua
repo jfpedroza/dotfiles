@@ -96,4 +96,5 @@ vim.keymap.set("n", "<leader>b", pickers.buffers, { desc = "Show buffers on Tele
 vim.keymap.set("n", "<leader>f", pickers.find_files, { desc = "Find files using Telescope" })
 vim.keymap.set("n", "<leader>;", pickers.edit_neovim, { desc = "Find Neovim files using Telescope" })
 vim.keymap.set("n", "<leader>s", pickers.live_grep, { desc = "Find string using Telescope" })
+vim.keymap.set("n", "<leader>S", pickers.grep_string, { desc = "Find current word using Telescope" })
 vim.keymap.set("n", "<leader>y", pickers.yank_history, { desc = "Show yank history using Telescope" })
