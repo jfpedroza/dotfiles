@@ -82,7 +82,7 @@ require("nvim-treesitter.configs").setup({
   },
   query_linter = {
     enable = true,
-    use_virtual_text = true,
+    use_diagnostics = true,
     lint_events = { "BufWrite", "CursorHold" },
   },
 })
