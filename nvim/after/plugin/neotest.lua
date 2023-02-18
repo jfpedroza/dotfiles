@@ -16,6 +16,9 @@ neotest.setup({
   consumers = {
     overseer = require("neotest.consumers.overseer"),
   },
+  quickfix = {
+    enabled = false,
+  },
 })
 
 vim.api.nvim_create_user_command("Neotest", require("jp.neotest").run_suite, {})
