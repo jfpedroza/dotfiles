@@ -78,7 +78,7 @@ require("neodev").setup({
 })
 
 local servers = {
-  sumneko_lua = true,
+  lua_ls = true,
   vimls = true,
   solargraph = true,
   pyright = true,
