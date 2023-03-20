@@ -14,7 +14,7 @@ else
         find ~/Work/Mono ~/code ~/code/nvim_plugins ~/code/lib ~/code/lib/other_dotfiles ~/code/languages ~/code/games -mindepth 1 -maxdepth 1 -type d
     }
 
-    selected=$(cat <(fixed_folders) <(find_folders) | fzf --preview 'echo {}\\n; exa -lgha --git {}')
+    selected=$(cat <(fixed_folders) <(find_folders) | fzf --preview 'echo {}\\n; exa -lgha --git --icons {}')
 fi
 
 if [[ -z $selected ]]; then
