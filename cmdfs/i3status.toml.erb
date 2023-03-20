@@ -39,6 +39,13 @@ driver = "sysfs"
 missing_format = ""
 
 [[block]]
+block = "temperature"
+interval = 10
+format = " $icon $max "
+chip = "*-isa-*"
+inputs = ["CPU"]
+
+[[block]]
 block = "notify"
 
 [[block]]
