@@ -1,39 +1,40 @@
 #!/usr/bin/env -S erb -T 1
+[theme]
 theme = "slick"
+[icons]
 icons = "awesome5"
 
 [[block]]
 block = "music"
-buttons = ["play", "next"]
+format = " $icon {$combo.str(max_w:25,rot_interval:0.5) $play $next |}"
 interface_name_exclude = [".*kdeconnect.*", "mpd"]
-hide_when_empty = true
 
 [[block]]
 block = "pacman"
-format = "{pacman:1}|{aur:1}"
+format = " $icon $pacman.eng(w:1)\\|$aur.eng(w:1) "
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "yay -Qua"
-hide_when_uptodate = true
-on_click = "yay -Qu --dbpath /tmp/checkup-db-jhon/ | rofi -dmenu"
+format_up_to_date = ""
+[[block.click]]
+button = "left"
+cmd = "yay -Qu --dbpath /tmp/checkup-db-jhon/ | rofi -dmenu"
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used:1;G}({mem_used_percents:1})"
-format_swap = "{swap_used;_G*_B}/{swap_total;G}({swap_used_percents})"
+format = " $icon $mem_used.eng(w:1, prefix:G)($mem_used_percents.eng(w:2)) "
 <% if system("cat /proc/meminfo | grep SwapTotal | awk '$2 != 0 {exit 1}'") %>
-clickable = false
+format_alt = "$icon $swap_used.eng(prefix:G)/$swap_total.eng(prefix:G)(swap_used_percents) "
 <% end %>
 
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization:1}"
+format = " $icon $utilization.eng(w:1) "
 
 [[block]]
 block = "battery"
 driver = "sysfs"
-hide_missing = true
+missing_format = ""
 
 [[block]]
 block = "notify"
@@ -49,16 +50,22 @@ hide_when_empty = true
 block = "sound"
 step_width = 5
 headphones_indicator = true
-on_click = "pavucontrol-qt -t 3"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol-qt -t 3"
 
 [[block]]
 block = "sound"
 device_kind = "source"
 step_width = 5
-on_click = "pavucontrol-qt -t 4"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol-qt -t 4"
 
 [[block]]
 block = "time"
-format = "%a %d/%m %I:%M %p"
-on_click = "gsimplecal"
+format = " $icon $timestamp.datetime(f:'%a %d/%m %I:%M %p') "
 interval = 10
+[[block.click]]
+button = "left"
+cmd = "gsimplecal"
