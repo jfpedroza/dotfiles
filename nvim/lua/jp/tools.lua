@@ -63,8 +63,8 @@ function M.wrap_selected_nodes(before, after)
   local end_ = vim.fn.getpos("'>")
   local bufnr = 0
 
-  local start_node = vim.treesitter.get_node_at_pos(bufnr, start[2] - 1, start[3] - 1, {})
-  local end_node = vim.treesitter.get_node_at_pos(bufnr, end_[2] - 1, end_[3] - 1, {})
+  local start_node = vim.treesitter.get_node({ bufnr = 0, pos = { start[2] - 1, start[3] - 1 } })
+  local end_node = vim.treesitter.get_node({ bufnr = 0, pos = { end_[2] - 1, end_[3] - 1 } })
   local start_range = { start_node:range() }
   local end_range = { end_node:range() }
 
@@ -104,7 +104,7 @@ function M.get_link_title(link)
     return
   end
 
-  local query = vim.treesitter.parse_query(
+  local query = vim.treesitter.query.parse(
     "html",
     [[
       (
