@@ -51,7 +51,6 @@ startup({
     use("kshenoy/vim-signature")
     use({ "phaazon/hop.nvim", branch = "v2" })
     use("majutsushi/tagbar")
-    use("editorconfig/editorconfig-vim")
     use("voldikss/vim-floaterm")
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { { "nvim-lua/plenary.nvim" } } })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })

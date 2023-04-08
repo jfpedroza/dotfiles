@@ -98,9 +98,6 @@ let g:vimwiki_global_ext = 0
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" EditorConfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 " Markdown Preview
 let g:mkdp_browser = 'qutebrowser'
 let g:mkdp_auto_close = 0
