@@ -2,7 +2,7 @@
 set -ueo pipefail
 
 if [ -n "$(pactl list source-outputs short)" ]; then
-    icon="microphone_full"
+    icon="microphone"
     state="Critical"
     text=" "
 else
