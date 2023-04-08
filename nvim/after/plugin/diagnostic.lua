@@ -6,16 +6,6 @@ vim.diagnostic.config({
   signs = true,
   float = {
     source = "if_many",
-    format = function(d)
-      local t = vim.deepcopy(d)
-      local code = d.code or vim.tbl_get(d, "user_data", "lsp", "code")
-
-      if code then
-        t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
-      end
-
-      return t.message
-    end,
   },
   severity_sort = true,
   update_in_insert = false,
