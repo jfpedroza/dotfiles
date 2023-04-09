@@ -1,4 +1,4 @@
-alias open="xdg-open"
+alias open='xdg-open'
 alias cls='clear'
 alias aptg='sudo apt-get'
 alias apt-update='sudo apt-get update'
@@ -65,19 +65,6 @@ alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim st
 alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
 alias xtype='xdotool type'
-
-# Actually functions
-
-function xrun() {
-    (
-        "$@" &
-        disown
-    ) &>/dev/null
-}
-
-function git_commit_date() {
-    git log -1 --format=format:%ad $1
-}
 
 # Actually env vars
 export neotest_log=~/.local/state/nvim/neotest.log
