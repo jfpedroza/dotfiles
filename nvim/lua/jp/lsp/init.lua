@@ -142,15 +142,21 @@ for server, config in pairs(servers) do
 end
 
 local elixir = require("elixir")
+local elixirls = require("elixir.elixirls")
 
 elixir.setup({
-  cmd = vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh"),
-  settings = elixir.settings({
-    dialyzerEnabled = true,
-    dialyzerFormat = "dialyxir_long",
-    suggestSpecs = true,
-    enableTestLenses = true,
-  }),
-  on_attach = custom_attach,
-  capabilities = capabilities,
+  elixirls = {
+    enable = true,
+    cmd = vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh"),
+    settings = elixirls.settings({
+      dialyzerEnabled = true,
+      dialyzerFormat = "dialyxir_long",
+      suggestSpecs = true,
+      enableTestLenses = true,
+    }),
+    on_attach = custom_attach,
+    capabilities = capabilities,
+  },
+  credo = { enable = false },
+  nextls = { enable = false },
 })
