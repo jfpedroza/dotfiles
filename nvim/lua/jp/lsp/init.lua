@@ -1,5 +1,5 @@
 local has_lsp, lspconfig = pcall(require, "lspconfig")
-if not has_lsp then
+if not has_lsp or PLUGIN_DISABLE.lsp then
   return
 end
 

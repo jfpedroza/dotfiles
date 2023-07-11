@@ -13,3 +13,8 @@ P = function(v)
 end
 
 PLUGIN_DISABLE = {}
+
+if vim.env.MINIMAL_VIM == "true" then
+  PLUGIN_DISABLE.lsp = true
+  PLUGIN_DISABLE.autoformat = true
+end
