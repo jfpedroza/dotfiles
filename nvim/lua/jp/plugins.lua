@@ -84,7 +84,7 @@ startup({
     use("alx741/vim-hindent")
     use("pbrisbin/vim-syntax-shakespeare")
     use("vhdirk/vim-cmake")
-    use({ "raimon49/requirements.txt.vim", ft = "requirements" })
+    use("raimon49/requirements.txt.vim")
     use("tridactyl/vim-tridactyl")
     use("aklt/plantuml-syntax")
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install" })
