@@ -52,7 +52,7 @@ net-tools
 inotify-tools
 wxgtk2
 bat
-exa
+eza
 git-delta
 nodejs
 npm
