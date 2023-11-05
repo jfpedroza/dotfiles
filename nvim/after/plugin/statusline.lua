@@ -286,7 +286,7 @@ local winbar_disable = {
   bufnames = {},
 }
 
-R("feline").setup({
+require("feline").setup({
   components = components,
   conditional_components = {},
   force_inactive = force_inactive,
