@@ -35,6 +35,7 @@ require("lazy").setup({
   { "kyazdani42/nvim-tree.lua", tag = "nightly", dependencies = { "kyazdani42/nvim-web-devicons" } },
   "vimwiki/vimwiki",
   "mickael-menu/zk-nvim",
+  "godlygeek/tabular",
   "tpope/vim-surround",
   "christoomey/vim-system-copy",
   "Raimondi/delimitMate",
@@ -83,6 +84,7 @@ require("lazy").setup({
   "raimon49/requirements.txt.vim",
   "tridactyl/vim-tridactyl",
   "aklt/plantuml-syntax",
+  { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" },
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
   "folke/neodev.nvim",
 
