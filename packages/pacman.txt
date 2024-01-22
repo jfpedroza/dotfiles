@@ -135,3 +135,4 @@ zk
 jless
 onboard
 cryptomator-bin
+picocom

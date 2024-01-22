@@ -87,6 +87,12 @@ require("lazy").setup({
   { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" },
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
   "folke/neodev.nvim",
+  {
+    "stevearc/vim-arduino",
+    config = function()
+      vim.g.arduino_serial_cmd = "picocom {port} -b {baud} -l"
+    end,
+  },
 
   -- Completion
   "hrsh7th/nvim-cmp",
