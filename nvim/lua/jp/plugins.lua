@@ -71,6 +71,12 @@ require("lazy").setup({
   "folke/trouble.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
   "stevearc/overseer.nvim",
+  {
+    "jpalardy/vim-slime",
+    config = function()
+      vim.g.slime_target = "tmux"
+    end,
+  },
 
   -- Languages
   "neovim/nvim-lspconfig",
@@ -91,6 +97,7 @@ require("lazy").setup({
     "stevearc/vim-arduino",
     config = function()
       vim.g.arduino_serial_cmd = "picocom {port} -b {baud} -l"
+      vim.g.arduino_use_slime = 1
     end,
   },
 
