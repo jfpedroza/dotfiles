@@ -108,6 +108,7 @@ kubectl
 minikube
 kubectx
 k9s
+stern
 helm
 gnome-keyring
 dbeaver
