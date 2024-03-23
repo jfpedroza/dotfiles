@@ -18,6 +18,10 @@ vim.g.firenvim_config = {
       takeover = "never",
       priority = 1,
     },
+    ["^https://app\\.gather\\.town/"] = {
+      takeover = "never",
+      priority = 1,
+    },
   },
 }
 

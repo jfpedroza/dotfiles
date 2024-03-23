@@ -45,3 +45,7 @@ set smoothscroll true
 " The default jump of 10 is a bit much.
 bind j scrollline 5
 bind k scrollline -5
+
+" Rules for specific sites
+
+autocmd DocStart app\.gather\.town.* mode ignore
