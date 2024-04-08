@@ -172,11 +172,12 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 export FZF_DEFAULT_OPTS="--preview 'fzf-preview path {}'"
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 export FZF_CTRL_T_OPTS="
-  --walker-skip .git,node_modules,deps,_build,.elixir_ls
   --preview 'fzf-preview path {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'
-  --bind 'ctrl-f:reload(fd --type f)'
+  --bind 'ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")'
   --bind 'ctrl-d:reload(fd --type d)'"
 
 # CTRL-/ to toggle small preview window to see the full command
