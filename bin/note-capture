@@ -1,0 +1,55 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+function join_by {
+    local d=$1
+    shift
+    local f=${1:-}
+    shift
+    printf %s "$f" "${@/#/$d}"
+}
+
+SELECTED_TEXT=$(xclip -o) || true
+
+if [[ -z "$SELECTED_TEXT" ]]; then
+    # notify-send -a note-capture "Primary selection is empty"
+    yad \
+        --title="Note capture" \
+        --text "Primary selection is empty" \
+        --button="yad-ok:0" \
+        --buttons-layout=center \
+        --escape-ok \
+        --timeout 1
+else
+    yad --title="Note capture" \
+        --text="Save selected text as a note in zk" \
+        --width=500 \
+        --height=300 \
+        --form \
+        --field=Title "Untitled" \
+        --field=Tags "" \
+        --field=Content:TXT "$SELECTED_TEXT" \
+        --separator='·' | (
+        IFS='·' read -r TITLE RAW_TAGS CONTENT
+        IFS=', ' read -ra TAGS <<<"$RAW_TAGS"
+        echo "Got title: $TITLE"
+        echo "Got tags: $RAW_TAGS"
+        echo "Got split tags: ${TAGS[*]}"
+        echo "Got content: $CONTENT"
+
+        create_note() {
+            echo -en "$CONTENT" | zk new \
+                --interactive \
+                --print-path \
+                --title "$TITLE" \
+                --extra "tags=$(join_by '\, ' "${TAGS[@]}")"
+        }
+
+        if NOTE_PATH=$(create_note); then
+            notify-send -a note-capture "Note saved to $NOTE_PATH"
+        else
+            notify-send -a note-capture -u critical "Could not save note!"
+            exit 1
+        fi
+    )
+fi
