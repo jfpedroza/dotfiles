@@ -1,15 +1,54 @@
 #!/usr/bin/env bash
 
+if [[ $# -ne 2 ]]; then
+    echo >&2 "usage: $0 <path> TARGET"
+    exit 1
+fi
+
 preview_type=$1
 target=$2
 
+display_image() {
+    # From: https://github.com/junegunn/fzf/blob/master/bin/fzf-preview.sh
+    dim=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}
+    if [[ $dim = x ]]; then
+        dim=$(stty size </dev/tty | awk '{print $2 "x" $1}')
+    elif ! [[ $KITTY_WINDOW_ID ]] && ((FZF_PREVIEW_TOP + FZF_PREVIEW_LINES == $(stty size </dev/tty | awk '{print $1}'))); then
+        # Avoid scrolling issue when the Sixel image touches the bottom of the screen
+        # * https://github.com/junegunn/fzf/issues/2544
+        dim=${FZF_PREVIEW_COLUMNS}x$((FZF_PREVIEW_LINES - 1))
+    fi
+
+    # 1. Use kitty icat on kitty terminal
+    if [[ $KITTY_WINDOW_ID ]]; then
+        # 1. 'memory' is the fastest option but if you want the image to be scrollable,
+        #    you have to use 'stream'.
+        #
+        # 2. The last line of the output is the ANSI reset code without newline.
+        #    This confuses fzf and makes it render scroll offset indicator.
+        #    So we remove the last line and append the reset code to its previous line.
+        kitty icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no --place="$dim@0x0" "$target" | sed '$d' | sed $'$s/$/\e[m/'
+    else
+        echo Not using kitty
+        file "$target"
+    fi
+}
+
 case $preview_type in
 path)
+    if [[ ! -e "$target" ]]; then
+        echo "Not an existing path: $target" >&2
+        exit 1
+    fi
+
     mime_type=$(file -b --mime "$target")
     case $mime_type in
     *directory*)
         printf "%s\n\n" "$target"
         eza -lgha --icons --git "$target" --color=always
+        ;;
+    *image*)
+        display_image
         ;;
     *binary*)
         echo "$target is a binary file"
@@ -21,7 +60,7 @@ path)
     esac
     ;;
 *)
-    echo "Invalid preview type $preview_type for target $target"
+    echo "Invalid preview type $preview_type for target $target" >&2
     exit 1
     ;;
 esac
