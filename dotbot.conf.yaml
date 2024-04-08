@@ -21,6 +21,7 @@
     ~/.oh-my-zsh/custom/02_functions.zsh: zsh/functions.zsh
     ~/.oh-my-zsh/custom/10_shortcuts.zsh: zsh/shortcuts.zsh
     ~/.oh-my-zsh/custom/11_nix.zsh: zsh/nix.zsh
+    ~/.oh-my-zsh/custom/20_elixir.zsh: zsh/elixir.zsh
     ~/.config/i3/config: i3/i3.config
     ~/.config/picom.conf: i3/picom.conf
     ~/.config/rofi: i3/rofi
