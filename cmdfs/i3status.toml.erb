@@ -10,8 +10,10 @@ format = " $icon {$combo.str(max_w:25,rot_interval:0.5) $play $next |}"
 interface_name_exclude = [".*kdeconnect.*", "mpd"]
 
 [[block]]
-block = "pacman"
+block = "packages"
+package_manager = ["pacman", "aur"]
 format = " $icon $pacman.eng(w:1)\\|$aur.eng(w:1) "
+format_singular = " $icon $pacman.eng(w:1)\\|$aur.eng(w:1) "
 critical_updates_regex = "(linux|linux-lts|linux-zen)"
 aur_command = "yay -Qua"
 format_up_to_date = ""
