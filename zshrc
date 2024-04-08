@@ -170,10 +170,28 @@ esac
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-export FZF_DEFAULT_OPTS="--preview '[[ \$(file --mime {}) =~ binary ]] &&
-                 echo {} is a binary file ||
-                 (bat --style=numbers --color=always {} ||
-                  cat {}) 2> /dev/null | head -500'"
+export FZF_DEFAULT_OPTS="--preview 'fzf-preview path {}'"
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,deps,_build,.elixir_ls
+  --preview 'fzf-preview path {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --bind 'ctrl-f:reload(fd --type f)'
+  --bind 'ctrl-d:reload(fd --type d)'"
+
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -sel clip)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,deps,_build,.elixir_ls
+  --preview 'fzf-preview path {}'"
 
 export FLYCTL_INSTALL="$HOME/.fly"
 

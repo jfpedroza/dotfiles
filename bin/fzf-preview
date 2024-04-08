@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+preview_type=$1
+target=$2
+
+case $preview_type in
+path)
+    mime_type=$(file -b --mime "$target")
+    case $mime_type in
+    *directory*)
+        printf "%s\n\n" "$target"
+        eza -lgha --icons --git "$target" --color=always
+        ;;
+    *binary*)
+        echo "$target is a binary file"
+        echo "MIME: $mime_type"
+        ;;
+    *)
+        bat --style=numbers --color=always "$target" 2>/dev/null | head -500
+        ;;
+    esac
+    ;;
+*)
+    echo "Invalid preview type $preview_type for target $target"
+    exit 1
+    ;;
+esac
