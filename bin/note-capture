@@ -9,6 +9,15 @@ function join_by {
     printf %s "$f" "${@/#/$d}"
 }
 
+function is_link {
+    [[ "$1" =~ http(s?):// ]]
+}
+
+function get_link_title {
+    python3 -c "import bs4, requests; print(bs4.BeautifulSoup(requests.get('$1').content).title.text)"
+}
+
+export ZK_NOTEBOOK_DIR=~/pwiki
 SELECTED_TEXT=$(xclip -o) || true
 
 if [[ -z "$SELECTED_TEXT" ]]; then
@@ -21,21 +30,30 @@ if [[ -z "$SELECTED_TEXT" ]]; then
         --escape-ok \
         --timeout 1
 else
+    DEFAULT_TITLE=Untitled
+    DEFAULT_CONTENT="$SELECTED_TEXT"
+    DEFAULT_TAGS=
+
+    if is_link "$SELECTED_TEXT"; then
+        DEFAULT_TITLE=$(get_link_title "$SELECTED_TEXT")
+        DEFAULT_CONTENT="&lt;$SELECTED_TEXT&gt;"
+    fi
+
     yad --title="Note capture" \
         --text="Save selected text as a note in zk" \
         --width=500 \
         --height=300 \
         --form \
-        --field=Title "Untitled" \
-        --field=Tags "" \
-        --field=Content:TXT "$SELECTED_TEXT" \
+        --field=Title "$DEFAULT_TITLE" \
+        --field=Tags "$DEFAULT_TAGS" \
+        --field=Content:TXT "$DEFAULT_CONTENT" \
         --separator='·' | (
         IFS='·' read -r TITLE RAW_TAGS CONTENT
         IFS=', ' read -ra TAGS <<<"$RAW_TAGS"
-        echo "Got title: $TITLE"
-        echo "Got tags: $RAW_TAGS"
-        echo "Got split tags: ${TAGS[*]}"
-        echo "Got content: $CONTENT"
+        echo "Got title: $TITLE" >&2
+        echo "Got tags: $RAW_TAGS" >&2
+        echo "Got split tags: ${TAGS[*]}" >&2
+        echo "Got content: $CONTENT" >&2
 
         create_note() {
             echo -en "$CONTENT" | zk new \
@@ -47,6 +65,7 @@ else
 
         if NOTE_PATH=$(create_note); then
             notify-send -a note-capture "Note saved to $NOTE_PATH"
+            echo "$NOTE_PATH"
         else
             notify-send -a note-capture -u critical "Could not save note!"
             exit 1
