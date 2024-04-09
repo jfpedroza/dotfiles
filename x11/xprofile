@@ -3,3 +3,4 @@
 # set environment variables
 export PATH="${PATH}:$HOME/private_dotfiles/bin:$HOME/dotfiles/bin"
 export QT_QPA_PLATFORMTHEME=qt5ct
+export ZK_NOTEBOOK_DIR=~/pwiki

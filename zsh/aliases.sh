@@ -72,4 +72,3 @@ alias xtype='xdotool type'
 
 # Actually env vars
 export neotest_log=~/.local/state/nvim/neotest.log
-export ZK_NOTEBOOK_DIR=~/pwiki
