@@ -18,7 +18,14 @@ function get_link_title {
 }
 
 export ZK_NOTEBOOK_DIR=~/pwiki
-SELECTED_TEXT=$(xclip -o) || true
+
+SELECTED_TEXT=
+
+if [[ $# -eq 1 ]]; then
+    SELECTED_TEXT="$1"
+else
+    SELECTED_TEXT=$(xclip -o) || true
+fi
 
 if [[ -z "$SELECTED_TEXT" ]]; then
     # notify-send -a note-capture "Primary selection is empty"
