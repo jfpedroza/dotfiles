@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Note Capture
+Comment=Save link as a note in zk
+Icon=/usr/share/icons/Paper/48x48/apps/notes.png
+Categories=Utility;Office;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=false
+Exec=/home/jhon/dotfiles/bin/note-capture %u
