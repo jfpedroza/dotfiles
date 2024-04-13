@@ -1,9 +1,9 @@
 ~/:
   .oh-my-zsh:
-    url: git+ssh://git@github.com/jfpedroza/oh-my-zsh.git
+    url: git+ssh://git@github.com/jfpedroza/ohmyzsh.git
     remotes:
-      origin: git+ssh://git@github.com/jfpedroza/oh-my-zsh.git
-      upstream: git+https://github.com/robbyrussell/oh-my-zsh.git
+      origin: git+ssh://git@github.com/jfpedroza/ohmyzsh.git
+      upstream: git+https://github.com/ohmyzsh/ohmyzsh.git
 ~/.oh-my-zsh/custom/plugins/:
   forgit: git+https://github.com/wfxr/forgit.git
   nix-zsh-completions: git+https://github.com/spwhitt/nix-zsh-completions.git
