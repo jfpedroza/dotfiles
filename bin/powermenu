@@ -118,7 +118,7 @@ menu=(
 menu_nrows=${#menu[@]}
 
 # Menu entries that may trigger a confirmation message
-menu_confirm="Shutdown Reboot Hibernate Suspend Halt Logout"
+menu_confirm=" Shutdown  Reboot  Suspend  Logout"
 
 launcher_exe=""
 launcher_options=""
