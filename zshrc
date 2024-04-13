@@ -84,6 +84,10 @@ plugins=(
 
 fpath+=${ZSH_CUSTOM:-$ZSH/custom}/plugins/nix-zsh-completions
 
+# Disable async prompt for git while it's fixed
+# https://github.com/ohmyzsh/ohmyzsh/issues/12328
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
