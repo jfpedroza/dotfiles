@@ -281,12 +281,12 @@ useZsh() {
     cd ~/ || return
 
     chsh -s "$(command -v zsh)"
-    REPO=jfpedroza/oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/jfpedroza/oh-my-zsh/master/tools/install.sh)"
+    REPO=jfpedroza/ohmyzsh sh -c "$(curl -fsSL https://raw.github.com/jfpedroza/ohmyzsh/master/tools/install.sh)"
 
     zsh_custom=~/.oh-my-zsh/custom
 
     cd ~/.oh-my-zsh
-    git remote set-url origin git@github.com:jfpedroza/oh-my-zsh.git
+    git remote set-url origin git@github.com:jfpedroza/ohmyzsh.git
 
     # FZF extras
     git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
