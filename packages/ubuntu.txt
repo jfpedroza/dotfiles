@@ -15,7 +15,6 @@ ca-certificates
 curl
 software-properties-common
 python-pip
-python2-pip
 mysql-workbench
 dconf-editor
 net-tools

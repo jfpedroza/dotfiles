@@ -92,8 +92,7 @@ installSnapPackages() {
 
     Manjaro*) ;;
 
-    \
-        *)
+    *)
         echo "Unknown OS. Exiting..."
         exit 1
         ;;
@@ -166,7 +165,6 @@ installLanguages() {
 
     # pipi='pip install --upgrade'
     pipu='pip install --user --upgrade'
-    pip2u='pip2 install --user --upgrade'
 
     # Python & PIP
 
@@ -194,14 +192,6 @@ installLanguages() {
 
     # Installing packages
     $pipu $pip_user_packages
-
-    pip2_user_packages='
-    pynvim'
-
-    echo "Installing the following PIP2 packages for the current user: $pip2_user_packages"
-
-    # Installing packages
-    $pip2u $pip2_user_packages
 
     # Rust & Cargo
     rustup toolchain install nightly

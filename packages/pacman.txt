@@ -46,8 +46,6 @@ fzf
 php
 python-pip
 python-virtualenv
-python2-pip
-python2-virtualenv
 net-tools
 inotify-tools
 wxgtk2
