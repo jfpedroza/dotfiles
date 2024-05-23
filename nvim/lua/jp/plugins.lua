@@ -123,7 +123,7 @@ require("lazy").setup({
   { "nvim-neotest/neotest-python" },
 
   -- Debugger Adapter Protocol
-  "mfussenegger/nvim-dap",
+  { "mfussenegger/nvim-dap", dependencies = "nvim-neotest/nvim-nio" },
   "rcarriga/nvim-dap-ui",
   "theHamsta/nvim-dap-virtual-text",
   "nvim-telescope/telescope-dap.nvim",
