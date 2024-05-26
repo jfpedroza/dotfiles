@@ -33,7 +33,7 @@ require("lazy").setup({
   "junegunn/fzf.vim",
   "mileszs/ack.vim",
   "Chiel92/vim-autoformat",
-  { "kyazdani42/nvim-tree.lua", tag = "nightly", dependencies = { "kyazdani42/nvim-web-devicons" } },
+  { "kyazdani42/nvim-tree.lua", tag = "v1", dependencies = { "kyazdani42/nvim-web-devicons" } },
   "vimwiki/vimwiki",
   "mickael-menu/zk-nvim",
   "godlygeek/tabular",
