@@ -29,6 +29,7 @@ require("lazy").setup({
   "tpope/vim-obsession",
   "tpope/vim-projectionist",
   "tpope/vim-dotenv",
+  "junegunn/fzf",
   "junegunn/fzf.vim",
   "mileszs/ack.vim",
   "Chiel92/vim-autoformat",
