@@ -4,6 +4,7 @@
     remotes:
       origin: git+ssh://git@github.com/jfpedroza/ohmyzsh.git
       upstream: git+https://github.com/ohmyzsh/ohmyzsh.git
+  .fzf-extras: git+https://github.com/atweiden/fzf-extras.git
 ~/.oh-my-zsh/custom/plugins/:
   forgit: git+https://github.com/wfxr/forgit.git
   nix-zsh-completions: git+https://github.com/spwhitt/nix-zsh-completions.git
@@ -37,6 +38,11 @@
     remotes:
       origin: git+ssh://git@github.com/jfpedroza/fp-course.git
       upstream: git+https://github.com/system-f/fp-course.git
+  applied-fp-course:
+    url: git+ssh://git@github.com/jfpedroza/applied-fp-course.git
+    remotes:
+      origin: git+ssh://git@github.com/jfpedroza/applied-fp-course.git
+      upstream: git+https://github.com/qfpl/applied-fp-course.git
 ~/code/nvim_plugins:
   neotest-elixir: git+ssh://git@github.com/jfpedroza/neotest-elixir.git
 ~/code/lib:
