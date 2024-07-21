@@ -25,7 +25,7 @@ cmd = "yay -Qu --dbpath /tmp/checkup-db-jhon/ | rofi -dmenu"
 block = "memory"
 format = " $icon $mem_used.eng(w:1, prefix:G)($mem_used_percents.eng(w:2)) "
 <% if system("cat /proc/meminfo | grep SwapTotal | awk '$2 != 0 {exit 1}'") %>
-format_alt = "$icon $swap_used.eng(prefix:G)/$swap_total.eng(prefix:G)(swap_used_percents) "
+format_alt = "$icon $swap_used.eng(prefix:G)/$swap_total.eng(prefix:G)($swap_used_percents.eng(w:2)) "
 <% end %>
 
 [[block]]
