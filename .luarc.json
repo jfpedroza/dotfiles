@@ -1,0 +1,10 @@
+{
+    "workspace.library": [
+        "/usr/share/nvim/runtime/lua",
+        "/home/jhon/code/lib/neotest/lua",
+        "/home/jhon/code/nvim_plugins/neotest-elixir/lua",
+        "/home/jhon/code/lib/yanky.nvim/lua",
+        "/home/jhon/dotfiles/nvim/lua",
+        "${3rd}/luv/library"
+    ]
+}
