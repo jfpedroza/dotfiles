@@ -4,6 +4,6 @@ end
 
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true },
-  float = { enabled = true, text = "💡 Code action available" },
+  float = { enabled = false, text = "💡 Code action available" },
   virtual_text = { enabled = false },
 })
