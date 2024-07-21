@@ -17,6 +17,7 @@ pavucontrol-qt
 xorg-xrandr
 arandr
 qt5ct
+qt6ct
 light
 qalculate-qt
 konsole
