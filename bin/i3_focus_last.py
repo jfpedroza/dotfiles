@@ -62,6 +62,19 @@ class FocusWatcher:
                         else:
                             self.i3.command('[con_id=%s] focus' % window_id)
                             break
+            elif data == b'switch-class':
+                with self.window_list_lock:
+                    tree = self.i3.get_tree()
+                    focused_window = tree.find_by_id(self.window_list[0])
+                    assert focused_window
+
+                    for window_id in self.window_list[1:]:
+                        next_window = tree.find_by_id(window_id)
+                        if next_window is None:
+                            self.window_list.remove(window_id)
+                        elif next_window.window_class != focused_window.window_class:
+                            self.i3.command('[con_id=%s] focus' % window_id)
+                            break
             elif data[:10] == b'find-last:':
                 id_data = str(data[10:], 'utf-8')
                 windows = [int(window) for window in id_data.split(',')]
@@ -102,6 +115,13 @@ def switch():
     client_socket.close()
 
 
+def switch_class():
+    client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    client_socket.connect(SOCKET_FILE)
+    client_socket.send(b'switch-class')
+    client_socket.close()
+
+
 def get_last_focused(window_ids):
     data = bytes("find-last:" + ",".join(map(str, window_ids)), 'utf-8')
 
@@ -114,7 +134,7 @@ def get_last_focused(window_ids):
 
 
 if __name__ == '__main__':
-    parser = ArgumentParser(prog='focus-last.py',
+    parser = ArgumentParser(prog='i3_focus_last.py',
                             description='''
         Focus last focused window.
 
@@ -122,16 +142,25 @@ if __name__ == '__main__':
 
         Then you can bind this script with the `--switch` option to one of your
         i3 keybinding.
+        The `--switch-class` option can be used to switch to a previously focused
+        window of a different class than the current one.
         ''')
     parser.add_argument('--switch',
                         dest='switch',
                         action='store_true',
                         help='Switch to the previous window',
                         default=False)
+    parser.add_argument('--switch-class',
+                        dest='switch_class',
+                        action='store_true',
+                        help='Switch to the previous window of a different clas',
+                        default=False)
     args = parser.parse_args()
 
-    if not args.switch:
+    if args.switch:
+        switch()
+    elif args.switch_class:
+        switch_class()
+    else:
         focus_watcher = FocusWatcher()
         focus_watcher.run()
-    else:
-        switch()
