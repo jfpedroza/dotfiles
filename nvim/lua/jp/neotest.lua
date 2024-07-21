@@ -14,8 +14,13 @@ function M.run(arg)
     args = { arg, env = default_env }
   end
 
-  print("Neotest run called with arg", args[1])
-  require("neotest").run.run(args)
+  if args.watch then
+    print("Neotest watch called with arg", args[1])
+    require("neotest").watch.watch(args)
+  else
+    print("Neotest run called with arg", args[1])
+    require("neotest").run.run(args)
+  end
 end
 
 function M.run_file(args)
