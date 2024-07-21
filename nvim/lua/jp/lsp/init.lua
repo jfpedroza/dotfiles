@@ -54,6 +54,11 @@ local custom_attach = function(client, bufnr)
   end, bufopts)
 
   lsp_status.on_attach(client)
+
+  if client.name == "ruff" then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -81,7 +86,21 @@ local servers = {
   lua_ls = true,
   vimls = true,
   solargraph = true,
-  pyright = true,
+  pyright = {
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          -- Ignore all files for analysis to exclusively use Ruff for linting
+          -- ignore = { "*" },
+        },
+      },
+    },
+  },
+  ruff = true,
   rls = true,
   jsonls = true,
   html = true,
