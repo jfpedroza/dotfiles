@@ -34,7 +34,13 @@ require("lazy").setup({
   "mileszs/ack.vim",
   "Chiel92/vim-autoformat",
   { "kyazdani42/nvim-tree.lua", tag = "v1", dependencies = { "kyazdani42/nvim-web-devicons" } },
-  "vimwiki/vimwiki",
+  {
+    "vimwiki/vimwiki",
+    init = function()
+      vim.g.vimwiki_list = { { path = "~/vimwiki/", syntax = "markdown", ext = ".md" } }
+      vim.g.vimwiki_global_ext = 0
+    end,
+  },
   "mickael-menu/zk-nvim",
   "godlygeek/tabular",
   "tpope/vim-surround",
