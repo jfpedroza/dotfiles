@@ -120,6 +120,7 @@ rofi
 feh
 ttf-font-awesome
 otf-ipafont
+noto-fonts-emoji
 shfmt
 tidy
 languagetool
