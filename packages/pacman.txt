@@ -138,3 +138,4 @@ jless
 onboard
 cryptomator-bin
 picocom
+atuin
