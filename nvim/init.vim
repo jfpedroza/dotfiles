@@ -43,8 +43,8 @@ let g:vimsyn_embed = 'l'
 
 augroup FileTypeSpacing
   autocmd Filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2
+  autocmd FileType yaml,json setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd Filetype html,javascript,scss,ruby,elixir setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType haskell setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType lua setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
