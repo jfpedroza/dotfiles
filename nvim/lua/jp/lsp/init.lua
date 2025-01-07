@@ -101,7 +101,7 @@ local servers = {
     },
   },
   ruff = true,
-  rls = true,
+  rust_analyzer = true,
   jsonls = true,
   html = true,
   cssls = true,
