@@ -22,6 +22,10 @@ vim.g.firenvim_config = {
       takeover = "never",
       priority = 1,
     },
+    ["^https://onedrive\\.live\\.com/"] = {
+      takeover = "never",
+      priority = 1,
+    },
   },
 }
 
