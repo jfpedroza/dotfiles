@@ -205,6 +205,6 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/
 [[ -e "$HOME/.config/asdf-direnv/zshrc" ]] \
   && source "$HOME/.config/asdf-direnv/zshrc"
 
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # zprof
