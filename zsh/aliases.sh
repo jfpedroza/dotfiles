@@ -38,6 +38,7 @@ alias docker-rm-none="docker images | grep none | awk '{print \$3}' | xargs dock
 # alias ghci='stack ghci'
 alias gpl='git pull origin'
 alias gpo='git push origin'
+alias grbia='git rebase --interactive --autostash'
 alias git='hub'
 alias gsy='hub sync'
 alias gwls='git worktree list'
