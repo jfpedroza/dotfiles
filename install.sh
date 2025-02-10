@@ -206,7 +206,7 @@ installLanguages() {
     ~/.local/bin/hoogle generate
 
     # Go packages
-    go get github.com/edi9999/path-extractor/path-extractor
+    go install github.com/edi9999/path-extractor@latest
 
     # Ruby gem
     gem install solargraph
