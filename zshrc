@@ -80,6 +80,7 @@ plugins=(
   docker
   docker-compose
   nix-shell
+  direnv
 )
 
 fpath+=${ZSH_CUSTOM:-$ZSH/custom}/plugins/nix-zsh-completions
@@ -157,18 +158,6 @@ esac
 [[ -e "$HOME/.fzf-extras/fzf-extras.zsh" ]] \
   && source "$HOME/.fzf-extras/fzf-extras.zsh"
 
-[[ -e "$HOME/.asdf/asdf.sh" ]] \
-    && source "$HOME/.asdf/asdf.sh"
-
-[[ -e "/opt/asdf-vm/asdf.sh" ]] \
-    && source "/opt/asdf-vm/asdf.sh"
-
-[[ -e "$HOME/.asdf/completions/asdf.bash" ]] \
-    && source "$HOME/.asdf/completions/asdf.bash"
-
-[[ -e "$HOME/.asdf/plugins/java/set-java-home.zsh" ]] \
-    && source "$HOME/.asdf/plugins/java/set-java-home.zsh"
-
 [[ -e "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] \
     && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -202,9 +191,8 @@ export FLYCTL_INSTALL="$HOME/.fly"
 
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$FLYCTL_INSTALL/bin:$PATH
 
-[[ -e "$HOME/.config/asdf-direnv/zshrc" ]] \
-  && source "$HOME/.config/asdf-direnv/zshrc"
-
 eval "$(atuin init zsh --disable-up-arrow)"
+
+eval "$(mise activate zsh)"
 
 # zprof

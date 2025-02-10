@@ -26,4 +26,4 @@ ttf-font-awesome-4
 rofi-dmenu
 bear
 junction
-asdf-vm
+mise-bin
