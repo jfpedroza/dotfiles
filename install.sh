@@ -176,17 +176,9 @@ installLanguages() {
     # sudo $pipi $pip_packages
 
     pip_user_packages='
-    ipython
-    pynvim
-    vcspull
-    autopep8
-    pylint
-    pyright
     taskwarrior-inthe.am
     git+git://github.com/robgolding/tasklib@develop
-    vit
-    yq
-    vim-vint'
+    vit'
 
     echo "Installing the following PIP packages for the current user: $pip_user_packages"
 

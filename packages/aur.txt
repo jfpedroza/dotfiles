@@ -20,10 +20,14 @@ tasksh
 windscribe-cli
 crow-translate
 spotify-tui-bin
-google-cloud-sdk
+aws-cli-v2
+amazon-ecr-credential-helper
 webtorrent-desktop
 ttf-font-awesome-4
 rofi-dmenu
 bear
 junction
 mise-bin
+light
+cryptomator-bin
+todoist-appimage
