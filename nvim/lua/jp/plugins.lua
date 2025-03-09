@@ -21,7 +21,7 @@ require("lazy").setup({
   },
   "tpope/vim-abolish",
   "feline-nvim/feline.nvim",
-  { "akinsho/bufferline.nvim", version = "*", dependencies = { "kyazdani42/nvim-web-devicons" } },
+  { "akinsho/bufferline.nvim", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
   "simnalamburt/vim-mundo",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
@@ -33,7 +33,7 @@ require("lazy").setup({
   "junegunn/fzf.vim",
   "mileszs/ack.vim",
   "Chiel92/vim-autoformat",
-  { "kyazdani42/nvim-tree.lua", tag = "v1", dependencies = { "kyazdani42/nvim-web-devicons" } },
+  { "nvim-tree/nvim-tree.lua", tag = "v1", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "vimwiki/vimwiki",
     init = function()
