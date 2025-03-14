@@ -38,6 +38,7 @@ function! s:CheckoutShortCommandOptions(query) abort
     return [
             \ '--prompt=Checkout> ',
             \ '--no-hscroll',
+            \ '--preview=fzf-preview git-log {}',
             \ '+m',
             \ '--query=' . a:query
             \ ]
@@ -75,6 +76,7 @@ function! s:CheckoutLongCommandOptions(query) abort
             \ '--ansi',
             \ '--prompt=Checkout> ',
             \ '--no-hscroll',
+            \ '--preview=fzf-preview git-log {}',
             \ '+m',
             \ '-d\t',
             \ '-n2',

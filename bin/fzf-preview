@@ -59,6 +59,12 @@ path)
         ;;
     esac
     ;;
+git-show)
+    git show --color=always "$target"
+    ;;
+git-log)
+    git log --color=always --oneline --decorate "$target"
+    ;;
 *)
     echo "Invalid preview type $preview_type for target $target" >&2
     exit 1
