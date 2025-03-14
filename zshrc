@@ -187,6 +187,12 @@ export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,deps,_build,.elixir_ls
   --preview 'fzf-preview path {}'"
 
+export FORGIT_COPY_CMD="xclip -selection clipboard"
+export FORGIT_LOG_FZF_OPTS="
+--bind='ctrl-e:execute(echo {} |grep -Eo [a-f0-9]+ |head -1 |xargs git show |nvim -R -)'
+--header 'Press CTRL-Y to copy commit SHA into clipboard. CTRL-E to view commit in neovim'
+"
+
 export FLYCTL_INSTALL="$HOME/.fly"
 
 export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$FLYCTL_INSTALL/bin:$PATH
