@@ -99,6 +99,14 @@ require("lazy").setup({
   "aklt/plantuml-syntax",
   { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" },
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
+  {
+    -- Make sure to set this up properly if you have lazy=true
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      file_types = { "markdown", "Avante" },
+    },
+    ft = { "markdown", "Avante" },
+  },
   "folke/neodev.nvim",
   {
     "stevearc/vim-arduino",
@@ -167,14 +175,6 @@ require("lazy").setup({
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
     },
   },
 })
