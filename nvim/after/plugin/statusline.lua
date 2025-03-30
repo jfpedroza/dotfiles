@@ -110,7 +110,7 @@ table.insert(components.active[3], {
   left_sep = " ",
   right_sep = { " ", { str = "left", hl = { bg = "black", fg = "white" } } },
   enabled = function()
-    return #vim.lsp.get_active_clients({ bufnr = 0 }) > 0
+    return #vim.lsp.get_clients({ bufnr = 0 }) > 0
   end,
   truncate_hide = true,
 })

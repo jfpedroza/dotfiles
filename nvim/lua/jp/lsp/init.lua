@@ -13,7 +13,7 @@ require("jp.lsp.status").activate()
 local has_ufo, ufo = pcall(require, "ufo")
 
 local show_documentation = function(bufnr)
-  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
   if filetype == "lua" then
     local line = vim.api.nvim_get_current_line()
     if vim.regex([[vim\.\([bwg]\?o\|opt\|api\)\.]]):match_str(line) then
