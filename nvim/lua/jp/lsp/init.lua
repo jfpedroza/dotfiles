@@ -164,13 +164,17 @@ local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
 
 local elixirls_cmd
+local elixirls_tag
 if vim.env.ELIXIRLS_LOCAL ~= "true" then
   elixirls_cmd = vim.fn.expand("~/code/lib/elixir-ls/release/language_server.sh")
+else
+  elixirls_tag = "v0.27.2"
 end
 
 elixir.setup({
   elixirls = {
     enable = true,
+    tag = elixirls_tag,
     cmd = elixirls_cmd,
     settings = elixirls.settings({
       dialyzerEnabled = true,
