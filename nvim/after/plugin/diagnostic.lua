@@ -2,7 +2,12 @@ vim.diagnostic.config({
   underline = true,
   virtual_text = {
     source = "if_many",
+    current_line = true,
   },
+  -- virtual_lines = {
+  --   source = "if_many",
+  --   current_line = true,
+  -- },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = " ",
