@@ -76,6 +76,7 @@ plugins=(
   vi-mode
   tmux
   z
+  git-branchless
   forgit
   docker
   docker-compose

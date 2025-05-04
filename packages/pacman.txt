@@ -58,6 +58,9 @@ wxwidgets-gtk3
 bat
 eza
 git-delta
+git-absorb
+git-revise
+git-branchless
 nodejs
 npm
 yarn
