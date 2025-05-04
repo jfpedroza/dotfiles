@@ -121,3 +121,6 @@ nmap <silent> XX :quitall<CR>
 
 " Use AltGr+. to execute last Ex command
 nnoremap · @:
+
+" Disable default mapping that conflicts with ReplaceWithRegister
+nunmap gri
