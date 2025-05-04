@@ -82,6 +82,7 @@ plugins=(
   docker-compose
   nix-shell
   direnv
+  auto-notify
 )
 
 fpath+=${ZSH_CUSTOM:-$ZSH/custom}/plugins/nix-zsh-completions
@@ -193,6 +194,8 @@ export FORGIT_LOG_FZF_OPTS="
 --bind='ctrl-e:execute(echo {} |grep -Eo [a-f0-9]+ |head -1 |xargs git show |nvim -R -)'
 --header 'Press CTRL-Y to copy commit SHA into clipboard. CTRL-E to view commit in neovim'
 "
+
+AUTO_NOTIFY_IGNORE+=("pkgsearch" "pkgrm" "tmux-sessionizer" "fzf" "forgit" "tmux" "mvim" "git rebase" "iex" "bat")
 
 export FLYCTL_INSTALL="$HOME/.fly"
 
