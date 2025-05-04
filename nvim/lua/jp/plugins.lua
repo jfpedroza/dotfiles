@@ -156,17 +156,37 @@ require("lazy").setup({
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = "*",
     opts = {
       provider = "openai",
       openai = {
         endpoint = "https://api.openai.com/v1",
-        model = "o3-mini",
+        model = "o4-mini",
         timeout = 30000,
         temperature = 0,
         -- max_tokens = 4096,
         -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
       },
+      disabled_tools = { -- tools that conflict with MCPHub's Neovim server
+        "list_files",
+        "search_files",
+        "read_file",
+        "create_file",
+        "rename_file",
+        "delete_file",
+        "create_dir",
+        "rename_dir",
+        "delete_dir",
+        "bash",
+      },
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -176,5 +196,24 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
+    enabled = true,
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+    },
+    -- uncomment the following line to load hub lazily
+    --cmd = "MCPHub",  -- lazy load
+    build = "npm install -g mcp-hub@latest",
+    config = function()
+      require("mcphub").setup({
+        extensions = {
+          avante = {
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
+          },
+        },
+      })
+    end,
   },
 })
