@@ -158,13 +158,17 @@ require("lazy").setup({
     lazy = false,
     opts = {
       provider = "openai",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        model = "o4-mini",
-        timeout = 30000,
-        temperature = 0,
-        -- max_tokens = 4096,
-        -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "o4-mini",
+          timeout = 30000,
+          extra_request_body = {
+            temperature = 0,
+            -- max_completion_tokens = 4096,
+            -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+          },
+        },
       },
       disabled_tools = { -- tools that conflict with MCPHub's Neovim server
         "list_files",
@@ -191,7 +195,6 @@ require("lazy").setup({
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
