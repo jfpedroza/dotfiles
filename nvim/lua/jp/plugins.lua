@@ -62,7 +62,19 @@ require("lazy").setup({
   "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-refactor",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "stevearc/dressing.nvim",
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      input = { enabled = true },
+      picker = {
+        enabled = true,
+        ui_select = true,
+      },
+    },
+  },
   "rcarriga/nvim-notify",
   {
     "NvChad/nvim-colorizer.lua",
@@ -191,11 +203,20 @@ require("lazy").setup({
           require("mcphub.extensions.avante").mcp_tool(),
         }
       end,
+      input = {
+        provider = "snacks", -- "native" | "dressing" | "snacks"
+        provider_opts = {
+          -- Snacks input configuration
+          title = "Avante Input",
+          icon = " ",
+          placeholder = "Enter your API key...",
+        },
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     dependencies = {
-      "stevearc/dressing.nvim",
+      "folke/snacks.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
