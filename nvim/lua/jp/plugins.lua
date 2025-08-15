@@ -220,7 +220,7 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
-    enabled = true,
+    enabled = false,
   },
   {
     "ravitemer/mcphub.nvim",
@@ -239,5 +239,39 @@ require("lazy").setup({
         },
       })
     end,
+  },
+  {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    opts = {
+      terminal = {
+        auto_close = true,
+      },
+      diff_opts = {
+        auto_close_on_accept = true,
+        vertical_split = true,
+        open_in_current_tab = true,
+        keep_terminal_focus = true,
+      },
+    },
+    cmd = "ClaudeCode",
+    keys = {
+      { "<leader>x", nil, desc = "AI/Claude Code" },
+      { "<leader>xc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>xf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>xr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>xC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>xb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>xs", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>xs",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil" },
+      },
+      -- Diff management
+      { "<leader>xa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>xd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+    },
   },
 })
