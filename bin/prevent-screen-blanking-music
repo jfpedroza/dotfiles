@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2155
+set -euo pipefail
+
+declare -ir _timeout=600
+declare -ir _current="$(xset -display :0.0 q | awk '/Standby:/ { print $2 }')"
+
+_enable() {
+    if [[ "${_current}" != "${_timeout}" ]]; then
+        xset -display :0.0 dpms ${_timeout} ${_timeout} ${_timeout}
+        xset -display :0.0 s ${_timeout}
+        notify-send -a prevent-screen-blanking-music -u low "Enabled screen blanking"
+    fi
+}
+
+_disable() {
+    if [[ "${_current}" != "0" ]]; then
+        xset -display :0.0 dpms 0 0 0
+        xset -display :0.0 s off
+        notify-send -a prevent-screen-blanking-music -u low "Disabled screen blanking"
+    fi
+}
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+if playerctl status -a | grep -q "Playing"; then
+    _disable
+else
+    _enable
+fi
