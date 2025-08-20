@@ -1,0 +1,2 @@
+*/15 * * * * /home/jhon/pwiki/scripts/pwiki sync
+*/5 * * * * /home/jhon/dotfiles/bin/prevent-screen-blanking-music
