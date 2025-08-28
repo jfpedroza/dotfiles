@@ -1,1 +1,1 @@
-au BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
+autocmd BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
