@@ -9,6 +9,7 @@ else
         echo ~/dotfiles
         echo ~/private_dotfiles
         echo ~/pwiki
+        echo ~/.oh-my-zsh
     }
 
     function find_folders() {
