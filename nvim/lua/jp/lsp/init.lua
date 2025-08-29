@@ -1,4 +1,4 @@
-local has_lsp, lspconfig = pcall(require, "lspconfig")
+local has_lsp, _ = pcall(require, "lspconfig")
 if not has_lsp or PLUGIN_DISABLE.lsp then
   return
 end
@@ -111,32 +111,8 @@ local servers = {
   ccls = true,
   bashls = true,
   hls = true,
-  ltex_plus = {
-    settings = {
-      ltex = {
-        language = "en-US",
-        dictionary = {
-          ["en-US"] = {
-            "Redpanda",
-            "Oban",
-            "PubSub",
-            "LiveView",
-            "AppSignal",
-            "TODO",
-          },
-        },
-        markdown = {
-          nodes = {
-            CodeBlock = "ignore",
-            FencedCodeBlock = "ignore",
-            AutoLink = "dummy",
-            Code = "dummy",
-          },
-        },
-      },
-    },
-  },
-  diagnosticls = require("jp.lsp.diagnosticls"),
+  ltex_plus = true,
+  diagnosticls = true,
 }
 
 local setup_server = function(server, config)
@@ -153,7 +129,8 @@ local setup_server = function(server, config)
     capabilities = capabilities,
   }, config)
 
-  lspconfig[server].setup(config)
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
 
 for server, config in pairs(servers) do
