@@ -22,6 +22,10 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+title=$selected
+[[ "$title" =~ ^"$HOME"(/|$) ]] && title="~${title#$HOME}"
+echo -en "\033]2;$title\007"
+
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
