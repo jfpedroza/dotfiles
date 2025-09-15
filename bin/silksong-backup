@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+SOURCE_PATH="/home/jhon/Games/hollow-knight-silksong-wine/drive_c/users/jhon/AppData/LocalLow/Team Cherry/Hollow Knight Silksong"
+DEST_PATH="/home/jhon/Cloud/Games/Hollow Knight Silksong"
+MAX_BACKUPS_PER_DAY=20
+
+current_date=$(date +%Y-%m-%d)
+
+find_backup_name() {
+    local base_name="$1"
+    local counter=1
+    local backup_name="$base_name"
+
+    while [[ -d "$DEST_PATH/$backup_name" ]]; do
+        if [[ $counter -gt $MAX_BACKUPS_PER_DAY ]]; then
+            echo "ERROR: Maximum number of backups per day ($MAX_BACKUPS_PER_DAY) exceeded for $current_date" >&2
+            exit 1
+        fi
+
+        counter=$((counter + 1))
+        backup_name="${base_name}-${counter}"
+    done
+
+    echo "$backup_name"
+}
+
+if [[ ! -d "$SOURCE_PATH" ]]; then
+    echo "ERROR: Source directory does not exist: $SOURCE_PATH" >&2
+    exit 1
+fi
+
+if [[ ! -d "$DEST_PATH" ]]; then
+    echo "ERROR: Destination directory does not exist: $DEST_PATH" >&2
+    exit 1
+fi
+
+if [[ ! -w "$DEST_PATH" ]]; then
+    echo "ERROR: Destination directory is not writable: $DEST_PATH" >&2
+    exit 1
+fi
+
+backup_name=$(find_backup_name "$current_date")
+backup_full_path="$DEST_PATH/$backup_name"
+
+echo "Creating backup: $backup_name"
+if cp -r "$SOURCE_PATH" "$backup_full_path"; then
+    echo "SUCCESS: Backup created at $backup_full_path"
+else
+    echo "ERROR: Failed to create backup" >&2
+    exit 1
+fi
