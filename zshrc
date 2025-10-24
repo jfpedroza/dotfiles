@@ -142,7 +142,7 @@ function set_title () {
 
 case $TERM in
     xterm*)
-        chpwd () { set_title }
+        chpwd_functions=(${chpwd_functions[@]} "set_title")
         set_title
         ;;
 esac
