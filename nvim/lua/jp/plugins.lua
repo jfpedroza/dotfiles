@@ -102,6 +102,16 @@ require("lazy").setup({
   "nvim-lua/lsp-status.nvim",
   "kosayoda/nvim-lightbulb",
   "elixir-tools/elixir-tools.nvim",
+  {
+    "synic/refactorex.nvim",
+    ft = "elixir",
+    ---@module "refactorex.nvim"
+    ---@type refactorex.Config
+    opts = {
+      auto_update = true,
+      pin_version = nil,
+    },
+  },
   "sheerun/vim-polyglot",
   "alx741/vim-hindent",
   "pbrisbin/vim-syntax-shakespeare",
