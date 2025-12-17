@@ -54,8 +54,11 @@ set wildignore=Ui_*,*.git,*.pyc
 set wildignore+=*/vendor/**
 set wildignore+=*/node_modules/**
 set wildignore+=*/public/forum/**
-set wildignore+=*/deps/**
 set wildignore+=*/_build/**
+
+if $MINIMAL_VIM !=? 'true'
+  set wildignore+=*/deps/**
+endif
 
 " Telescope
 lua require("jp.telescope")
