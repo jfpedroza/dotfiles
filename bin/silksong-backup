@@ -1,10 +1,51 @@
 #!/usr/bin/env bash
 
-SOURCE_PATH="/home/jhon/Games/hollow-knight-silksong-wine/drive_c/users/jhon/AppData/LocalLow/Team Cherry/Hollow Knight Silksong"
+#SOURCE_PATH="/home/jhon/Games/hollow-knight-silksong-wine/drive_c/users/jhon/AppData/LocalLow/Team Cherry/Hollow Knight Silksong"
+SOURCE_PATH="/home/jhon/.config/unity3d/Team Cherry/Hollow Knight Silksong"
 DEST_PATH="/home/jhon/Cloud/Games/Hollow Knight Silksong"
 MAX_BACKUPS_PER_DAY=20
 
 current_date=$(date +%Y-%m-%d)
+
+# Parse arguments
+RESTORE_MODE=false
+BACKUP_NAME=""
+
+show_usage() {
+    echo "Usage: $0 [--restore [BACKUP_NAME]]"
+    echo ""
+    echo "Options:"
+    echo "  (no args)              Create a new backup"
+    echo "  --restore              Restore the most recent backup"
+    echo "  --restore BACKUP_NAME  Restore a specific backup by name"
+    echo ""
+    echo "Examples:"
+    echo "  $0                     # Create backup"
+    echo "  $0 --restore           # Restore latest"
+    echo "  $0 --restore 2025-09-23-2  # Restore specific backup"
+}
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+    --restore)
+        RESTORE_MODE=true
+        shift
+        if [[ $# -gt 0 && ! "$1" =~ ^-- ]]; then
+            BACKUP_NAME="$1"
+            shift
+        fi
+        ;;
+    --help | -h)
+        show_usage
+        exit 0
+        ;;
+    *)
+        echo "ERROR: Unknown option: $1" >&2
+        show_usage
+        exit 1
+        ;;
+    esac
+done
 
 find_backup_name() {
     local base_name="$1"
@@ -24,6 +65,86 @@ find_backup_name() {
     echo "$backup_name"
 }
 
+find_latest_backup() {
+    if [[ ! -d "$DEST_PATH" ]]; then
+        echo "ERROR: Backup directory does not exist: $DEST_PATH" >&2
+        return 1
+    fi
+
+    # Find the most recent backup directory by modification time
+    local latest_backup
+    latest_backup=$(find "$DEST_PATH" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %f\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
+
+    if [[ -z "$latest_backup" ]]; then
+        echo "ERROR: No backups found in $DEST_PATH" >&2
+        return 1
+    fi
+
+    echo "$latest_backup"
+}
+
+restore_backup() {
+    local backup_name="$1"
+    local backup_path="$DEST_PATH/$backup_name"
+
+    # Validate backup exists
+    if [[ ! -d "$backup_path" ]]; then
+        echo "ERROR: Backup does not exist: $backup_path" >&2
+        exit 1
+    fi
+
+    # Validate destination exists
+    if [[ ! -d "$(dirname "$SOURCE_PATH")" ]]; then
+        echo "ERROR: Game directory parent does not exist: $(dirname "$SOURCE_PATH")" >&2
+        exit 1
+    fi
+
+    echo "Restoring backup: $backup_name"
+    echo "From: $backup_path"
+    echo "To: $SOURCE_PATH"
+
+    # Backup current save data if it exists (safety measure)
+    if [[ -d "$SOURCE_PATH" ]]; then
+        local temp_backup="$SOURCE_PATH.backup-$(date +%Y%m%d-%H%M%S)"
+        echo "Creating safety backup of current save: $temp_backup"
+        if ! cp -r "$SOURCE_PATH" "$temp_backup"; then
+            echo "ERROR: Failed to create safety backup" >&2
+            exit 1
+        fi
+        echo "Removing current save data..."
+        if ! rm -rf "$SOURCE_PATH"; then
+            echo "ERROR: Failed to remove current save data" >&2
+            exit 1
+        fi
+    fi
+
+    # Restore the backup
+    echo "Copying backup to game directory..."
+    if cp -r "$backup_path" "$SOURCE_PATH"; then
+        echo "SUCCESS: Backup restored from $backup_name"
+    else
+        echo "ERROR: Failed to restore backup" >&2
+        exit 1
+    fi
+}
+
+if [[ "$RESTORE_MODE" == true ]]; then
+    # Restore mode
+    if [[ -z "$BACKUP_NAME" ]]; then
+        # Find latest backup
+        echo "No backup name specified, finding latest backup..."
+        BACKUP_NAME=$(find_latest_backup)
+        if [[ $? -ne 0 ]]; then
+            exit 1
+        fi
+        echo "Found latest backup: $BACKUP_NAME"
+    fi
+
+    restore_backup "$BACKUP_NAME"
+    exit 0
+fi
+
+# Backup mode (original functionality)
 if [[ ! -d "$SOURCE_PATH" ]]; then
     echo "ERROR: Source directory does not exist: $SOURCE_PATH" >&2
     exit 1
