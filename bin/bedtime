@@ -1,0 +1,224 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bedtime"
+CONFIG_FILE="$CONFIG_DIR/config"
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+PID_FILE="$RUNTIME_DIR/bedtime.pid"
+TARGET_FILE="$RUNTIME_DIR/bedtime.target"
+
+DEFAULT_CONFIG='# Shutdown time per calendar day (24h format)
+# e.g., mon=02:00 means shutdown at 2:00 AM on Monday (Sunday night)
+mon=02:00
+tue=02:00
+wed=02:00
+thu=02:00
+fri=02:00
+sat=03:00
+sun=03:00'
+
+ensure_config() {
+    if [[ ! -f "$CONFIG_FILE" ]]; then
+        mkdir -p "$CONFIG_DIR"
+        echo "$DEFAULT_CONFIG" >"$CONFIG_FILE"
+    fi
+}
+
+# Map day-of-week number (1=Mon..7=Sun) to config key
+day_key() {
+    case "$1" in
+    1) echo mon ;; 2) echo tue ;; 3) echo wed ;; 4) echo thu ;;
+    5) echo fri ;; 6) echo sat ;; 7) echo sun ;;
+    esac
+}
+
+# Parse config and return time for a given day key (e.g., "mon" -> "02:00")
+get_time_for_day() {
+    local key="$1"
+    grep -E "^${key}=" "$CONFIG_FILE" | head -1 | cut -d= -f2
+}
+
+# Compute target epoch for the next shutdown
+compute_target() {
+    local today_dow today_key today_time today_target
+    today_dow=$(date +%u)
+    today_key=$(day_key "$today_dow")
+    today_time=$(get_time_for_day "$today_key")
+
+    if [[ -n "$today_time" ]]; then
+        today_target=$(date -d "today $today_time" +%s 2>/dev/null || echo 0)
+        if ((today_target > $(date +%s))); then
+            echo "$today_target"
+            return
+        fi
+    fi
+
+    # Use tomorrow's time
+    local tomorrow_dow tomorrow_key tomorrow_time
+    tomorrow_dow=$(date -d "tomorrow" +%u)
+    tomorrow_key=$(day_key "$tomorrow_dow")
+    tomorrow_time=$(get_time_for_day "$tomorrow_key")
+    if [[ -z "$tomorrow_time" ]]; then
+        tomorrow_time="02:00"
+    fi
+    date -d "tomorrow $tomorrow_time" +%s
+}
+
+format_time() {
+    date -d "@$1" +%H:%M
+}
+
+notify() {
+    notify-send -u critical -a bedtime -h string:x-dunst-stack-tag:bedtime "$@"
+}
+
+cmd_start() {
+    local dry_run=false
+    [[ "${1:-}" == "--dry-run" ]] && dry_run=true
+
+    ensure_config
+
+    echo $$ >"$PID_FILE"
+    trap 'rm -f "$PID_FILE" "$TARGET_FILE"' EXIT
+
+    local target
+    target=$(compute_target)
+    echo "$target" >"$TARGET_FILE"
+
+    # Reminder offsets in seconds before target
+    local -a offsets=(1800 600 60) # 30min, 10min, 1min
+    local -a sent=(false false false)
+
+    # SIGUSR1 handler: postpone by 10 minutes
+    handle_postpone() {
+        target=$((target + 600))
+        local now_p remaining_p
+        now_p=$(date +%s)
+        remaining_p=$((target - now_p))
+        for i in 0 1 2; do
+            if ((remaining_p <= offsets[i])); then
+                sent[$i]=true
+            else
+                sent[$i]=false
+            fi
+        done
+        echo "$target" >"$TARGET_FILE"
+        notify "Shutdown postponed to $(format_time "$target")"
+    }
+    trap handle_postpone USR1
+
+    while true; do
+        local now
+        now=$(date +%s)
+
+        # If target has passed, recompute for next day
+        if ((now > target + 60)); then
+            target=$(compute_target)
+            echo "$target" >"$TARGET_FILE"
+            sent=(false false false)
+            continue
+        fi
+
+        local remaining=$((target - now))
+
+        # Check if it's time to shut down
+        if ((remaining <= 0)); then
+            if [[ "$dry_run" == true ]]; then
+                notify "Dry run: would shut down now"
+            else
+                systemctl poweroff
+            fi
+            # Recompute for next cycle (in case poweroff fails or dry-run)
+            sleep 5
+            target=$(compute_target)
+            echo "$target" >"$TARGET_FILE"
+            sent=(false false false)
+            continue
+        fi
+
+        # Find next event
+        local next_sleep=$remaining
+        for i in 0 1 2; do
+            if [[ "${sent[$i]}" == false ]] && ((remaining > offsets[i])); then
+                local wait_for=$((remaining - offsets[i]))
+                ((wait_for < next_sleep)) && next_sleep=$wait_for
+            fi
+        done
+
+        sleep "$next_sleep" &
+        wait $! || true # Interrupted by signal
+
+        # Re-read now after sleep/signal
+        now=$(date +%s)
+        remaining=$((target - now))
+
+        # Fire any due reminders
+        for i in 0 1 2; do
+            if [[ "${sent[$i]}" == false ]] && ((remaining <= offsets[i])); then
+                local mins=$((offsets[i] / 60))
+                notify "Shutdown in ${mins} minute$( ((mins != 1)) && echo s) (at $(format_time "$target"))"
+                sent[$i]=true
+            fi
+        done
+    done
+}
+
+cmd_postpone() {
+    if [[ ! -f "$PID_FILE" ]]; then
+        echo "bedtime daemon is not running" >&2
+        exit 1
+    fi
+    local pid
+    pid=$(cat "$PID_FILE")
+    if kill -0 "$pid" 2>/dev/null; then
+        kill -USR1 "$pid"
+        echo "Sent postpone signal to bedtime daemon (PID $pid)"
+    else
+        echo "bedtime daemon is not running (stale PID file)" >&2
+        rm -f "$PID_FILE"
+        exit 1
+    fi
+}
+
+cmd_status() {
+    ensure_config
+
+    local daemon_running=false
+    if [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+        echo "Daemon: running (PID $(cat "$PID_FILE"))"
+        daemon_running=true
+    else
+        echo "Daemon: not running"
+    fi
+
+    local target
+    if [[ "$daemon_running" == true ]] && [[ -f "$TARGET_FILE" ]]; then
+        target=$(cat "$TARGET_FILE")
+    else
+        target=$(compute_target)
+    fi
+    local now
+    now=$(date +%s)
+    local remaining=$((target - now))
+    local mins=$((remaining / 60))
+    local hrs=$((mins / 60))
+    mins=$((mins % 60))
+
+    echo "Next shutdown: $(date -d "@$target" '+%A %H:%M') (in ${hrs}h ${mins}m)"
+}
+
+case "${1:-start}" in
+start)
+    shift 2>/dev/null || true
+    cmd_start "$@"
+    ;;
+postpone) cmd_postpone ;;
+status) cmd_status ;;
+*)
+    echo "Usage: bedtime {start [--dry-run]|postpone|status}" >&2
+    exit 1
+    ;;
+esac

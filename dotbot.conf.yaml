@@ -31,6 +31,7 @@
     ~/.config/gsimplecal/config: gsimplecal.config
     ~/.config/qmk/qmk.ini: qmk.ini
     ~/.config/systemd/user/notif-server.service: systemd/notif-server.service
+    ~/.config/systemd/user/bedtime.service: systemd/bedtime.service
     ~/.local/share/applications/note-capture.desktop: desktop-entries/note-capture.desktop
 
 - defaults:

@@ -1,0 +1,11 @@
+[Unit]
+Description=Bedtime shutdown reminder daemon
+
+[Service]
+Type=simple
+ExecStart=/home/jhon/dotfiles/bin/bedtime start
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=default.target
