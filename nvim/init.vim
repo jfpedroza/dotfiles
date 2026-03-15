@@ -3,9 +3,6 @@ scriptencoding utf-8
 let mapleader = ','
 let maplocalleader = "\\"
 
-lua require('jp.globals')
-lua require('jp.plugins')
-
 " colorscheme darkblue
 
 set exrc
@@ -38,6 +35,9 @@ set undodir=~/.local/state/nvim/undo
 set undofile
 
 set inccommand=split
+
+lua require('jp.globals')
+lua require('jp.plugins')
 
 let g:vimsyn_embed = 'l'
 
