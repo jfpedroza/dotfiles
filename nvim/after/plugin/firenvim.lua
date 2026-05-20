@@ -26,6 +26,10 @@ vim.g.firenvim_config = {
       takeover = "never",
       priority = 1,
     },
+    ["^https://excalidraw\\.com/"] = {
+      takeover = "never",
+      priority = 1,
+    },
   },
 }
 
