@@ -27,7 +27,6 @@ ttf-font-awesome-4
 rofi-dmenu
 bear
 junction
-mise-bin
 light
 cryptomator-bin
 todoist-appimage

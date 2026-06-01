@@ -147,3 +147,4 @@ jless
 onboard
 picocom
 atuin
+mise
