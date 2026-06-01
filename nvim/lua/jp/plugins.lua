@@ -52,8 +52,7 @@ require("lazy").setup({
   "AndrewRadev/splitjoin.vim",
   "vim-scripts/argtextobj.vim",
   "kshenoy/vim-signature",
-  { "phaazon/hop.nvim", branch = "v2" },
-  -- {"smoka7/hop.nvim", version="*" }, Pending migration to fork
+  { "smoka7/hop.nvim", version = "*" },
   "majutsushi/tagbar",
   "voldikss/vim-floaterm",
   {
