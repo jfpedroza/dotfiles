@@ -2,6 +2,8 @@ export KERL_BUILD_DOCS=yes
 export KERL_INSTALL_HTMLDOCS=no
 export KERL_INSTALL_MANPAGES=no
 
+export MIX_OS_DEPS_COMPILE_PARTITION_COUNT=4
+
 alias mix.dg='mix deps.get'
 alias mix.du='mix deps.update'
 alias mix.c='mix compile'
