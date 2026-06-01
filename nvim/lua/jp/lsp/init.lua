@@ -111,6 +111,7 @@ local servers = {
   ccls = true,
   bashls = true,
   hls = true,
+  expert = true,
   ltex_plus = true,
   diagnosticls = true,
 }
@@ -150,7 +151,7 @@ end
 
 elixir.setup({
   elixirls = {
-    enable = true,
+    enable = false,
     tag = elixirls_tag,
     cmd = elixirls_cmd,
     settings = elixirls.settings({
