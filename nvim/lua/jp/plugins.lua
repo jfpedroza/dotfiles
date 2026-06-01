@@ -131,7 +131,28 @@ require("lazy").setup({
   "raimon49/requirements.txt.vim",
   "tridactyl/vim-tridactyl",
   "aklt/plantuml-syntax",
-  { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" },
+  {
+    "https://gitlab.com/itaranto/preview.nvim",
+    version = "*",
+    opts = {
+      previewers_by_ft = {
+        plantuml = {
+          name = "plantuml_svg",
+          renderer = { type = "command", opts = { cmd = { "feh" } } },
+        },
+      },
+      previewers = {
+        plantuml_svg = {
+          args = { "-pipe", "-tpng" },
+        },
+        plantuml_png = {
+          args = { "-pipe", "-tsvg" },
+        },
+      },
+      render_on_write = true,
+    },
+  },
+
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
   {
     -- Make sure to set this up properly if you have lazy=true
