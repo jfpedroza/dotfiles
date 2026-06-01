@@ -70,6 +70,7 @@ alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim st
 alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
 alias update-nvim-master='asdf uninstall neovim ref:master && asdf install neovim ref:master'
 alias xtype='xdotool type'
+alias mr='mise run'
 
 # Actually env vars
 export neotest_log=~/.local/state/nvim/neotest.log
