@@ -18,6 +18,6 @@ vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
 vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
 
 -- vim.wo.foldmethod = "expr"
--- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.o.foldlevelstart = 1
 -- vim.wo.foldminlines = 2

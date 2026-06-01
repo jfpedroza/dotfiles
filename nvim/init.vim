@@ -36,6 +36,7 @@ set undofile
 
 set inccommand=split
 
+lua require("vim._core.ui2").enable({})
 lua require('jp.globals')
 lua require('jp.plugins')
 

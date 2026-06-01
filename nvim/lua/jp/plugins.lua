@@ -56,12 +56,24 @@ require("lazy").setup({
   -- {"smoka7/hop.nvim", version="*" }, Pending migration to fork
   "majutsushi/tagbar",
   "voldikss/vim-floaterm",
-  { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { { "nvim-lua/plenary.nvim" } } },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  "nvim-treesitter/playground",
-  "nvim-treesitter/nvim-treesitter-refactor",
-  "nvim-treesitter/nvim-treesitter-textobjects",
+  {
+    "nvim-telescope/telescope.nvim",
+    version = "*",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+  },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false },
+  "nvim-treesitter/nvim-treesitter-locals",
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    init = function()
+      vim.g.no_plugin_maps = true
+    end,
+  },
   {
     "folke/snacks.nvim",
     priority = 1000,
