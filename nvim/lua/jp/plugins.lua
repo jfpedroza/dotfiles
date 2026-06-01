@@ -171,6 +171,7 @@ require("lazy").setup({
     end,
   },
 
+  "teamtype/teamtype-nvim",
   -- Completion
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-buffer",
