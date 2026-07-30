@@ -20,7 +20,7 @@ require("lazy").setup({
     end,
   },
   "tpope/vim-abolish",
-  "feline-nvim/feline.nvim",
+  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "akinsho/bufferline.nvim", version = "*", dependencies = { "nvim-tree/nvim-web-devicons" } },
   "simnalamburt/vim-mundo",
   "tpope/vim-fugitive",
