@@ -2,7 +2,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -15,7 +15,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = mouse
+    follow = none
 
     # Enable POSIX regular expressions in filters
     enable_posix_regex = true
@@ -24,7 +24,7 @@
     # height = 0
     notification_limit = 11
     origin = top-right
-    offset = 30x40
+    offset = 30x640
 
     # Turn on the progess bar
     progress_bar = true
@@ -413,7 +413,7 @@
 # pushback: same as delay, but when switching into fullscreen, the notification will get
 #           withdrawn from screen again and will get delayed like a new notification
 [fullscreen_delay_everything]
-    fullscreen = delay
+    fullscreen = show
 [fullscreen_show_critical]
     msg_urgency = critical
     fullscreen = show
