@@ -24,7 +24,7 @@
     # height = 0
     notification_limit = 11
     origin = top-right
-    offset = 30x640
+    offset = 30x40
 
     # Turn on the progess bar
     progress_bar = true
