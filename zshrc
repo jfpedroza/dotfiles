@@ -205,5 +205,8 @@ export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/
 eval "$(atuin init zsh --disable-up-arrow)"
 
 eval "$(mise activate zsh)"
+source <(usage g completion-init zsh)
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 # zprof
