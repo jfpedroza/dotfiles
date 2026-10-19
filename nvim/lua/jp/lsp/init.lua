@@ -111,7 +111,7 @@ local servers = {
   ccls = true,
   bashls = true,
   hls = true,
-  expert = true,
+  expert = false,
   ltex_plus = true,
   diagnosticls = true,
 }
@@ -166,3 +166,20 @@ elixir.setup({
   credo = { enable = false },
   nextls = { enable = false },
 })
+
+vim.lsp.config("dexter", {
+  cmd = { "dexter", "lsp" },
+  root_markers = { ".dexter/dexter.db", ".dexter.db", ".git", "mix.exs" },
+  filetypes = { "elixir", "eelixir", "heex" },
+  init_options = {
+    followDelegates = true, -- jump through defdelegate to the target function
+    -- stdlibPath = "",      -- override Elixir stdlib path (auto-detected)
+    -- debug = false,        -- verbose logging to stderr (view with :LspLog)
+  },
+})
+
+if vim.fn.filereadable(".env.kvmmb") == 1 then
+  vim.lsp.enable("dexter")
+else
+  vim.lsp.enable("expert")
+end
