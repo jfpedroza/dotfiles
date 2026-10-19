@@ -48,4 +48,5 @@ bind k scrollline -5
 
 " Rules for specific sites
 
-autocmd DocStart app\.gather\.town.* mode ignore
+autocmd DocStart app.v2\.gather\.town.* mode ignore
+autocmd DocStart console\.vultr\.com/subs/vps/novnc.* mode ignore
