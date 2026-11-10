@@ -45,3 +45,11 @@ signs.setup({
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
   end,
 })
+
+vim.api.nvim_create_user_command("Gstage", function(opts)
+  if opts.range == 0 then
+    signs.stage_hunk()
+  else
+    signs.stage_hunk({ opts.line1, opts.line2 })
+  end
+end, { range = true, desc = "Stage the selected lines, or the hunk under the cursor without a range" })
