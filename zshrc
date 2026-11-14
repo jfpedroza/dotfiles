@@ -91,6 +91,9 @@ fpath+=${ZSH_CUSTOM:-$ZSH/custom}/plugins/nix-zsh-completions
 # https://github.com/ohmyzsh/ohmyzsh/issues/12328
 zstyle ':omz:alpha:lib:git' async-prompt no
 
+# Skip compaudit's insecure-directory scan of fpath (~10ms)
+ZSH_DISABLE_COMPFIX=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -200,7 +203,7 @@ AUTO_NOTIFY_IGNORE+=("pkgsearch" "pkgrm" "tmux-sessionizer" "fzf" "forgit" "tmux
 
 export FLYCTL_INSTALL="$HOME/.fly"
 
-export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$(yarn global bin):$FLYCTL_INSTALL/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/go/bin:$FLYCTL_INSTALL/bin:$PATH
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
